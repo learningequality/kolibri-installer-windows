@@ -31,13 +31,13 @@
 		D035A9381B671F7F009FA40A /* scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scripts; sourceTree = "<group>"; };
 		F103615B1A81B7DF00998E6B /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = Resources/images; sourceTree = "<group>"; };
 		F1720BEC1A79566700096453 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		F1DDD40C1A6E5DC10022F1C9 /* KA-Lite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KA-Lite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1DDD40C1A6E5DC10022F1C9 /* Kolibri.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kolibri.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DDD4101A6E5DC10022F1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1DDD4111A6E5DC10022F1C9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F1DDD4121A6E5DC10022F1C9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F1DDD4141A6E5DC10022F1C9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1DDD4161A6E5DC10022F1C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F1DDD41F1A6E5DC10022F1C9 /* KA-LiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "KA-LiteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1DDD41F1A6E5DC10022F1C9 /* Kolibri.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kolibri.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DDD4241A6E5DC10022F1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1DDD4251A6E5DC10022F1C9 /* KA_Lite_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KA_Lite_Tests.m; sourceTree = "<group>"; };
 		F1E5A30A1A8041FD003FA650 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -64,8 +64,8 @@
 		F1DDD4031A6E5DC10022F1C9 = {
 			isa = PBXGroup;
 			children = (
-				F1DDD40E1A6E5DC10022F1C9 /* KA-Lite */,
-				F1DDD4221A6E5DC10022F1C9 /* KA-Lite-Tests */,
+				F1DDD40E1A6E5DC10022F1C9 /* kolibri */,
+				F1DDD4221A6E5DC10022F1C9 /* kolibri-Tests */,
 				F1DDD40D1A6E5DC10022F1C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,13 +73,13 @@
 		F1DDD40D1A6E5DC10022F1C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1DDD40C1A6E5DC10022F1C9 /* KA-Lite.app */,
-				F1DDD41F1A6E5DC10022F1C9 /* KA-LiteTests.xctest */,
+				F1DDD40C1A6E5DC10022F1C9 /* Kolibri.app */,
+				F1DDD41F1A6E5DC10022F1C9 /* Kolibri.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F1DDD40E1A6E5DC10022F1C9 /* KA-Lite */ = {
+		F1DDD40E1A6E5DC10022F1C9 /* kolibri */ = {
 			isa = PBXGroup;
 			children = (
 				F1DDD4121A6E5DC10022F1C9 /* AppDelegate.m */,
@@ -88,6 +88,7 @@
 				F1DDD4161A6E5DC10022F1C9 /* Images.xcassets */,
 				F1DDD40F1A6E5DC10022F1C9 /* Supporting Files */,
 			);
+			name = kolibri;
 			path = "KA-Lite";
 			sourceTree = "<group>";
 		};
@@ -103,12 +104,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F1DDD4221A6E5DC10022F1C9 /* KA-Lite-Tests */ = {
+		F1DDD4221A6E5DC10022F1C9 /* kolibri-Tests */ = {
 			isa = PBXGroup;
 			children = (
 				F1DDD4251A6E5DC10022F1C9 /* KA_Lite_Tests.m */,
 				F1DDD4231A6E5DC10022F1C9 /* Supporting Files */,
 			);
+			name = "kolibri-Tests";
 			path = "KA-Lite-Tests";
 			sourceTree = "<group>";
 		};
@@ -123,9 +125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1DDD40B1A6E5DC10022F1C9 /* KA-Lite */ = {
+		F1DDD40B1A6E5DC10022F1C9 /* Kolibri */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1DDD4291A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KA-Lite" */;
+			buildConfigurationList = F1DDD4291A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "Kolibri" */;
 			buildPhases = (
 				F1DDD4081A6E5DC10022F1C9 /* Sources */,
 				F1DDD4091A6E5DC10022F1C9 /* Frameworks */,
@@ -135,14 +137,14 @@
 			);
 			dependencies = (
 			);
-			name = "KA-Lite";
+			name = Kolibri;
 			productName = "KA-Lite";
-			productReference = F1DDD40C1A6E5DC10022F1C9 /* KA-Lite.app */;
+			productReference = F1DDD40C1A6E5DC10022F1C9 /* Kolibri.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F1DDD41E1A6E5DC10022F1C9 /* KA-LiteTests */ = {
+		F1DDD41E1A6E5DC10022F1C9 /* KolibriTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1DDD42C1A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KA-LiteTests" */;
+			buildConfigurationList = F1DDD42C1A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KolibriTests" */;
 			buildPhases = (
 				F1DDD41B1A6E5DC10022F1C9 /* Sources */,
 				F1DDD41C1A6E5DC10022F1C9 /* Frameworks */,
@@ -153,9 +155,9 @@
 			dependencies = (
 				F1DDD4211A6E5DC10022F1C9 /* PBXTargetDependency */,
 			);
-			name = "KA-LiteTests";
+			name = KolibriTests;
 			productName = "KA-Lite-Tests";
-			productReference = F1DDD41F1A6E5DC10022F1C9 /* KA-LiteTests.xctest */;
+			productReference = F1DDD41F1A6E5DC10022F1C9 /* Kolibri.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -176,7 +178,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1DDD4071A6E5DC10022F1C9 /* Build configuration list for PBXProject "KA-Lite" */;
+			buildConfigurationList = F1DDD4071A6E5DC10022F1C9 /* Build configuration list for PBXProject "Kolibri" */;
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -189,8 +191,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1DDD40B1A6E5DC10022F1C9 /* KA-Lite */,
-				F1DDD41E1A6E5DC10022F1C9 /* KA-LiteTests */,
+				F1DDD40B1A6E5DC10022F1C9 /* Kolibri */,
+				F1DDD41E1A6E5DC10022F1C9 /* KolibriTests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,7 +242,7 @@
 /* Begin PBXTargetDependency section */
 		F1DDD4211A6E5DC10022F1C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F1DDD40B1A6E5DC10022F1C9 /* KA-Lite */;
+			target = F1DDD40B1A6E5DC10022F1C9 /* Kolibri */;
 			targetProxy = F1DDD4201A6E5DC10022F1C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -354,7 +356,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_BUNDLE_IDENTIFIER = org.learningequality.kalite;
-				PRODUCT_NAME = "KA-Lite";
+				PRODUCT_NAME = Kolibri;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -380,7 +382,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.learningequality.kalite;
-				PRODUCT_NAME = "KA-Lite";
+				PRODUCT_NAME = Kolibri;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -401,8 +403,8 @@
 				INFOPLIST_FILE = "KA-Lite-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FLE.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "KA-LiteTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KA-Lite.app/Contents/MacOS/KA-Lite";
+				PRODUCT_NAME = Kolibri;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolibri.app/Contents/MacOS/Kolibri";
 			};
 			name = Debug;
 		};
@@ -418,15 +420,15 @@
 				INFOPLIST_FILE = "KA-Lite-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "FLE.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "KA-LiteTests";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KA-Lite.app/Contents/MacOS/KA-Lite";
+				PRODUCT_NAME = Kolibri;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolibri.app/Contents/MacOS/Kolibri";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1DDD4071A6E5DC10022F1C9 /* Build configuration list for PBXProject "KA-Lite" */ = {
+		F1DDD4071A6E5DC10022F1C9 /* Build configuration list for PBXProject "Kolibri" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1DDD4271A6E5DC10022F1C9 /* Debug */,
@@ -435,7 +437,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1DDD4291A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KA-Lite" */ = {
+		F1DDD4291A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "Kolibri" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1DDD42A1A6E5DC10022F1C9 /* Debug */,
@@ -444,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1DDD42C1A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KA-LiteTests" */ = {
+		F1DDD42C1A6E5DC10022F1C9 /* Build configuration list for PBXNativeTarget "KolibriTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1DDD42D1A6E5DC10022F1C9 /* Debug */,

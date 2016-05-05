@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:KA-Lite.xcodeproj">
+      location = "self:/Users/user/kolibri-installers/osx/KA-Lite/Kolibri.xcodeproj">
    </FileRef>
 </Workspace>
