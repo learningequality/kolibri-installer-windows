@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  KA-Lite
+//  kolibri
 //
 //  Created by cyril on 1/20/15.
 //  Copyright (c) 2015 FLE. All rights reserved.
@@ -17,7 +17,7 @@
 
 @implementation AppDelegate
 
-@synthesize startKalite, stopKalite, openInBrowserMenu, kaliteVersion, customKaliteData, loadOnLogin, startOnLoad, autoStartOnLoad, kaliteDataHelp, popover, popoverMsg, version, isLoaded;
+@synthesize startKolibri, stopKolibri, openInBrowserMenu, kolibriVersion, customKolibriData, loadOnLogin, startOnLoad, autoStartOnLoad, kolibriDataHelp, popover, popoverMsg, version, isLoaded;
 
 
 // REF: http://objcolumnist.com/2009/08/09/reopening-an-applications-main-window-by-clicking-the-dock-icon/
@@ -36,7 +36,7 @@
 
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification {
-    // TODO(cpauya): Get version from the project's .plist file or from `kalite --version`.
+    // TODO(cpauya): Get version from the project's .plist file or from `kolibri --version`.
     self.version = @"0.16";
     self.isLoaded = NO;
     self.autoStartOnLoad = YES;
@@ -56,7 +56,7 @@
     if ([self checkSetup:YES] == NO) {
         // The application must terminate if setup is not good.
         void *sel = @selector(closeSplash);
-        alert(@"The KA Lite installation is not complete, please re-install KA Lite. \n\nRefer to the Console app for details.");
+        alert(@"The Kolibri installation is not complete, please re-install Kolibri. \n\nRefer to the Console app for details.");
         [[NSApplication sharedApplication] terminate:nil];
         return;
     }
@@ -70,31 +70,31 @@
     [self.statusItem setImage:[NSImage imageNamed:@"favicon"]];
     [self.statusItem setMenu:self.statusMenu];
     [self.statusItem setHighlightMode:YES];
-    [self.statusItem setToolTip:@"Click to show the KA Lite menu items."];
+    [self.statusItem setToolTip:@"Click to show the Kolibri menu items."];
     
-    [self.kaliteDataHelp setToolTip:@"This will set the KALITE_HOME environment variable to the selected KA Lite data location. \n \nClick the 'Apply' button to save your changes and click the 'Start KA Lite' button to use your new data location. \n \nNOTE: To use your existing KA Lite data, manually copy it to the selected KA Lite data location."];
-    [self.kaliteUninstallHelp setToolTip:@"This will uninstall the KA Lite application. \n \nCheck the `Delete KA Lite data folder` option if you want to delete your KA Lite data. \n \nNOTE: This will require admin privileges."];
+    [self.kolibriDataHelp setToolTip:@"This will set the KALITE_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location."];
+    [self.kolibriUninstallHelp setToolTip:@"This will uninstall the Kolibri application. \n \nCheck the `Delete Kolibri data folder` option if you want to delete your Kolibri data. \n \nNOTE: This will require admin privileges."];
 
 //    @try {
-//        [self runKalite:@"--version"];
-//        [self getKaliteStatus];
+//        [self runKolibri:@"--version"];
+//        [self getKolibriStatus];
 //    }
 //    @catch (NSException *ex) {
-//        NSLog(@"KA Lite had an Error: %@", ex);
+//        NSLog(@"Kolibri had an Error: %@", ex);
 //    }
     
     void *sel = @selector(closeSplash);
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:sel userInfo:nil repeats:NO];
-    [self startKaliteTimer];
+    [self startKolibriTimer];
 
-    // TODO(cpauya): Auto-start KA Lite on application load.
+    // TODO(cpauya): Auto-start Kolibri on application load.
     if (self.autoStartOnLoad) {
         [self startFunction];
     } else {
         // Get the status to determine the menu bar icon to display but don't show any notifications.
         // The `isLoaded` property will be set to YES the initial status check.
-        showNotification(@"KA Lite is now loaded, click on the Start KA Lite menu to get started.", @"");
-        [self getKaliteStatus];
+        showNotification(@"Kolibri is now loaded, click on the Start Kolibri menu to get started.", @"");
+        [self getKolibriStatus];
     }
 
 }
@@ -104,7 +104,7 @@
     // Confirm quit action from user.
     // TODO(cpauya): Don't ask if OS asked to quit the app.
     if ([self checkSetup:NO] == YES) {
-        NSString *msg = @"This will stop and quit KA Lite, are you sure?";
+        NSString *msg = @"This will stop and quit Kolibri, are you sure?";
         switch ([self quitReason]) {
             case quitByUser:
                 break;
@@ -121,14 +121,14 @@
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    NSString *msg = @"KA Lite is now stopped and quit.";
+    NSString *msg = @"Kolibri is now stopped and quit.";
     if ([self checkSetup:NO] == NO) {
         switch ([self quitReason]) {
             case quitByUninstall:
-                msg = @"KA Lite was quit to complete the uninstall process.";
+                msg = @"Kolibri was quit to complete the uninstall process.";
                 break;
             default:
-                msg = @"KA Lite was quit because the required setup is incomplete.";
+                msg = @"Kolibri was quit because the required setup is incomplete.";
                 break;
         }
     }
@@ -148,13 +148,13 @@
 
 
 BOOL checkEnvVars() {
-    NSString *kalitePython = getEnvVar(@"KALITE_PYTHON");
-    if (!pathExists(kalitePython)) {
+    NSString *kolibriPython = getEnvVar(@"KALITE_PYTHON");
+    if (!pathExists(kolibriPython)) {
         return NO;
     }
     // If KALITE_HOME is nil or an empty string, that's fine.  Else check if value is a valid path.
-    NSString *kaliteHome = getEnvVar(@"KALITE_HOME");
-    if (kaliteHome && !pathExists(kaliteHome)) {
+    NSString *kolibriHome = getEnvVar(@"KALITE_HOME");
+    if (kolibriHome && !pathExists(kolibriHome)) {
         return NO;
     }
     return YES;
@@ -185,10 +185,10 @@ BOOL checkEnvVars() {
 
 
 - (void) runTask:(NSString *)command {
-    NSString *kalitePath;
+    NSString *kolibriPath;
     NSString *statusStr;
     NSString *versionStr;
-    NSMutableDictionary *kaliteHomeEnv;
+    NSMutableDictionary *kolibriHomeEnv;
     
     statusStr = @"status";
     versionStr = @"--version";
@@ -200,27 +200,27 @@ BOOL checkEnvVars() {
     
     self.processCounter += 1;
     
-    kalitePath = getKaliteExecutable();
+    kolibriPath = getKolibriExecutable();
     
-    kaliteHomeEnv = [[NSMutableDictionary alloc] init];
+    kolibriHomeEnv = [[NSMutableDictionary alloc] init];
     
-    NSString *kaliteHomePath = getKaliteDataPath();
+    NSString *kolibriHomePath = getKolibriDataPath();
     
     // Set KALITE_HOME environment
-    [kaliteHomeEnv addEntriesFromDictionary:[[NSProcessInfo processInfo] environment]];
-    [kaliteHomeEnv setObject:kaliteHomePath forKey:@"KALITE_HOME"];
+    [kolibriHomeEnv addEntriesFromDictionary:[[NSProcessInfo processInfo] environment]];
+    [kolibriHomeEnv setObject:kolibriHomePath forKey:@"KALITE_HOME"];
     
     //REF: http://stackoverflow.com/questions/386783/nstask-not-picking-up-path-from-the-users-environment
     NSTask* task = [[NSTask alloc] init];
-    NSString *kaliteCommand = [NSString stringWithFormat:@"kalite %@",command];
+    NSString *kolibriCommand = [NSString stringWithFormat:@"kolibri %@",command];
     NSArray *array = [NSArray arrayWithObjects:@"-l",
                       @"-c",
-                      kaliteCommand,
+                      kolibriCommand,
                       nil];
     
     NSDictionary *defaultEnvironment = [[NSProcessInfo processInfo] environment];
     NSMutableDictionary *environment = [[NSMutableDictionary alloc] initWithDictionary:defaultEnvironment];
-    [environment setObject:kaliteHomePath forKey:@"KALITE_HOME"];
+    [environment setObject:kolibriHomePath forKey:@"KALITE_HOME"];
     [task setEnvironment:environment];
 
     
@@ -242,9 +242,9 @@ BOOL checkEnvVars() {
             [self displayLogs:outStr];
         }
         
-        // Set the current kalite version
+        // Set the current kolibri version
         if (command == versionStr){
-            self.kaliteVersion.stringValue = outStr;
+            self.kolibriVersion.stringValue = outStr;
         }
     }];
     
@@ -262,9 +262,9 @@ NSString *getResourcePath(NSString *pathToAppend) {
 
 NSString *getDatabasePath() {
     NSString *database;
-    NSString* envKaliteHomeStr = getEnvVar(@"KALITE_HOME");
-    if (pathExists(envKaliteHomeStr)) {
-        database = [NSString stringWithFormat:@"%@%@", envKaliteHomeStr, @"/database/data.sqlite"];
+    NSString* envKolibriHomeStr = getEnvVar(@"KALITE_HOME");
+    if (pathExists(envKolibriHomeStr)) {
+        database = [NSString stringWithFormat:@"%@%@", envKolibriHomeStr, @"/database/data.sqlite"];
         database = [database stringByStandardizingPath];
         return database;
     }
@@ -292,7 +292,7 @@ NSString *thisOrOther(NSString *this, NSString *other) {
 
 
 BOOL kaliteExists() {
-    NSString *kalitePath = getKaliteExecutable();
+    NSString *kalitePath = getKolibriExecutable();
     return pathExists(kalitePath);
 }
 
@@ -327,7 +327,7 @@ BOOL kaliteExists() {
         return self.status;
     }
     
-    if (checkKaliteExecutable()) {
+    if (checkKolibriExecutable()) {
         if ([taskArgsSet isEqualToSet:statusArgsSet]) {
             // MUST: The result is on the 9th bit of the returned value.  Not sure why this
             // is but maybe because of the returned values from the `system()` call.  For now
@@ -341,32 +341,32 @@ BOOL kaliteExists() {
             }
             return self.status;
         } else {
-            // If command is not "status", run `kalite status` to get status of ka-lite.
-            // We need this check because this may be called inside the KA-Lite timer.
-            NSLog(@"Fetching `kalite status`...");
-            [self getKaliteStatus];
+            // If command is not "status", run `Kolibri status` to get status of kolibri.
+            // We need this check because this may be called inside the kolibri timer.
+            NSLog(@"Fetching `Kolibri status`...");
+            [self getKolibriStatus];
             return self.status;
         }
     } else {
         [self setNewStatus:statusCouldNotDetermineStatus];
         [self showStatus:self.status];
-        showNotification(@"The `kalite` executable does not exist!", @"");
+        showNotification(@"The `Kolibri` executable does not exist!", @"");
     }
     return self.status;
 }
 
 
-- (enum kaliteStatus)runKalite:(NSString *)command {
+- (enum kaliteStatus)runKolibri:(NSString *)command {
     @try {
         // MUST: This will make sure the process to run has access to the environment variable
         // because the .app may be loaded the first time.
-        if (checkKaliteExecutable()) {
+        if (checkKolibriExecutable()) {
             [self runTask:command];
         }
     }
     @catch (NSException *ex) {
         [self setNewStatus:statusCouldNotDetermineStatus];
-        NSLog(@"Error running `kalite` %@", ex);
+        NSLog(@"Error running `Kolibri` %@", ex);
     }
     return self.status;
 }
@@ -396,7 +396,7 @@ void showNotification(NSString *subtitle, NSString *info) {
     // REF: http://stackoverflow.com/questions/12267357/nsusernotification-with-custom-soundname?rq=1
     // TODO(cpauya): These must be ticked by user on preferences if they want notifications, sounds, or not.
     NSUserNotification* notification = [[NSUserNotification alloc] init];
-    notification.title = @"KA Lite";
+    notification.title = @"Kolibri";
     notification.subtitle = subtitle;
     notification.informativeText = info;
     notification.soundName = @"Basso.aiff";
@@ -413,11 +413,11 @@ void showNotification(NSString *subtitle, NSString *info) {
 
 - (void)toggleKaliteDataPath:(BOOL)toggleValue {
     if (toggleValue == YES) {
-        self.customKaliteData.enabled = YES;
-        [self.customKaliteData setToolTip:@"Select KA Lite data path."];
+        self.customKolibriData.enabled = YES;
+        [self.customKolibriData setToolTip:@"Select Kolibri data path."];
     } else {
-        self.customKaliteData.enabled = NO;
-        [self.customKaliteData setToolTip:@"KA Lite is still running. Stop KA Lite to select data path."];
+        self.customKolibriData.enabled = NO;
+        [self.customKolibriData setToolTip:@"Kolibri is still running. Stop Kolibri to select data path."];
     }
 }
 
@@ -439,33 +439,33 @@ void showNotification(NSString *subtitle, NSString *info) {
 }
 
 
-NSString *getKaliteExecutable() {
-    return @"/usr/local/bin/kalite";
+NSString *getKolibriExecutable() {
+    return @"/usr/local/bin/Kolibri";
 }
 
 
-NSString *getKaliteDataPath() {
+NSString *getKolibriDataPath() {
     /*
-    This function returns these possible locations for the KA Lite data path:
-        1. Custom KA Lite data set by the user at the preferences dialog.
+    This function returns these possible locations for the Kolibri data path:
+        1. Custom Kolibri data set by the user at the preferences dialog.
         2. Path based on the KALITE_HOME environment variable.
-        3. The default location of the KA Lite data folder at ~/.kalite/.
+        3. The default location of the Kolibri data folder at ~/.kalite/.
         4. nil - The above locations do not exist.
     */
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *customKaliteData = [prefs stringForKey:@"customKaliteData"];
+    NSString *customKolibriData = [prefs stringForKey:@"customKaliteData"];
     
-    if (pathExists(customKaliteData)) {
-        NSString *standardizedPath = [customKaliteData stringByStandardizingPath];
+    if (pathExists(customKolibriData)) {
+        NSString *standardizedPath = [customKolibriData stringByStandardizingPath];
         return standardizedPath;
     } else {
-        NSString* envKaliteHomeStr = getEnvVar(@"KALITE_HOME");
-        if (pathExists(envKaliteHomeStr)) {
-            return envKaliteHomeStr;
+        NSString* envKolibriHomeStr = getEnvVar(@"KALITE_HOME");
+        if (pathExists(envKolibriHomeStr)) {
+            return envKolibriHomeStr;
         } else {
-            NSString *defaultKalitePath = [NSString stringWithFormat:@"%@/.kalite", NSHomeDirectory()];
-            if (pathExists(defaultKalitePath)) {
-                return defaultKalitePath;
+            NSString *defaultKolibriPath = [NSString stringWithFormat:@"%@/.Kolibri", NSHomeDirectory()];
+            if (pathExists(defaultKolibriPath)) {
+                return defaultKolibriPath;
             }
         }
     }
@@ -474,8 +474,8 @@ NSString *getKaliteDataPath() {
 }
 
 
-BOOL checkKaliteExecutable() {
-    NSString *kalitePath = getKaliteExecutable();
+BOOL checkKolibriExecutable() {
+    NSString *kalitePath = getKolibriExecutable();
     return pathExists(kalitePath);
 }
 
@@ -505,67 +505,67 @@ NSString *getEnvVar(NSString *var) {
 
 - (void)showStatus:(enum kaliteStatus)status {
     // Enable/disable menu items based on status.
-    BOOL canStart = pathExists(getKaliteExecutable()) > 0 ? YES : NO;
+    BOOL canStart = pathExists(getKolibriExecutable()) > 0 ? YES : NO;
     switch (status) {
         case statusFailedToStart:
-            [self.startKalite setEnabled:canStart];
-            [self.stopKalite setEnabled:NO];
+            [self.startKolibri setEnabled:canStart];
+            [self.stopKolibri setEnabled:NO];
             self.startButton.enabled = canStart;
             self.stopButton.enabled = NO;
             self.openBrowserButton.enabled = NO;
             [self.openInBrowserMenu setEnabled:NO];
             [self.statusItem setImage:[NSImage imageNamed:@"exclaim"]];
-            [self.statusItem setToolTip:@"KA Lite failed to start."];
-            // Disable custom kalite data path when kalite is still running.
+            [self.statusItem setToolTip:@"Kolibri failed to start."];
+            // Disable custom Kolibri data path when Kolibri is still running.
             [self toggleKaliteDataPath:NO];
             break;
         case statusStartingUp:
-            [self.startKalite setEnabled:NO];
-            [self.stopKalite setEnabled:NO];
+            [self.startKolibri setEnabled:NO];
+            [self.stopKolibri setEnabled:NO];
             [self.openInBrowserMenu setEnabled:NO];
             self.startButton.enabled = NO;
             self.stopButton.enabled = NO;
             self.openBrowserButton.enabled = NO;
-            [self.statusItem setToolTip:@"KA Lite is starting..."];
+            [self.statusItem setToolTip:@"Kolibri is starting..."];
             [self.statusItem setImage:[NSImage imageNamed:@"loading"]];
-            // Disable custom kalite data path when kalite is still running.
+            // Disable custom kalite data path when Kolibri is still running.
             [self toggleKaliteDataPath:NO];
             break;
         case statusOkRunning:
-            [self.startKalite setEnabled:NO];
-            [self.stopKalite setEnabled:YES];
+            [self.startKolibri setEnabled:NO];
+            [self.stopKolibri setEnabled:YES];
             [self.openInBrowserMenu setEnabled:YES];
             self.startButton.enabled = NO;
             self.stopButton.enabled = YES;
             self.openBrowserButton.enabled = YES;
             [self.statusItem setImage:[NSImage imageNamed:@"stop"]];
-            [self.statusItem setToolTip:@"KA Lite is running."];
+            [self.statusItem setToolTip:@"Kolibri is running."];
             showNotification(@"Running, you can now click on 'Open in Browser' menu.", @"");
-            // Disable custom kalite data path when kalite is still running.
+            // Disable custom Kolibri data path when Kolibri is still running.
             [self toggleKaliteDataPath:NO];
             break;
         case statusStopped:
-            [self.startKalite setEnabled:canStart];
-            [self.stopKalite setEnabled:NO];
+            [self.startKolibri setEnabled:canStart];
+            [self.stopKolibri setEnabled:NO];
             [self.openInBrowserMenu setEnabled:NO];
             self.startButton.enabled = canStart;
             self.stopButton.enabled = NO;
             self.openBrowserButton.enabled = NO;
             [self.statusItem setImage:[NSImage imageNamed:@"favicon"]];
-            [self.statusItem setToolTip:@"KA Lite is stopped."];
+            [self.statusItem setToolTip:@"Kolibri is stopped."];
 
             // We don't want to show "Stopped" right after we have loaded the application and checked the status.
             if (self.isLoaded) {
                 showNotification(@"Stopped", @"");
             }
 
-            // Enable setting the custom kalite data path.
+            // Enable setting the custom Kolibri data path.
             [self toggleKaliteDataPath:YES];
             
             break;
         default:
-            [self.startKalite setEnabled:canStart];
-            [self.stopKalite setEnabled:NO];
+            [self.startKolibri setEnabled:canStart];
+            [self.stopKolibri setEnabled:NO];
             [self.openInBrowserMenu setEnabled:NO];
             self.startButton.enabled = canStart;
             self.stopButton.enabled = NO;
@@ -583,18 +583,18 @@ NSString *getEnvVar(NSString *var) {
 
 - (void)startFunction {
     if (self.processCounter != 0) {
-        alert(@"KA Lite is still processing, please wait until it is finished.");
+        alert(@"Kolibri is still processing, please wait until it is finished.");
         return;
     }
     showNotification(@"Starting...", @"");
     [self setNewStatus:statusStartingUp];
-    [self runKalite:@"start"];
+    [self runKolibri:@"start"];
 }
 
 
 - (void)stopFunction:(BOOL)isQuit {
     if (self.processCounter != 0) {
-        alert(@"KA Lite is still processing, please wait until it is finished.");
+        alert(@"Kolibri is still processing, please wait until it is finished.");
         return;
     }
     NSString *msg = @"Stopping";
@@ -602,7 +602,7 @@ NSString *getEnvVar(NSString *var) {
         msg = @"Stopping and quitting the application...";
     }
     showNotification(msg, @"");
-    [self runKalite:@"stop"];
+    [self runKolibri:@"stop"];
 }
 
 
@@ -636,7 +636,7 @@ NSString *getEnvVar(NSString *var) {
 }
 
 
-- (IBAction)customKaliteData:(id)sender {
+- (IBAction)customKolibriData:(id)sender {
     self.savePrefs.enabled = TRUE;
 }
 
@@ -682,50 +682,50 @@ NSString *getEnvVar(NSString *var) {
 }
 
 
-- (IBAction)kaliteUninstall:(id)sender {
+- (IBAction)kolibriUninstall:(id)sender {
     
-    // Get the KA Lite application directory path.
+    // Get the Kolibri application directory path.
     NSString *appPath = [[NSBundle mainBundle] bundlePath];
     // REF: http://stackoverflow.com/questions/7469425/how-to-parse-nsstring-by-removing-2-folders-in-path-in-objective-c
     NSString *kaliteAppDir = [appPath stringByDeletingLastPathComponent];
     // REF: http://stackoverflow.com/questions/1489522/stringbyappendingpathcomponent-hows-it-work
-    NSString *kaliteUninstallPath = [[kaliteAppDir stringByAppendingPathComponent:@"/KA-Lite_Uninstall.tool"] stringByStandardizingPath];
+    NSString *kolibriUninstallPath = [[kaliteAppDir stringByAppendingPathComponent:@"/KA-Lite_Uninstall.tool"] stringByStandardizingPath];
     
-    if (pathExists(kaliteUninstallPath)) {
-        if (confirm(@"Are you sure that you want to uninstall the KA Lite application?")) {
-            NSString *kaliteUninstallArg;
-            if ([self.deleteKaliteData state]==NSOnState) {
-                // Delete the KA Lite data.
-                kaliteUninstallArg = @"yes yes";
+    if (pathExists(kolibriUninstallPath)) {
+        if (confirm(@"Are you sure that you want to uninstall the Kolibri application?")) {
+            NSString *kolibriUninstallArg;
+            if ([self.deleteKolibriData state]==NSOnState) {
+                // Delete the Kolibri data.
+                kolibriUninstallArg = @"yes yes";
             } else {
-                kaliteUninstallArg = @"yes no";
+                kolibriUninstallArg = @"yes no";
             }
-            const char *runCommand = [[NSString stringWithFormat: @"%@ %@", kaliteUninstallPath, kaliteUninstallArg] UTF8String];
+            const char *runCommand = [[NSString stringWithFormat: @"%@ %@", kolibriUninstallPath, kolibriUninstallArg] UTF8String];
             int runCommandStatus = system(runCommand);
             if (runCommandStatus == 0) {
                 self.quitReason = quitByUninstall;
                 // Terminate application.
                 [[NSApplication sharedApplication] terminate:nil];
             } else {
-                alert(@"The KA Lite uninstall did not succeed. You can see the logs at the Console application.");
+                alert(@"The Kolibri uninstall did not succeed. You can see the logs at the Console application.");
             }
         }
         
     } else {
-        NSString *msg = [NSString stringWithFormat:@"The KA Lite uninstall script is not found at '%@'. You need to reinstall the KA Lite application.", kaliteUninstallPath];
+        NSString *msg = [NSString stringWithFormat:@"The Kolibri uninstall script is not found at '%@'. You need to reinstall the Kolibri application.", kolibriUninstallPath];
         alert(msg);
     }
 }
 
 
 - (IBAction)uninstallHelp:(id)sender {
-    NSString* msg = @"This will uninstall the KA Lite application. \n \nCheck the `Delete KA Lite data folder` option if you want to delete your KA Lite data. \n \nNOTE: This will require admin privileges.";
+    NSString* msg = @"This will uninstall the Kolibri application. \n \nCheck the `Delete Kolibri data folder` option if you want to delete your Kolibri data. \n \nNOTE: This will require admin privileges.";
     [self showPopOver:sender withMsg:msg];
 }
 
 
-- (IBAction)kaliteDataHelp:(id)sender {
-    NSString* msg = @"This will set the KALITE_HOME environment variable to the selected KA Lite data location. \n \nClick the 'Apply' button to save your changes and click the 'Start KA Lite' button to use your new data location. \n \nNOTE: To use your existing KA Lite data, manually copy it to the selected KA Lite data location.\n \nFor more information, please refer to the README document.";
+- (IBAction)kolibriDataHelp:(id)sender {
+    NSString* msg = @"This will set the KALITE_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location.\n \nFor more information, please refer to the README document.";
     [self showPopOver:sender withMsg:msg];
 }
 
@@ -747,39 +747,39 @@ NSString *getEnvVar(NSString *var) {
 
 
 /*
- Checks if environment for running KA Lite is good:
- 1. `kalite` executable exists
+ Checks if environment for running Kolibri is good:
+ 1. `kolibri` executable exists
  2. environment variables: KALITE_PYTHON, KALITE_HOME
- 3. Custom KA Lite data path.
+ 3. Custom Kolibri data path.
 */
 - (BOOL)checkSetup:(BOOL)showIt {
-    NSString *title = @"The KA Lite installation is incomplete.";
+    NSString *title = @"The Kolibri installation is incomplete.";
     NSString *msg = @"";
     BOOL isOk = YES;
 
-    // Check the kalite executable.
-    if (! checkKaliteExecutable()) {
-        msg = [NSString stringWithFormat:@"%@\n* The KA Lite executable cannot be found.", msg];
-        isOk = NO;
-    }
-
-    // Check the environment variables.
-    if (! checkEnvVars()) {
-        msg = [NSString stringWithFormat:@"%@\n* One of the KALITE_PYTHON or KALITE_HOME environment variables is invalid.", msg];
-        isOk = NO;
-    }
-
-    // Check the custom KA Lite data path.
-    NSString *dataPath = getKaliteDataPath();
-    if (dataPath == nil) {
-        msg = [NSString stringWithFormat:@"%@\n* The custom KA Lite data path is invalid, please check the KALITE_HOME environment variable value.", msg];
-        isOk = NO;
-    }
-
-    if (showIt == YES && isOk == NO) {
-        msg = [NSString stringWithFormat:@"%@  Please try to re-install KA Lite to attempt to fix the issue/s.%@", title, msg];
-        showNotification(title, msg);
-    }
+//    // Check the kolibri executable.
+//    if (! checkKolibriExecutable()) {
+//        msg = [NSString stringWithFormat:@"%@\n* The Kolibri executable cannot be found.", msg];
+//        isOk = NO;
+//    }
+//
+//    // Check the environment variables.
+//    if (! checkEnvVars()) {
+//        msg = [NSString stringWithFormat:@"%@\n* One of the KALITE_PYTHON or KALITE_HOME environment variables is invalid.", msg];
+//        isOk = NO;
+//    }
+//
+//    // Check the custom Kolibri data path.
+//    NSString *dataPath = getKolibriDataPath();
+//    if (dataPath == nil) {
+//        msg = [NSString stringWithFormat:@"%@\n* The custom Kolibri data path is invalid, please check the KALITE_HOME environment variable value.", msg];
+//        isOk = NO;
+//    }
+//
+//    if (showIt == YES && isOk == NO) {
+//        msg = [NSString stringWithFormat:@"%@  Please try to re-install Kolibri to attempt to fix the issue/s.%@", title, msg];
+//        showNotification(title, msg);
+//    }
     return isOk;
 }
 
@@ -788,9 +788,9 @@ NSString *getEnvVar(NSString *var) {
 // Returns YES if defaults preferences were set, otherwise NO.
 - (BOOL)registerDefaultPreferences {
     
-    NSString *dataPath = getKaliteDataPath();
+    NSString *dataPath = getKolibriDataPath();
     if (dataPath == nil) {
-        NSLog(@"The default KA Lite data path is nil, please check the KALITE_HOME environment variable value or re-install KA Lite.");
+        NSLog(@"The default Kolibri data path is nil, please check the KALITE_HOME environment variable value or re-install Kolibri.");
         return NO;
     }
     NSDictionary *dict = @{
@@ -815,7 +815,7 @@ NSString *getEnvVar(NSString *var) {
         [self setEnvVarsAndPlist];
         return YES;
     }
-    self.kaliteVersion.stringValue = version;
+    self.kolibriVersion.stringValue = version;
     return NO;
 }
 
@@ -827,12 +827,12 @@ NSString *getEnvVar(NSString *var) {
     // we still load the default preferences just in case.
     [self registerDefaultPreferences];
     
-    NSString *kaliteDataPath = getKaliteDataPath();
-    if (!kaliteDataPath) {
-        showNotification(@"KA Lite data folder is not found. Click the `Start KA Lite` button to auto-create the KA Lite data folder.", @"");
+    NSString *kolibriDataPath = getKolibriDataPath();
+    if (!kolibriDataPath) {
+        showNotification(@"Kolibri data folder is not found. Click the `Start Kolibri` button to auto-create the Kolibri data folder.", @"");
     }
-    NSString *standardizedPath = [kaliteDataPath stringByStandardizingPath];
-    self.customKaliteData.stringValue = standardizedPath;
+    NSString *standardizedPath = [kolibriDataPath stringByStandardizingPath];
+    self.customKolibriData.stringValue = standardizedPath;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *state = [defaults objectForKey:@"autoLoadOnLogin"];
@@ -847,10 +847,10 @@ NSString *getEnvVar(NSString *var) {
 - (void)savePreferences {
     /*
      1. Save the preferences: REF: http://stackoverflow.com/questions/10148788/xcode-cocoa-app-preferences
-     2. Run `kalite manage setup` if no database was found.
+     2. Run `kolibri manage setup` if no database was found.
      */
     
-    // Stop KA Lite
+    // Stop Kolibri
     [self stopFunction:false];
     
     // Save the preferences.
@@ -865,9 +865,9 @@ NSString *getEnvVar(NSString *var) {
         [prefs setObject:[NSNumber numberWithBool:YES] forKey:@"autoLoadOnLogin"];
     }
     
-    NSString *customKaliteData = [[self.customKaliteData URL] path];
-    if (pathExists(customKaliteData)) {
-        [prefs setObject:customKaliteData forKey:@"customKaliteData"];
+    NSString *customKolibriData = [[self.customKolibriData URL] path];
+    if (pathExists(customKolibriData)) {
+        [prefs setObject:customKolibriData forKey:@"customKaliteData"];
     }
     
     // REF: https:github.com/iwasrobbed/Objective-C-CheatSheet#storing-values
@@ -907,7 +907,7 @@ NSString *getEnvVar(NSString *var) {
 
 - (BOOL)setEnvVarsAndPlist {
     /*
-    This function sets the KALITE_HOME environment variable based on the custom KA Lite data path and
+    This function sets the KALITE_HOME environment variable based on the custom Kolibri data path and
     then it sets the .plist file contents so the env var is used when computer is rebooted.
     */
 
@@ -935,13 +935,13 @@ NSString *getEnvVar(NSString *var) {
     
     // Set the KALITE_HOME environment variable using the system() function
     // so that it will be updated if already set and used by the app.
-    NSString *kaliteDataPath = getKaliteDataPath();
-    showNotification([NSString stringWithFormat:@"Setting KALITE_HOME environment variable to %@...", kaliteDataPath], @"");
-    if (!kaliteDataPath) {
-        showNotification(@"KA Lite data folder is not found. Click the `Start KA Lite` button to auto-create the KA Lite data folder.", @"");
+    NSString *kolibriDataPath = getKolibriDataPath();
+    showNotification([NSString stringWithFormat:@"Setting KALITE_HOME environment variable to %@...", kolibriDataPath], @"");
+    if (!kolibriDataPath) {
+        showNotification(@"Kolibri data folder is not found. Click the `Start Kolibri` button to auto-create the Kolibri data folder.", @"");
         return FALSE;
     }
-    NSString *command = [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kaliteDataPath];
+    NSString *command = [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kolibriDataPath];
     const char *cmd = [command UTF8String];
     int i = system(cmd);
     if (i != 0) {
@@ -950,24 +950,24 @@ NSString *getEnvVar(NSString *var) {
     }
     
     // Use a different .plist name because the LaunchDaemon does not load plists with duplicate names.
-    // We already have /Library/LaunchAgents/org.learningequality.kalite.plist for setting the KALITE_PYTHON env var,
-    // so we name this into: ~/Library/LaunchAgents/org.learningequality.kalite.user.plist.
-    NSString *plist = @"org.learningequality.kalite.user.plist";
+    // We already have /Library/LaunchAgents/org.learningequality.Kolibri.plist for setting the KALITE_PYTHON env var,
+    // so we name this into: ~/Library/LaunchAgents/org.learningequality.Kolibri.user.plist.
+    NSString *plist = @"org.learningequality.kolibri.user.plist";
     NSString *target = [NSString stringWithFormat:@"%@%@", libraryLaunchAgentsPath, plist];
     NSMutableDictionary *plistDict = [[NSMutableDictionary alloc] init];
     [plistDict setObject:plist forKey:@"Label"];
 
-    // If autoLoadOnLogin value is TRUE, append the command to "open the Kalite.app" to the plist.
-    NSString *kaliteHomeStr = [NSString stringWithFormat:@"%@",
-                               [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kaliteDataPath]
+    // If autoLoadOnLogin value is TRUE, append the command to "open the Kolibri.app" to the plist.
+    NSString *kolibriHomeStr = [NSString stringWithFormat:@"%@",
+                               [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kolibriDataPath]
                                ];    
-    NSString *launchStr = [NSString stringWithFormat:@"%@", kaliteHomeStr];
+    NSString *launchStr = [NSString stringWithFormat:@"%@", kolibriHomeStr];
     // Check for a not-NO here because the preference also be nil if not yet set, to which we treat it as YES since
     // we want it to default to YES.
     NSNumber *state = [[NSUserDefaults standardUserDefaults] objectForKey:@"autoLoadOnLogin"];
     if ([state boolValue] != NO){
-        NSString *kaliteAppPath = [NSString stringWithFormat:@"open %@", [[NSBundle mainBundle] bundlePath]];
-        launchStr = [NSString stringWithFormat:@"%@ ; %@", kaliteHomeStr, kaliteAppPath];
+        NSString *kolibriAppPath = [NSString stringWithFormat:@"open %@", [[NSBundle mainBundle] bundlePath]];
+        launchStr = [NSString stringWithFormat:@"%@ ; %@", kolibriHomeStr, kolibriAppPath];
     }
 
     // More contents for the .plist command.
@@ -985,7 +985,7 @@ NSString *getEnvVar(NSString *var) {
     }
     NSLog([NSString stringWithFormat:@"Saved .plist file to %@", target]);
 
-    NSString *msg = [NSString stringWithFormat:@"Successfully set KALITE_HOME env to %@.", kaliteDataPath];
+    NSString *msg = [NSString stringWithFormat:@"Successfully set KALITE_HOME env to %@.", kolibriDataPath];
     showNotification(msg, @"");
     return TRUE;
 }
@@ -997,19 +997,19 @@ NSString *getEnvVar(NSString *var) {
 }
 
 
-- (void)startKaliteTimer {
+- (void)startKolibriTimer {
     // TODO(cpauya): Use initWithFireDate of NSTimer instance.
-    // TODO(amodia): Check if kalite environment variables change.
+    // TODO(amodia): Check if kolibri environment variables change.
     [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
-                                   selector:@selector(getKaliteStatus)
+                                   selector:@selector(getKolibriStatus)
                                    userInfo:nil
                                     repeats:YES];
 }
 
 
-- (enum kaliteStatus)getKaliteStatus {
-    return [self runKalite:@"status"];
+- (enum kaliteStatus)getKolibriStatus {
+    return [self runKolibri:@"status"];
 }
 
 

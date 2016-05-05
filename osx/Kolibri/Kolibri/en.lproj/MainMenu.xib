@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <development version="6300" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
@@ -41,11 +42,11 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="aView" destination="pZI-cL-XQn" id="4qq-fO-dqH"/>
-                <outlet property="customKaliteData" destination="Fr9-lD-cxj" id="RLj-fb-pMb"/>
-                <outlet property="deleteKaliteData" destination="ogp-QS-1iO" id="PQn-Dn-Yqa"/>
-                <outlet property="kaliteDataHelp" destination="IFr-HI-gEe" id="Vyj-fM-fsS"/>
-                <outlet property="kaliteUninstallHelp" destination="79E-YB-w3D" id="DDS-66-jTo"/>
-                <outlet property="kaliteVersion" destination="89o-4x-JIp" id="72c-bS-dBh"/>
+                <outlet property="customKolibriData" destination="Fr9-lD-cxj" id="u6y-fZ-kOx"/>
+                <outlet property="deleteKolibriData" destination="ogp-QS-1iO" id="5zg-ZA-Mez"/>
+                <outlet property="kolibriDataHelp" destination="IFr-HI-gEe" id="lfH-LL-nUv"/>
+                <outlet property="kolibriUninstallHelp" destination="79E-YB-w3D" id="ZyI-ha-4Qt"/>
+                <outlet property="kolibriVersion" destination="89o-4x-JIp" id="xqo-eu-0FR"/>
                 <outlet property="loadOnLogin" destination="ZJu-Y8-v7Y" id="9e8-5z-ab5"/>
                 <outlet property="openBrowserButton" destination="wxg-iv-YDa" id="0er-aA-Ymn"/>
                 <outlet property="openInBrowserMenu" destination="z2m-ls-Z0I" id="mGN-C0-zz5"/>
@@ -54,23 +55,23 @@
                 <outlet property="savePrefs" destination="3rc-kc-VMj" id="bt8-CV-3fm"/>
                 <outlet property="splash" destination="izD-1r-MWo" id="ax5-nI-Mu0"/>
                 <outlet property="startButton" destination="Eur-YG-XhD" id="I4H-kx-9AL"/>
-                <outlet property="startKalite" destination="cmv-NE-Gmn" id="fGw-83-kM1"/>
+                <outlet property="startKolibri" destination="cmv-NE-Gmn" id="KEc-eu-PWP"/>
                 <outlet property="statusMenu" destination="3js-7p-b5M" id="TSS-gO-zwP"/>
                 <outlet property="stopButton" destination="ixV-cY-gLJ" id="SE2-g6-EAb"/>
-                <outlet property="stopKalite" destination="mSX-Xb-gZb" id="0Jb-Lw-LGy"/>
+                <outlet property="stopKolibri" destination="mSX-Xb-gZb" id="UZE-Uo-Uke"/>
                 <outlet property="taskLogs" destination="ggK-co-dOR" id="i2a-ii-juQ"/>
                 <outlet property="window" destination="BCW-kl-SX8" id="jIg-Qn-PfW"/>
             </connections>
         </customObject>
         <menu title="Kolibri" autoenablesItems="NO" id="3js-7p-b5M">
             <items>
-                <menuItem title="Start KA Lite" enabled="NO" id="cmv-NE-Gmn">
+                <menuItem title="Start Kolibri" enabled="NO" id="cmv-NE-Gmn">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="start:" target="Voe-Tx-rLC" id="TB0-eh-2ON"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Stop KA Lite" enabled="NO" id="mSX-Xb-gZb">
+                <menuItem title="Stop Kolibri" enabled="NO" id="mSX-Xb-gZb">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="stop:" target="Voe-Tx-rLC" id="YlD-S5-gx8"/>
@@ -102,7 +103,7 @@
         <window title="Starting KA Lite..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="izD-1r-MWo">
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="565" y="404" width="216" height="135"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3840" height="2137"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="X7G-oL-gsN">
                 <rect key="frame" x="0.0" y="0.0" width="216" height="135"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -125,11 +126,11 @@
             </view>
             <point key="canvasLocation" x="311" y="144.5"/>
         </window>
-        <window title="KA Lite Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="BCW-kl-SX8">
+        <window title="Kolibri Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="BCW-kl-SX8">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" canJoinAllSpaces="YES" managed="YES" participatesInCycle="YES"/>
             <rect key="contentRect" x="131" y="158" width="493" height="417"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="3840" height="2137"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="TP3-Cd-o99">
                 <rect key="frame" x="0.0" y="0.0" width="493" height="417"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -173,12 +174,12 @@ Gw
                         <tabViewItems>
                             <tabViewItem label="Preferences" identifier="1" id="bsG-cY-LW8">
                                 <view key="view" ambiguous="YES" id="B8D-my-NmZ">
-                                    <rect key="frame" x="10" y="33" width="128" height="0.0"/>
+                                    <rect key="frame" x="10" y="33" width="447" height="328"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-YG-XhD">
-                                            <rect key="frame" x="11" y="-59" width="119" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Start KA Lite" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIv-42-gwi">
+                                            <rect key="frame" x="11" y="269" width="119" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Start Kolibri" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIv-42-gwi">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -187,8 +188,8 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ixV-cY-gLJ">
-                                            <rect key="frame" x="153" y="-59" width="118" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Stop KA Lite" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Liy-0e-2VH">
+                                            <rect key="frame" x="153" y="269" width="118" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Stop Kolibri" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Liy-0e-2VH">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -197,7 +198,7 @@ Gw
                                             </connections>
                                         </button>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="PbE-4O-LPb">
-                                            <rect key="frame" x="14" y="-123" width="419" height="53"/>
+                                            <rect key="frame" x="14" y="205" width="419" height="53"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="417" height="51"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,20 +207,18 @@ Gw
                                                         <rect key="frame" x="172" y="15" width="198" height="26"/>
                                                         <pathCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="mgX-4z-WIm">
                                                             <font key="font" metaFont="systemBold"/>
-                                                            <url key="url" string=".kalite">
-                                                                <url key="baseURL" string="file:///"/>
-                                                            </url>
+                                                            <url key="url" string="file:///.kolibri"/>
                                                             <allowedTypes>
                                                                 <string>public.folder</string>
                                                             </allowedTypes>
                                                         </pathCell>
                                                         <connections>
-                                                            <action selector="customKaliteData:" target="Voe-Tx-rLC" id="eQO-GW-dQy"/>
+                                                            <action selector="customKolibriData:" target="Voe-Tx-rLC" id="dcM-hS-2Ci"/>
                                                         </connections>
                                                     </pathControl>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5s-fK-oBc">
                                                         <rect key="frame" x="16" y="18" width="135" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="KA Lite data path" id="QW9-qa-Qra">
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kolibri data path" id="QW9-qa-Qra">
                                                             <font key="font" metaFont="systemBold"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -232,7 +231,7 @@ Gw
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="kaliteDataHelp:" target="Voe-Tx-rLC" id="zXp-Qw-AMP"/>
+                                                            <action selector="kolibriDataHelp:" target="Voe-Tx-rLC" id="H3C-3R-m9w"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -241,20 +240,20 @@ Gw
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="systemBold"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Uninstall KA Lite" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="2Uh-zQ-2n5">
-                                            <rect key="frame" x="14" y="-323" width="419" height="82"/>
+                                        <box autoresizesSubviews="NO" fixedFrame="YES" title="Uninstall Kolibri" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="2Uh-zQ-2n5">
+                                            <rect key="frame" x="14" y="5" width="419" height="82"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="417" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAD-bw-wMN">
                                                         <rect key="frame" x="232" y="16" width="142" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="Uninstall KA Lite" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDN-bi-OgE">
+                                                        <buttonCell key="cell" type="push" title="Uninstall Kolibri" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IDN-bi-OgE">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="kaliteUninstall:" target="Voe-Tx-rLC" id="msu-gm-gIM"/>
+                                                            <action selector="kolibriUninstall:" target="Voe-Tx-rLC" id="Eda-XR-8XP"/>
                                                         </connections>
                                                     </button>
                                                     <button autoresizesSubviews="NO" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79E-YB-w3D">
@@ -269,7 +268,7 @@ Gw
                                                     </button>
                                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogp-QS-1iO">
                                                         <rect key="frame" x="16" y="22" width="201" height="23"/>
-                                                        <buttonCell key="cell" type="check" title="Delete KA Lite data folder." bezelStyle="regularSquare" imagePosition="left" inset="2" id="HVP-Yj-lWN">
+                                                        <buttonCell key="cell" type="check" title="Delete Kolibri data folder." bezelStyle="regularSquare" imagePosition="left" inset="2" id="HVP-Yj-lWN">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
@@ -281,7 +280,7 @@ Gw
                                             <font key="titleFont" metaFont="systemBold"/>
                                         </box>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" title="Application behavior" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Sqz-dv-Dpy">
-                                            <rect key="frame" x="14" y="-227" width="419" height="91"/>
+                                            <rect key="frame" x="14" y="101" width="419" height="91"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="417" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +309,7 @@ Gw
                                             <font key="titleFont" metaFont="systemBold"/>
                                         </box>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxg-iv-YDa">
-                                            <rect key="frame" x="293" y="-59" width="143" height="32"/>
+                                            <rect key="frame" x="293" y="269" width="143" height="32"/>
                                             <buttonCell key="cell" type="push" title="Open in Browser" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="49I-m5-mkT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -351,7 +350,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="RPA-mO-93H">
-                                                <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                                                <rect key="frame" x="436" y="1" width="16" height="293"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -382,7 +381,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="747.5" y="274.5"/>
+            <point key="canvasLocation" x="504.5" y="233.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="a2C-ep-hKK"/>
         <drawer trailingOffset="15" id="xf9-7j-N5c">

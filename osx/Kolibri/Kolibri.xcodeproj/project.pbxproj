@@ -13,7 +13,7 @@
 		F1DDD4131A6E5DC10022F1C9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD4121A6E5DC10022F1C9 /* AppDelegate.m */; };
 		F1DDD4151A6E5DC10022F1C9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD4141A6E5DC10022F1C9 /* main.m */; };
 		F1DDD4171A6E5DC10022F1C9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DDD4161A6E5DC10022F1C9 /* Images.xcassets */; };
-		F1DDD4261A6E5DC10022F1C9 /* KA_Lite_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD4251A6E5DC10022F1C9 /* KA_Lite_Tests.m */; };
+		F1DDD4261A6E5DC10022F1C9 /* Kolibri_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1DDD4251A6E5DC10022F1C9 /* Kolibri_Tests.m */; };
 		F1E5A30B1A8041FD003FA650 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1E5A3091A8041FD003FA650 /* MainMenu.xib */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,7 @@
 		F1DDD4161A6E5DC10022F1C9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1DDD41F1A6E5DC10022F1C9 /* Kolibri.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kolibri.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DDD4241A6E5DC10022F1C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1DDD4251A6E5DC10022F1C9 /* KA_Lite_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KA_Lite_Tests.m; sourceTree = "<group>"; };
+		F1DDD4251A6E5DC10022F1C9 /* Kolibri_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kolibri_Tests.m; sourceTree = "<group>"; };
 		F1E5A30A1A8041FD003FA650 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +107,7 @@
 		F1DDD4221A6E5DC10022F1C9 /* kolibri-Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F1DDD4251A6E5DC10022F1C9 /* KA_Lite_Tests.m */,
+				F1DDD4251A6E5DC10022F1C9 /* Kolibri_Tests.m */,
 				F1DDD4231A6E5DC10022F1C9 /* Supporting Files */,
 			);
 			name = "kolibri-Tests";
@@ -233,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1DDD4261A6E5DC10022F1C9 /* KA_Lite_Tests.m in Sources */,
+				F1DDD4261A6E5DC10022F1C9 /* Kolibri_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

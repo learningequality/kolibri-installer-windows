@@ -19,8 +19,8 @@
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
 @property (weak) IBOutlet NSButton *openBrowserButton;
-@property (weak) IBOutlet NSTextField *kaliteVersion;
-@property (weak) IBOutlet NSPathControl *customKaliteData;
+@property (weak) IBOutlet NSTextField *kolibriVersion;
+@property (weak) IBOutlet NSPathControl *customKolibriData;
 @property (weak) IBOutlet NSButton *loadOnLogin;
 @property (weak) IBOutlet NSButton *startOnLoad;
 
@@ -35,15 +35,15 @@
 @property BOOL autoStartOnLoad;
 @property NSString *version;
 
-@property (weak) IBOutlet NSMenuItem *startKalite;
-@property (weak) IBOutlet NSMenuItem *stopKalite;
+@property (weak) IBOutlet NSMenuItem *startKolibri;
+@property (weak) IBOutlet NSMenuItem *stopKolibri;
 @property (weak) IBOutlet NSMenuItem *openInBrowserMenu;
 
 @property (weak) IBOutlet NSButton *resetAppAction;
 
-@property (weak) IBOutlet NSButton *deleteKaliteData;
-@property (weak) IBOutlet NSButton *kaliteUninstallHelp;
-@property (weak) IBOutlet NSButton *kaliteDataHelp;
+@property (weak) IBOutlet NSButton *deleteKolibriData;
+@property (weak) IBOutlet NSButton *kolibriUninstallHelp;
+@property (weak) IBOutlet NSButton *kolibriDataHelp;
 @property (weak) IBOutlet NSButton *savePrefs;
 
 @property (weak) IBOutlet NSPopover *popover;
