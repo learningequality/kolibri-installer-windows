@@ -1,10 +1,8 @@
 //
 //  AppDelegate.h
-//  KA-Lite
+//  Kolibri
 //
-//  Created by cyril on 1/20/15.
-//  Copyright (c) 2015 FLE. All rights reserved.
-//
+//  Copyright (c) 2016 Learning Equality
 
 #import <Cocoa/Cocoa.h>
 
@@ -51,30 +49,30 @@
 @property (weak) IBOutlet NSView *aView;
 
 
-enum kaliteStatus {
+enum kolibriStatus {
     statusOkRunning = 0,
     statusStopped = 1,
     statusStartingUp = 4,
     statusNotResponding = 5,
     statusFailedToStart = 6,
     statusUncleanShutdown = 7,
-    statusUnknownKaliteRunningOnPort = 8,
-    statusKaliteServerConfigurationError = 9,
+    statusUnknownKolibriRunningOnPort = 8,
+    statusKolibriServerConfigurationError = 9,
     statusCouldNotReadPidFile = 99,
     statusInvalidPidFile = 100,
     statusCouldNotDetermineStatus = 101
 };
-@property enum kaliteStatus status;
-@property enum kaliteStatus lastStatus;
+@property enum kolibriStatus status;
+@property enum kolibriStatus lastStatus;
 
-enum kaliteQuitReason {
+enum kolibriQuitReason {
     quitByUnknown = 0,
     quitByUser = 1,
     quitByOS = 2,
     quitByApp = 3,
     quitByUninstall = 4
 };
-@property enum kaliteQuitReason quitReason;
+@property enum kolibriQuitReason quitReason;
 
 
 - (void)closeSplash;

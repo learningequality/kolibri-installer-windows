@@ -1,19 +1,18 @@
 //
-//  KA_Lite_MonitorTests.m
-//  KA-Lite MonitorTests
+//  Kolibri_Tests.m
+//  Kolibri
 //
-//  Created by cyril on 1/20/15.
-//  Copyright (c) 2015 FLE. All rights reserved.
+//  Copyright (c) 2016 Learning Equality
 //
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 
-@interface KA_Lite_MonitorTests : XCTestCase
+@interface Kolibri_Tests : XCTestCase
 
 @end
 
-@implementation KA_Lite_MonitorTests
+@implementation Kolibri_Tests
 
 - (void)setUp {
     [super setUp];

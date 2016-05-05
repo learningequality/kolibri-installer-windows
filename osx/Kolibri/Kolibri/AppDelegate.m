@@ -1,9 +1,8 @@
 //
 //  AppDelegate.m
-//  kolibri
+//  Kolibri
 //
-//  Created by cyril on 1/20/15.
-//  Copyright (c) 2015 FLE. All rights reserved.
+//  Copyright (c) 2016 Learning Equality
 //
 
 // 
@@ -72,7 +71,7 @@
     [self.statusItem setHighlightMode:YES];
     [self.statusItem setToolTip:@"Click to show the Kolibri menu items."];
     
-    [self.kolibriDataHelp setToolTip:@"This will set the KALITE_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location."];
+    [self.kolibriDataHelp setToolTip:@"This will set the KOLIBRI_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location."];
     [self.kolibriUninstallHelp setToolTip:@"This will uninstall the Kolibri application. \n \nCheck the `Delete Kolibri data folder` option if you want to delete your Kolibri data. \n \nNOTE: This will require admin privileges."];
 
 //    @try {
@@ -148,12 +147,12 @@
 
 
 BOOL checkEnvVars() {
-    NSString *kolibriPython = getEnvVar(@"KALITE_PYTHON");
+    NSString *kolibriPython = getEnvVar(@"KOLIBRI_PYTHON");
     if (!pathExists(kolibriPython)) {
         return NO;
     }
-    // If KALITE_HOME is nil or an empty string, that's fine.  Else check if value is a valid path.
-    NSString *kolibriHome = getEnvVar(@"KALITE_HOME");
+    // If KOLIBRI_HOME is nil or an empty string, that's fine.  Else check if value is a valid path.
+    NSString *kolibriHome = getEnvVar(@"KOLIBRI_HOME");
     if (kolibriHome && !pathExists(kolibriHome)) {
         return NO;
     }
@@ -206,9 +205,9 @@ BOOL checkEnvVars() {
     
     NSString *kolibriHomePath = getKolibriDataPath();
     
-    // Set KALITE_HOME environment
+    // Set KOLIBRI_HOME environment
     [kolibriHomeEnv addEntriesFromDictionary:[[NSProcessInfo processInfo] environment]];
-    [kolibriHomeEnv setObject:kolibriHomePath forKey:@"KALITE_HOME"];
+    [kolibriHomeEnv setObject:kolibriHomePath forKey:@"KOLIBRI_HOME"];
     
     //REF: http://stackoverflow.com/questions/386783/nstask-not-picking-up-path-from-the-users-environment
     NSTask* task = [[NSTask alloc] init];
@@ -220,7 +219,7 @@ BOOL checkEnvVars() {
     
     NSDictionary *defaultEnvironment = [[NSProcessInfo processInfo] environment];
     NSMutableDictionary *environment = [[NSMutableDictionary alloc] initWithDictionary:defaultEnvironment];
-    [environment setObject:kolibriHomePath forKey:@"KALITE_HOME"];
+    [environment setObject:kolibriHomePath forKey:@"KOLIBRI_HOME"];
     [task setEnvironment:environment];
 
     
@@ -262,13 +261,13 @@ NSString *getResourcePath(NSString *pathToAppend) {
 
 NSString *getDatabasePath() {
     NSString *database;
-    NSString* envKolibriHomeStr = getEnvVar(@"KALITE_HOME");
+    NSString* envKolibriHomeStr = getEnvVar(@"KOLIBRI_HOME");
     if (pathExists(envKolibriHomeStr)) {
         database = [NSString stringWithFormat:@"%@%@", envKolibriHomeStr, @"/database/data.sqlite"];
         database = [database stringByStandardizingPath];
         return database;
     }
-    database = @"~/.kalite/database/data.sqlite";
+    database = @"~/.kolibri/database/data.sqlite";
     database = [database stringByStandardizingPath];
     return database;
 }
@@ -291,9 +290,9 @@ NSString *thisOrOther(NSString *this, NSString *other) {
 }
 
 
-BOOL kaliteExists() {
-    NSString *kalitePath = getKolibriExecutable();
-    return pathExists(kalitePath);
+BOOL kolibriExists() {
+    NSString *kolibriPath = getKolibriExecutable();
+    return pathExists(kolibriPath);
 }
 
 
@@ -308,15 +307,15 @@ BOOL kaliteExists() {
 }
 
 
-- (enum kaliteStatus)checkRunTask:(NSNotification *)aNotification{
+- (enum kolibriStatus)checkRunTask:(NSNotification *)aNotification{
     NSArray *taskArguments;
     NSArray *statusArguments;
-    enum kaliteStatus oldStatus = self.status;
+    enum kolibriStatus oldStatus = self.status;
     
     int status = [[aNotification object] terminationStatus];
 
     taskArguments = [[aNotification object] arguments];
-    statusArguments = [[NSArray alloc]initWithObjects:@"-l", @"-c", @"kalite status", nil];
+    statusArguments = [[NSArray alloc]initWithObjects:@"-l", @"-c", @"kolibri status", nil];
     NSSet *taskArgsSet = [NSSet setWithArray:taskArguments];
     NSSet *statusArgsSet = [NSSet setWithArray:statusArguments];
     
@@ -356,7 +355,7 @@ BOOL kaliteExists() {
 }
 
 
-- (enum kaliteStatus)runKolibri:(NSString *)command {
+- (enum kolibriStatus)runKolibri:(NSString *)command {
     @try {
         // MUST: This will make sure the process to run has access to the environment variable
         // because the .app may be loaded the first time.
@@ -411,7 +410,7 @@ void showNotification(NSString *subtitle, NSString *info) {
 }
 
 
-- (void)toggleKaliteDataPath:(BOOL)toggleValue {
+- (void)toggleKolibriDataPath:(BOOL)toggleValue {
     if (toggleValue == YES) {
         self.customKolibriData.enabled = YES;
         [self.customKolibriData setToolTip:@"Select Kolibri data path."];
@@ -448,18 +447,18 @@ NSString *getKolibriDataPath() {
     /*
     This function returns these possible locations for the Kolibri data path:
         1. Custom Kolibri data set by the user at the preferences dialog.
-        2. Path based on the KALITE_HOME environment variable.
-        3. The default location of the Kolibri data folder at ~/.kalite/.
+        2. Path based on the KOLIBRI_HOME environment variable.
+        3. The default location of the Kolibri data folder at ~/.kolibri/.
         4. nil - The above locations do not exist.
     */
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *customKolibriData = [prefs stringForKey:@"customKaliteData"];
+    NSString *customKolibriData = [prefs stringForKey:@"customKolibriData"];
     
     if (pathExists(customKolibriData)) {
         NSString *standardizedPath = [customKolibriData stringByStandardizingPath];
         return standardizedPath;
     } else {
-        NSString* envKolibriHomeStr = getEnvVar(@"KALITE_HOME");
+        NSString* envKolibriHomeStr = getEnvVar(@"KOLIBRI_HOME");
         if (pathExists(envKolibriHomeStr)) {
             return envKolibriHomeStr;
         } else {
@@ -475,8 +474,8 @@ NSString *getKolibriDataPath() {
 
 
 BOOL checkKolibriExecutable() {
-    NSString *kalitePath = getKolibriExecutable();
-    return pathExists(kalitePath);
+    NSString *kolibriPath = getKolibriExecutable();
+    return pathExists(kolibriPath);
 }
 
 
@@ -497,13 +496,13 @@ NSString *getEnvVar(NSString *var) {
  So instead of showing "running" status logs every minute, we just show the log when a status change is detected
  based on the timer interval.
  */
-- (void)setNewStatus:(enum kaliteStatus)newStatus {
+- (void)setNewStatus:(enum kolibriStatus)newStatus {
     self.lastStatus = self.status;
     self.status = newStatus;
 }
 
 
-- (void)showStatus:(enum kaliteStatus)status {
+- (void)showStatus:(enum kolibriStatus)status {
     // Enable/disable menu items based on status.
     BOOL canStart = pathExists(getKolibriExecutable()) > 0 ? YES : NO;
     switch (status) {
@@ -517,7 +516,7 @@ NSString *getEnvVar(NSString *var) {
             [self.statusItem setImage:[NSImage imageNamed:@"exclaim"]];
             [self.statusItem setToolTip:@"Kolibri failed to start."];
             // Disable custom Kolibri data path when Kolibri is still running.
-            [self toggleKaliteDataPath:NO];
+            [self toggleKolibriDataPath:NO];
             break;
         case statusStartingUp:
             [self.startKolibri setEnabled:NO];
@@ -528,8 +527,8 @@ NSString *getEnvVar(NSString *var) {
             self.openBrowserButton.enabled = NO;
             [self.statusItem setToolTip:@"Kolibri is starting..."];
             [self.statusItem setImage:[NSImage imageNamed:@"loading"]];
-            // Disable custom kalite data path when Kolibri is still running.
-            [self toggleKaliteDataPath:NO];
+            // Disable custom kolibri data path when Kolibri is still running.
+            [self toggleKolibriDataPath:NO];
             break;
         case statusOkRunning:
             [self.startKolibri setEnabled:NO];
@@ -542,7 +541,7 @@ NSString *getEnvVar(NSString *var) {
             [self.statusItem setToolTip:@"Kolibri is running."];
             showNotification(@"Running, you can now click on 'Open in Browser' menu.", @"");
             // Disable custom Kolibri data path when Kolibri is still running.
-            [self toggleKaliteDataPath:NO];
+            [self toggleKolibriDataPath:NO];
             break;
         case statusStopped:
             [self.startKolibri setEnabled:canStart];
@@ -560,7 +559,7 @@ NSString *getEnvVar(NSString *var) {
             }
 
             // Enable setting the custom Kolibri data path.
-            [self toggleKaliteDataPath:YES];
+            [self toggleKolibriDataPath:YES];
             
             break;
         default:
@@ -570,7 +569,7 @@ NSString *getEnvVar(NSString *var) {
             self.startButton.enabled = canStart;
             self.stopButton.enabled = NO;
             self.openBrowserButton.enabled = NO;
-            if (kaliteExists()) {
+            if (kolibriExists()) {
                 [self.statusItem setImage:[NSImage imageNamed:@"favicon"]];
             } else {
                 [self.statusItem setImage:[NSImage imageNamed:@"exclaim"]];
@@ -687,9 +686,9 @@ NSString *getEnvVar(NSString *var) {
     // Get the Kolibri application directory path.
     NSString *appPath = [[NSBundle mainBundle] bundlePath];
     // REF: http://stackoverflow.com/questions/7469425/how-to-parse-nsstring-by-removing-2-folders-in-path-in-objective-c
-    NSString *kaliteAppDir = [appPath stringByDeletingLastPathComponent];
+    NSString *kolibriAppDir = [appPath stringByDeletingLastPathComponent];
     // REF: http://stackoverflow.com/questions/1489522/stringbyappendingpathcomponent-hows-it-work
-    NSString *kolibriUninstallPath = [[kaliteAppDir stringByAppendingPathComponent:@"/KA-Lite_Uninstall.tool"] stringByStandardizingPath];
+    NSString *kolibriUninstallPath = [[kolibriAppDir stringByAppendingPathComponent:@"/Kolibri_Uninstall.tool"] stringByStandardizingPath];
     
     if (pathExists(kolibriUninstallPath)) {
         if (confirm(@"Are you sure that you want to uninstall the Kolibri application?")) {
@@ -725,7 +724,7 @@ NSString *getEnvVar(NSString *var) {
 
 
 - (IBAction)kolibriDataHelp:(id)sender {
-    NSString* msg = @"This will set the KALITE_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location.\n \nFor more information, please refer to the README document.";
+    NSString* msg = @"This will set the KOLIBRI_HOME environment variable to the selected Kolibri data location. \n \nClick the 'Apply' button to save your changes and click the 'Start Kolibri' button to use your new data location. \n \nNOTE: To use your existing Kolibri data, manually copy it to the selected Kolibri data location.\n \nFor more information, please refer to the README document.";
     [self showPopOver:sender withMsg:msg];
 }
 
@@ -749,7 +748,7 @@ NSString *getEnvVar(NSString *var) {
 /*
  Checks if environment for running Kolibri is good:
  1. `kolibri` executable exists
- 2. environment variables: KALITE_PYTHON, KALITE_HOME
+ 2. environment variables: KOLIBRI_PYTHON, KOLIBRI_HOME
  3. Custom Kolibri data path.
 */
 - (BOOL)checkSetup:(BOOL)showIt {
@@ -765,14 +764,14 @@ NSString *getEnvVar(NSString *var) {
 //
 //    // Check the environment variables.
 //    if (! checkEnvVars()) {
-//        msg = [NSString stringWithFormat:@"%@\n* One of the KALITE_PYTHON or KALITE_HOME environment variables is invalid.", msg];
+//        msg = [NSString stringWithFormat:@"%@\n* One of the KOLIBRI_PYTHON or KOLIBRI_HOME environment variables is invalid.", msg];
 //        isOk = NO;
 //    }
 //
 //    // Check the custom Kolibri data path.
 //    NSString *dataPath = getKolibriDataPath();
 //    if (dataPath == nil) {
-//        msg = [NSString stringWithFormat:@"%@\n* The custom Kolibri data path is invalid, please check the KALITE_HOME environment variable value.", msg];
+//        msg = [NSString stringWithFormat:@"%@\n* The custom Kolibri data path is invalid, please check the KOLIBRI_HOME environment variable value.", msg];
 //        isOk = NO;
 //    }
 //
@@ -790,14 +789,14 @@ NSString *getEnvVar(NSString *var) {
     
     NSString *dataPath = getKolibriDataPath();
     if (dataPath == nil) {
-        NSLog(@"The default Kolibri data path is nil, please check the KALITE_HOME environment variable value or re-install Kolibri.");
+        NSLog(@"The default Kolibri data path is nil, please check the KOLIBRI_HOME environment variable value or re-install Kolibri.");
         return NO;
     }
     NSDictionary *dict = @{
                            @"version": self.version,
                            @"autoLoadOnLogin": @YES,
                            @"autoStartOnLoad": @YES,
-                           @"customKaliteData": dataPath
+                           @"customKolibriData": dataPath
                            };
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -867,7 +866,7 @@ NSString *getEnvVar(NSString *var) {
     
     NSString *customKolibriData = [[self.customKolibriData URL] path];
     if (pathExists(customKolibriData)) {
-        [prefs setObject:customKolibriData forKey:@"customKaliteData"];
+        [prefs setObject:customKolibriData forKey:@"customKolibriData"];
     }
     
     // REF: https:github.com/iwasrobbed/Objective-C-CheatSheet#storing-values
@@ -907,7 +906,7 @@ NSString *getEnvVar(NSString *var) {
 
 - (BOOL)setEnvVarsAndPlist {
     /*
-    This function sets the KALITE_HOME environment variable based on the custom Kolibri data path and
+    This function sets the KOLIBRI_HOME environment variable based on the custom Kolibri data path and
     then it sets the .plist file contents so the env var is used when computer is rebooted.
     */
 
@@ -933,24 +932,24 @@ NSString *getEnvVar(NSString *var) {
         }
     }
     
-    // Set the KALITE_HOME environment variable using the system() function
+    // Set the KOLIBRI_HOME environment variable using the system() function
     // so that it will be updated if already set and used by the app.
     NSString *kolibriDataPath = getKolibriDataPath();
-    showNotification([NSString stringWithFormat:@"Setting KALITE_HOME environment variable to %@...", kolibriDataPath], @"");
+    showNotification([NSString stringWithFormat:@"Setting KOLIBRI_HOME environment variable to %@...", kolibriDataPath], @"");
     if (!kolibriDataPath) {
         showNotification(@"Kolibri data folder is not found. Click the `Start Kolibri` button to auto-create the Kolibri data folder.", @"");
         return FALSE;
     }
-    NSString *command = [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kolibriDataPath];
+    NSString *command = [NSString stringWithFormat:@"launchctl setenv KOLIBRI_HOME \"%@\"", kolibriDataPath];
     const char *cmd = [command UTF8String];
     int i = system(cmd);
     if (i != 0) {
-        showNotification(@"Failed to set KALITE_HOME env.", @"");
+        showNotification(@"Failed to set KOLIBRI_HOME env.", @"");
         return FALSE;
     }
     
     // Use a different .plist name because the LaunchDaemon does not load plists with duplicate names.
-    // We already have /Library/LaunchAgents/org.learningequality.Kolibri.plist for setting the KALITE_PYTHON env var,
+    // We already have /Library/LaunchAgents/org.learningequality.Kolibri.plist for setting the KOLIBRI_PYTHON env var,
     // so we name this into: ~/Library/LaunchAgents/org.learningequality.Kolibri.user.plist.
     NSString *plist = @"org.learningequality.kolibri.user.plist";
     NSString *target = [NSString stringWithFormat:@"%@%@", libraryLaunchAgentsPath, plist];
@@ -959,7 +958,7 @@ NSString *getEnvVar(NSString *var) {
 
     // If autoLoadOnLogin value is TRUE, append the command to "open the Kolibri.app" to the plist.
     NSString *kolibriHomeStr = [NSString stringWithFormat:@"%@",
-                               [NSString stringWithFormat:@"launchctl setenv KALITE_HOME \"%@\"", kolibriDataPath]
+                               [NSString stringWithFormat:@"launchctl setenv KOLIBRI_HOME \"%@\"", kolibriDataPath]
                                ];    
     NSString *launchStr = [NSString stringWithFormat:@"%@", kolibriHomeStr];
     // Check for a not-NO here because the preference also be nil if not yet set, to which we treat it as YES since
@@ -976,8 +975,8 @@ NSString *getEnvVar(NSString *var) {
     [plistDict setObject:[NSNumber numberWithBool:TRUE] forKey:@"RunAtLoad"];
     [plistDict setObject:self.version forKey:@"version"];
 
-    // Write the formed content to set the KALITE_HOME env var to the .plist.
-    NSLog([NSString stringWithFormat:@"Writing the .plist for the KALITE_HOME environment variable... %@", plistDict]);
+    // Write the formed content to set the KOLIBRI_HOME env var to the .plist.
+    NSLog([NSString stringWithFormat:@"Writing the .plist for the KOLIBRI_HOME environment variable... %@", plistDict]);
     BOOL ret = [plistDict writeToFile:target atomically:YES];
     if (ret == NO) {
         NSLog([NSString stringWithFormat:@"Failed to save .plist file!  Result: %hhd", ret]);
@@ -985,7 +984,7 @@ NSString *getEnvVar(NSString *var) {
     }
     NSLog([NSString stringWithFormat:@"Saved .plist file to %@", target]);
 
-    NSString *msg = [NSString stringWithFormat:@"Successfully set KALITE_HOME env to %@.", kolibriDataPath];
+    NSString *msg = [NSString stringWithFormat:@"Successfully set KOLIBRI_HOME env to %@.", kolibriDataPath];
     showNotification(msg, @"");
     return TRUE;
 }
@@ -1008,7 +1007,7 @@ NSString *getEnvVar(NSString *var) {
 }
 
 
-- (enum kaliteStatus)getKolibriStatus {
+- (enum kolibriStatus)getKolibriStatus {
     return [self runKolibri:@"status"];
 }
 
