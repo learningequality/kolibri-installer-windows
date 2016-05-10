@@ -125,13 +125,14 @@ echo "$STEP/$STEPS. Checking Pyrun..."
 INSTALL_PYRUN_URL="https://downloads.egenix.com/python/install-pyrun"
 INSTALL_PYRUN="$WORKING_DIR/install-pyrun.sh"
 # TODO(cpauya): Let's support the latest
-PYRUN_NAME="pyrun-3.4"
+PYTHON_VERSION="3.5"
+PYRUN_NAME="pyrun-$PYTHON_VERSION"
 PYRUN_DIR="$WORKING_DIR/$PYRUN_NAME"
 PYRUN_BIN="$PYRUN_DIR/bin"
 PYRUN="$PYRUN_BIN/pyrun"
 PYRUN_PIP="$PYRUN_BIN/pip"
 
-# Don't download Pyrun if there's already a `pyrun-3.4` directory.
+# Don't download Pyrun if there's already a `pyrun-$PYTHON_VERSION` directory.
 if [ -d "$PYRUN_DIR" ]; then
     echo ".. Found PyRun directory at '$PYRUN_DIR' so will not re-download.  Delete this folder to re-download."
 else
@@ -149,8 +150,8 @@ else
     fi
 
     # Download PyRun.
-    echo ".. Downloading PyRun with Python 3.4..."
-    $INSTALL_PYRUN --python=3.4 $PYRUN_DIR
+    echo ".. Downloading PyRun with Python $PYTHON_VERSION..."
+    $INSTALL_PYRUN --python=$PYTHON_VERSION $PYRUN_DIR
     if [ $? -ne 0 ]; then
         echo ".. Abort!  Can't install minimal PyRun."
         exit 1
