@@ -61,7 +61,7 @@ echo "$STEP/$STEPS. Checking the arguments..."
 
 # Check if an argument was passed as URL for the script and use that instead.
 if [ -z "$1" ]; then
-    echo "... A required argument is missing."
+    echo "... a required argument is missing."
     echo "$HELP"
     exit 1
 else
