@@ -21,7 +21,7 @@
 # 4. Get Pyrun, then insert path to the Pyrun binaries in $PATH so Pyrun's python runs first instead of the system python.
 # 5. Upgrade Pyrun's Pip
 # 6. TODO(cpauya): Unpack the kolibri*.tar.gz and run `pyrun setup.py install`
-# 7. TODO(cpauya): Build the Xcode project.
+# 7. TODO(cpauya): Build the xcodebuilde project.
 # 8. TODO(cpauya): Codesign the built .app if IS_KOLIBRI_RELEASE is set.
 # 9. TODO(cpauya): Run Packages script to build the .pkg.
 
@@ -115,9 +115,6 @@ if ! [ -d "$WORKING_DIR" ]; then
 fi
 
 
-((STEP++))
-echo "$STEP/$STEPS. Checking Github source..."
-
 KOLIBRI="kolibri"
 KOLIBRI_DIR="$WORKING_DIR/$KOLIBRI"
 
@@ -128,13 +125,13 @@ echo "$STEP/$STEPS. Checking Pyrun..."
 INSTALL_PYRUN_URL="https://downloads.egenix.com/python/install-pyrun"
 INSTALL_PYRUN="$WORKING_DIR/install-pyrun.sh"
 # TODO(cpauya): Let's support the latest
-PYRUN_NAME="pyrun-2.7"
+PYRUN_NAME="pyrun-3.4"
 PYRUN_DIR="$WORKING_DIR/$PYRUN_NAME"
 PYRUN_BIN="$PYRUN_DIR/bin"
 PYRUN="$PYRUN_BIN/pyrun"
 PYRUN_PIP="$PYRUN_BIN/pip"
 
-# Don't download Pyrun if there's already a `pyrun-2.7` directory.
+# Don't download Pyrun if there's already a `pyrun-3.4` directory.
 if [ -d "$PYRUN_DIR" ]; then
     echo ".. Found PyRun directory at '$PYRUN_DIR' so will not re-download.  Delete this folder to re-download."
 else
@@ -152,8 +149,8 @@ else
     fi
 
     # Download PyRun.
-    echo ".. Downloading PyRun with Python 2.7..."
-    $INSTALL_PYRUN --python=2.7 $PYRUN_DIR
+    echo ".. Downloading PyRun with Python 3.4..."
+    $INSTALL_PYRUN --python=3.4 $PYRUN_DIR
     if [ $? -ne 0 ]; then
         echo ".. Abort!  Can't install minimal PyRun."
         exit 1
@@ -181,26 +178,16 @@ fi
 # because for running Python commands.
 export KALITE_PYTHON="$PYRUN"
 
-cd "$KOLIBRI_DIR"
-MAKE_CMD="make dist"
-echo ".. Running $MAKE_CMD..."
-$MAKE_CMD
-if [ $? -ne 0 ]; then
-    echo ".. Abort!  Error/s encountered running '$MAKE_CMD'."
-    exit 1
-fi
-
 
 ((STEP++))
-echo "$STEP/$STEPS. Running 'setup.py install --static'..."
+echo "$STEP/$STEPS. Running '$PYRUN_PIP install'..."
 
-cd "$KOLIBRI_DIR"
-SETUP_CMD="$PYRUN setup.py install"
-SETUP_STATIC_CMD="$SETUP_CMD --static"
-echo ".. Running $SETUP_STATIC_CMD..."
-$SETUP_STATIC_CMD
+cd "$WORKING_DIR"
+PYRUN_PIP_INSTALL="$PYRUN_PIP install $KOLIBRI_SDIST_FILE"
+echo ".. Running $PYRUN_PIP_INSTALL..."
+$PYRUN_PIP_INSTALL
 if [ $? -ne 0 ]; then
-    echo ".. Abort!  Error/s encountered running '$SETUP_STATIC_CMD'."
+    echo ".. Abort!  Error/s encountered running '$PYRUN_PIP_INSTALL'."
     exit 1
 fi
 
