@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-# This script checks if KA Lite is loaded and exits with non-zero if it does.
+# This script checks if Kolibri is loaded and exits with non-zero if it does.
 # This is required by the .pkg before it continues with the install process.
 
 
 # Print message in terminal and log for the Console application.
 function msg() {
     echo "$1"
-    syslog -s -l alert "KA-Lite: $1"
+    syslog -s -l alert "Kolibri: $1"
 }
 
 
-PROCESS="/Applications/KA-Lite*"
+PROCESS="/Applications/Kolibri*"
 
 msg "Checking for a loaded '$PROCESS'..."
 

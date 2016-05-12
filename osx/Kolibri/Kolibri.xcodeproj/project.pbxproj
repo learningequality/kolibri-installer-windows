@@ -346,7 +346,7 @@
 					"*.py",
 					"*.pyc",
 					"*.md",
-					"*Kolibri/*.*",
+					"*kolibri*.*",
 				);
 				INFOPLIST_FILE = Kolibri/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -371,7 +371,7 @@
 					"*.py",
 					"*.pyc",
 					"*.md",
-					"*Kolibri/*.*",
+					"*kolibri*.*",
 				);
 				INFOPLIST_FILE = Kolibri/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -398,6 +398,7 @@
 				);
 				INFOPLIST_FILE = "Kolibri-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "FLE.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Kolibri;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolibri.app/Contents/MacOS/Kolibri";
@@ -415,6 +416,7 @@
 				);
 				INFOPLIST_FILE = "Kolibri-Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "FLE.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Kolibri;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kolibri.app/Contents/MacOS/Kolibri";

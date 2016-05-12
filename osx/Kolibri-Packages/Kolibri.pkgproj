@@ -62,7 +62,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>../Kolibri-scripts/kolibri-remover.sh</string>
+													<string>../Kolibri-scripts/kolibri-uninstall.sh</string>
 													<key>PATH_TYPE</key>
 													<integer>1</integer>
 													<key>PERMISSIONS</key>
@@ -521,6 +521,20 @@
 			</dict>
 			<key>PACKAGE_SCRIPTS</key>
 			<dict>
+				<key>POSTINSTALL_PATH</key>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/user/kolibri-installers/osx/Kolibri-scripts/post_installation.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
+				<key>PREINSTALL_PATH</key>
+				<dict>
+					<key>PATH</key>
+					<string>/Users/user/kolibri-installers/osx/Kolibri-scripts/kolibri-uninstall.sh</string>
+					<key>PATH_TYPE</key>
+					<integer>0</integer>
+				</dict>
 				<key>RESOURCES</key>
 				<array/>
 			</dict>
