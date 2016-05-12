@@ -27,9 +27,9 @@
 
 
 # MUST: test the signed .pkg or .app on a target Mac with:
-# . pkgutil --check-signature KA-Lite.pkg -- or;
-# . pkgutil --check-signature KA-Lite.app -- or;
-# . spctl --assess --type install KA-Lite.pkg
+# . pkgutil --check-signature .Kolibri.pkg -- or;
+# . pkgutil --check-signature Kolibri.app -- or;
+# . spctl --assess --type install Kolibri.pkg
 
 
 # TODOS:
@@ -125,7 +125,7 @@ echo "$STEP/$STEPS. Checking Pyrun..."
 INSTALL_PYRUN_URL="https://downloads.egenix.com/python/install-pyrun"
 INSTALL_PYRUN="$WORKING_DIR/install-pyrun.sh"
 # TODO(cpauya): Let's support the latest
-PYTHON_VERSION="3.5"
+PYTHON_VERSION="2.7"
 PYRUN_NAME="pyrun-$PYTHON_VERSION"
 PYRUN_DIR="$WORKING_DIR/$PYRUN_NAME"
 PYRUN_BIN="$PYRUN_DIR/bin"
@@ -196,10 +196,10 @@ fi
 # Build the Xcode project
 ((STEP++))
 echo "$STEP/$STEPS. Building the Xcode project..."
-KA_LITE_PROJECT_DIR="$SCRIPTPATH/KA-Lite"
-if [ -d "$KA_LITE_PROJECT_DIR" ]; then
+KOLIBRI_PROJECT_DIR="$SCRIPTPATH/Kolibri"
+if [ -d "$KOLIBRI_PROJECT_DIR" ]; then
     # MUST: xcodebuild needs to be on the same directory as the .xcodeproj file
-    cd "$KA_LITE_PROJECT_DIR"
+    cd "$KOLIBRI_PROJECT_DIR"
     xcodebuild clean build
     if [ $? -ne 0 ]; then
         echo ".. Abort!  Running \"xcodebuild clean build\" failed!"
@@ -207,9 +207,9 @@ if [ -d "$KA_LITE_PROJECT_DIR" ]; then
     fi
 fi
 # check if build of Xcode project succeeded
-KA_LITE_APP_PATH="$KA_LITE_PROJECT_DIR/build/Release/KA-Lite.app"
-if ! [ -d "$KA_LITE_APP_PATH" ]; then
-    echo ".. Abort!  Build of '$KA_LITE_APP_PATH' failed!"
+KOLIBRI_APP_PATH="$KOLIBRI_PROJECT_DIR/build/Release/Kolibri.app"
+if ! [ -d "$KOLIBRI_APP_PATH" ]; then
+    echo ".. Abort!  Build of '$KOLIBRI_APP_PATH' failed!"
     exit 1
 fi
 
@@ -222,24 +222,24 @@ if [ -z ${IS_KOLIBRI_RELEASE+0} ]; then
     echo ".. Not a release, don't codesign the application!"
 else 
     echo ".. Release build so MUST codesign the application..."
-    codesign -d -s "$SIGNER_IDENTITY_APPLICATION" --force "$KA_LITE_APP_PATH"
+    codesign -d -s "$SIGNER_IDENTITY_APPLICATION" --force "$KOLIBRI_APP_PATH"
     if [ $? -ne 0 ]; then
-        echo ".. Abort!  Error/s encountered codesigning '$KA_LITE_APP_PATH'."
+        echo ".. Abort!  Error/s encountered codesigning '$KOLIBRI_APP_PATH'."
         exit 1
     fi
 fi
 
 
-# Build the KA-Lite  installer using `Packages` to generate the .pkg file.
+# Build the Kolibri  installer using `Packages` to generate the .pkg file.
 ((STEP++))
 cd "$WORKING_DIR/.."
 OUTPUT_PATH="$WORKING_DIR/output"
 echo "$STEP/$STEPS. Building the .pkg file at '$OUTPUT_PATH'..."
 test ! -d "$OUTPUT_PATH" && mkdir "$OUTPUT_PATH"
 
-KALITE_PACKAGES_NAME="KA-Lite.pkg"
-PACKAGES_PROJECT="$SCRIPTPATH/KA-Lite-Packages/KA-Lite.pkgproj"
-PACKAGES_OUTPUT="$SCRIPTPATH/KA-Lite-Packages/build/$KALITE_PACKAGES_NAME"
+KOLIBRI_PACKAGES_NAME="Kolibri.pkg"
+PACKAGES_PROJECT="$SCRIPTPATH/Kolibri-Packages/Kolibri.pkgproj"
+PACKAGES_OUTPUT="$SCRIPTPATH/Kolibri-Packages/build/$KOLIBRI_PACKAGES_NAME"
 
 $PACKAGES_EXEC $PACKAGES_PROJECT
 if [ $? -ne 0 ]; then
@@ -248,7 +248,7 @@ if [ $? -ne 0 ]; then
 fi
 
 echo ".. Checking if to productsign the package or not..."
-OUTPUT_PKG="$OUTPUT_PATH/$KALITE_PACKAGES_NAME"
+OUTPUT_PKG="$OUTPUT_PATH/$KOLIBRI_PACKAGES_NAME"
 SIGNER_IDENTITY_INSTALLER="Developer ID Installer: Foundation for Learning Equality, Inc. (H83B64B6AV)"
 if [ -z ${IS_KOLIBRI_RELEASE+0} ]; then 
     echo ".. Not a release, don't productsign the package!"
