@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "icon.png"
+      "filename" : "le-logo-16.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

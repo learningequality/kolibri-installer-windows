@@ -106,7 +106,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="X7G-oL-gsN">
                 <rect key="frame" x="0.0" y="0.0" width="216" height="135"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyj-4i-slS">
                         <rect key="frame" x="67" y="13" width="82" height="32"/>
@@ -120,7 +120,7 @@
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9W0-uA-DtZ">
                         <rect key="frame" x="7" y="50" width="203" height="77"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ka-lite-logo" id="RYn-a9-bqN"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="kolibri-logo" id="RYn-a9-bqN"/>
                     </imageView>
                 </subviews>
             </view>
@@ -391,5 +391,6 @@ Gw
     </objects>
     <resources>
         <image name="ka-lite-logo" width="261" height="66"/>
+        <image name="kolibri-logo" width="128" height="128"/>
     </resources>
 </document>

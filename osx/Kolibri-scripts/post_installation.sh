@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 
-# Post installation script of Kolibiri to be used in Packages.
+# Post installation script of Kolibri to be used in Packages.
 
 # Notes: 
 # 1. This script must be run as root.
-# 2. We use `/Applications/Kolibiri/support/` as the installation location which contains the `content/contentpacks/en.zip`, `pyrun`, and `scripts`.
+# 2. We use `/Applications/Kolibri/support/` as the installation location which contains the `content/contentpacks/en.zip`, `pyrun`, and `scripts`.
 
 # Steps
-# 1. Symlink kolibiri executable to /usr/local/bin.
+# 1. Symlink Kolibri executable to /usr/local/bin.
 # 2. Set KOLIBRI_PYTHON environment variable to the Pyrun executable.
 # 3. Create plist in /Library/LaunchAgents/ folder.
 # 4. Run shebangcheck script that checks the python/pyrun interpreter to use.
 # 5. Remove the old asset folder to be replaced by newer assets later.
-# 6. Run kolibiri manage syncdb --noinput.
-# 7. Run kolibiri manage setup --noinput.
-# 8. Run kolibiri manage collectstatic --noinput.
-# 9. Run kolibiri manage retrievecontentpack local en path-to-en.zip.
-# 10. Change the owner of the ~/.kolibiri/ folder and .plist file to current user.
+# 6. Run Kolibri manage syncdb --noinput.
+# 7. Run Kolibri manage setup --noinput.
+# 8. Run Kolibri manage collectstatic --noinput.
+# 9. Run Kolibri manage retrievecontentpack local en path-to-en.zip.
+# 10. Change the owner of the ~/.Kolibri/ folder and .plist file to current user.
 # 11. Set the KOLIBRI_PYTHON env var for the user doing the install so we don't need to restart after installation.
-# 12. Create a copy of Kolibiri-uninstall.sh and name it as Kolibiri_Uninstall.tool.
+# 12. Create a copy of Kolibri-uninstall.sh and name it as Kolibri_Uninstall.tool.
 
 
 #----------------------------------------------------------------------
@@ -29,25 +29,25 @@ SCRIPTPATH=$( cd $(dirname $0) ; pwd -P )
 STEP=0
 STEPS=11
 
-KOLIBRI_SHARED="/Applications/Kolibiri/support"
-KOLIBRI_DIR="$HOME/.kolibiri"
-KOLIBRI_UNINSTALL_SCRIPT="Kolibiri_Uninstall.tool"
+KOLIBRI_SHARED="/Applications/Kolibri/support"
+KOLIBRI_DIR="$HOME/.kolibri"
+KOLIBRI_UNINSTALL_SCRIPT="Kolibri_Uninstall.tool"
 PYRUN_NAME="pyrun-2.7"
 PYRUN_DIR="$KOLIBRI_SHARED/$PYRUN_NAME"
 PYRUN="$PYRUN_DIR/bin/pyrun"
 PYRUN_PIP="$PYRUN_DIR/bin/pip"
 BIN_PATH="$PYRUN_DIR/bin"
 SCRIPT_PATH="$KOLIBRI_SHARED/scripts/"
-APPLICATION_PATH="/Applications/Kolibiri"
-PRE_INSTALL_SCRIPT="$SCRIPT_PATHkolibiri-uninstall.sh"
+APPLICATION_PATH="/Applications/Kolibri"
+PRE_INSTALL_SCRIPT="$SCRIPT_PATHkolibri-uninstall.sh"
 
-SYMLINK_FILE="$KOLIBRI_SHARED/pyrun-2.7/bin/kolibiri"
+SYMLINK_FILE="$KOLIBRI_SHARED/pyrun-2.7/bin/kolibri"
 SYMLINK_TO="/usr/local/bin"
 COMMAND_SYMLINK="ln -sf $SYMLINK_FILE $SYMLINK_TO"
 
-ORG="org.learningequality.kolibiri"
+ORG="org.learningequality.kolibri"
 LAUNCH_AGENTS="/Library/LaunchAgents/"
-KOLIBRI=$(which kolibiri)
+KOLIBRI=$(which kolibri)
 PLIST_SRC="$LAUNCH_AGENTS$ORG.plist"
 
 
@@ -85,7 +85,7 @@ function create_plist {
     echo "<plist version='1.0'>" >> $PLIST_SRC
     echo "<dict>" >> $PLIST_SRC
     echo -e "\t<key>Label</key>" >> $PLIST_SRC
-    echo -e "\t<string>org.learningequality.kolibiri</string>" >> $PLIST_SRC
+    echo -e "\t<string>org.learningequality.kolibri</string>" >> $PLIST_SRC
     echo -e "\t<key>ProgramArguments</key>" >> $PLIST_SRC
     echo -e "\t<array>" >> $PLIST_SRC
     echo -e "\t\t<string>sh</string>" >> $PLIST_SRC
@@ -110,7 +110,7 @@ function create_plist {
 # Print message in terminal and log for the Console application.
 function msg() {
     echo "$1"
-    syslog -s -l alert "Kolibiri: $1"
+    syslog -s -l alert "Kolibri: $1"
 }
 
 
@@ -118,14 +118,14 @@ function msg() {
 # Script
 #----------------------------------------------------------------------
 
-msg "Post-installation: Preparing Kolibiri dependencies..."
+msg "Post-installation: Preparing Kolibri dependencies..."
 
 ENV=$(env)
 msg ".. Packages post-installation env:'\n'$ENV" 
 
 
 ((STEP++))
-msg "$STEP/$STEPS. Symlink kolibiri executable to $SYMLINK_TO..."
+msg "$STEP/$STEPS. Symlink kolibri executable to $SYMLINK_TO..."
 if [ ! -d "$SYMLINK_TO" ]; then
     msg ".. Now creating '$SYMLINK_TO'..."
     sudo mkdir -p $SYMLINK_TO
@@ -167,7 +167,7 @@ create_plist
 # REF: https://github.com/learningequality/installers/issues/337#issuecomment-171127297
 
 # Use the KOLIBRI_HOME env var if it exists or use the default value.
-kolibiri_HOME_DEFAULT="$HOME/.koli/"
+KOLIBRI_HOME_DEFAULT="$HOME/.koli/"
 if [ -z ${KOLIBRI_HOME+0} ]; then
     KOLIBRI_HOME=$KOLIBRI_HOME_DEFAULT
 else
@@ -189,25 +189,25 @@ fi
 
 
 ((STEP++))
-msg "$STEP/$STEPS. Running kolibiri manage syncdb --noinput..."
-$BIN_PATH/kolibiri manage syncdb --noinput
+msg "$STEP/$STEPS. Running kolibri manage syncdb --noinput..."
+$BIN_PATH/kolibri manage syncdb --noinput
 
 
 ((STEP++))
-msg "$STEP/$STEPS. Running kolibiri manage setup --noinput..."
-$BIN_PATH/kolibiri manage setup --noinput
+msg "$STEP/$STEPS. Running kolibri manage setup --noinput..."
+$BIN_PATH/kolibri manage setup --noinput
 
 
 ((STEP++))
-msg "$STEP/$STEPS. Running kolibiri manage collectstatic --noinput..."
-$BIN_PATH/kolibiri manage collectstatic --noinput
+msg "$STEP/$STEPS. Running kolibri manage collectstatic --noinput..."
+$BIN_PATH/kolibri manage collectstatic --noinput
 
 
-# Use `kolibiri manage retrievecontentpack local en path-to-en.zip`.
+# Use `kolibri manage retrievecontentpack local en path-to-en.zip`.
 ((STEP++))
-msg "$STEP/$STEPS. Running $BIN_PATH/kolibiri manage retrievecontentpack local en $CONTENTPACK_ZIP..."
+msg "$STEP/$STEPS. Running $BIN_PATH/kolibri manage retrievecontentpack local en $CONTENTPACK_ZIP..."
 CONTENTPACK_ZIP="$KOLIBRI_SHARED/content/contentpacks/en.zip"
-$BIN_PATH/kolibiri manage retrievecontentpack local en $CONTENTPACK_ZIP
+$BIN_PATH/kolibri manage retrievecontentpack local en $CONTENTPACK_ZIP
 
 
 ((STEP++))
@@ -231,7 +231,7 @@ msg "KOLIBRI_PYTHON env var is now set to $KOLIBRI_PYTHON"
 
 
 ((STEP++))
-# # Create a copy of kolibiri-uninstall.sh and name it as kolibiri_Uninstall.tool.
+# # Create a copy of kolibri-uninstall.sh and name it as Kolibri_Uninstall.tool.
 # msg "$STEP/$STEPS. Creating a $KOLIBRI_UNINSTALL_SCRIPT..."
 # cp -R "$PRE_INSTALL_SCRIPT" "$APPLICATION_PATH/$KOLIBRI_UNINSTALL_SCRIPT"
 # if [ $? -ne 0 ]; then
@@ -241,7 +241,7 @@ msg "KOLIBRI_PYTHON env var is now set to $KOLIBRI_PYTHON"
 
 msg "Done with post installation!"
 
-KOLIBRI_APP="$APPLICATION_PATH/Kolibiri.app"
+KOLIBRI_APP="$APPLICATION_PATH/Kolibri.app"
 if [ -d "$KOLIBRI_APP" ]; then
     msg "Will open '$KOLIBRI_APP' now."
     open "$KOLIBRI_APP"
