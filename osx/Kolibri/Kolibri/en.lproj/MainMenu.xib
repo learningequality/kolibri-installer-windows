@@ -42,7 +42,6 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="aView" destination="pZI-cL-XQn" id="4qq-fO-dqH"/>
-                <outlet property="customKolibriData" destination="Fr9-lD-cxj" id="u6y-fZ-kOx"/>
                 <outlet property="deleteKolibriData" destination="ogp-QS-1iO" id="5zg-ZA-Mez"/>
                 <outlet property="kolibriDataHelp" destination="IFr-HI-gEe" id="lfH-LL-nUv"/>
                 <outlet property="kolibriUninstallHelp" destination="79E-YB-w3D" id="ZyI-ha-4Qt"/>
@@ -106,7 +105,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="X7G-oL-gsN">
                 <rect key="frame" x="0.0" y="0.0" width="216" height="135"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyj-4i-slS">
                         <rect key="frame" x="67" y="13" width="82" height="32"/>
@@ -120,7 +119,7 @@
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9W0-uA-DtZ">
                         <rect key="frame" x="7" y="50" width="203" height="77"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ka-lite-logo" id="RYn-a9-bqN"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="kolibri-logo" id="RYn-a9-bqN"/>
                     </imageView>
                 </subviews>
             </view>
@@ -136,8 +135,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-Hn-71e">
-                        <rect key="frame" x="20" y="2" width="128" height="48"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ka-lite-logo" id="SrL-UW-fmI"/>
+                        <rect key="frame" x="20" y="2" width="68" height="48"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="kolibri-logo" id="SrL-UW-fmI"/>
                     </imageView>
                     <button autoresizesSubviews="NO" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-7c-9Me">
                         <rect key="frame" x="264" y="10" width="100" height="32"/>
@@ -152,16 +151,8 @@ Gw
                             <action selector="discardPreferences:" target="Voe-Tx-rLC" id="9pR-Ye-2YX"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng4-TD-U8c">
-                        <rect key="frame" x="148" y="-11" width="50" height="35"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="version" id="sgE-hG-5Tb">
-                            <font key="font" metaFont="system" size="10"/>
-                            <color key="textColor" red="0.012429353341100775" green="0.22719754093567834" blue="0.38871433423913049" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89o-4x-JIp">
-                        <rect key="frame" x="189" y="-11" width="50" height="35"/>
+                        <rect key="frame" x="112" y="-11" width="50" height="35"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0.0.x" id="7oP-WD-SA7">
                             <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" red="0.012429353339999999" green="0.22719754089999999" blue="0.38871433420000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,16 +160,16 @@ Gw
                         </textFieldCell>
                     </textField>
                     <tabView fixedFrame="YES" initialItem="bsG-cY-LW8" translatesAutoresizingMaskIntoConstraints="NO" id="Elv-hY-FGF">
-                        <rect key="frame" x="13" y="40" width="467" height="374"/>
+                        <rect key="frame" x="13" y="38" width="467" height="374"/>
                         <font key="font" metaFont="system" size="14"/>
                         <tabViewItems>
                             <tabViewItem label="Preferences" identifier="1" id="bsG-cY-LW8">
                                 <view key="view" ambiguous="YES" id="B8D-my-NmZ">
-                                    <rect key="frame" x="10" y="33" width="128" height="0.0"/>
+                                    <rect key="frame" x="10" y="33" width="447" height="328"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eur-YG-XhD">
-                                            <rect key="frame" x="11" y="-59" width="119" height="32"/>
+                                            <rect key="frame" x="11" y="269" width="119" height="32"/>
                                             <buttonCell key="cell" type="push" title="Start Kolibri" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIv-42-gwi">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -188,7 +179,7 @@ Gw
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ixV-cY-gLJ">
-                                            <rect key="frame" x="153" y="-59" width="118" height="32"/>
+                                            <rect key="frame" x="153" y="269" width="118" height="32"/>
                                             <buttonCell key="cell" type="push" title="Stop Kolibri" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Liy-0e-2VH">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -197,51 +188,8 @@ Gw
                                                 <action selector="stopButton:" target="Voe-Tx-rLC" id="owN-hr-9ns"/>
                                             </connections>
                                         </button>
-                                        <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="PbE-4O-LPb">
-                                            <rect key="frame" x="14" y="-123" width="419" height="53"/>
-                                            <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="417" height="51"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-lD-cxj">
-                                                        <rect key="frame" x="172" y="15" width="198" height="26"/>
-                                                        <pathCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="mgX-4z-WIm">
-                                                            <font key="font" metaFont="systemBold"/>
-                                                            <url key="url" string="file:///.kolibri"/>
-                                                            <allowedTypes>
-                                                                <string>public.folder</string>
-                                                            </allowedTypes>
-                                                        </pathCell>
-                                                        <connections>
-                                                            <action selector="customKolibriData:" target="Voe-Tx-rLC" id="dcM-hS-2Ci"/>
-                                                        </connections>
-                                                    </pathControl>
-                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5s-fK-oBc">
-                                                        <rect key="frame" x="16" y="18" width="135" height="17"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kolibri data path" id="QW9-qa-Qra">
-                                                            <font key="font" metaFont="systemBold"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <button autoresizesSubviews="NO" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFr-HI-gEe">
-                                                        <rect key="frame" x="376" y="13" width="25" height="25"/>
-                                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Gk-SG-HUS">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="kolibriDataHelp:" target="Voe-Tx-rLC" id="H3C-3R-m9w"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="systemBold"/>
-                                        </box>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" title="Uninstall Kolibri" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="2Uh-zQ-2n5">
-                                            <rect key="frame" x="14" y="-323" width="419" height="82"/>
+                                            <rect key="frame" x="14" y="5" width="419" height="82"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="417" height="63"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +228,7 @@ Gw
                                             <font key="titleFont" metaFont="systemBold"/>
                                         </box>
                                         <box autoresizesSubviews="NO" fixedFrame="YES" title="Application behavior" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Sqz-dv-Dpy">
-                                            <rect key="frame" x="14" y="-227" width="419" height="91"/>
+                                            <rect key="frame" x="14" y="101" width="419" height="91"/>
                                             <view key="contentView">
                                                 <rect key="frame" x="1" y="1" width="417" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +257,7 @@ Gw
                                             <font key="titleFont" metaFont="systemBold"/>
                                         </box>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wxg-iv-YDa">
-                                            <rect key="frame" x="293" y="-59" width="143" height="32"/>
+                                            <rect key="frame" x="293" y="269" width="143" height="32"/>
                                             <buttonCell key="cell" type="push" title="Open in Browser" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="49I-m5-mkT">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -318,6 +266,46 @@ Gw
                                                 <action selector="openButton:" target="Voe-Tx-rLC" id="w1v-D6-uCu"/>
                                             </connections>
                                         </button>
+                                        <box autoresizesSubviews="NO" fixedFrame="YES" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="PbE-4O-LPb">
+                                            <rect key="frame" x="14" y="205" width="419" height="53"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="1" y="1" width="417" height="51"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fr9-lD-cxj">
+                                                        <rect key="frame" x="172" y="15" width="198" height="26"/>
+                                                        <pathCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" alignment="left" placeholderString="" pathStyle="popUp" id="mgX-4z-WIm">
+                                                            <font key="font" metaFont="systemBold"/>
+                                                            <url key="url" string="file:///"/>
+                                                            <allowedTypes>
+                                                                <string>public.folder</string>
+                                                            </allowedTypes>
+                                                        </pathCell>
+                                                    </pathControl>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m5s-fK-oBc">
+                                                        <rect key="frame" x="16" y="18" width="135" height="17"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kolibri data path" id="QW9-qa-Qra">
+                                                            <font key="font" metaFont="systemBold"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <button autoresizesSubviews="NO" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFr-HI-gEe">
+                                                        <rect key="frame" x="376" y="13" width="25" height="25"/>
+                                                        <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8Gk-SG-HUS">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="kolibriDataHelp:" target="Voe-Tx-rLC" id="H3C-3R-m9w"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="systemBold"/>
+                                        </box>
                                     </subviews>
                                 </view>
                             </tabViewItem>
@@ -329,17 +317,17 @@ Gw
                                         <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45z-rP-1Bz">
                                             <rect key="frame" x="-3" y="30" width="453" height="295"/>
                                             <clipView key="contentView" ambiguous="YES" id="byO-FJ-ADZ">
-                                                <rect key="frame" x="1" y="1" width="451" height="293"/>
+                                                <rect key="frame" x="1" y="1" width="436" height="293"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView ambiguous="YES" editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ggK-co-dOR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="451" height="293"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="436" height="293"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="451" height="293"/>
+                                                        <size key="minSize" width="436" height="293"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="minSize" width="451" height="293"/>
+                                                        <size key="minSize" width="436" height="293"/>
                                                         <size key="maxSize" width="463" height="10000000"/>
                                                     </textView>
                                                 </subviews>
@@ -350,7 +338,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="RPA-mO-93H">
-                                                <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
+                                                <rect key="frame" x="437" y="1" width="15" height="293"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -379,6 +367,14 @@ Gw
                             <action selector="savePreferences:" target="Voe-Tx-rLC" id="vIj-vM-cdP"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ng4-TD-U8c">
+                        <rect key="frame" x="73" y="0.0" width="50" height="24"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="version" id="sgE-hG-5Tb">
+                            <font key="font" metaFont="system" size="10"/>
+                            <color key="textColor" red="0.012429353341100775" green="0.22719754093567834" blue="0.38871433423913049" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="504.5" y="233.5"/>
@@ -390,6 +386,6 @@ Gw
         </drawer>
     </objects>
     <resources>
-        <image name="ka-lite-logo" width="261" height="66"/>
+        <image name="kolibri-logo" width="128" height="128"/>
     </resources>
 </document>
