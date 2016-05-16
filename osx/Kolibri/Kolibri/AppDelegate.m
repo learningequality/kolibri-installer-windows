@@ -24,7 +24,7 @@
     if(flag == NO) {
         [self showPreferences];
     }
-    return YES;	
+    return YES;
 }
 
 
@@ -752,8 +752,8 @@ NSString *getEnvVar(NSString *var) {
  3. Custom Kolibri data path.
 */
 - (BOOL)checkSetup:(BOOL)showIt {
-    NSString *title = @"The Kolibri installation is incomplete.";
-    NSString *msg = @"";
+//    NSString *title = @"The Kolibri installation is incomplete.";
+//    NSString *msg = @"";
     BOOL isOk = YES;
 
 //    // Check the kolibri executable.

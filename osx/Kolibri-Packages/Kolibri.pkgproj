@@ -43,6 +43,22 @@
 											<key>GID</key>
 											<integer>0</integer>
 											<key>PATH</key>
+											<string>../Kolibri-scripts/kolibri_uninstall.tool</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
+											<key>PERMISSIONS</key>
+											<integer>493</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>0</integer>
+											<key>PATH</key>
 											<string>../../LICENSE</string>
 											<key>PATH_TYPE</key>
 											<integer>1</integer>
@@ -62,7 +78,7 @@
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>../Kolibri-scripts/kolibri-uninstall.sh</string>
+													<string>../temp/pyrun-2.7</string>
 													<key>PATH_TYPE</key>
 													<integer>1</integer>
 													<key>PERMISSIONS</key>
@@ -74,17 +90,50 @@
 												</dict>
 												<dict>
 													<key>CHILDREN</key>
-													<array/>
+													<array>
+														<dict>
+															<key>CHILDREN</key>
+															<array/>
+															<key>GID</key>
+															<integer>0</integer>
+															<key>PATH</key>
+															<string>../Kolibri-scripts/pre_installation.sh</string>
+															<key>PATH_TYPE</key>
+															<integer>1</integer>
+															<key>PERMISSIONS</key>
+															<integer>493</integer>
+															<key>TYPE</key>
+															<integer>3</integer>
+															<key>UID</key>
+															<integer>0</integer>
+														</dict>
+														<dict>
+															<key>CHILDREN</key>
+															<array/>
+															<key>GID</key>
+															<integer>0</integer>
+															<key>PATH</key>
+															<string>../Kolibri-scripts/shebangcheck.py</string>
+															<key>PATH_TYPE</key>
+															<integer>1</integer>
+															<key>PERMISSIONS</key>
+															<integer>493</integer>
+															<key>TYPE</key>
+															<integer>3</integer>
+															<key>UID</key>
+															<integer>0</integer>
+														</dict>
+													</array>
 													<key>GID</key>
 													<integer>0</integer>
 													<key>PATH</key>
-													<string>../temp/pyrun-2.7</string>
+													<string>scripts</string>
 													<key>PATH_TYPE</key>
-													<integer>1</integer>
+													<integer>0</integer>
 													<key>PERMISSIONS</key>
-													<integer>493</integer>
+													<integer>509</integer>
 													<key>TYPE</key>
-													<integer>3</integer>
+													<integer>2</integer>
 													<key>UID</key>
 													<integer>0</integer>
 												</dict>
@@ -531,7 +580,7 @@
 				<key>PREINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>/Users/user/kolibri-installers/osx/Kolibri-scripts/kolibri-uninstall.sh</string>
+					<string>/Users/user/kolibri-installers/osx/Kolibri-scripts/pre_installation.sh</string>
 					<key>PATH_TYPE</key>
 					<integer>0</integer>
 				</dict>

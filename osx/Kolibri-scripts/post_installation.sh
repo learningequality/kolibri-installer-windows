@@ -37,9 +37,9 @@ PYRUN_DIR="$KOLIBRI_SHARED/$PYRUN_NAME"
 PYRUN="$PYRUN_DIR/bin/pyrun"
 PYRUN_PIP="$PYRUN_DIR/bin/pip"
 BIN_PATH="$PYRUN_DIR/bin"
-SCRIPT_PATH="$KOLIBRI_SHARED/scripts/"
+SCRIPT_PATH="$KOLIBRI_SHARED/scripts"
 APPLICATION_PATH="/Applications/Kolibri"
-PRE_INSTALL_SCRIPT="$SCRIPT_PATHkolibri-uninstall.sh"
+PRE_INSTALL_SCRIPT="$SCRIPT_PATH/kolibri-uninstall.sh"
 
 SYMLINK_FILE="$KOLIBRI_SHARED/pyrun-2.7/bin/kolibri"
 SYMLINK_TO="/usr/local/bin"
@@ -230,7 +230,7 @@ fi
 msg "KOLIBRI_PYTHON env var is now set to $KOLIBRI_PYTHON"
 
 
-((STEP++))
+# ((STEP++))
 # # Create a copy of kolibri-uninstall.sh and name it as Kolibri_Uninstall.tool.
 # msg "$STEP/$STEPS. Creating a $KOLIBRI_UNINSTALL_SCRIPT..."
 # cp -R "$PRE_INSTALL_SCRIPT" "$APPLICATION_PATH/$KOLIBRI_UNINSTALL_SCRIPT"
