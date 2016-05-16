@@ -640,7 +640,7 @@
 				<key>BACKGROUND_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>media/Kolibri logo 128.png</string>
+					<string>media/Kolibri logo_128.png</string>
 					<key>PATH_TYPE</key>
 					<integer>1</integer>
 				</dict>
