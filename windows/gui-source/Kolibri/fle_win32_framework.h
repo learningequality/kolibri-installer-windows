@@ -554,7 +554,7 @@ fle_TrayWindow::fle_TrayWindow(HINSTANCE * hInstance) : fle_BaseWindow(hInstance
 	notifyIconData->uCallbackMessage = WM_TRAYICON;
 
 	// Set the tooltip text.
-	lstrcpy(notifyIconData->szTip, L"KA Lite");
+	lstrcpy(notifyIconData->szTip, L"Kolibri");
 
 	// Time to display the tooltip.
 	notifyIconData->uTimeout = 100;

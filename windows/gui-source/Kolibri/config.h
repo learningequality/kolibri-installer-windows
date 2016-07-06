@@ -99,14 +99,14 @@ int readConfigurationFileBuffer(char* const& resultConfigurationBuffer)
 int getConfigFilePath(LPTSTR const& resultBuffer, const UINT resBuffLen)
 {
 	TCHAR basePath[MAX_PATH];
-	LPCTSTR const kaliteSubdir = TEXT("KA Lite");
+	LPCTSTR const kolibriSubdir = TEXT("Kolibri");
 	LPCTSTR const filename = TEXT("CONFIG.dat");
 
 	if (FAILED(SHGetFolderPath(NULL, CSIDL_APPDATA, NULL, SHGFP_TYPE_CURRENT, basePath))) {
 		return 1;
 	}
 
-	joinPath(basePath, kaliteSubdir, resultBuffer, resBuffLen);
+	joinPath(basePath, kolibriSubdir, resultBuffer, resBuffLen);
 	int create_result = CreateDirectory(resultBuffer, NULL);
 	if (!create_result && GetLastError() != ERROR_ALREADY_EXISTS ) {
 		return 1;

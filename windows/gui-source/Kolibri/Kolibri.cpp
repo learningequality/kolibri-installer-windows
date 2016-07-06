@@ -16,28 +16,28 @@ fle_TrayMenuItem * menu8;
 bool needNotify = false;
 bool isServerStarting = false;
 
-void kaliteScriptPath(char *buffer, const DWORD MAX_SIZE)
+void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
-		Gets the path to kalite.bat script directory, from KALITE_SCRIPT_DIR environment variable.
-		KALITE_SCRIPT_DIR should be set at install time to e.g. C:\Python27\Scripts, or wherever pip puts the kalite.bat script.
-		
-		:param char *buffer: the buffer to hold the path string. If KALITE_SCRIPT_DIR is not set or is longer than MAX_SIZE, then this will be set to 0.
-		:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
-		:returns: void
+	Gets the path to Kolibri.bat script directory, from KOLIBRI_SCRIPT_DIR environment variable.
+	KOLIBRI_SCRIPT_DIR should be set at install time to e.g. C:\Python27\Scripts, or wherever pip puts the kolibri.bat script.
+
+	:param char *buffer: the buffer to hold the path string. If KOLIBRI_SCRIPT_DIR is not set or is longer than MAX_SIZE, then this will be set to 0.
+	:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
+	:returns: void
 	*/
-	LPCSTR kalite_script_dir = "KALITE_SCRIPT_DIR";
-	DWORD bufsize = GetEnvironmentVariableA(kalite_script_dir, buffer, MAX_SIZE);
+	LPCSTR kolibri_script_dir = "KOLIBRI_SCRIPT_DIR";
+	DWORD bufsize = GetEnvironmentVariableA(kolibri_script_dir, buffer, MAX_SIZE);
 	if (bufsize == 0)
 	{
-		window->sendTrayMessage("KA Lite", "Error: Environment variable KALITE_SCRIPT_DIR is not set.");
+		window->sendTrayMessage("Kolibri", "Error: Environment variable KOLIBRI_SCRIPT_DIR is not set.");
 		buffer = 0;
-	} 
+	}
 	else if (bufsize > MAX_SIZE)
 	{
 		char err_message[255];
-		sprintf(err_message, "Error: the value of KALITE_SCRIPT_DIR must be less than %d, but it was length %d. Please start KA Lite from the command line.", MAX_SIZE, bufsize);
-		window->sendTrayMessage("KA Lite", err_message);
+		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
+		window->sendTrayMessage("Kolibri", err_message);
 		buffer = 0;
 	}
 	return;
@@ -47,8 +47,8 @@ void startServerAction()
 {
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
-	kaliteScriptPath(script_dir, MAX_SIZE);
-	if(!runShellScript("kalite.bat", "start", script_dir))
+	kolibriScriptPath(script_dir, MAX_SIZE);
+	if (!runShellScript("kolibri.bat", "start", script_dir))
 	{
 		// Handle error.
 	}
@@ -59,7 +59,7 @@ void startServerAction()
 		needNotify = true;
 		isServerStarting = true;
 
-		window->sendTrayMessage("KA Lite", "The server is starting... please wait");
+		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
 	}
 }
 
@@ -67,8 +67,8 @@ void stopServerAction()
 {
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
-	kaliteScriptPath(script_dir, MAX_SIZE);
-	if(!runShellScript("kalite.bat", "stop", script_dir))
+	kolibriScriptPath(script_dir, MAX_SIZE);
+	if (!runShellScript("kolibri.bat", "stop", script_dir))
 	{
 		// Handle error.
 	}
@@ -82,15 +82,15 @@ void stopServerAction()
 
 void loadBrowserAction()
 {
-	if(!loadBrowser("http://127.0.0.1:8008/"))
+	if (!loadBrowser("http://127.0.0.1:8008/"))
 	{
 		// Handle error.
 	}
 }
 
-void exitKALiteAction()
+void exitKolibriAction()
 {
-	if(ask("Exiting..." , "Really want to exit KA Lite?"))
+	if (ask("Exiting...", "Really want to exit Kolibri?"))
 	{
 		stopServerAction();
 		window->quit();
@@ -99,9 +99,9 @@ void exitKALiteAction()
 
 void runUserLogsInAction()
 {
-	if(menu5->isChecked())
+	if (menu5->isChecked())
 	{
-		if(!runShellScript("guitools.vbs", "1", NULL))
+		if (!runShellScript("guitools.vbs", "1", NULL))
 		{
 			// Handle error.
 			printConsole("Failed to remove startup schortcut.\n");
@@ -114,7 +114,7 @@ void runUserLogsInAction()
 	}
 	else
 	{
-		if(!runShellScript("guitools.vbs", "0", NULL))
+		if (!runShellScript("guitools.vbs", "0", NULL))
 		{
 			// Handle error.
 			printConsole("Failed to add startup schortcut.\n");
@@ -129,9 +129,9 @@ void runUserLogsInAction()
 
 void runAtStartupAction()
 {
-	if(menu6->isChecked())
+	if (menu6->isChecked())
 	{
-		if(!runShellScript("guitools.vbs", "5", NULL))
+		if (!runShellScript("guitools.vbs", "5", NULL))
 		{
 			// Handle error.
 			printConsole("Failed to remove task to run at startup.\n");
@@ -144,7 +144,7 @@ void runAtStartupAction()
 	}
 	else
 	{
-		if(!runShellScript("guitools.vbs", "4", NULL))
+		if (!runShellScript("guitools.vbs", "4", NULL))
 		{
 			// Handle error.
 			printConsole("Failed to add task to run at startup.\n");
@@ -159,7 +159,7 @@ void runAtStartupAction()
 
 void autoStartServerAction()
 {
-	if(menu7->isChecked())
+	if (menu7->isChecked())
 	{
 		menu7->uncheck();
 		setConfigurationValue("AUTO_START", "FALSE");
@@ -174,15 +174,15 @@ void autoStartServerAction()
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
-	if(isServerOnline("KA Lite session", "http://127.0.0.1:8008/"))
+	if (isServerOnline("Kolibri session", "http://127.0.0.1:8008/"))
 	{
 		menu1->disable();
 		menu2->enable();
 		menu3->enable();
 
-		if(needNotify)
+		if (needNotify)
 		{
-			window->sendTrayMessage("KA Lite is running", "The server will be accessible locally at: http://127.0.0.1:8008/ or you can select \"Load in browser.\"");
+			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8008/ or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
 
@@ -190,7 +190,7 @@ void checkServerThread()
 	}
 	else
 	{
-		if(!isServerStarting)
+		if (!isServerStarting)
 		{
 			menu1->enable();
 			menu2->disable();
@@ -210,16 +210,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	menu2 = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
 	menu3 = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
 	menu4 = new fle_TrayMenuItem("Options", NULL);
-	menu5 = new fle_TrayMenuItem("Run KA Lite when the user logs in.", &runUserLogsInAction);
-	menu6 = new fle_TrayMenuItem("Run KA Lite at system startup.", &runAtStartupAction);
-	menu7 = new fle_TrayMenuItem("Auto-start server when KA Lite is run.", &autoStartServerAction);
-	menu8 = new fle_TrayMenuItem("Exit KA Lite.", &exitKALiteAction);
+	menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
+	menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
+	menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
+	menu8 = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
 	menu4->setSubMenu();
 	menu4->addSubMenu(menu5);
 	menu4->addSubMenu(menu6);
 	menu4->addSubMenu(menu7);
-	
+
 	window->addMenu(menu1);
 	window->addMenu(menu2);
 	window->addMenu(menu3);
@@ -230,15 +230,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	menu3->disable();
 
 	// Load configurations.
-	if(isSetConfigurationValueTrue("RUN_AT_LOGIN"))
+	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
 	{
 		menu5->check();
 	}
-	if(isSetConfigurationValueTrue("RUN_AT_STARTUP"))
+	if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
 	{
 		menu6->check();
 	}
-	if(isSetConfigurationValueTrue("AUTO_START"))
+	if (isSetConfigurationValueTrue("AUTO_START"))
 	{
 		menu7->check();
 		startServerAction();
