@@ -1,3 +1,3 @@
 @echo off
-TITLE Removing task to start KA Lite at system start
-schtasks /delete /tn "KALite"
+TITLE Removing task to start Kolibri at system start
+schtasks /delete /tn "Kolibri"
