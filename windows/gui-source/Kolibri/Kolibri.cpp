@@ -20,7 +20,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
 	Gets the path to Kolibri.bat script directory, from KOLIBRI_SCRIPT_DIR environment variable.
-	KOLIBRI_SCRIPT_DIR should be set at install time to e.g. C:\Python27\Scripts, or wherever pip puts the kolibri.bat script.
+	KOLIBRI_SCRIPT_DIR should be set at install time to e.g. \Python\Scripts, or wherever pip puts the kolibri.bat script.
 
 	:param char *buffer: the buffer to hold the path string. If KOLIBRI_SCRIPT_DIR is not set or is longer than MAX_SIZE, then this will be set to 0.
 	:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
@@ -48,9 +48,9 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri.bat", "start", script_dir))
+	if (!runShellScript("kolibri-start.bat", "", script_dir))
 	{
-		// Handle error.
+		// handle error
 	}
 	else
 	{
@@ -68,7 +68,7 @@ void stopServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri.bat", "stop", script_dir))
+	if (!runShellScript("pythonKill.bat", "", script_dir))
 	{
 		// Handle error.
 	}
@@ -82,7 +82,7 @@ void stopServerAction()
 
 void loadBrowserAction()
 {
-	if (!loadBrowser("http://127.0.0.1:8008/"))
+	if (!loadBrowser("http://127.0.0.1:8000/learn"))
 	{
 		// Handle error.
 	}
@@ -174,7 +174,7 @@ void autoStartServerAction()
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8008/"))
+	if (isServerOnline("Kolibri session", "http://127.0.0.1:8000/learn/#!/learn"))
 	{
 		menu1->disable();
 		menu2->enable();
@@ -182,7 +182,7 @@ void checkServerThread()
 
 		if (needNotify)
 		{
-			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8008/ or you can select \"Load in browser.\"");
+			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8000/learn or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
 
@@ -209,40 +209,40 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	menu1 = new fle_TrayMenuItem("Start Server.", &startServerAction);
 	menu2 = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
 	menu3 = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
-	menu4 = new fle_TrayMenuItem("Options", NULL);
-	menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
-	menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
-	menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
+	//menu4 = new fle_TrayMenuItem("Options", NULL);
+	//menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
+	//menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
+	//menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
 	menu8 = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
-	menu4->setSubMenu();
-	menu4->addSubMenu(menu5);
-	menu4->addSubMenu(menu6);
-	menu4->addSubMenu(menu7);
+    //menu4->setSubMenu();
+	//menu4->addSubMenu(menu5);
+	//menu4->addSubMenu(menu6);
+	//menu4->addSubMenu(menu7);
 
 	window->addMenu(menu1);
 	window->addMenu(menu2);
 	window->addMenu(menu3);
-	window->addMenu(menu4);
+	//window->addMenu(menu4);
 	window->addMenu(menu8);
 
 	menu2->disable();
 	menu3->disable();
 
 	// Load configurations.
-	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
-	{
-		menu5->check();
-	}
-	if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
-	{
-		menu6->check();
-	}
-	if (isSetConfigurationValueTrue("AUTO_START"))
-	{
-		menu7->check();
-		startServerAction();
-	}
+	//if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
+	//{
+		//menu5->check();
+	//}
+	//if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
+	//{
+		//menu6->check();
+	//}
+	//if (isSetConfigurationValueTrue("AUTO_START"))
+	//{
+		//menu7->check();
+		//startServerAction();
+	//}
 
 	window->show();
 

@@ -1,12 +1,12 @@
-#define MyAppName "KA Lite"
+#define MyAppName "Kolibri"
 #define MyAppPublisher "Foundation for Learning Equality"
 #define MyAppURL "http://learningequality.org/"
-#define MyAppExeName "KA Lite.exe"
+#define MyAppExeName "Kolibri.exe"
 
-#define getKALiteVersion() \
-    Local[1] = GetEnv("KALITE_BUILD_VERSION")
+#define getKolibriVersion() \
+    Local[1] = GetEnv("KOLIBRI_BUILD_VERSION")
 
-#define TargetVersion = getKALiteVersion();
+#define TargetVersion = getKolibriVersion();
 
 #expr DeleteFile(SourcePath+"\version.temp")
 
@@ -20,9 +20,9 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-LicenseFile=..\ka-lite\LICENSE
+LicenseFile=..\kolibri\LICENSE
 OutputDir=..\
-OutputBaseFilename=KALiteSetup-{#TargetVersion}
+OutputBaseFilename=KolibriSetup-{#TargetVersion}
 SetupIconFile=logo48.ico
 Compression=lzma
 SolidCompression=yes
@@ -37,10 +37,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\ka-lite-static-*.zip"; DestDir: "{app}\ka-lite"
+Source: "..\kolibri_static*.whl"; DestDir: "{app}\kolibri"
 Source: "..\en.zip"; DestDir: "{app}"
-Source: "..\scripts\*.bat"; DestDir: "{app}\ka-lite\scripts\"
-Source: "..\gui-packed\KA Lite.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
+Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
@@ -58,9 +58,10 @@ Name: "{app}\"; Permissions: everyone-readexec
 Type: Files; Name: "{app}\*"
 
 [UninstallDelete]
-Type: filesandordirs; Name: "{app}\ka-lite*"
-Type: files; Name: "{userstartup}\KA Lite.lnk"
+Type: filesandordirs; Name: "{app}\kolibri*"
+Type: files; Name: "{userstartup}\Kolibri.lnk"
 Type: files; Name: "{app}\CONFIG.dat"
+
 
 [Code]
 function GetPreviousVersion : String; Forward;
@@ -84,11 +85,11 @@ begin
     isUpgrade := False;
     forceCancel := False;
 
-    if WizardForm.PrevAppDir <> nil then
+    if WizardForm <> nil then
     begin
-        ShellExec('open', 'taskkill.exe', '/F /T /im "KA Lite.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        ShellExec('open', 'tskill.exe', '"KA Lite"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('{cmd}'),'/C ka-lite\bin\windows\kalite.bat stop', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+        ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+        ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+       // Exec(ExpandConstant('{cmd}'),'/C kolibri\bin\windows\kolibri.bat stop', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
     end;
     
@@ -302,7 +303,7 @@ begin
 
     if CurPageID = wpLicense then
     begin
-        if WizardForm.PrevAppDir <> nil then
+        if WizardForm <> nil then
             HandleUpgrade(WizardForm.PrevAppDir);
     end;
     
