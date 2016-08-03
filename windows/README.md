@@ -22,7 +22,7 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 
 
 ---
-#### Instructions to build "KALiteSetup.exe":
+#### Instructions to build "KolibriSetup.exe":
 To build in Linux, first install `wine`. These directions assume you're building on Windows -- if not, you can 
 skip using msys and use bash instead.
 
@@ -30,18 +30,18 @@ skip using msys and use bash instead.
 * Clone `kolibri` repository from https://github.com/learningequality/kolibri to this directory.
 * Download kolibri-static sdist zipfile from https://pypi.python.org/pypi/kolibri-static/ to this directory.
 * Download the English content pack `en.zip` file to this directory. Look for it in [the pantry](http://pantry.learningequality.org/downloads/).
-* Set the environment variable KALITE_BUILD_VERSION to the desired version for the installer, e.g. `0.16.0`.
-  This should match the version in the sdist *exactly*, so `kolibri-static-0.17.3` means that `KALITE_BUILD_VERSION`
-  should have the value `0.17.3`.
+* Set the environment variable KOLIBRI_BUILD_VERSION to the desired version for the installer, e.g. `0.16.0`.
+  This should match the version in the sdist *exactly*, so `kolibri-static-0.0.1` means that `Kolibri_BUILD_VERSION`
+  should have the value `0.0.1`.
 * In Windows, run the following command from this directory:
 ```
 > make.vbs
 ```
 * In Linux, run the following command in this directory using `wine`:
 ```bash
-> wine inno-compiler/ISCC.exe installer-source/KaliteSetupScript.iss
+> wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss
 ```
-* The output file named "KALiteSetup-X.X.X.exe" will appear within this project folder.
+* The output file named "KolibriSetup-X.X.X.exe" will appear within this project folder.
 * Party on, Garth.
 
 ---
