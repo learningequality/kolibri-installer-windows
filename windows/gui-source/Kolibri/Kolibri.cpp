@@ -48,7 +48,7 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri-start.bat", "", script_dir))
+	if (!runShellScript("kolibri.exe", "start", script_dir))
 	{
 		// handle error
 	}
@@ -68,7 +68,7 @@ void stopServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("pythonKill.bat", "", script_dir))
+	if (!runShellScript("kolibri.exe", "stop", script_dir))
 	{
 		// Handle error.
 	}
@@ -209,40 +209,40 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	menu1 = new fle_TrayMenuItem("Start Server.", &startServerAction);
 	menu2 = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
 	menu3 = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
-	//menu4 = new fle_TrayMenuItem("Options", NULL);
-	//menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
-	//menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
-	//menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
+	menu4 = new fle_TrayMenuItem("Options", NULL);
+	menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
+	menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
+	menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
 	menu8 = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
-    //menu4->setSubMenu();
-	//menu4->addSubMenu(menu5);
-	//menu4->addSubMenu(menu6);
-	//menu4->addSubMenu(menu7);
+    menu4->setSubMenu();
+	menu4->addSubMenu(menu5);
+	menu4->addSubMenu(menu6);
+    menu4->addSubMenu(menu7);
 
 	window->addMenu(menu1);
 	window->addMenu(menu2);
 	window->addMenu(menu3);
-	//window->addMenu(menu4);
+	window->addMenu(menu4);
 	window->addMenu(menu8);
 
 	menu2->disable();
 	menu3->disable();
 
 	// Load configurations.
-	//if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
-	//{
-		//menu5->check();
-	//}
-	//if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
-	//{
-		//menu6->check();
-	//}
-	//if (isSetConfigurationValueTrue("AUTO_START"))
-	//{
-		//menu7->check();
-		//startServerAction();
-	//}
+	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
+	{
+		menu5->check();
+	}
+	if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
+	{
+		menu6->check();
+	}
+	if (isSetConfigurationValueTrue("AUTO_START"))
+	{
+		menu7->check();
+		startServerAction();
+	}
 
 	window->show();
 
