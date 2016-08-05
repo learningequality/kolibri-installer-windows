@@ -23,7 +23,7 @@ DefaultGroupName={#MyAppName}
 LicenseFile=..\kolibri\LICENSE
 OutputDir=..\
 OutputBaseFilename=KolibriSetup-{#TargetVersion}
-SetupIconFile=logo48.ico
+SetupIconFile=..\gui-packed\images\logo48.ico
 Compression=lzma
 SolidCompression=yes
 PrivilegesRequired=admin
@@ -38,7 +38,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri-static*.zip"; DestDir: "{app}\kolibri"
-Source: "..\en.zip"; DestDir: "{app}"
+Source: "..\content*.zip"; DestDir: "{app}\kolibri"
+Source: "..\extract_dummy_content.py"; DestDir: "{app}\kolibri"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -92,20 +93,7 @@ begin
        // Exec(ExpandConstant('{cmd}'),'/C kolibri\bin\windows\kolibri.bat stop', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
     end;
-    
-    // Server data
-    ServerInformationPage := CreateInputQueryPage(wpSelectDir,
-    'Server Information', 'General data',
-    'Please specify the server name and a description, then click Next. (you can leave blank both fields if you want to use the default server name or if you do not want to insert a description)');
-    ServerInformationPage.Add('Server name:', False);
-    ServerInformationPage.Add('Server description:', False);
 
-    StartupOptionsPage := CreateOutputMsgPage(ServerInformationPage.ID,
-        'Startup options', 'Please read the following important information.',
-        'In prior versions of KA Lite you could choose to start the server or task-tray program automatically during installation.' #13#13
-        'This is no longer possible during installation, but you can set these options using the task-tray program after installation finishes.' #13#13
-        'To enable or disable these features, start the task-tray program and right click on it to find a list of options.'
-    )
 end;
 
 procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);
@@ -334,6 +322,7 @@ end;
 { Used in GetPipPath below }
 const
     DEFAULT_PATH = '\Python27\Scripts\pip.exe';
+    PYTHON_PATH = '\Python27\python.exe';
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
@@ -440,13 +429,9 @@ end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
-  moveKaliteFolderTemp: integer;
-  moveContentFolderTemp: integer;
-  cleanKaliteFolder: integer;
-  restoreKaliteFolder: integer;
-  restoreContentFolder: integer;
   informationBoxFlagged: boolean;
-
+  userKolibriDir: String;
+  extractContent: String;
 begin
     if CurStep = ssInstall then
     begin
@@ -455,40 +440,7 @@ begin
         ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         // Exec(ExpandConstant('{cmd}'),'/C ka-lite\bin\windows\kalite.bat stop', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
-    
-        if DirExists(ExpandConstant('{app}') + '\kalite') then
-        begin
-            MsgBox('KA Lite old data structure' #13#13 'Setup detected that you have the old file structure. Setup will now move data to update the structure. Please be patient; this may take some time.', mbInformation, MB_OK);
-            informationBoxFlagged :=True;      
-            Exec(ExpandConstant('{cmd}'),'/C mkdir '+ExpandConstant('{tmp}')+'\ka-lite\kalite & xcopy /y /s kalite\* '+ExpandConstant('{tmp}')+'\ka-lite\kalite', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, moveKaliteFolderTemp);      
-        end; 
-      
-        if DirExists(ExpandConstant('{app}') + '\content') then
-        begin
-            if Not informationBoxFlagged then
-            begin
-                MsgBox('KA Lite old data structure' #13#13 'Setup detected that you have the old file structure. Setup will now move data to update the structure. Please be patient; this may take some time.', mbInformation, MB_OK);
-                informationBoxFlagged :=True;
-            end;      
-            Exec(ExpandConstant('{cmd}'),'/C mkdir '+ExpandConstant('{tmp}')+'\ka-lite\content & xcopy /y /s content\* '+ExpandConstant('{tmp}')+'\ka-lite\content', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, moveContentFolderTemp);      
-        end;      
-    
-        if informationBoxFlagged then
-        begin
-            Exec(ExpandConstant('{cmd}'),'/C cd .. & del /q "'+ExpandConstant('{app}')+'\*" & for /d %x in ( "'+ExpandConstant('{app}')+'\*" ) do @rd /s /q "%x"', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, cleanKaliteFolder);
-    
-            if DirExists(ExpandConstant('{tmp}')+'\ka-lite\kalite') then
-            begin
-                Exec(ExpandConstant('{cmd}'),'/C mkdir ka-lite\kalite & xcopy /y /s '+ExpandConstant('{tmp}')+'\ka-lite\kalite\* ka-lite\kalite', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, restoreKaliteFolder);
-            end;
-
-            if DirExists(ExpandConstant('{tmp}')+'\ka-lite\content') then
-            begin
-                Exec(ExpandConstant('{cmd}'),'/C mkdir ka-lite\content & xcopy /y /s '+ExpandConstant('{tmp}')+'\ka-lite\content\* ka-lite\content', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, restoreContentFolder);
-            end;
-        end;
-        
+        Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);  
     end;
 
     if CurStep = ssPostInstall then
@@ -497,6 +449,8 @@ begin
         begin
             HandlePipSetup();
 
+            userKolibriDir := ExpandConstant('{%USERPROFILE}\.kolibri');
+            ShellExec('open', PYTHON_PATH, '"' + ExpandConstant('{app}') + '\kolibri\extract_dummy_content.py" ' + '"' + ExpandConstant('{app}') + '\kolibri\content.zip" ' + userKolibriDir, '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             if Not forceCancel then
             begin
                 DoSetup;
