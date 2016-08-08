@@ -21,17 +21,31 @@ Note: If you have made no changes to `gui-source`, you don't have to build `Koli
 Note: If you *do* make changes to anything in `gui-source`, be sure to build and commit `Kolibri.exe`.
 
 ---
+#### Instructions to build "kolibri-static":
+
+* Clone Kolibri https://github.com/learningequality/kolibri repository;
+* In Windows, run the following command from kolibri directory:
+* > python.exe setup.py sdist --static --format=zip
+* The output file named "kolibri-static-x.x.x.zip" will appear within the kolibri/dist project folder.
+
+---
 #### Instructions to build "KolibriSetup.exe":
 
 * Clone this repository;
-* Clone `kolibri` repository from https://github.com/learningequality/kolibri to this directory.
-* Build your own kolibri-static sdist zipfile from https://github.com/learningequality/kolibri.
+* Follow the `Instructions to build "kolibri-static"` and copy the `kolibri\dist\kolibri-static-x.x.x.zip` file to this directory.
 * Set the environment variable KOLIBRI_BUILD_VERSION to the desired version for the installer, e.g. `0.0.1`.
   This should match the version in the sdist *exactly*, so `kolibri-static-0.0.1.zip` means that `Kolibri_BUILD_VERSION`
   should have the value `0.0.1`.
+* (Optional) If you want an updated Kolibri contents, just replace the `content.zip` file in this directory.
 * In Windows, run the following command from this directory:
 > make.vbs
 * The output file named "KolibriSetup-X.X.X.exe" will appear within this project folder.
+
+---
+#### To clone kolibri and this repository, run the following lines:
+
+* git clone https://github.com/mrpau/kolibri-installers.git
+* git clone https://github.com/learningequality/kolibri.git
 
 ---
 #### References:
