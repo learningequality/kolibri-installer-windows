@@ -457,6 +457,7 @@ begin
             end;
         end;
     end;
+
 end;
 
 { Called just prior to uninstall finishing. }
