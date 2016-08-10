@@ -41,6 +41,7 @@ Source: "..\kolibri-static*.zip"; DestDir: "{app}\kolibri"
 Source: "..\content*.zip"; DestDir: "{app}\kolibri"
 Source: "..\extract_dummy_content.py"; DestDir: "{app}\kolibri"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
+Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
