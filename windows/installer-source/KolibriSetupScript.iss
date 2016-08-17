@@ -38,9 +38,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri-static*.zip"; DestDir: "{app}\kolibri"
-Source: "..\content*.zip"; DestDir: "{app}\kolibri"
-Source: "..\extract_dummy_content.py"; DestDir: "{app}\kolibri"
-Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -308,13 +305,15 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python 2.7.9+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.10, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox('Python 3.4.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.4, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
     begin
-        ExtractTemporaryFile('python-2.7.10.msi');
-        ShellExec('open', ExpandConstant('{tmp}')+'\python-2.7.10.msi', '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, installPythonErrorCode);
+        ExtractTemporaryFile('python-3.4.4.amd64.msi');
+        ExtractTemporaryFile('python-3.4.4.msi');
+        ExtractTemporaryFile('python-exe.bat');
+        ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        MsgBox('Error' #13#13 'You must have Python 2.7.9+ installed to proceed! Installation will now exit.', mbError, MB_OK);
+        MsgBox('Error' #13#13 'You must have Python 3.4.4+ installed to proceed! Installation will now exit.', mbError, MB_OK);
         forceCancel := True;
         WizardForm.Close;
     end;
@@ -322,8 +321,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PATH = '\Python27\Scripts\pip.exe';
-    PYTHON_PATH = '\Python27\python.exe';
+    DEFAULT_PATH = '\Python34\Scripts\pip.exe';
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
@@ -449,9 +447,6 @@ begin
         if installFlag then
         begin
             HandlePipSetup();
-
-            userKolibriDir := ExpandConstant('{%USERPROFILE}\.kolibri');
-            ShellExec('open', PYTHON_PATH, '"' + ExpandConstant('{app}') + '\kolibri\extract_dummy_content.py" ' + '"' + ExpandConstant('{app}') + '\kolibri\content.zip" ' + userKolibriDir, '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             if Not forceCancel then
             begin
                 DoSetup;
