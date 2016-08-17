@@ -38,7 +38,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri-static*.zip"; DestDir: "{app}\kolibri"
-Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
+Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python34\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
@@ -305,7 +305,7 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python 3.4.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.4, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox('Python 3.4.2+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.4, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
     begin
         ExtractTemporaryFile('python-3.4.4.amd64.msi');
         ExtractTemporaryFile('python-3.4.4.msi');
@@ -394,8 +394,9 @@ begin
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
    
-    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (2, 7, 9,) and sys.version_info < (3,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (3, 4, 2,) and sys.version_info > (3,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
+        Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
         begin
             HandlePythonSetup();
@@ -404,7 +405,7 @@ begin
     else 
     begin
         HandlePythonSetup();
-    end;  
+    end; 
 end;
 
 function InitializeUninstall(): Boolean;
