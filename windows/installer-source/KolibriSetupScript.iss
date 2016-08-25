@@ -37,7 +37,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\kolibri-static*.zip"; DestDir: "{app}\kolibri"
+Source: "..\kolibri_static*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python34\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -362,7 +362,7 @@ begin
     PipPath := GetPipPath;
     if PipPath = '' then
         exit;
-    PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-static-'  + '{#TargetVersion}' + '.zip"';
+    PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri_static-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
     MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);
     if not Exec(PipPath, PipCommand, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode) then
     begin

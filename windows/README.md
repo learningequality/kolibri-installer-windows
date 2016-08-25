@@ -24,17 +24,17 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 #### Instructions to build "kolibri-static":
 
 * Clone Kolibri https://github.com/learningequality/kolibri repository;
-* In Windows, run the following command from kolibri directory:
-* > python.exe setup.py sdist --static --format=zip
-* The output file named "kolibri-static-x.x.x.zip" will appear within the kolibri/dist project folder.
+* In linux, run the following command from kolibri directory:
+* > make dist
+* The output file named "kolibri_static-x.x.x.whl" will appear within the kolibri/dist project folder.
 
 ---
 #### Instructions to build "KolibriSetup.exe":
 
 * Clone this repository;
-* Follow the `Instructions to build "kolibri-static"` and copy the `kolibri\dist\kolibri-static-x.x.x.zip` file to this directory.
+* Follow the `Instructions to build "kolibri-static"` and copy the `kolibri\dist\kolibri_static-x.x.x.whl`.file to this directory.
 * Set the environment variable KOLIBRI_BUILD_VERSION to the desired version for the installer, e.g. `0.0.1`.
-  This should match the version in the sdist *exactly*, so `kolibri-static-0.0.1.zip` means that `KOLIBRI_BUILD_VERSION``
+  This should match the version in the sdist *exactly*, so `kolibri-static-0.0.1.whl` means that `KOLIBRI_BUILD_VERSION``
   should have the value `0.0.1`.
 * Set environment variable using command prompt: > setx KOLIBRI_BUILD_VERSION 0.0.1
 * In Windows, run the following command from this directory:
