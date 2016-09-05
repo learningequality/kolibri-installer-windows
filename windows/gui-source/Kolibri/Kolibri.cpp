@@ -201,8 +201,18 @@ void checkServerThread()
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
-	startThread(NULL, TRUE, 3000, &checkServerThread);
+	// REF: http://stackoverflow.com/questions/8799646/preventing-multiple-instances-of-my-application
+	// Prevent the Kolibri application to execute multiple instances.
+	HANDLE hMutex = CreateMutexA(NULL, FALSE, "Kolibri");
+	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
+	if (dwMutexWaitResult != WAIT_OBJECT_0)
+	{
+		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running"), TEXT("Information"), MB_OK | MB_ICONINFORMATION);
+		CloseHandle(hMutex);
+		return false;
+	}
 
+	startThread(NULL, TRUE, 3000, &checkServerThread);
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
