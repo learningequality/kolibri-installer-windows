@@ -207,7 +207,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running. \nRight click the Kolibri icon in the task-tray to start the server."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
 		CloseHandle(hMutex);
 		return false;
 	}

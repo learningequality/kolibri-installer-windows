@@ -62,6 +62,8 @@ Type: filesandordirs; Name: "{app}\kolibri*"
 Type: files; Name: "{userstartup}\Kolibri.lnk"
 Type: files; Name: "{app}\CONFIG.dat"
 
+[UninstallRun]
+Filename: \Python34\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
 
 [Code]
 function GetPreviousVersion : String; Forward;
@@ -89,8 +91,10 @@ begin
     begin
         ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+        Exec(ExpandConstant('\Python34\Scripts\kolibri-stop.bat'), '', '', SW_SHOW, ewWaitUntilTerminated, stopServerCode)
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
     end;
+
 end;
 
 procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);
@@ -413,7 +417,7 @@ ErrorCode: Integer;
 begin
   ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
- // ShellExec('open', ExpandConstant('{app}') + '\kolibri\bin\windows\kolibri.bat stop', '', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
+  ShellExec('open', ExpandConstant('{app}') + 'Python34\Scripts\kolibri-stop.bat', '', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   result := True;
 end;
 
@@ -438,7 +442,7 @@ begin
         
         ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('{cmd}'),'\Python34\Scripts\kolibri-stop.bat', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+        Exec(ExpandConstant('\Python34\Scripts\kolibri-stop.bat'), '', '', SW_SHOW, ewWaitUntilTerminated, stopServerCode)
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);  
     end;
 
