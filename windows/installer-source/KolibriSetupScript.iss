@@ -64,6 +64,7 @@ Type: files; Name: "{app}\CONFIG.dat"
 
 [UninstallRun]
 Filename: \Python34\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
+Filename: C:\Windows\System32\cmd.exe; Parameters: "/c setx KOLIBRI_SCRIPT_DIR """; Flags: runhidden;
 
 [Code]
 function GetPreviousVersion : String; Forward;
