@@ -374,8 +374,8 @@ begin
       WizardForm.Close;
     end;
 
-    { Must set this environment variable so the systray executable knows where to find the installed kolibri.bat script}
-    { Should by in the same directory as pip.exe, e.g. 'C:\Python27\Scripts' }
+    { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
+    { Should by in the same directory as pip.exe, e.g. 'C:\Python34\Scripts' }
     RegWriteStringValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',

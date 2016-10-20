@@ -1,5 +1,9 @@
 #include "fle_win32_framework.h"
 #include "config.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <iostream>
+#include <filesystem>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -21,7 +25,6 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	/*
 	Gets the path to Kolibri.bat script directory, from KOLIBRI_SCRIPT_DIR environment variable.
 	KOLIBRI_SCRIPT_DIR should be set at install time to e.g. \Python\Scripts, or wherever pip puts the kolibri.bat script.
-
 	:param char *buffer: the buffer to hold the path string. If KOLIBRI_SCRIPT_DIR is not set or is longer than MAX_SIZE, then this will be set to 0.
 	:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
 	:returns: void
@@ -40,6 +43,10 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 		window->sendTrayMessage("Kolibri", err_message);
 		buffer = 0;
 	}
+	char script_dirs[26] = "c:\\Python34\\Scripts";
+	struct stat info;
+	if (stat(buffer, &info) != 0)
+		buffer = strcpy(buffer, script_dirs);
 	return;
 }
 
@@ -48,9 +55,10 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
+	window->sendTrayMessage("Kolibri", script_dir);
 	if (!runShellScript("kolibri.exe", "start", script_dir))
 	{
-		// handle error
+		window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
 	}
 	else
 	{
@@ -225,10 +233,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
 	menu8 = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
-    menu4->setSubMenu();
+	menu4->setSubMenu();
 	menu4->addSubMenu(menu5);
 	//menu4->addSubMenu(menu6);
-    menu4->addSubMenu(menu7);
+	menu4->addSubMenu(menu7);
 
 	window->addMenu(menu1);
 	window->addMenu(menu2);
@@ -258,4 +266,3 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	return 0;
 }
-
