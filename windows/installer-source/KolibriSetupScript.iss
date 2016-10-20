@@ -39,6 +39,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\kolibri_static*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python34\Scripts\"
+Source: "..\scripts\kolibri-uninstall.bat"; DestDir: "\Python34\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
@@ -63,8 +64,8 @@ Type: files; Name: "{userstartup}\Kolibri.lnk"
 Type: files; Name: "{app}\CONFIG.dat"
 
 [UninstallRun]
-Filename: \Python34\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
-Filename: C:\Windows\System32\cmd.exe; Parameters: "/c setx KOLIBRI_SCRIPT_DIR """; Flags: runhidden;
+Filename: \Python34\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static";
+Filename: C:\Windows\System32\cmd.exe; Parameters: "/c setx KOLIBRI_SCRIPT_DIR """;
 
 [Code]
 function GetPreviousVersion : String; Forward;
@@ -92,7 +93,6 @@ begin
     begin
         ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('\Python34\Scripts\kolibri-stop.bat'), '', '', SW_SHOW, ewWaitUntilTerminated, stopServerCode)
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
     end;
 
@@ -418,7 +418,6 @@ ErrorCode: Integer;
 begin
   ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
-  ShellExec('open', ExpandConstant('{app}') + 'Python34\Scripts\kolibri-stop.bat', '', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   result := True;
 end;
 
@@ -443,7 +442,6 @@ begin
         
         ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
         ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('\Python34\Scripts\kolibri-stop.bat'), '', '', SW_SHOW, ewWaitUntilTerminated, stopServerCode)
         Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);  
     end;
 
