@@ -1,1 +1,0 @@
-/Applications/Kolibri/support/scripts/pre_installation.sh
