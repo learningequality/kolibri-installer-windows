@@ -37,7 +37,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\kolibri_static*.whl"; DestDir: "{app}\kolibri"
+Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python34\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -63,7 +63,7 @@ Type: files; Name: "{userstartup}\Kolibri.lnk"
 Type: files; Name: "{app}\CONFIG.dat"
 
 [UninstallRun]
-Filename: \Python34\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
+Filename: \Python27\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
 Filename: C:\Windows\System32\cmd.exe; Parameters: "/c setx KOLIBRI_SCRIPT_DIR """; Flags: runhidden;
 
 [Code]
@@ -308,15 +308,15 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python 3.4.2+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.4, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox('Python 2.7.10+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.10, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
     begin
-        ExtractTemporaryFile('python-3.4.4.amd64.msi');
-        ExtractTemporaryFile('python-3.4.4.msi');
+        ExtractTemporaryFile('python-2.7.10.amd64.msi');
+        ExtractTemporaryFile('python-2.7.10.msi');
         ExtractTemporaryFile('python-exe.bat');
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        MsgBox('Error' #13#13 'You must have Python 3.4.4+ installed to proceed! Installation will now exit.', mbError, MB_OK);
+        MsgBox('Error' #13#13 'You must have Python 2.7.10+ installed to proceed! Installation will now exit.', mbError, MB_OK);
         forceCancel := True;
         WizardForm.Close;
     end;
@@ -324,7 +324,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PATH = '\Python34\Scripts\pip.exe';
+    DEFAULT_PATH = '\Python27\Scripts\pip.exe';
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
@@ -364,7 +364,7 @@ begin
     PipPath := GetPipPath;
     if PipPath = '' then
         exit;
-    PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri_static-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
+    PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
     MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);
     if not Exec(PipPath, PipCommand, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode) then
     begin
@@ -374,7 +374,7 @@ begin
     end;
 
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-    { Should by in the same directory as pip.exe, e.g. 'C:\Python34\Scripts' }
+    { Should by in the same directory as pip.exe, e.g. 'C:\Python27\Scripts' }
     RegWriteStringValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -397,7 +397,7 @@ begin
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
    
-    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (3, 4, 2,) and sys.version_info > (3,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (2, 7, 10,) and sys.version_info < (3,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
