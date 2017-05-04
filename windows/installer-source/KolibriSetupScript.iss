@@ -38,7 +38,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python34\Scripts\"
+Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion

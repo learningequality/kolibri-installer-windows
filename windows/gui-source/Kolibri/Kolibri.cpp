@@ -41,7 +41,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
 		window->sendTrayMessage("Kolibri", err_message);
 	}
-	char script_dirs[26] = "c:\\Python34\\Scripts";
+	char script_dirs[26] = "c:\\Python27\\Scripts";
 	struct stat info;
 	if (stat(buffer, &info) != 0)
 		buffer = strcpy(buffer, script_dirs);
