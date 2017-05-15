@@ -79,7 +79,7 @@ var
   removeOldGuiTool: integer;
   uninstallError: integer;
   saveDatabaseTemp : integer;
-  cleanOldKaliteFolder : integer;
+  cleanOldKolibriFolder : integer;
   restoreDatabaseTemp : integer;
   forceCancel : boolean;
 
@@ -126,9 +126,7 @@ begin
     WizardForm.Hide;
     if Not Exec(ExpandConstant('{cmd}'),'/C ( dir /b "unins***.exe" | findstr /r "unins[0-9][0-9][0-9].exe" ) > tempu & ( for /f "delims=" %A in ( tempu ) do call %A /SILENT /SUPPRESSMSGBOXES ) & del tempu', targetPath, SW_HIDE, ewWaitUntilTerminated, uninstallError) then
     begin
-        Exec(ExpandConstant('{cmd}'),'/C mkdir '+ExpandConstant('{tmp}')+'\ka-lite\kalite\database & xcopy /y /s ka-lite\kalite\database\data.sqlite '+ExpandConstant('{tmp}')+'\ka-lite\kalite\database', targetPath, SW_HIDE, ewWaitUntilTerminated, saveDatabaseTemp);
-        Exec(ExpandConstant('{cmd}'),'/C cd .. & del /q "'+targetPath+'\*" & for /d %x in ( "'+targetPath+'\*" ) do @rd /s /q "%x"', targetPath, SW_HIDE, ewWaitUntilTerminated, cleanOldKaliteFolder);
-        Exec(ExpandConstant('{cmd}'),'/C mkdir ka-lite\kalite\database & xcopy /y /s '+ExpandConstant('{tmp}')+'\ka-lite\kalite\database\data.sqlite ka-lite\kalite\database', targetPath, SW_HIDE, ewWaitUntilTerminated, restoreDatabaseTemp);
+        Exec(ExpandConstant('{cmd}'),'/C cd .. & del /q "'+targetPath+'\*" & for /d %x in ( "'+targetPath+'\*" ) do @rd /s /q "%x"', targetPath, SW_HIDE, ewWaitUntilTerminated, cleanOldKolibriFolder);
     end;
     WizardForm.Show;
 end;
@@ -139,7 +137,7 @@ function GetPreviousVersion : String;
 var
     subkey : String;
 begin
-    subkey := 'Software\Microsoft\Windows\CurrentVersion\Uninstall\KA Lite-Foundation for Learning Equality_is1';
+    subkey := 'Software\Microsoft\Windows\CurrentVersion\Uninstall\Kolibri-Foundation for Learning Equality_is1';
     result := '';
     { 32-bit programs have a virtualized registry on 64-bit windows. So check all possible root keys. }
     if Not RegQueryStringValue(HKLM, subkey, 'DisplayVersion', result) then
@@ -162,7 +160,7 @@ end;
 
 procedure ConfirmUpgradeDialog;
 begin
-    if MsgBox('We have detected an existing KA Lite installation; would you like to upgrade?', mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
+    if MsgBox('We have detected an existing Kolibri installation; would you like to upgrade?', mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
     begin
         isUpgrade := True;
     end
@@ -176,58 +174,6 @@ begin
     end;
 end;
 
-{ Copy files a la the gitmigrate management command, but use native windows executables instead. }
-{ We assume the installing user is the main user of the app, so content goes into that user's .kalite dir}
-procedure DoGitMigrate;
-var
-    retCodeContent, retCodeDB, retCode : integer;
-begin
-    MsgBox('Migrating old data to current user''s %USERPROFILE%\.kalite\ directory.', mbInformation, MB_OK);
-    Exec(ExpandConstant('{cmd}'), '/S /C "mkdir "%USERPROFILE%\.kalite""', '', SW_SHOW, ewWaitUntilTerminated, retCode);
-    Exec(ExpandConstant('{cmd}'), '/S /C "xcopy "' + WizardForm.PrevAppDir + '\ka-lite\content" "%USERPROFILE%\.kalite\content\" /Y"', '', SW_SHOW, ewWaitUntilTerminated, retCodeContent);
-    Exec(ExpandConstant('{cmd}'), '/S /C "xcopy "' + WizardForm.PrevAppDir + '\ka-lite\kalite\database" "%USERPROFILE%\.kalite\database\" /Y"', '', SW_SHOW, ewWaitUntilTerminated, retCodeDB);
-    if (retCodeContent <> 0) or (retCodeDB <> 0) then
-    begin
-        MsgBox('Something went wrong! Unable to backup your data. Continuing installation.', mbError, MB_OK);
-    end;
-end;
-
-{ In version 0.13.x or below, users who selected the "Run KA Lite at system startup" option ran KA Lite as the }
-{ SYSTEM user. Starting in 0.16.0, it will be run as the current user. Consequently, data must be migrated from the }
-{ SYSTEM user's profile to the new location. }
-procedure MoveSystemKaliteData;
-var
-    systemKaliteDir: String;
-    userKaliteDir: String;
-    userKaliteDirBackup: String;
-    resultCode: Integer;
-begin
-    systemKaliteDir := 'C:\Windows\System32\config\systemprofile\.kalite';
-    if DirExists(systemKaliteDir) then
-    begin
-        if(MsgBox('You may need to migrate data from the SYSTEM user''s profile to the current user''s profile.' #13#13
-                  'This is because of a change in the behavior of KA Lite using the "Run KA Lite at system startup" option.' #13
-                  'If you use this option, we recommend clicking yes. Your data will be backed up.' #13#13
-                  'Would you like to migrate data from the SYSTEM user''s profile to the current user''s profile?', mbConfirmation, MB_YESNO) = idYes) then
-        begin
-            userKaliteDir := ExpandConstant('{%USERPROFILE}\.kalite');
-            userKaliteDirBackup := userKaliteDir + '.backup';
-            if DirExists(userKaliteDir) then
-            begin
-                MsgBox(userKaliteDir + ' already exists, backing up to ' + userKaliteDirBackup, mbInformation, MB_OK);
-                if not Exec(ExpandConstant('{cmd}'), '/C "xcopy  "' + userKaliteDir +'" "' + userKaliteDirBackup +'\" /Y /S"', '', SW_SHOW, ewWaitUntilTerminated, resultCode) then
-                begin
-                    MsgBox('Backup .kalite file copy fail.', mbInformation, MB_OK);
-                end;
-            end;
-            if not Exec(ExpandConstant('{cmd}'), '/C "xcopy  "' + systemKaliteDir +'" "' + userKaliteDir +'\" /Y /S"', '', SW_SHOW, ewWaitUntilTerminated, resultCode) then
-            begin
-                MsgBox('System .kalite file copy fail.', mbInformation, MB_OK);
-            end;
-        end;
-    end;
-end;
-
 procedure HandleUpgrade(targetPath : String);
 var
     prevVerStr : String;
@@ -237,47 +183,6 @@ begin
     if (CompareStr('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
     begin
         ConfirmUpgradeDialog;
-        if Not isUpgrade then
-        begin
-            if Not DeleteFile(targetPath + '\ka-lite\kalite\database\data.sqlite') then
-            begin
-                MsgBox('Error' #13#13 'Failed to delete the old database as requested; aborting the install.', mbError, MB_OK);
-                forceCancel := True;
-                WizardForm.Close;
-            end;
-        end
-        else
-        begin
-            { This is where version-specific migration stuff should happen. }
-
-            if CompareStr(prevVerStr, '0.13.99') < 0 then
-            begin
-                if CompareStr('{#TargetVersion}', '0.14.0') >= 0 then
-                begin
-                    DoGitMigrate;
-                end;
-            end;
-
-            { A special case where we'd like to remove a scheduled task, since it should now be run as current user }
-            { instead of the SYSTEM user. }
-            if CompareStr(prevVerStr, '0.15.99') < 0 then
-            begin
-                if CompareStr('{#TargetVersion}', '0.16.0') >= 0 then
-                begin
-                    Exec(ExpandConstant('{cmd}'),'/C "schtasks /delete /tn "KALite" /f"', '', SW_SHOW, ewWaitUntilTerminated, retCode);
-                end;
-            end;
-
-            { Migrating from 0.14.x and 0.15.x to 0.16.x }
-            if (CompareStr(prevVerStr, '0.14.0') >= 0) and (CompareStr(prevVerStr, '0.15.99') < 0) then
-            begin
-                if CompareStr('{#TargetVersion}', '0.16.0') >= 0 then
-                begin
-                    MoveSystemKaliteData;
-                end;
-            end;
-        end;
-
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
         if Not forceCancel then
         begin
@@ -313,7 +218,7 @@ begin
         ExtractTemporaryFile('python-2.7.10.amd64.msi');
         ExtractTemporaryFile('python-2.7.10.msi');
         ExtractTemporaryFile('python-exe.bat');
-        ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_SHOWNORMAL, ewWaitUntilTerminated, installPythonErrorCode);
+        ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
         MsgBox('Error' #13#13 'You must have Python 2.7.10+ installed to proceed! Installation will now exit.', mbError, MB_OK);
@@ -460,8 +365,6 @@ end;
 
 { Called just prior to uninstall finishing. }
 { Clean up things we did during uninstall: }
-{ * Remove environment variable KALITE_SCRIPT_DIR, which is set starting in version 0.16.x }
-{ * Previously (versions 0.13.x to 0.15.x) KALITE_ROOT_DATA_PATH was set -- it should be unset by the respective }
 {   uninstallers of those versions }
 procedure DeinitializeUninstall();
 begin
