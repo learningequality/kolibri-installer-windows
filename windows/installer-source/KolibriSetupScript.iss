@@ -72,7 +72,6 @@ function GetPreviousVersion : String; Forward;
 var
   installFlag : boolean;
   startupFlag : string;
-  ServerInformationPage : TInputQueryWizardPage;
   StartupOptionsPage : TOutputMsgWizardPage;
   isUpgrade : boolean;
   stopServerCode: integer;
@@ -110,10 +109,6 @@ begin
     result := False;
     if isUpgrade = True then
     begin
-        if PageID = ServerInformationPage.ID then
-        begin
-            result := True;
-        end;
         if PageID = wpSelectDir then
         begin
             result := True;
