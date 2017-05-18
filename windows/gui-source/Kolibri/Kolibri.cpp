@@ -34,19 +34,18 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	if (bufsize == 0)
 	{
 		window->sendTrayMessage("Kolibri", "Error: Environment variable KOLIBRI_SCRIPT_DIR is not set.");
+		buffer = 0;
 	}
 	else if (bufsize > MAX_SIZE)
 	{
 		char err_message[255];
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
 		window->sendTrayMessage("Kolibri", err_message);
+		buffer = 0;
 	}
-	char script_dirs[26] = "c:\\Python27\\Scripts";
-	struct stat info;
-	if (stat(buffer, &info) != 0)
-		buffer = strcpy(buffer, script_dirs);
 	return;
 }
+
 
 void startServerAction()
 {
