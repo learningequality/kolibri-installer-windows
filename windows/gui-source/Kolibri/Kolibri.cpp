@@ -8,14 +8,14 @@
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
 
-fle_TrayMenuItem * menu1;
-fle_TrayMenuItem * menu2;
-fle_TrayMenuItem * menu3;
-fle_TrayMenuItem * menu4;
-fle_TrayMenuItem * menu5;
-fle_TrayMenuItem * menu6;
-fle_TrayMenuItem * menu7;
-fle_TrayMenuItem * menu8;
+fle_TrayMenuItem * mnuStartServer;
+fle_TrayMenuItem * mnuStopServer;
+fle_TrayMenuItem * mnuLoadBrowser;
+fle_TrayMenuItem * mnuOptions;
+fle_TrayMenuItem * mnuRunUserLogsIn;
+fle_TrayMenuItem * mnuRunAtStartup;
+fle_TrayMenuItem * mnuAutoStart;
+fle_TrayMenuItem * mnuExit;
 
 bool needNotify = false;
 bool isServerStarting = false;
@@ -34,19 +34,18 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	if (bufsize == 0)
 	{
 		window->sendTrayMessage("Kolibri", "Error: Environment variable KOLIBRI_SCRIPT_DIR is not set.");
+		buffer = 0;
 	}
 	else if (bufsize > MAX_SIZE)
 	{
 		char err_message[255];
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
 		window->sendTrayMessage("Kolibri", err_message);
+		buffer = 0;
 	}
-	char script_dirs[26] = "c:\\Python27\\Scripts";
-	struct stat info;
-	if (stat(buffer, &info) != 0)
-		buffer = strcpy(buffer, script_dirs);
 	return;
 }
+
 
 void startServerAction()
 {
@@ -60,7 +59,7 @@ void startServerAction()
 	}
 	else
 	{
-		menu1->disable();
+		mnuStartServer->disable();
 
 		needNotify = true;
 		isServerStarting = true;
@@ -80,9 +79,9 @@ void stopServerAction()
 	}
 	else
 	{
-		menu1->enable();
-		menu2->disable();
-		menu3->disable();
+		mnuStartServer->enable();
+		mnuStopServer->disable();
+		mnuLoadBrowser->disable();
 	}
 }
 
@@ -105,7 +104,7 @@ void exitKolibriAction()
 
 void runUserLogsInAction()
 {
-	if (menu5->isChecked())
+	if (mnuRunUserLogsIn->isChecked())
 	{
 		if (!runShellScript("guitools.vbs", "1", NULL))
 		{
@@ -114,7 +113,7 @@ void runUserLogsInAction()
 		}
 		else
 		{
-			menu5->uncheck();
+			mnuRunUserLogsIn->uncheck();
 			setConfigurationValue("RUN_AT_LOGIN", "FALSE");
 		}
 	}
@@ -127,7 +126,7 @@ void runUserLogsInAction()
 		}
 		else
 		{
-			menu5->check();
+			mnuRunUserLogsIn->check();
 			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
 		}
 	}
@@ -135,7 +134,7 @@ void runUserLogsInAction()
 
 void runAtStartupAction()
 {
-	if (menu6->isChecked())
+	if (mnuRunAtStartup->isChecked())
 	{
 		if (!runShellScript("guitools.vbs", "5", NULL))
 		{
@@ -144,7 +143,7 @@ void runAtStartupAction()
 		}
 		else
 		{
-			menu6->uncheck();
+			mnuRunAtStartup->uncheck();
 			setConfigurationValue("RUN_AT_STARTUP", "FALSE");
 		}
 	}
@@ -157,7 +156,7 @@ void runAtStartupAction()
 		}
 		else
 		{
-			menu6->check();
+			mnuRunAtStartup->check();
 			setConfigurationValue("RUN_AT_STARTUP", "TRUE");
 		}
 	}
@@ -165,14 +164,14 @@ void runAtStartupAction()
 
 void autoStartServerAction()
 {
-	if (menu7->isChecked())
+	if (mnuAutoStart->isChecked())
 	{
-		menu7->uncheck();
+		mnuAutoStart->uncheck();
 		setConfigurationValue("AUTO_START", "FALSE");
 	}
 	else
 	{
-		menu7->check();
+		mnuAutoStart->check();
 		setConfigurationValue("AUTO_START", "TRUE");
 	}
 }
@@ -182,9 +181,9 @@ void checkServerThread()
 	// We can handle things like checking if the server is online and controlling the state of each component.
 	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/learn/#!/learn"))
 	{
-		menu1->disable();
-		menu2->enable();
-		menu3->enable();
+		mnuStartServer->disable();
+		mnuStopServer->enable();
+		mnuLoadBrowser->enable();
 
 		if (needNotify)
 		{
@@ -198,9 +197,9 @@ void checkServerThread()
 	{
 		if (!isServerStarting)
 		{
-			menu1->enable();
-			menu2->disable();
-			menu3->disable();
+			mnuStartServer->enable();
+			mnuStopServer->disable();
+			mnuLoadBrowser->disable();
 		}
 	}
 }
@@ -222,41 +221,41 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
-	menu1 = new fle_TrayMenuItem("Start Server.", &startServerAction);
-	menu2 = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
-	menu3 = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
-	menu4 = new fle_TrayMenuItem("Options", NULL);
-	menu5 = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
-	//menu6 = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
-	menu7 = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
-	menu8 = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
+	mnuStartServer = new fle_TrayMenuItem("Start Server.", &startServerAction);
+	mnuStopServer = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
+	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
+	mnuOptions = new fle_TrayMenuItem("Options", NULL);
+	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
+	//mnuRunAtStartup = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
+	mnuAutoStart = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
+	mnuExit = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
-	menu4->setSubMenu();
-	menu4->addSubMenu(menu5);
-	//menu4->addSubMenu(menu6);
-	menu4->addSubMenu(menu7);
+	mnuOptions->setSubMenu();
+	mnuOptions->addSubMenu(mnuRunUserLogsIn);
+	//mnuOptions->addSubMenu(mnuRunAtStartup);
+	mnuOptions->addSubMenu(mnuAutoStart);
 
-	window->addMenu(menu1);
-	window->addMenu(menu2);
-	window->addMenu(menu3);
-	window->addMenu(menu4);
-	window->addMenu(menu8);
+	window->addMenu(mnuStartServer);
+	window->addMenu(mnuStopServer);
+	window->addMenu(mnuLoadBrowser);
+	window->addMenu(mnuOptions);
+	window->addMenu(mnuExit);
 
-	menu2->disable();
-	menu3->disable();
+	mnuStopServer->disable();
+	mnuLoadBrowser->disable();
 
 	// Load configurations.
 	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
 	{
-		menu5->check();
+		mnuRunUserLogsIn->check();
 	}
 	//if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
 	//{
-	//	menu6->check();
+	//	mnuRunAtStartup->check();
 	//}
 	if (isSetConfigurationValueTrue("AUTO_START"))
 	{
-		menu7->check();
+		mnuAutoStart->check();
 		startServerAction();
 	}
 
