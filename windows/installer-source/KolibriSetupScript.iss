@@ -39,6 +39,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
+Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
@@ -63,8 +64,7 @@ Type: files; Name: "{userstartup}\Kolibri.lnk"
 Type: files; Name: "{app}\CONFIG.dat"
 
 [UninstallRun]
-Filename: \Python27\Scripts\pip.exe; Parameters: "uninstall --yes kolibri-static"; Flags: runhidden;
-Filename: C:\Windows\System32\cmd.exe; Parameters: "/c setx KOLIBRI_SCRIPT_DIR """; Flags: runhidden;
+Filename: {app}\kolibri\scripts\uninstall-kolibri.bat; Parameters: ""; Flags: runhidden;
 
 [Code]
 function GetPreviousVersion : String; Forward;
