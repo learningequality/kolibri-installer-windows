@@ -273,6 +273,13 @@ begin
       WizardForm.Close;
     end;
 
+    { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'Kolibri_SCRIPT_DIR'
+    )
+    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
     { Should by in the same directory as pip.exe, e.g. 'C:\Python27\Scripts' }
     RegWriteStringValue(
