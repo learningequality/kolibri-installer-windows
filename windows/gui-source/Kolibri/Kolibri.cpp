@@ -8,13 +8,10 @@
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
 
-fle_TrayMenuItem * mnuStartServer;
-fle_TrayMenuItem * mnuStopServer;
 fle_TrayMenuItem * mnuLoadBrowser;
 fle_TrayMenuItem * mnuOptions;
 fle_TrayMenuItem * mnuRunUserLogsIn;
 fle_TrayMenuItem * mnuRunAtStartup;
-fle_TrayMenuItem * mnuAutoStart;
 fle_TrayMenuItem * mnuExit;
 
 bool needNotify = false;
@@ -59,8 +56,6 @@ void startServerAction()
 	}
 	else
 	{
-		mnuStartServer->disable();
-
 		needNotify = true;
 		isServerStarting = true;
 
@@ -79,8 +74,6 @@ void stopServerAction()
 	}
 	else
 	{
-		mnuStartServer->enable();
-		mnuStopServer->disable();
 		mnuLoadBrowser->disable();
 	}
 }
@@ -162,31 +155,16 @@ void runAtStartupAction()
 	}
 }
 
-void autoStartServerAction()
-{
-	if (mnuAutoStart->isChecked())
-	{
-		mnuAutoStart->uncheck();
-		setConfigurationValue("AUTO_START", "FALSE");
-	}
-	else
-	{
-		mnuAutoStart->check();
-		setConfigurationValue("AUTO_START", "TRUE");
-	}
-}
 
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
 	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/learn/#!/learn"))
 	{
-		mnuStartServer->disable();
-		mnuStopServer->enable();
 		mnuLoadBrowser->enable();
-
 		if (needNotify)
 		{
+			loadBrowserAction();
 			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
@@ -197,8 +175,6 @@ void checkServerThread()
 	{
 		if (!isServerStarting)
 		{
-			mnuStartServer->enable();
-			mnuStopServer->disable();
 			mnuLoadBrowser->disable();
 		}
 	}
@@ -216,32 +192,24 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		CloseHandle(hMutex);
 		return false;
 	}
-
 	startThread(NULL, TRUE, 3000, &checkServerThread);
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
-	mnuStartServer = new fle_TrayMenuItem("Start Server.", &startServerAction);
-	mnuStopServer = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
 	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
 	mnuOptions = new fle_TrayMenuItem("Options", NULL);
 	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
 	//mnuRunAtStartup = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
-	mnuAutoStart = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
 	mnuExit = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
 	mnuOptions->setSubMenu();
 	mnuOptions->addSubMenu(mnuRunUserLogsIn);
 	//mnuOptions->addSubMenu(mnuRunAtStartup);
-	mnuOptions->addSubMenu(mnuAutoStart);
 
-	window->addMenu(mnuStartServer);
-	window->addMenu(mnuStopServer);
 	window->addMenu(mnuLoadBrowser);
 	window->addMenu(mnuOptions);
 	window->addMenu(mnuExit);
 
-	mnuStopServer->disable();
 	mnuLoadBrowser->disable();
 
 	// Load configurations.
@@ -249,15 +217,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	{
 		mnuRunUserLogsIn->check();
 	}
-	//if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
-	//{
-	//	mnuRunAtStartup->check();
-	//}
-	if (isSetConfigurationValueTrue("AUTO_START"))
-	{
-		mnuAutoStart->check();
-		startServerAction();
-	}
+
+	startServerAction();
+	
 
 	window->show();
 
