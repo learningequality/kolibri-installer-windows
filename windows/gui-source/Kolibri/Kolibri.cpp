@@ -188,7 +188,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running. \nRight click the Kolibri icon in the task-tray to start the server."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
 		CloseHandle(hMutex);
 		return false;
 	}
@@ -198,13 +198,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
 	mnuOptions = new fle_TrayMenuItem("Options", NULL);
-	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
-	//mnuRunAtStartup = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
+	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri at system startup.", &runUserLogsInAction);
 	mnuExit = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
 
 	mnuOptions->setSubMenu();
 	mnuOptions->addSubMenu(mnuRunUserLogsIn);
-	//mnuOptions->addSubMenu(mnuRunAtStartup);
 
 	window->addMenu(mnuLoadBrowser);
 	window->addMenu(mnuOptions);
@@ -219,6 +217,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	}
 
 	startServerAction();
+	mnuRunUserLogsIn->uncheck();
+	runUserLogsInAction();
 	
 
 	window->show();
