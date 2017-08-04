@@ -58,7 +58,6 @@ void startServerAction()
 	{
 		needNotify = true;
 		isServerStarting = true;
-
 		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
 	}
 }
@@ -88,7 +87,7 @@ void loadBrowserAction()
 
 void exitKolibriAction()
 {
-	if (ask("Exiting...", "Really want to exit Kolibri?"))
+	if (ask("Exiting...", "Are you sure you want to stop Kolibri?"))
 	{
 		stopServerAction();
 		window->quit();
@@ -108,6 +107,7 @@ void runUserLogsInAction()
 		{
 			mnuRunUserLogsIn->uncheck();
 			setConfigurationValue("RUN_AT_LOGIN", "FALSE");
+			setConfigurationValue("DONT_START", "TRUE");
 		}
 	}
 	else
@@ -129,6 +129,7 @@ void runAtStartupAction()
 {
 	if (mnuRunAtStartup->isChecked())
 	{
+		
 		if (!runShellScript("guitools.vbs", "5", NULL))
 		{
 			// Handle error.
@@ -210,16 +211,27 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	mnuLoadBrowser->disable();
 
+	startServerAction();
+
 	// Load configurations.
 	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
 	{
 		mnuRunUserLogsIn->check();
 	}
 
-	startServerAction();
-	mnuRunUserLogsIn->uncheck();
-	runUserLogsInAction();
-	
+	if (!isSetConfigurationValueTrue("DONT_START"))
+	{
+		if (!runShellScript("guitools.vbs", "0", NULL))
+		{
+			// Handle error.
+			printConsole("Failed to add startup schortcut.\n");
+		}
+		else
+		{
+			mnuRunUserLogsIn->check();
+			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
+		}
+	}
 
 	window->show();
 

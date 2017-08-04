@@ -34,7 +34,7 @@ ChangesEnvironment=yes
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
@@ -266,7 +266,8 @@ begin
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
     MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);
-    if not Exec(PipPath, PipCommand, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode) then
+    WizardForm.StatusLabel.Caption := 'Installing Kolibri source files.';
+    if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
       MsgBox('Critical error.' #13#13 'Dependencies have failed to install. Error Number: ' + IntToStr(ErrorCode), mbInformation, MB_OK);
       forceCancel := True;
@@ -327,15 +328,6 @@ begin
   result := True;
 end;
 
-procedure DoSetup;
-var
-    retCode: integer;
-begin
-    { Used to have more responsibility, but we delegated those to the app itself! }
-    { Unpacks the English content pack. }
-    Exec(ExpandConstant('{cmd}'), '/S /C "' + ExpandConstant('"{reg:HKLM\System\CurrentControlSet\Control\Session Manager\Environment,KOLIBRI_SCRIPT_DIR}\kolibri.bat"') + ' manage retrievecontentpack local en en.zip --foreground"', ExpandConstant('{app}'), SW_SHOW, ewWaitUntilTerminated, retCode);
-end;
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   informationBoxFlagged: boolean;
@@ -357,9 +349,6 @@ begin
         begin
             HandlePipSetup();
             if Not forceCancel then
-            begin
-                DoSetup;
-            end;
         end;
     end;
 
