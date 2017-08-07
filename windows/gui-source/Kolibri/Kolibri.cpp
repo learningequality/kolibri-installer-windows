@@ -11,6 +11,7 @@ fle_TrayWindow * window;
 fle_TrayMenuItem * mnuLoadBrowser;
 fle_TrayMenuItem * mnuOptions;
 fle_TrayMenuItem * mnuRunUserLogsIn;
+fle_TrayMenuItem * mnuOpenBrowserOption;
 fle_TrayMenuItem * mnuRunAtStartup;
 fle_TrayMenuItem * mnuExit;
 
@@ -125,34 +126,18 @@ void runUserLogsInAction()
 	}
 }
 
-void runAtStartupAction()
+void runOpenBrowserOption()
 {
-	if (mnuRunAtStartup->isChecked())
+	if (mnuOpenBrowserOption->isChecked())
 	{
-		
-		if (!runShellScript("guitools.vbs", "5", NULL))
-		{
-			// Handle error.
-			printConsole("Failed to remove task to run at startup.\n");
-		}
-		else
-		{
-			mnuRunAtStartup->uncheck();
-			setConfigurationValue("RUN_AT_STARTUP", "FALSE");
-		}
+		mnuOpenBrowserOption->uncheck();
+		setConfigurationValue("RUN_OPEN_BROWSER", "FALSE");
+		setConfigurationValue("OPEN_BROWSER_OPTION", "TRUE");
 	}
 	else
 	{
-		if (!runShellScript("guitools.vbs", "4", NULL))
-		{
-			// Handle error.
-			printConsole("Failed to add task to run at startup.\n");
-		}
-		else
-		{
-			mnuRunAtStartup->check();
-			setConfigurationValue("RUN_AT_STARTUP", "TRUE");
-		}
+		mnuOpenBrowserOption->check();
+		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
 }
 
@@ -165,7 +150,10 @@ void checkServerThread()
 		mnuLoadBrowser->enable();
 		if (needNotify)
 		{
-			loadBrowserAction();
+			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER"))
+			{
+				loadBrowserAction();
+			}
 			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
@@ -200,10 +188,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
 	mnuOptions = new fle_TrayMenuItem("Options", NULL);
 	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri at system startup.", &runUserLogsInAction);
-	mnuExit = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
+	mnuOpenBrowserOption = new fle_TrayMenuItem("Open browser when Kolibri starts", &runOpenBrowserOption);
+	mnuExit = new fle_TrayMenuItem("Exit", &exitKolibriAction);
 
 	mnuOptions->setSubMenu();
 	mnuOptions->addSubMenu(mnuRunUserLogsIn);
+	mnuOptions->addSubMenu(mnuOpenBrowserOption);
 
 	window->addMenu(mnuLoadBrowser);
 	window->addMenu(mnuOptions);
@@ -231,6 +221,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			mnuRunUserLogsIn->check();
 			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
 		}
+	}
+	if (!isSetConfigurationValueTrue("OPEN_BROWSER_OPTION"))
+	{
+		mnuOpenBrowserOption->check();
+		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
 
 	window->show();
