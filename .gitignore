@@ -44,9 +44,6 @@ kolibrihome_test/
 output/*.html
 output/*/index.html
 
-# Sphinx
-docs/_build
-
 # api-docs
 docs/kolibri*rst
 docs/modules.rst
@@ -54,9 +51,4 @@ docs/modules.rst
 # node modules
 node_modules
 
-# webpack built files
-kolibri/**/build/*
-kolibri/**/static/*
 
-# Installers temp folders
-osx/temp/
