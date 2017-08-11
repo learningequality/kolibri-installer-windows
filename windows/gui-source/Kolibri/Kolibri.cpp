@@ -191,12 +191,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	mnuOpenBrowserOption = new fle_TrayMenuItem("Open browser when Kolibri starts", &runOpenBrowserOption);
 	mnuExit = new fle_TrayMenuItem("Exit", &exitKolibriAction);
 
-	mnuOptions->setSubMenu();
-	mnuOptions->addSubMenu(mnuRunUserLogsIn);
-	mnuOptions->addSubMenu(mnuOpenBrowserOption);
-
 	window->addMenu(mnuLoadBrowser);
-	window->addMenu(mnuOptions);
+	window->addMenu(mnuRunUserLogsIn);
+	window->addMenu(mnuOpenBrowserOption);
 	window->addMenu(mnuExit);
 
 	mnuLoadBrowser->disable();

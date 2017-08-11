@@ -31,10 +31,7 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
+Name: "ChineseSimp"; MessagesFile: "compiler:default.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
@@ -50,10 +47,13 @@ Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon ; IconFilename: "{app}\icon\logo48.ico"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
 [Dirs]
 Name: "{app}\"; Permissions: everyone-readexec
+
+[Run]
+Filename: "{app}\Kolibri.exe"; Description: "Launch Kolibri"; Flags: postinstall nowait skipifsilent
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"
@@ -265,8 +265,9 @@ begin
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
-    MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);
-    WizardForm.StatusLabel.Caption := 'Installing Kolibri source files.';
+    {MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);  }
+    WizardForm.StatusLabel.Caption := 'Setup wizard is copying files. This may take a while, please wait...';
+    WizardForm.StatusLabel.Font.Style := [fsBold];
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
       MsgBox('Critical error.' #13#13 'Dependencies have failed to install. Error Number: ' + IntToStr(ErrorCode), mbInformation, MB_OK);
