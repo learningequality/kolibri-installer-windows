@@ -774,6 +774,7 @@ void startThread(HANDLE * mutex, bool loop, DWORD time_m, void (*target_function
     {
 		//return 1;
 	}
+	TerminateThread(aThread, 0);
 	//CloseHandle(aThread);
 }
 
