@@ -95,11 +95,3 @@ msgstr ""
 #: Kolibri.cpp:205
 msgid "Exit"
 msgstr ""
-
-#~ msgid "Hello world"
-#~ msgstr ""
-#~ "最初\n"
-#~ "の投稿"
-
-#~ msgid "Hello test World\n"
-#~ msgstr "ハローテストワールド"
