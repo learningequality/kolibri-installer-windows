@@ -4,10 +4,12 @@ Kolibri Installer for Windows
 This project provides a smoother way to install and run Kolibri in a Windows Machine.
 
 ---
-#### This project was built using the following software:
+#### This project was built using the following software and C++ library:
 * Windows 8.1 32 bit.
 * Inno Setup 5.5.3 [Download] (http://files.jrsoftware.org/is/5/)
 * Microsoft Visual Studio Community 2015 [Website] (https://www.visualstudio.com/)
+* Poedit [Downlaod] (https://poedit.net/)
+* Spirit_po [Github][https://github.com/cbeck88/spirit-po] 
 * Git (note: install with the option to place the `git` executable in the path, so it can be run within `cmd`)
 
 ---
@@ -19,6 +21,19 @@ This project provides a smoother way to install and run Kolibri in a Windows Mac
 Note: If you have made no changes to `gui-source`, you don't have to build `Kolibri.exe`. Just use the version in this repo.
 
 Note: If you *do* make changes to anything in `gui-source`, be sure to build and commit `Kolibri.exe`.
+
+---
+#### Instructions to generate `kolibri-application.po` file from `kolibri.cpp`:
+1. Downlaod and install [Poedit](https://poedit.net/).
+2. Open Poedit and save a new .po file under: 
+	* $(ProjectDir)/External/locale/en/kolibri-application.po
+3. In Poedit with `kolbri-application.po` opened:
+	* Catalogue -> Properties -> Sources keywords -> Add new keyword `fleTrans`
+	* Catalogue -> Properties -> Sources paths -> Paths -> Add files... -> kolibri.cpp
+	* Catalogue -> Update from sources
+	* Save
+
+Note: If you have made no changes to `gui-source`, you don't have to to generate `kolibri-application.po`. Just use the version in this repo.
 
 ---
 #### Instructions to build "kolibri-static":
