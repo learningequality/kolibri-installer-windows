@@ -25,7 +25,7 @@ bool isServerStarting = false;
 using defaultCatalog = spirit_po::catalog<>;
 
 /*
-Get the po file base in current user locale.
+Get the po file base in the current user locale.
 If the current user locale does not exist it will default in en locale .po file.
 */
 std::string poFilePath() {
