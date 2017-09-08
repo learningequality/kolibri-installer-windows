@@ -54,19 +54,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Users\mrpau-dev\Desktop\dev-files\kolibi-dev\temp - Copy\windows\gui-source\Kolibri\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\boost\boost_1_65_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>AsInvoker</UACExecutionLevel>
       <UACUIAccess>false</UACUIAccess>
-      <AdditionalLibraryDirectories>C:\Users\mrpau-dev\Desktop\dev-files\kolibi-dev\temp - Copy\windows\gui-source\Kolibri\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;intl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <PostBuildEvent>
-      <Command>xcopy /y /e /d "$(ProjectDir)External" "$(OutDir)"</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -94,15 +89,7 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="fle_win32_framework.h" />
-    <ClInclude Include="include\libintl.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="lib\intl.lib" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Debug\locale\ja\LC_MESSAGES\cppgettext.mo" />
-    <None Include="..\Debug\locale\ja\LC_MESSAGES\cppgettext.po" />
-    <None Include="External\intl.dll" />
+    <ClInclude Include="spirit_po\spirit_po.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
