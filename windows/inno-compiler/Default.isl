@@ -334,3 +334,14 @@ AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
 AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
+
+; Kolibri Windows Installer custom messages
+UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
+UpgradeDelMsg=Installing fresh will delete all of your existing data; is this what you really want to do?
+InstallPythonMsg=Python 2.7.13+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.13, before continuing with the installation of Kolibri?
+InstallPtythonErrMsg=Error' #13#13 'You must have Python 2.7.13+ installed to proceed! Installation will now exit.
+FindPipMsg=Could not find pip.exe. Please select the location of pip.exe to continue installation.
+FindPipExeMsg=Please select pip.exe
+PipErrMsg=Fatal error'#13#13'Please install pip and try again.
+SetupInstallKolibriMsg=Setup will now install Kolibri source files to your Python site-packages.
+SetupKolibriErrMsg=Critical error.' #13#13 'Dependencies have failed to install. Error Number:

@@ -155,11 +155,11 @@ end;
 
 procedure ConfirmUpgradeDialog;
 begin
-    if MsgBox('We have detected an existing Kolibri installation; would you like to upgrade?', mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
+    if MsgBox(CustomMessage('UpgradeMsg'), mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
     begin
         isUpgrade := True;
     end
-    else if MsgBox('Installing fresh will delete all of your existing data; is this what you really want to do?', mbInformation,  MB_YESNO or MB_DEFBUTTON2) = IDYES then
+    else if MsgBox(CustomMessage('UpgradeDelMsg'), mbInformation,  MB_YESNO or MB_DEFBUTTON2) = IDYES then
     begin
         isUpgrade := False;
     end
@@ -208,7 +208,7 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python 2.7.13+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.13, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         ExtractTemporaryFile('python-2.7.13.amd64.msi');
         ExtractTemporaryFile('python-2.7.13.msi');
@@ -216,7 +216,7 @@ begin
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        MsgBox('Error' #13#13 'You must have Python 2.7.13+ installed to proceed! Installation will now exit.', mbError, MB_OK);
+        MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OK);
         forceCancel := True;
         WizardForm.Close;
     end;
@@ -242,13 +242,13 @@ begin
             exit;
         end;
     end;
-    MsgBox('Could not find pip.exe. Please select the location of pip.exe to continue installation.', mbInformation, MB_OK);
-    if GetOpenFileName('Please select pip.exe', path, '', 'All files (*.*)|*.*', 'exe') then
+    MsgBox(CustomMessage('FindPipMsg'), mbInformation, MB_OK);
+    if GetOpenFileName(CustomMessage('FindPipExeMsg'), path, '', 'All files (*.*)|*.*', 'exe') then
     begin
         Result := path;
     end
     else begin
-        MsgBox('Fatal error'#13#13'Please install pip and try again.', mbError, MB_OK);
+        MsgBox(CustomMessage('PipErrMsg'), mbError, MB_OK);
         forceCancel := True;
         Result := '';
     end;
@@ -265,10 +265,10 @@ begin
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
-    MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);
+    MsgBox(CustomMessage('SetupInstallKolibriMsg'), mbInformation, MB_OK);
     if not Exec(PipPath, PipCommand, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode) then
     begin
-      MsgBox('Critical error.' #13#13 'Dependencies have failed to install. Error Number: ' + IntToStr(ErrorCode), mbInformation, MB_OK);
+      MsgBox(CustomMessage('SetupKolibriErrMsg') + IntToStr(ErrorCode), mbInformation, MB_OK);
       forceCancel := True;
       WizardForm.Close;
     end;
