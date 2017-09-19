@@ -31,12 +31,13 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "ChineseSimp"; MessagesFile: "compiler:default.isl"
+Name: "English"; MessagesFile: "compiler:default.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
+Source: "..\scripts\launch_kolibri.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
@@ -53,7 +54,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFil
 Name: "{app}\"; Permissions: everyone-readexec
 
 [Run]
-Filename: "{app}\Kolibri.exe"; Description: "Launch Kolibri"; Flags: postinstall nowait skipifsilent
+Filename: "{app}\launch_kolibri.bat"; Description: "Launch Kolibri"; Flags: postinstall nowait skipifsilent
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"

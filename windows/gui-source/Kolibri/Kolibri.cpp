@@ -4,6 +4,7 @@
 #include <sys/stat.h>
 #include <iostream>
 #include <filesystem>
+#include <io.h>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -50,17 +51,23 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-
-	if (!runShellScript("kolibri.exe", "start", script_dir))
-	{
-		window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+	if (_access(script_dir, 0) == 0) {
+		if (!runShellScript("kolibri.exe", "start", script_dir))
+		{
+			window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+		}
+		else
+		{
+			needNotify = true;
+			isServerStarting = true;
+			window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+		}
 	}
 	else
 	{
-		needNotify = true;
-		isServerStarting = true;
-		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+		window->sendTrayMessage("Kolibri", "Error: KOLIBRI_SCRIPT_DIR path not found.");
 	}
+
 }
 
 void stopServerAction()
@@ -91,6 +98,7 @@ void exitKolibriAction()
 	if (ask("Exiting...", "Are you sure you want to stop Kolibri?"))
 	{
 		stopServerAction();
+		window->sendTrayMessage("Kolibri has stopped...", "You can restart it from the desktop shortcut.");
 		window->quit();
 	}
 }
@@ -141,6 +149,11 @@ void runOpenBrowserOption()
 	}
 }
 
+void serverStartingMsg() {
+	if (isServerStarting) {
+		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+	}
+}
 
 void checkServerThread()
 {
@@ -157,7 +170,7 @@ void checkServerThread()
 			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
-
+		
 		isServerStarting = false;
 	}
 	else
@@ -182,6 +195,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return false;
 	}
 	startThread(NULL, TRUE, 3000, &checkServerThread);
+	startThread(NULL, TRUE, 5000, &serverStartingMsg);
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
