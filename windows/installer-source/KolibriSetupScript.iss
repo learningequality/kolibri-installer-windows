@@ -35,9 +35,8 @@ Name: "English"; MessagesFile: "compiler:default.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
-Source: "..\scripts\launch_kolibri.bat"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
@@ -54,7 +53,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFil
 Name: "{app}\"; Permissions: everyone-readexec
 
 [Run]
-Filename: "{app}\launch_kolibri.bat"; Description: "Launch Kolibri"; Flags: postinstall nowait skipifsilent
+Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"
@@ -229,7 +228,8 @@ const
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
-function GetPipPath: string;
+
+function GetPipPath : String;
 var
     path : string;
     i : integer;
@@ -253,6 +253,11 @@ begin
         forceCancel := True;
         Result := '';
     end;
+end;
+
+function GetPipDir(Value: string): String;
+begin
+    result := ExtractFileDir(GetPipPath);
 end;
 
 procedure HandlePipSetup;
@@ -280,7 +285,7 @@ begin
     RegDeleteValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
-        'Kolibri_SCRIPT_DIR'
+        'KOLIBRI_SCRIPT_DIR'
     )
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
@@ -289,7 +294,7 @@ begin
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_SCRIPT_DIR',
-        ExtractFileDir(PipPath)
+        GetPipDir('')
     );
 end;
 

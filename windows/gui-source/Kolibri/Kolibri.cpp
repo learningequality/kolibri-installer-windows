@@ -75,7 +75,7 @@ void stopServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri-stop.bat", "", script_dir))
+	if (!runShellScript("kolibri.exe", "stop", script_dir))
 	{
 		// Handle error.
 	}
