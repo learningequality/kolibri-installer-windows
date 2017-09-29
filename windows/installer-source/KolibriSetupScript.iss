@@ -204,6 +204,10 @@ begin
     end;
 end;
 
+{REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
+procedure ExitProcess(uExitCode: Integer);
+  external 'ExitProcess@kernel32.dll stdcall';
+
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -216,9 +220,14 @@ begin
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        MsgBox('Error' #13#13 'You must have Python 2.7.13+ installed to proceed! Installation will now exit.', mbError, MB_OK);
-        forceCancel := True;
-        WizardForm.Close;
+        if(MsgBox('Warning' #13#13 'Kolibri cannot run without installing Python.' #13#13 'Click Ok to go back and install Python, or Cancel to quit the Kolibri installer.', mbError, MB_OKCANCEL) = idCANCEL) then
+          begin
+            forceCancel := True;
+            ExitProcess(1);
+          end
+        else begin
+           HandlePythonSetup(); 
+        end
     end;
 end;
 
