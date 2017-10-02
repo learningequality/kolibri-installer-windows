@@ -205,6 +205,10 @@ begin
     end;
 end;
 
+{REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
+procedure ExitProcess(uExitCode: Integer);
+  external 'ExitProcess@kernel32.dll stdcall';
+
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -217,9 +221,14 @@ begin
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OK);
-        forceCancel := True;
-        WizardForm.Close;
+        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
+          begin
+            forceCancel := True;
+            ExitProcess(1);
+          end
+        else begin
+           HandlePythonSetup(); 
+        end
     end;
 end;
 
