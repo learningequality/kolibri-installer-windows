@@ -33,7 +33,7 @@ def create_po_file():
         print "Failed to create kolibri-installer.po"
         return False
 
-def main():
+def extract_strings_from_isl():
     if create_po_file():
         po_file_path = os.getcwd() + "/" + PO_FILE_NAME
         isl_file_path = sys.argv[1:][0]
@@ -51,7 +51,7 @@ def main():
 
                     try:
                         string_line = isl_line.split('=')[1].rstrip()
-                        # Filter duplicates msgid.
+                        # Filter duplicate msgid.
                         if string_line not in msgid_list:
                             msgid_list.append(string_line)
 
@@ -79,6 +79,10 @@ def main():
             isl_file_path_open.close()
         else:
             print "The inno setup isl file does not exit on this path %s " % (isl_file_path)
+
+
+def main():
+    extract_strings_from_isl()
 
 if __name__ == "__main__":
     main()

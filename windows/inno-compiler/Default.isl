@@ -64,7 +64,7 @@ SetupAppRunningError=Setup has detected that %1 is currently running.%n%nPlease 
 UninstallAppRunningError=Uninstall has detected that %1 is currently running.%n%nPlease close all instances of it now, then click OK to continue, or Cancel to exit.
 
 ; *** Misc. errors
-ErrorCreatingDir=Setup was unable to create the directory "%1"
+ErrorCreatingDir=Instalación no pudo crear el directorio "%1"
 ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it contains too many files
 
 ; *** Setup common messages
