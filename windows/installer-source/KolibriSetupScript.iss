@@ -32,14 +32,17 @@ ChangesEnvironment=yes
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "spanish"; MessagesFile: "compiler:Spanish.isl"
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "French"; MessagesFile: "compiler:Languages\French.isl"Name: "German"; MessagesFile: "compiler:Languages\German.isl"
+Name: "Greek"; MessagesFile: "compiler:Languages\Greek.isl"
+Name: "Nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\kolibri-stop.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion

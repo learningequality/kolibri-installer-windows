@@ -64,7 +64,7 @@ SetupAppRunningError=Setup has detected that %1 is currently running.%n%nPlease 
 UninstallAppRunningError=Uninstall has detected that %1 is currently running.%n%nPlease close all instances of it now, then click OK to continue, or Cancel to exit.
 
 ; *** Misc. errors
-ErrorCreatingDir=Instalación no pudo crear el directorio "%1"
+ErrorCreatingDir=Setup was unable to create the directory "%1"
 ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it contains too many files
 
 ; *** Setup common messages
@@ -216,7 +216,7 @@ InstallingLabel=Please wait while Setup installs [name] on your computer.
 ; *** "Setup Completed" wizard page
 FinishedHeadingLabel=Completing the [name] Setup Wizard
 FinishedLabelNoIcons=Setup has finished installing [name] on your computer.
-FinishedLabel=Setup has finished installing [name] on your computer. The application may be launched by selecting the installed icons.
+FinishedLabel=Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts.
 ClickFinish=Click Finish to exit Setup.
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
@@ -323,9 +323,9 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 [CustomMessages]
 
 NameAndVersion=%1 version %2
-AdditionalIcons=Additional icons:
-CreateDesktopIcon=Create a &desktop icon
-CreateQuickLaunchIcon=Create a &Quick Launch icon
+AdditionalIcons=Additional shortcuts:
+CreateDesktopIcon=Create a &desktop shortcut
+CreateQuickLaunchIcon=Create a &Quick Launch shortcut
 ProgramOnTheWeb=%1 on the Web
 UninstallProgram=Uninstall %1
 LaunchProgram=Launch %1
@@ -339,9 +339,9 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
 UpgradeDelMsg=Installing fresh will delete all of your existing data; is this what you really want to do?
 InstallPythonMsg=Python 2.7.13+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.13, before continuing with the installation of Kolibri?
-InstallPtythonErrMsg=Warning' #13#13 'Kolibri cannot run without installing Python.' #13#13 'Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
+InstallPtythonErrMsg=Warning Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 FindPipMsg=Could not find pip.exe. Please select the location of pip.exe to continue installation
 FindPipExeMsg=Please select pip.exe
-PipErrMsg=Fatal error'#13#13'Please install pip and try again
+PipErrMsg=Fatal error Please install pip and try again
 SetupInstallKolibriMsg=Setup will now install Kolibri source files to your Python site-packages
-SetupKolibriErrMsg=Critical error.' #13#13 'Dependencies have failed to install. Error Number:
+SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
