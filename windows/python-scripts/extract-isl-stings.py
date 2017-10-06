@@ -1,9 +1,9 @@
 """
+    This script must be ran at python2.7+ only.
     This script will extract translatable strings from inno setup isl file into gettext po file.
-    It will generate an "kolibri-installer.po" file when this script ran.
     A sample command to run this script:
         $ python extract-isl-string.py /xxx/xxx.isl 
-    The python version used to run this script is python2.7.
+    It will create a file /kolibri-installer.po at the path of this script.
 """
 
 import sys

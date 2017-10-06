@@ -6,7 +6,7 @@ This project provides a smoother way to install and run Kolibri in a Windows Mac
 ---
 #### This project was built using the following software:
 * Windows 8.1 32 bit.
-* Inno Setup 5.5.3 [Download] (http://files.jrsoftware.org/is/5/)
+* Inno Setup 5.5.9 unicode [Download] (http://www.jrsoftware.org/download.php/is-unicode.exe)
 * Microsoft Visual Studio Community 2015 [Website] (https://www.visualstudio.com/)
 * Git (note: install with the option to place the `git` executable in the path, so it can be run within `cmd`)
 
@@ -39,6 +39,21 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 * In Windows, run the following command from this directory:
 > make.vbs
 * The output file named "KolibriSetup-X.X.X.exe" will appear within this project folder.
+
+
+---
+#### Instructions to extract and encode translateble strings from Inno setup .isl file:
+* To extract the translable strings from the Inno setup `.isl` file into `.po` file:
+	- At the `/python-scripts` directory run the `extract-isl-strings.py` 
+	- A sample command to run the script `python extract-isl-string.py /xxx/xxx.isl`
+	- The agument `.isl` file can be found at this path `inno-compiler/Default.isl`
+	- It will create a `/kolibri-installer.po` at this path `/python-scripts`.
+
+* To encode translated strings from `.po` into Inno setup `.isl` file.
+	- At the `/python-scripts` directory run the `encode-strings.py`
+	- A sample command to run the script `python2.7 ./extract-isl-string.py  /xxx/xxx.isl /xxxx/kolibri-installer.po`
+	- After the script ran it will ask for the language name, [language id](https://msdn.microsoft.com/en-us/library/dd318693.aspx) and [language code page](https://msdn.microsoft.com/en-us/library/cc195052.aspx).
+	- The output filename will be the specified language name.
 
 ---
 #### To clone kolibri and this repository, run the following lines:
