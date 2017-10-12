@@ -4,17 +4,16 @@
 #include <sys/stat.h>
 #include <iostream>
 #include <filesystem>
+#include <io.h>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
 
-fle_TrayMenuItem * mnuStartServer;
-fle_TrayMenuItem * mnuStopServer;
 fle_TrayMenuItem * mnuLoadBrowser;
 fle_TrayMenuItem * mnuOptions;
 fle_TrayMenuItem * mnuRunUserLogsIn;
+fle_TrayMenuItem * mnuOpenBrowserOption;
 fle_TrayMenuItem * mnuRunAtStartup;
-fle_TrayMenuItem * mnuAutoStart;
 fle_TrayMenuItem * mnuExit;
 
 bool needNotify = false;
@@ -52,20 +51,23 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-
-	if (!runShellScript("kolibri.exe", "start", script_dir))
-	{
-		window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+	if (_access(script_dir, 0) == 0) {
+		if (!runShellScript("kolibri.exe", "start", script_dir))
+		{
+			window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+		}
+		else
+		{
+			needNotify = true;
+			isServerStarting = true;
+			window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+		}
 	}
 	else
 	{
-		mnuStartServer->disable();
-
-		needNotify = true;
-		isServerStarting = true;
-
-		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+		window->sendTrayMessage("Kolibri", "Error: KOLIBRI_SCRIPT_DIR path not found.");
 	}
+
 }
 
 void stopServerAction()
@@ -73,14 +75,12 @@ void stopServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri-stop.bat", "", script_dir))
+	if (!runShellScript("kolibri.exe", "stop", script_dir))
 	{
 		// Handle error.
 	}
 	else
 	{
-		mnuStartServer->enable();
-		mnuStopServer->disable();
 		mnuLoadBrowser->disable();
 	}
 }
@@ -95,9 +95,10 @@ void loadBrowserAction()
 
 void exitKolibriAction()
 {
-	if (ask("Exiting...", "Really want to exit Kolibri?"))
+	if (ask("Exiting...", "Are you sure you want to stop Kolibri?"))
 	{
 		stopServerAction();
+		window->sendTrayMessage("Kolibri has stopped...", "You can restart it from the desktop shortcut.");
 		window->quit();
 	}
 }
@@ -115,6 +116,7 @@ void runUserLogsInAction()
 		{
 			mnuRunUserLogsIn->uncheck();
 			setConfigurationValue("RUN_AT_LOGIN", "FALSE");
+			setConfigurationValue("DONT_START", "TRUE");
 		}
 	}
 	else
@@ -132,47 +134,24 @@ void runUserLogsInAction()
 	}
 }
 
-void runAtStartupAction()
+void runOpenBrowserOption()
 {
-	if (mnuRunAtStartup->isChecked())
+	if (mnuOpenBrowserOption->isChecked())
 	{
-		if (!runShellScript("guitools.vbs", "5", NULL))
-		{
-			// Handle error.
-			printConsole("Failed to remove task to run at startup.\n");
-		}
-		else
-		{
-			mnuRunAtStartup->uncheck();
-			setConfigurationValue("RUN_AT_STARTUP", "FALSE");
-		}
+		mnuOpenBrowserOption->uncheck();
+		setConfigurationValue("RUN_OPEN_BROWSER", "FALSE");
+		setConfigurationValue("OPEN_BROWSER_OPTION", "TRUE");
 	}
 	else
 	{
-		if (!runShellScript("guitools.vbs", "4", NULL))
-		{
-			// Handle error.
-			printConsole("Failed to add task to run at startup.\n");
-		}
-		else
-		{
-			mnuRunAtStartup->check();
-			setConfigurationValue("RUN_AT_STARTUP", "TRUE");
-		}
+		mnuOpenBrowserOption->check();
+		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
 }
 
-void autoStartServerAction()
-{
-	if (mnuAutoStart->isChecked())
-	{
-		mnuAutoStart->uncheck();
-		setConfigurationValue("AUTO_START", "FALSE");
-	}
-	else
-	{
-		mnuAutoStart->check();
-		setConfigurationValue("AUTO_START", "TRUE");
+void serverStartingMsg() {
+	if (isServerStarting) {
+		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
 	}
 }
 
@@ -181,24 +160,23 @@ void checkServerThread()
 	// We can handle things like checking if the server is online and controlling the state of each component.
 	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/learn/#!/learn"))
 	{
-		mnuStartServer->disable();
-		mnuStopServer->enable();
 		mnuLoadBrowser->enable();
-
 		if (needNotify)
 		{
+			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER"))
+			{
+				loadBrowserAction();
+			}
 			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
 			needNotify = false;
 		}
-
+		
 		isServerStarting = false;
 	}
 	else
 	{
 		if (!isServerStarting)
 		{
-			mnuStartServer->enable();
-			mnuStopServer->disable();
 			mnuLoadBrowser->disable();
 		}
 	}
@@ -212,51 +190,53 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running. \nRight click the Kolibri icon in the task-tray to start the server."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
 		CloseHandle(hMutex);
 		return false;
 	}
-
 	startThread(NULL, TRUE, 3000, &checkServerThread);
+	startThread(NULL, TRUE, 5000, &serverStartingMsg);
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
-	mnuStartServer = new fle_TrayMenuItem("Start Server.", &startServerAction);
-	mnuStopServer = new fle_TrayMenuItem("Stop Server.", &stopServerAction);
 	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
 	mnuOptions = new fle_TrayMenuItem("Options", NULL);
-	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri when the user logs in.", &runUserLogsInAction);
-	//mnuRunAtStartup = new fle_TrayMenuItem("Run Kolibri at system startup.", &runAtStartupAction);
-	mnuAutoStart = new fle_TrayMenuItem("Auto-start server when Kolibri is run.", &autoStartServerAction);
-	mnuExit = new fle_TrayMenuItem("Exit Kolibri.", &exitKolibriAction);
+	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri at system startup.", &runUserLogsInAction);
+	mnuOpenBrowserOption = new fle_TrayMenuItem("Open browser when Kolibri starts", &runOpenBrowserOption);
+	mnuExit = new fle_TrayMenuItem("Exit", &exitKolibriAction);
 
-	mnuOptions->setSubMenu();
-	mnuOptions->addSubMenu(mnuRunUserLogsIn);
-	//mnuOptions->addSubMenu(mnuRunAtStartup);
-	mnuOptions->addSubMenu(mnuAutoStart);
-
-	window->addMenu(mnuStartServer);
-	window->addMenu(mnuStopServer);
 	window->addMenu(mnuLoadBrowser);
-	window->addMenu(mnuOptions);
+	window->addMenu(mnuRunUserLogsIn);
+	window->addMenu(mnuOpenBrowserOption);
 	window->addMenu(mnuExit);
 
-	mnuStopServer->disable();
 	mnuLoadBrowser->disable();
+
+	startServerAction();
 
 	// Load configurations.
 	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
 	{
 		mnuRunUserLogsIn->check();
 	}
-	//if (isSetConfigurationValueTrue("RUN_AT_STARTUP"))
-	//{
-	//	mnuRunAtStartup->check();
-	//}
-	if (isSetConfigurationValueTrue("AUTO_START"))
+
+	if (!isSetConfigurationValueTrue("DONT_START"))
 	{
-		mnuAutoStart->check();
-		startServerAction();
+		if (!runShellScript("guitools.vbs", "0", NULL))
+		{
+			// Handle error.
+			printConsole("Failed to add startup schortcut.\n");
+		}
+		else
+		{
+			mnuRunUserLogsIn->check();
+			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
+		}
+	}
+	if (!isSetConfigurationValueTrue("OPEN_BROWSER_OPTION"))
+	{
+		mnuOpenBrowserOption->check();
+		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
 
 	window->show();
