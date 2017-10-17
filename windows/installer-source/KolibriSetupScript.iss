@@ -33,7 +33,8 @@ ChangesEnvironment=yes
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "French"; MessagesFile: "compiler:Languages\French.isl"Name: "German"; MessagesFile: "compiler:Languages\German.isl"
+Name: "French"; MessagesFile: "compiler:Languages\French.isl"
+Name: "German"; MessagesFile: "compiler:Languages\German.isl"
 Name: "Greek"; MessagesFile: "compiler:Languages\Greek.isl"
 Name: "Nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
 Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
@@ -43,6 +44,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python27\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -54,10 +56,13 @@ Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon ; IconFilename: "{app}\icon\logo48.ico"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
 [Dirs]
 Name: "{app}\"; Permissions: everyone-readexec
+
+[Run]
+Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"
@@ -241,7 +246,16 @@ const
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
-function GetPipPath: string;
+
+function FailedInstallation : String;
+begin
+    MsgBox('Kolibri installation failed. ' #13#13 'Kolibri installer encountered an error during the installation process.', mbError, MB_OK);
+    RemoveOldInstallation(ExpandConstant('{app}'));
+    forceCancel := True   
+    ExitProcess(1);
+    end;
+
+function GetPipPath : String;
 var
     path : string;
     i : integer;
@@ -255,16 +269,15 @@ begin
             exit;
         end;
     end;
-    MsgBox(CustomMessage('FindPipMsg'), mbInformation, MB_OK);
-    if GetOpenFileName(CustomMessage('FindPipExeMsg'), path, '', 'All files (*.*)|*.*', 'exe') then
     begin
-        Result := path;
-    end
-    else begin
-        MsgBox(CustomMessage('PipErrMsg'), mbError, MB_OK);
-        forceCancel := True;
+        FailedInstallation;
         Result := '';
     end;
+end;
+
+function GetPipDir(Value: string): String;
+begin
+    result := ExtractFileDir(GetPipPath);
 end;
 
 procedure HandlePipSetup;
@@ -278,19 +291,19 @@ begin
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
-    MsgBox(CustomMessage('SetupInstallKolibriMsg'), mbInformation, MB_OK);
-    if not Exec(PipPath, PipCommand, '', SW_SHOW, ewWaitUntilTerminated, ErrorCode) then
+
+    WizardForm.StatusLabel.Caption := 'Setup wizard is copying files. This may take a while, please wait...';
+    WizardForm.StatusLabel.Font.Style := [fsBold];
+    if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
-      MsgBox(CustomMessage('SetupKolibriErrMsg') + IntToStr(ErrorCode), mbInformation, MB_OK);
-      forceCancel := True;
-      WizardForm.Close;
+        FailedInstallation;
     end;
 
     { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
     RegDeleteValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
-        'Kolibri_SCRIPT_DIR'
+        'KOLIBRI_SCRIPT_DIR'
     )
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
@@ -299,7 +312,7 @@ begin
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_SCRIPT_DIR',
-        ExtractFileDir(PipPath)
+        GetPipDir('')
     );
 end;
 
@@ -340,15 +353,6 @@ begin
   result := True;
 end;
 
-procedure DoSetup;
-var
-    retCode: integer;
-begin
-    { Used to have more responsibility, but we delegated those to the app itself! }
-    { Unpacks the English content pack. }
-    Exec(ExpandConstant('{cmd}'), '/S /C "' + ExpandConstant('"{reg:HKLM\System\CurrentControlSet\Control\Session Manager\Environment,KOLIBRI_SCRIPT_DIR}\kolibri.bat"') + ' manage retrievecontentpack local en en.zip --foreground"', ExpandConstant('{app}'), SW_SHOW, ewWaitUntilTerminated, retCode);
-end;
-
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   informationBoxFlagged: boolean;
@@ -370,9 +374,6 @@ begin
         begin
             HandlePipSetup();
             if Not forceCancel then
-            begin
-                DoSetup;
-            end;
         end;
     end;
 
