@@ -31,7 +31,16 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "English"; MessagesFile: "compiler:default.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
+Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "French"; MessagesFile: "compiler:Languages\French.isl"
+Name: "German"; MessagesFile: "compiler:Languages\German.isl"
+Name: "Greek"; MessagesFile: "compiler:Languages\Greek.isl"
+Name: "Nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+
+[Tasks]
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
@@ -53,7 +62,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFil
 Name: "{app}\"; Permissions: everyone-readexec
 
 [Run]
-Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Check: FileExists('{code:getPipDir}\kolibri.exe'); Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
+Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"
@@ -155,11 +164,11 @@ end;
 
 procedure ConfirmUpgradeDialog;
 begin
-    if MsgBox('We have detected an existing Kolibri installation; would you like to upgrade?', mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
+    if MsgBox(CustomMessage('UpgradeMsg'), mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
     begin
         isUpgrade := True;
     end
-    else if MsgBox('Installing fresh will delete all of your existing data; is this what you really want to do?', mbInformation,  MB_YESNO or MB_DEFBUTTON2) = IDYES then
+    else if MsgBox(CustomMessage('UpgradeDelMsg'), mbInformation,  MB_YESNO or MB_DEFBUTTON2) = IDYES then
     begin
         isUpgrade := False;
     end
@@ -212,7 +221,7 @@ procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
-    if(MsgBox('Python 2.7.13+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.13, before continuing with the installation of Kolibri?', mbConfirmation, MB_YESNO) = idYes) then
+    if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         ExtractTemporaryFile('python-2.7.13.amd64.msi');
         ExtractTemporaryFile('python-2.7.13.msi');
@@ -220,7 +229,7 @@ begin
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        if(MsgBox('Warning' #13#13 'Kolibri cannot run without installing Python.' #13#13 'Click Ok to go back and install Python, or Cancel to quit the Kolibri installer.', mbError, MB_OKCANCEL) = idCANCEL) then
+        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
           begin
             forceCancel := True;
             ExitProcess(1);
@@ -282,14 +291,12 @@ begin
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
-    {MsgBox('Setup will now install Kolibri source files to your Python site-packages.', mbInformation, MB_OK);  }
+
     WizardForm.StatusLabel.Caption := 'Setup wizard is copying files. This may take a while, please wait...';
     WizardForm.StatusLabel.Font.Style := [fsBold];
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
-      FailedInstallation;
-      forceCancel := True;
-      WizardForm.Close;
+        FailedInstallation;
     end;
 
     { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
