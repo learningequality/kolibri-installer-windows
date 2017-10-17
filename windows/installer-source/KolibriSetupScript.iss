@@ -53,7 +53,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFil
 Name: "{app}\"; Permissions: everyone-readexec
 
 [Run]
-Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
+Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Check: FileExists('{code:getPipDir}\kolibri.exe'); Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"
@@ -238,6 +238,14 @@ const
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
+function FailedInstallation : String;
+begin
+    MsgBox('Kolibri installation failed. ' #13#13 'Kolibri installer encountered an error during the installation process.', mbError, MB_OK);
+    RemoveOldInstallation(ExpandConstant('{app}'));
+    forceCancel := True   
+    ExitProcess(1);
+    end;
+
 function GetPipPath : String;
 var
     path : string;
@@ -252,14 +260,8 @@ begin
             exit;
         end;
     end;
-    MsgBox('Could not find pip.exe. Please select the location of pip.exe to continue installation.', mbInformation, MB_OK);
-    if GetOpenFileName('Please select pip.exe', path, '', 'All files (*.*)|*.*', 'exe') then
     begin
-        Result := path;
-    end
-    else begin
-        MsgBox('Fatal error'#13#13'Please install pip and try again.', mbError, MB_OK);
-        forceCancel := True;
+        FailedInstallation;
         Result := '';
     end;
 end;
@@ -285,7 +287,7 @@ begin
     WizardForm.StatusLabel.Font.Style := [fsBold];
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
-      MsgBox('Critical error.' #13#13 'Dependencies have failed to install. Error Number: ' + IntToStr(ErrorCode), mbInformation, MB_OK);
+      FailedInstallation;
       forceCancel := True;
       WizardForm.Close;
     end;
