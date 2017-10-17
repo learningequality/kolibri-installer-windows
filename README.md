@@ -1,2 +1,3 @@
-# kolibri-installers
-Repository for Kolibri installers.
+# kolibri windows installer
+
+Repository for Kolibri windows installer and launcher application
