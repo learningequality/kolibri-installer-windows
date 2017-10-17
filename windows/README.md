@@ -42,7 +42,7 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 
 
 ---
-#### Instructions to extract and encode translateble strings from Inno setup .isl file:
+#### Instructions to extract and encode translatable strings from Inno setup .isl file:
 * To extract the translable strings from the Inno setup `.isl` file into `.po` file:
 	- At the `/python-scripts` directory run the `extract-isl-strings.py` 
 	- A sample command to run the script `python extract-isl-string.py /xxx/xxx.isl`
