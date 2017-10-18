@@ -1,9 +1,12 @@
 #include "fle_win32_framework.h"
+#include "spirit_po\spirit_po.hpp"
 #include "config.h"
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <iostream>
 #include <filesystem>
+#include <iostream>
+#include <fstream>
+#include <string>
 #include <io.h>
 
 // Declare global stuff that you need to use inside the functions.
@@ -19,6 +22,46 @@ fle_TrayMenuItem * mnuExit;
 bool needNotify = false;
 bool isServerStarting = false;
 
+using defaultCatalog = spirit_po::catalog<>;
+
+/*
+Get the po file base in the current user locale.
+If the current user locale does not exist it will default in en locale .po file.
+*/
+std::string poFilePath() {
+	TCHAR pwd[MAX_PATH];
+	GetCurrentDirectory(MAX_PATH, pwd); // Get the current application directory path.
+	std::wstring appPathStr(&pwd[0]); //convert to wstring
+	std::wstring localeDir = appPathStr + L"\\locale\\";
+	std::wstring poFilename = L"\\kolibri-application.po";
+	std::wstring enLang = L"en";
+
+	LCID lcid = GetUserDefaultLCID();
+	wchar_t defaultLocaleCode[LOCALE_NAME_MAX_LENGTH];
+	DWORD error = ERROR_SUCCESS;
+	//Evaluate locale
+	LCIDToLocaleName(lcid, defaultLocaleCode, LOCALE_NAME_MAX_LENGTH, 0);
+	std::wstring userLocalStr(defaultLocaleCode); // Get user locale
+
+	std::wstring defaultLocalePath = localeDir + enLang + poFilename;
+	std::wstring userLocalePath = localeDir + userLocalStr + poFilename;
+
+	std::string userLocalPathStr(userLocalePath.begin(), userLocalePath.end());
+	// Check `userLocalPathStr` file is exist.
+	if (_access(userLocalPathStr.c_str(), 0) == 0) {
+		defaultLocalePath = userLocalePath;
+	}
+	std::string defaultLangStr(defaultLocalePath.begin(), defaultLocalePath.end());
+	std::ifstream ifs(defaultLangStr);
+	std::string po_file{ std::istreambuf_iterator<char>{ifs}, std::istreambuf_iterator<char>() };
+	return po_file;
+}
+
+defaultCatalog cat{ defaultCatalog::from_range(poFilePath()) };
+char *fleTrans(const char *str) {
+	return  (char *)cat.gettext(str);
+}
+
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -32,14 +75,14 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	DWORD bufsize = GetEnvironmentVariableA(kolibri_script_dir, buffer, MAX_SIZE);
 	if (bufsize == 0)
 	{
-		window->sendTrayMessage("Kolibri", "Error: Environment variable KOLIBRI_SCRIPT_DIR is not set.");
+		window->sendTrayMessage(fleTrans("Kolibri"), fleTrans("Error: Environment variable KOLIBRI_SCRIPT_DIR is not set."));
 		buffer = 0;
 	}
 	else if (bufsize > MAX_SIZE)
 	{
 		char err_message[255];
-		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
-		window->sendTrayMessage("Kolibri", err_message);
+		sprintf(err_message, fleTrans("Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line."), MAX_SIZE, bufsize);
+		window->sendTrayMessage(fleTrans("Kolibri"), err_message);
 		buffer = 0;
 	}
 	return;
@@ -54,13 +97,13 @@ void startServerAction()
 	if (_access(script_dir, 0) == 0) {
 		if (!runShellScript("kolibri.exe", "start", script_dir))
 		{
-			window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+			window->sendTrayMessage(fleTrans("Kolibri"), fleTrans("Error: Kolibri failed to start."));
 		}
 		else
 		{
 			needNotify = true;
 			isServerStarting = true;
-			window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+			window->sendTrayMessage(fleTrans("Kolibri"), fleTrans("Kolibri is starting... Please wait."));
 		}
 	}
 	else
@@ -95,7 +138,7 @@ void loadBrowserAction()
 
 void exitKolibriAction()
 {
-	if (ask("Exiting...", "Are you sure you want to stop Kolibri?"))
+	if (ask(fleTrans("Exiting..."), fleTrans("Are you sure you want to stop Kolibri?")))
 	{
 		stopServerAction();
 		window->sendTrayMessage("Kolibri has stopped...", "You can restart it from the desktop shortcut.");
@@ -110,7 +153,7 @@ void runUserLogsInAction()
 		if (!runShellScript("guitools.vbs", "1", NULL))
 		{
 			// Handle error.
-			printConsole("Failed to remove startup schortcut.\n");
+			printConsole(fleTrans("Failed to remove startup schortcut.\n"));
 		}
 		else
 		{
@@ -124,7 +167,7 @@ void runUserLogsInAction()
 		if (!runShellScript("guitools.vbs", "0", NULL))
 		{
 			// Handle error.
-			printConsole("Failed to add startup schortcut.\n");
+			printConsole(fleTrans("Failed to add startup schortcut.\n"));
 		}
 		else
 		{
@@ -167,7 +210,7 @@ void checkServerThread()
 			{
 				loadBrowserAction();
 			}
-			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
+			window->sendTrayMessage(fleTrans("Kolibri is running"), fleTrans("Kolibri is now accessible locally at: http://127.0.0.1:8080. Select \"Load in browser to view it.\""));
 			needNotify = false;
 		}
 		
@@ -190,7 +233,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
+		MessageBoxA(HWND_DESKTOP, fleTrans("Kolibri application is already running."), fleTrans("Kolibri information"), MB_OK | MB_ICONINFORMATION);
 		CloseHandle(hMutex);
 		return false;
 	}
@@ -199,11 +242,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
-	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
-	mnuOptions = new fle_TrayMenuItem("Options", NULL);
-	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri at system startup.", &runUserLogsInAction);
-	mnuOpenBrowserOption = new fle_TrayMenuItem("Open browser when Kolibri starts", &runOpenBrowserOption);
-	mnuExit = new fle_TrayMenuItem("Exit", &exitKolibriAction);
+	mnuLoadBrowser = new fle_TrayMenuItem(fleTrans("Load in browser."), &loadBrowserAction);
+	mnuOptions = new fle_TrayMenuItem(fleTrans("Options"), NULL);
+	mnuRunUserLogsIn = new fle_TrayMenuItem(fleTrans("Run Kolibri at system startup."), &runUserLogsInAction);
+	mnuOpenBrowserOption = new fle_TrayMenuItem(fleTrans("Open browser when Kolibri starts"), &runOpenBrowserOption);
+	mnuExit = new fle_TrayMenuItem(fleTrans("Exit"), &exitKolibriAction);
 
 	window->addMenu(mnuLoadBrowser);
 	window->addMenu(mnuRunUserLogsIn);
@@ -225,7 +268,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		if (!runShellScript("guitools.vbs", "0", NULL))
 		{
 			// Handle error.
-			printConsole("Failed to add startup schortcut.\n");
+			printConsole(fleTrans("Failed to add startup schortcut.\n"));
 		}
 		else
 		{
