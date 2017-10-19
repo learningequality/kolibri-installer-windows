@@ -345,3 +345,5 @@ FindPipExeMsg=Por favor seleccione pip.exe
 PipErrMsg=Fatal error Instale pip y vuelva a intentarlo. 
 SetupInstallKolibriMsg=Instalación instalará ahora Kolibri fuente archivos en tu sitio-paquete de Python. 
 SetupKolibriErrMsg=Error crítico. dependencias no han podido instalar. Número de error: 
+LaunchKolibri=Iniciar Kolibri
+KolibriInstallFailed=Kolibri installation failed. ' #13#13 'Kolibri installer encountered an error during the installation process
