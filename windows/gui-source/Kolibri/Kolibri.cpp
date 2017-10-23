@@ -2,9 +2,11 @@
 #include "config.h"
 #include <sys/types.h>
 #include <sys/stat.h>
+#include "resource.h"
 #include <iostream>
 #include <filesystem>
 #include <io.h>
+#include <atlstr.h>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -19,6 +21,22 @@ fle_TrayMenuItem * mnuExit;
 bool needNotify = false;
 bool isServerStarting = false;
 
+wchar_t * getStr(int strId) {
+
+	CString str;
+
+	int esLang = strId + 1;
+	str.LoadString(strId);
+	char * userEnv = getenv("KOLIBRI_GUI_LANG");
+	if (userEnv== std::string("es_ES"))
+	{
+		str.LoadString(esLang);
+	}
+	TCHAR* finalStr = new TCHAR[str.GetLength() + 1];
+	lstrcpy(finalStr, str);
+	return finalStr;
+}
+
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -32,14 +50,14 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	DWORD bufsize = GetEnvironmentVariableA(kolibri_script_dir, buffer, MAX_SIZE);
 	if (bufsize == 0)
 	{
-		window->sendTrayMessage("Kolibri", "Error: Environment variable KOLIBRI_SCRIPT_DIR is not set.");
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_1_en));
 		buffer = 0;
 	}
 	else if (bufsize > MAX_SIZE)
 	{
 		char err_message[255];
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
-		window->sendTrayMessage("Kolibri", err_message);
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_2_en));
 		buffer = 0;
 	}
 	return;
@@ -54,18 +72,18 @@ void startServerAction()
 	if (_access(script_dir, 0) == 0) {
 		if (!runShellScript("kolibri.exe", "start", script_dir))
 		{
-			window->sendTrayMessage("Kolibri", "Error: Kolibri failed to start.");
+			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_3_en));
 		}
 		else
 		{
 			needNotify = true;
 			isServerStarting = true;
-			window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
 		}
 	}
 	else
 	{
-		window->sendTrayMessage("Kolibri", "Error: KOLIBRI_SCRIPT_DIR path not found.");
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_5_en));
 	}
 
 }
@@ -95,10 +113,11 @@ void loadBrowserAction()
 
 void exitKolibriAction()
 {
-	if (ask("Exiting...", "Are you sure you want to stop Kolibri?"))
+
+	if (ask(getStr(ID_STRING_6_en), getStr(ID_STRING_7_en)))
 	{
 		stopServerAction();
-		window->sendTrayMessage("Kolibri has stopped...", "You can restart it from the desktop shortcut.");
+		window->sendTrayMessage(getStr(ID_STRING_8_en), getStr(ID_STRING_9_en));
 		window->quit();
 	}
 }
@@ -151,7 +170,7 @@ void runOpenBrowserOption()
 
 void serverStartingMsg() {
 	if (isServerStarting) {
-		window->sendTrayMessage("Kolibri", "The server is starting... please wait");
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
 	}
 }
 
@@ -167,10 +186,10 @@ void checkServerThread()
 			{
 				loadBrowserAction();
 			}
-			window->sendTrayMessage("Kolibri is running", "The server will be accessible locally at: http://127.0.0.1:8080/learn or you can select \"Load in browser.\"");
+			window->sendTrayMessage(getStr(ID_STRING_10_en), getStr(ID_STRING_11_en));
 			needNotify = false;
 		}
-		
+
 		isServerStarting = false;
 	}
 	else
@@ -190,7 +209,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, TEXT("Kolibri application is already running."), TEXT("Kolibri information"), MB_OK | MB_ICONINFORMATION);
+		MessageBox(HWND_DESKTOP, getStr(ID_STRING_12_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
 		CloseHandle(hMutex);
 		return false;
 	}
@@ -199,11 +218,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
-	mnuLoadBrowser = new fle_TrayMenuItem("Load in browser.", &loadBrowserAction);
-	mnuOptions = new fle_TrayMenuItem("Options", NULL);
-	mnuRunUserLogsIn = new fle_TrayMenuItem("Run Kolibri at system startup.", &runUserLogsInAction);
-	mnuOpenBrowserOption = new fle_TrayMenuItem("Open browser when Kolibri starts", &runOpenBrowserOption);
-	mnuExit = new fle_TrayMenuItem("Exit", &exitKolibriAction);
+	mnuLoadBrowser = new fle_TrayMenuItem(getStr(ID_STRING_14_en), &loadBrowserAction);
+	mnuRunUserLogsIn = new fle_TrayMenuItem(getStr(ID_STRING_15_en), &runUserLogsInAction);
+	mnuOpenBrowserOption = new fle_TrayMenuItem(getStr(ID_STRING_16_en), &runOpenBrowserOption);
+	mnuExit = new fle_TrayMenuItem(getStr(ID_STRING_17_en), &exitKolibriAction);
+
 
 	window->addMenu(mnuLoadBrowser);
 	window->addMenu(mnuRunUserLogsIn);

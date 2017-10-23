@@ -31,13 +31,13 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "French"; MessagesFile: "compiler:Languages\French.isl"
-Name: "German"; MessagesFile: "compiler:Languages\German.isl"
-Name: "Greek"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "Nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
-Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
+Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -298,6 +298,13 @@ begin
     begin
         FailedInstallation;
     end;
+
+    { Use this environment varaible to get the selected language for the kolibri GUI application. }    RegWriteStringValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_GUI_LANG',
+        ExpandConstant('{language}')
+    );
 
     { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
     RegDeleteValue(
