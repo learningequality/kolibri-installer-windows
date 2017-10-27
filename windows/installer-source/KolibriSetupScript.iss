@@ -62,7 +62,7 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFil
 Name: "{app}\"; Permissions: everyone-readexec
 
 [Run]
-Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "Launch Kolibri"; Flags: nowait runhidden postinstall skipifsilent; 
+Filename: "{cmd}"; Parameters: "/k {code:getPipDir}\reset-env-vars.bat && ""{app}\Kolibri.exe"""; Description: "{cm:LaunchKolibri}"; Flags: nowait runhidden postinstall skipifsilent; 
 
 [InstallDelete]
 Type: Files; Name: "{app}\*"

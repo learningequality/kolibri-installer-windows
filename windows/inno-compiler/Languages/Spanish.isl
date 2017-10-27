@@ -343,3 +343,5 @@ InstallPtythonErrMsg=Advertencia - Kolibri necesita Python para funcionar. Haga 
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
 KolibriInstallFailed=Instalación de Kolibri ha fallado. Instalador de Kolibri encontró un errorinstallation process
 SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espere...
+LaunchKolibri=Iniciar Kolibri
+

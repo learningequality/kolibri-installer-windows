@@ -325,3 +325,4 @@ InstallPtythonErrMsg=Kolibri cannot run without installing Python. Click Ok to g
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
 KolibriInstallFailed=Kolibri installation failed. Kolibri installer encountered an error during the installation process
 SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
+LaunchKolibri=Launch Kolibri
