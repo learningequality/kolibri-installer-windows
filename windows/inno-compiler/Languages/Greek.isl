@@ -346,3 +346,4 @@ FindPipExeMsg=Please select pip.exe
 PipErrMsg=Fatal error Please install pip and try again
 SetupInstallKolibriMsg=Setup will now install Kolibri source files to your Python site-packages
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
+LaunchKolibri=Launch Kolibri
