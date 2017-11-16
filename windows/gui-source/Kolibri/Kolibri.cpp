@@ -23,14 +23,21 @@ bool isServerStarting = false;
 
 wchar_t * getStr(int strId) {
 
+	/*
+	Get the equivalent strings in the resource file.
+	The installer will set the selected language in the KOLIBRI_GUI_LANG environment variable after the installation.
+	I recommend when adding new language strings in resource file do it in a sublime text editor.
+	*/
 	CString str;
-
 	int esLang = strId + 1;
 	str.LoadString(strId);
 	char * userEnv = getenv("KOLIBRI_GUI_LANG");
-	if (userEnv== std::string("es_ES"))
+	if (userEnv != NULL)
 	{
-		str.LoadString(esLang);
+		if (userEnv == std::string("es_ES"))
+		{
+			str.LoadString(esLang);
+		}
 	}
 	TCHAR* finalStr = new TCHAR[str.GetLength() + 1];
 	lstrcpy(finalStr, str);
