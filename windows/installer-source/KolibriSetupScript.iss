@@ -31,13 +31,13 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "French"; MessagesFile: "compiler:Languages\French.isl"
-Name: "German"; MessagesFile: "compiler:Languages\German.isl"
-Name: "Greek"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "Nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
-Name: "Portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "en"; MessagesFile: "compiler:Default.isl"
+Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
+Name: "de"; MessagesFile: "compiler:Languages\German.isl"
+Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
+Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -249,7 +249,7 @@ const
 
 function FailedInstallation : String;
 begin
-    MsgBox('Kolibri installation failed. ' #13#13 'Kolibri installer encountered an error during the installation process.', mbError, MB_OK);
+    MsgBox(CustomMessage('KolibriInstallFailed'), mbError, MB_OK);
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True   
     ExitProcess(1);
@@ -291,13 +291,30 @@ begin
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
-
-    WizardForm.StatusLabel.Caption := 'Setup wizard is copying files. This may take a while, please wait...';
+    WizardForm.StatusLabel.WordWrap := true;
+    WizardForm.StatusLabel.Height:=50 
     WizardForm.StatusLabel.Font.Style := [fsBold];
+    WizardForm.StatusLabel.Caption := CustomMessage('SetupWizardMsg');
+
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
         FailedInstallation;
     end;
+
+    { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_SCRIPT_DIR'
+    )
+    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+
+    { Use this environment varaible to get the selected language for the kolibri GUI application. }    RegWriteStringValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_GUI_LANG',
+        ExpandConstant('{language}')
+    );
 
     { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
     RegDeleteValue(
@@ -388,5 +405,11 @@ begin
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'Kolibri_SCRIPT_DIR'
+    )
+    { Use this environment varaible to get the selected language for the kolibri GUI application. }
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_GUI_LANG'
     )
 end;
