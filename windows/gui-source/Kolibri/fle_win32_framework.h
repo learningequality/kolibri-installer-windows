@@ -426,7 +426,7 @@ void fle_BaseWindow::processTrayMenu(WPARAM wParam, LPARAM lParam, HWND * hwnd, 
 	{
 		p_Window->test();
 	}
-	else if (lParam == WM_RBUTTONDOWN) 
+	else if (lParam == WM_RBUTTONDOWN || lParam == WM_LBUTTONDOWN)
 	{
 		// Show the context menu.
 		// Get current mouse position.
