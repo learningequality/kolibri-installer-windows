@@ -20,7 +20,6 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-LicenseFile=..\kolibri\LICENSE
 OutputDir=..\
 OutputBaseFilename=KolibriSetup-{#TargetVersion}
 SetupIconFile=..\gui-packed\images\logo48.ico
@@ -199,7 +198,7 @@ function NextButtonClick(CurPageID: Integer): Boolean;
 begin
     result := True;
 
-    if CurPageID = wpLicense then
+    if CurPageID = wpSelectTasks then
     begin
         if WizardForm <> nil then
             HandleUpgrade(WizardForm.PrevAppDir);
