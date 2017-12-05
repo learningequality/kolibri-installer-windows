@@ -54,7 +54,7 @@ class fle_TrayMenuItem
 		UINT menuType;
 		HWND* p_window;
 	public:
-		fle_TrayMenuItem(char*, void (*action_function)(void));
+		fle_TrayMenuItem(wchar_t *, void (*action_function)(void));
 		void action(void);
 		UINT getID(void);
 		TCHAR* getTitle(void);
@@ -76,12 +76,12 @@ class fle_TrayMenuItem
 		HWND* getWindow(void);
 };
 
-fle_TrayMenuItem::fle_TrayMenuItem(char * m_title, void (*action_function)(void))
+fle_TrayMenuItem::fle_TrayMenuItem(wchar_t * m_title, void (*action_function)(void))
 {
 	hMenu = CreatePopupMenu();
 	p_window = NULL;
 	id = getAvailableID();
-	title = getTCHAR(m_title);
+	title = m_title;
 	f_action = action_function;
 	menuType = MF_STRING;
 
@@ -426,7 +426,7 @@ void fle_BaseWindow::processTrayMenu(WPARAM wParam, LPARAM lParam, HWND * hwnd, 
 	{
 		p_Window->test();
 	}
-	else if (lParam == WM_RBUTTONDOWN) 
+	else if (lParam == WM_RBUTTONDOWN || lParam == WM_LBUTTONDOWN)
 	{
 		// Show the context menu.
 		// Get current mouse position.
@@ -522,7 +522,7 @@ class fle_TrayWindow : public fle_BaseWindow
 		void show(void);
 		void addMenu(fle_TrayMenuItem *);
 		void setStatusFunction(void (*target_function)(void));
-		void sendTrayMessage(char*, char*);
+		void sendTrayMessage(wchar_t*, wchar_t*);
 		void quit(void);
 };
 
@@ -593,10 +593,10 @@ void fle_TrayWindow::setStatusFunction(void (*target_function)(void))
 	fle_BaseWindow::setMainLoopFunction(target_function);
 }
 
-void fle_TrayWindow::sendTrayMessage(char * title, char * message)
+void fle_TrayWindow::sendTrayMessage(wchar_t * title, wchar_t * message)
 {
-	TCHAR * t_title = getTCHAR(title);
-	TCHAR * t_message = getTCHAR(message);
+	TCHAR * t_title = title;
+	TCHAR * t_message = message;
 	lstrcpy(fle_TrayWindow::getNotifyIconDataStructure()->szInfoTitle , t_title);
 	lstrcpy(fle_TrayWindow::getNotifyIconDataStructure()->szInfo, t_message);
 
@@ -828,10 +828,10 @@ bool isServerOnline(char * session_name, char * url)
 	return TRUE;
 }
 
-int ask(char * title, char * message)
+int ask(wchar_t * title, wchar_t * message)
 {
-	TCHAR * t_title = getTCHAR(title);
-	TCHAR * t_message = getTCHAR(message);
+	TCHAR * t_title = title;
+	TCHAR * t_message = message;
 
 	if(MessageBox(NULL, t_message, t_title, MB_YESNO | MB_ICONQUESTION) == IDYES)
 	{
