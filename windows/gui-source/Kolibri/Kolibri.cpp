@@ -220,6 +220,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		CloseHandle(hMutex);
 		return false;
 	}
+	// Verify if there is an ongoing Kolibri installation.
+	wchar_t * kolibriSetup = _wgetenv(L"KOLIBRI_SETUP");
+	if (kolibriSetup != NULL) {
+		if (findProcessId(kolibriSetup))
+		{
+			MessageBox(HWND_DESKTOP, getStr(ID_STRING_18_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
+			CloseHandle(hMutex);
+			return false;
+		}
+	}
 	startThread(NULL, TRUE, 3000, &checkServerThread);
 	startThread(NULL, TRUE, 5000, &serverStartingMsg);
 	window = new fle_TrayWindow(&hInstance);

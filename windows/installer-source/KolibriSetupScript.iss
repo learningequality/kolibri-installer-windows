@@ -294,6 +294,7 @@ begin
     WizardForm.StatusLabel.Height:=50 
     WizardForm.StatusLabel.Font.Style := [fsBold];
     WizardForm.StatusLabel.Caption := CustomMessage('SetupWizardMsg');
+    WizardForm.ProgressGauge.Style := npbstMarquee;
 
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
@@ -330,6 +331,12 @@ begin
         'KOLIBRI_SCRIPT_DIR',
         GetPipDir('')
     );
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_SETUP'
+    )
+    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
 end;
 
 function InitializeSetup(): Boolean;
@@ -388,6 +395,7 @@ begin
     begin
         if installFlag then
         begin
+            Exec(ExpandConstant('{cmd}'), '/S /C " ' + 'setx KOLIBRI_SETUP ' + ExtractFileName(ExpandConstant('{srcexe}')) + ' && ' +  GetPipDir('')+'\reset-env-vars.bat' + '"', ExpandConstant('{app}'), SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             HandlePipSetup();
             if Not forceCancel then
         end;
