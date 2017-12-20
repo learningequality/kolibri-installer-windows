@@ -225,7 +225,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	if (kolibriSetup != NULL) {
 		if (findProcessId(kolibriSetup))
 		{
-			MessageBox(HWND_DESKTOP, getStr(ID_STRING_18_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
+			MessageBox(HWND_DESKTOP, getStr(ID_STRING_18_en), getStr(ID_STRING_19_en), MB_OK | MB_ICONINFORMATION);
 			CloseHandle(hMutex);
 			return false;
 		}
