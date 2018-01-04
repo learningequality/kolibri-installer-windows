@@ -599,7 +599,7 @@ fle_TrayWindow::fle_TrayWindow(HINSTANCE * hInstance) : fle_BaseWindow(hInstance
 	notifyIconData->uTimeout = 100;
 
 	// Type of tooltip (balloon).
-	notifyIconData->dwInfoFlags = NIIF_INFO;
+	notifyIconData->dwInfoFlags = NIIF_NOSOUND | NIIF_INFO;
 
 	// Copy text to the structure.
 	lstrcpy(notifyIconData->szInfo, L"");

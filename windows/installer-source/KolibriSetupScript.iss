@@ -382,6 +382,12 @@ var
   userKolibriDir: String;
   extractContent: String;
 begin
+    RegWriteStringValue(
+      HKLM,
+      'System\CurrentControlSet\Control\Session Manager\Environment',
+      'KOLIBRI_GUI_LANG',
+      ExpandConstant('{language}')
+    );
     if CurStep = ssInstall then
     begin
         informationBoxFlagged :=False;
