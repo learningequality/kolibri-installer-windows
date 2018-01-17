@@ -7,6 +7,15 @@
 #include "Shlwapi.h"
 #include "wininet.h"
 
+
+#include <windows.h>
+#include <tlhelp32.h>
+#include <iostream>
+
+using namespace std;
+
+DWORD FindProcessId(const std::wstring& processName);
+
 #pragma comment(lib, "Wininet")
 
 using namespace std;
@@ -21,6 +30,36 @@ static UINT CURRENT_VALID_ID = WM_TRAYICON + 1;
 
 // GLOBAL functions
 UINT getAvailableID();
+
+// REF: https://stackoverflow.com/questions/13179410/check-whether-one-specific-process-is-running-on-windows-with-c
+DWORD findProcessId(const std::wstring& processName)
+{
+	PROCESSENTRY32 processInfo;
+	processInfo.dwSize = sizeof(processInfo);
+
+	HANDLE processesSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+	if (processesSnapshot == INVALID_HANDLE_VALUE)
+		return 0;
+
+	Process32First(processesSnapshot, &processInfo);
+	if (!processName.compare(processInfo.szExeFile))
+	{
+		CloseHandle(processesSnapshot);
+		return processInfo.th32ProcessID;
+	}
+
+	while (Process32Next(processesSnapshot, &processInfo))
+	{
+		if (!processName.compare(processInfo.szExeFile))
+		{
+			CloseHandle(processesSnapshot);
+			return processInfo.th32ProcessID;
+		}
+	}
+
+	CloseHandle(processesSnapshot);
+	return 0;
+}
 
 TCHAR* getTCHAR(char * original)
 {
@@ -560,7 +599,7 @@ fle_TrayWindow::fle_TrayWindow(HINSTANCE * hInstance) : fle_BaseWindow(hInstance
 	notifyIconData->uTimeout = 100;
 
 	// Type of tooltip (balloon).
-	notifyIconData->dwInfoFlags = NIIF_INFO;
+	notifyIconData->dwInfoFlags = NIIF_NOSOUND | NIIF_INFO;
 
 	// Copy text to the structure.
 	lstrcpy(notifyIconData->szInfo, L"");
