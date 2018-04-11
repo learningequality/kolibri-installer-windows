@@ -344,4 +344,4 @@ SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Nu
 KolibriInstallFailed=Instalación de Kolibri ha fallado. Instalador de Kolibri encontró un errorinstallation process
 SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espere...
 LaunchKolibri=Iniciar Kolibri
-
+KolibriSupportLink=Kolibri support on web

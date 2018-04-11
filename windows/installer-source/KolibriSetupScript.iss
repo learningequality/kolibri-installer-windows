@@ -1,6 +1,7 @@
 #define MyAppName "Kolibri"
 #define MyAppPublisher "Foundation for Learning Equality"
-#define MyAppURL "http://learningequality.org/"
+#define MyAppURL "https://learningequality.org/"
+#define MyAppSupportURL "https://community.learningequality.org/c/support/kolibri"
 #define MyAppExeName "Kolibri.exe"
 
 #define getKolibriVersion() \
@@ -54,6 +55,7 @@ Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
+Name: "{group}\{cm:KolibriSupportLink}"; Filename: "{#MyAppSupportURL}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
