@@ -1,6 +1,8 @@
 #define MyAppName "Kolibri"
 #define MyAppPublisher "Foundation for Learning Equality"
-#define MyAppURL "http://learningequality.org/"
+#define MyAppURL "https://learningequality.org/"
+#define MyAppSupportURL "https://community.learningequality.org/c/support/kolibri"
+#define MyDocsURL "https://kolibri.readthedocs.io"
 #define MyAppExeName "Kolibri.exe"
 
 #define getKolibriVersion() \
@@ -43,7 +45,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python27\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python34\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -53,7 +55,9 @@ Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
-Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
+Name: "{group}\{cm:KolibriDocs}"; Filename: "{#MyDocsURL}"
+Name: "{group}\{cm:KolibriHomePage,{#MyAppName}}"; Filename: "{#MyAppURL}"
+Name: "{group}\{cm:KolibriSupportLink}"; Filename: "{#MyAppSupportURL}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
@@ -222,8 +226,8 @@ var
 begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
-        ExtractTemporaryFile('python-2.7.13.amd64.msi');
-        ExtractTemporaryFile('python-2.7.13.msi');
+        ExtractTemporaryFile('python-3.4.3.amd64.msi');
+        ExtractTemporaryFile('python-3.4.3.msi');
         ExtractTemporaryFile('python-exe.bat');
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
@@ -241,7 +245,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PATH = '\Python27\Scripts\pip.exe';
+    DEFAULT_PATH = '\Python34\Scripts\pip.exe';
 
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
@@ -324,7 +328,7 @@ begin
     )
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-    { Should by in the same directory as pip.exe, e.g. 'C:\Python27\Scripts' }
+    { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
     RegWriteStringValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -353,7 +357,7 @@ begin
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
    
-    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (2, 7, 13,) and sys.version_info < (3,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
