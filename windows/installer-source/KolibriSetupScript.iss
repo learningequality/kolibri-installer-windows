@@ -1,6 +1,6 @@
 #define MyAppName "Kolibri"
 #define MyAppPublisher "Foundation for Learning Equality"
-#define MyAppURL "https://learningequality.org/"
+#define MyAppURL "https://learningequality.org/kolibri"
 #define MyAppSupportURL "https://community.learningequality.org/c/support/kolibri"
 #define MyDocsURL "https://kolibri.readthedocs.io"
 #define MyAppExeName "Kolibri.exe"
