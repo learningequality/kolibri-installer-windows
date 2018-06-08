@@ -13,4 +13,4 @@ The installer versions have been applied as follows:
 | 1.1.0             | 0.6.1            | Python 2.7.13   |
 | 1.1.1             | 0.7.1            | Python 2.7.13   |
 | 1.1.2             | 0.9.1            | Python 2.7.13   |
-| 1.2.0 (TBA)       | 0.10.x           | Python 3.4.3    |
+| 1.2.0             | 0.10.x           | Python 3.4.3    |
