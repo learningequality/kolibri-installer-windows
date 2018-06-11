@@ -184,7 +184,7 @@ void serverStartingMsg() {
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/learn/#!/learn"))
+	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
 	{
 		mnuLoadBrowser->enable();
 		if (needNotify)
@@ -216,7 +216,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		MessageBox(HWND_DESKTOP, getStr(ID_STRING_12_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
+		if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+		{
+			loadBrowserAction();
+		}
+		else 
+		{
+			MessageBox(HWND_DESKTOP, getStr(ID_STRING_12_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
+		}
 		CloseHandle(hMutex);
 		return false;
 	}

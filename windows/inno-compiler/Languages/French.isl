@@ -356,9 +356,12 @@ AddonHostProgramNotFound=%1 n'a pas été trouvé dans le dossier que vous avez cho
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
 UpgradeDelMsg=Installing fresh will delete all of your existing data; is this what you really want to do?
-InstallPythonMsg=Python 2.7.13+ is required to install Kolibri on Windows; do you wish to first install Python 2.7.13, before continuing with the installation of Kolibri?
+InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
 InstallPtythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
 KolibriInstallFailed=Kolibri installation failed. Kolibri installer encountered an error during the installation process
 SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
 LaunchKolibri=Launch Kolibri
+KolibriSupportLink=Community forums
+KolibriHomePage=Homepage
+KolibriDocs=Documentation
