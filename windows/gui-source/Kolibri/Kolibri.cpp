@@ -104,10 +104,6 @@ void stopServerAction()
 	{
 		// Handle error.
 	}
-	else
-	{
-		mnuLoadBrowser->disable();
-	}
 }
 
 void loadBrowserAction()
@@ -199,13 +195,6 @@ void checkServerThread()
 
 		isServerStarting = false;
 	}
-	else
-	{
-		if (!isServerStarting)
-		{
-			mnuLoadBrowser->disable();
-		}
-	}
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -252,8 +241,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window->addMenu(mnuRunUserLogsIn);
 	window->addMenu(mnuOpenBrowserOption);
 	window->addMenu(mnuExit);
-
-	mnuLoadBrowser->disable();
 
 	startServerAction();
 
