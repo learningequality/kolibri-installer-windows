@@ -108,10 +108,18 @@ void stopServerAction()
 
 void loadBrowserAction()
 {
-	if (!loadBrowser("http://127.0.0.1:8080/learn"))
+	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
 	{
-		// Handle error.
+		if (!loadBrowser("http://127.0.0.1:8080/learn"))
+		{
+			// Handle error.
+		}
 	}
+	else
+	{
+		startServerAction();
+	}
+
 }
 
 void exitKolibriAction()
