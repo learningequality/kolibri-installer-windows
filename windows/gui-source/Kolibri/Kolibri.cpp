@@ -104,18 +104,23 @@ void stopServerAction()
 	{
 		// Handle error.
 	}
-	else
-	{
-		mnuLoadBrowser->disable();
-	}
 }
 
 void loadBrowserAction()
 {
-	if (!loadBrowser("http://127.0.0.1:8080/learn"))
+	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
 	{
-		// Handle error.
+		if (!loadBrowser("http://127.0.0.1:8080/learn"))
+		{
+			// Handle error.
+			printConsole("Failed to open the Kolibri url.\n");
+		}
 	}
+	else
+	{
+		startServerAction();
+	}
+
 }
 
 void exitKolibriAction()
@@ -199,13 +204,6 @@ void checkServerThread()
 
 		isServerStarting = false;
 	}
-	else
-	{
-		if (!isServerStarting)
-		{
-			mnuLoadBrowser->disable();
-		}
-	}
 }
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -252,8 +250,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window->addMenu(mnuRunUserLogsIn);
 	window->addMenu(mnuOpenBrowserOption);
 	window->addMenu(mnuExit);
-
-	mnuLoadBrowser->disable();
 
 	startServerAction();
 
