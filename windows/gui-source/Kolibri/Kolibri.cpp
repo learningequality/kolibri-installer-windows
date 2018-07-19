@@ -113,6 +113,7 @@ void loadBrowserAction()
 		if (!loadBrowser("http://127.0.0.1:8080/learn"))
 		{
 			// Handle error.
+			printConsole("Failed to open the Kolibri url.\n");
 		}
 	}
 	else
