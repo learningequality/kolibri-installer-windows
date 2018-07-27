@@ -52,6 +52,8 @@ Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
 Source: "..\gui-packed\icon\logo48.ico"; DestDir: "{app}\icon"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
+Source: "..\kolibri-config\options.ini"; DestDir: "{%HOMEPATH}\.kolibri"; Flags: ignoreversion
+
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
@@ -287,6 +289,7 @@ procedure HandlePipSetup;
 var
     PipCommand: string;
     PipPath: string;
+    KolibriHomePath: string;
     ErrorCode: integer;
 
 begin
@@ -326,6 +329,14 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_SCRIPT_DIR'
     )
+
+    KolibriHomePath := GetEnv('HOMEPATH') + '\.kolibri';
+    RegWriteStringValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_HOME',
+        KolibriHomePath
+    );
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
     { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }

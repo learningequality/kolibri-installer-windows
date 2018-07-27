@@ -44,6 +44,28 @@ wchar_t * getStr(int strId) {
 	return finalStr;
 }
 
+char * getKolibriLinkAddress() {
+	/*
+	This will return the current Kolibri running link url.
+	It will fetch the HTTP_PORT value from options.ini config file.
+	*/
+	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
+	if (kolibriHomeEnv == NULL) {
+		kolibriHomeEnv = "";
+	}
+	char * configName = "\\options.ini";
+	char * filePath = joinChr(kolibriHomeEnv, configName);
+
+	const size_t fileStrSize = strlen(filePath) + 1;
+	wchar_t* configPath = new wchar_t[fileStrSize];
+	mbstowcs(configPath, filePath, fileStrSize);
+	UINT httpPort = GetPrivateProfileInt(L"Deployment", L"HTTP_PORT", 8080, configPath);
+	char name[100];
+	sprintf(name, "%d", httpPort);
+	char * httpLink = joinChr("http://127.0.0.1:", name);
+	return httpLink;
+}
+
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -53,6 +75,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
 	:returns: void
 	*/
+
 	LPCSTR kolibri_script_dir = "KOLIBRI_SCRIPT_DIR";
 	DWORD bufsize = GetEnvironmentVariableA(kolibri_script_dir, buffer, MAX_SIZE);
 	if (bufsize == 0)
@@ -64,7 +87,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	{
 		char err_message[255];
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
-		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_2_en));
+		MessageBox(HWND_DESKTOP, getStr(ID_STRING_18_en), getStr(ID_STRING_19_en), MB_OK | MB_ICONINFORMATION);
 		buffer = 0;
 	}
 	return;
@@ -108,9 +131,9 @@ void stopServerAction()
 
 void loadBrowserAction()
 {
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
-		if (!loadBrowser("http://127.0.0.1:8080/learn"))
+		if (!loadBrowser(joinChr(getKolibriLinkAddress(), "\/learn\/")))
 		{
 			// Handle error.
 			printConsole("Failed to open the Kolibri url.\n");
@@ -189,7 +212,7 @@ void serverStartingMsg() {
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
 		mnuLoadBrowser->enable();
 		if (needNotify)
@@ -214,7 +237,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+		if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 		{
 			loadBrowserAction();
 		}
