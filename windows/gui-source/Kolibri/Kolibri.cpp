@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <io.h>
 #include <atlstr.h>
+#include <fstream>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -47,23 +48,26 @@ wchar_t * getStr(int strId) {
 char * getKolibriLinkAddress() {
 	/*
 	This will return the current Kolibri running link url.
-	It will fetch the HTTP_PORT value from options.ini config file.
+	It will fetch the PORT value from server.pid file.
 	*/
 	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
 	if (kolibriHomeEnv == NULL) {
 		kolibriHomeEnv = "";
 	}
-	char * configName = "\\options.ini";
-	char * filePath = joinChr(kolibriHomeEnv, configName);
-
-	const size_t fileStrSize = strlen(filePath) + 1;
-	wchar_t* configPath = new wchar_t[fileStrSize];
-	mbstowcs(configPath, filePath, fileStrSize);
-	UINT httpPort = GetPrivateProfileInt(L"Deployment", L"HTTP_PORT", 8080, configPath);
-	char name[100];
-	sprintf(name, "%d", httpPort);
-	char * httpLink = joinChr("http://127.0.0.1:", name);
-	return httpLink;
+	char * configName = "\\server.pid";
+	char * pidFile = joinChr(kolibriHomeEnv, configName);
+	const char * port;
+	std::ifstream file(pidFile);
+	if (file.is_open()) {
+		std::string line;
+		while (getline(file, line)) {
+			port = line.c_str();
+		}
+		file.close();
+		char * httpLink = joinChr("http://127.0.0.1:", line.c_str());
+		return httpLink;
+	}
+	return "";
 }
 
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
@@ -235,6 +239,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Prevent the Kolibri application to execute multiple instances.
 	HANDLE hMutex = CreateMutexA(NULL, FALSE, "Kolibri");
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
+	
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
 		if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
@@ -275,6 +280,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window->addMenu(mnuExit);
 
 	startServerAction();
+
 
 	// Load configurations.
 	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))

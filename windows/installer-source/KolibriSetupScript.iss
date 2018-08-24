@@ -52,7 +52,6 @@ Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
 Source: "..\gui-packed\icon\logo48.ico"; DestDir: "{app}\icon"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
-Source: "..\kolibri-config\options.ini"; DestDir: "{%HOMEPATH}\.kolibri"; Flags: ignoreversion
 
 
 [Icons]
