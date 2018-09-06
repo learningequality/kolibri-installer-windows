@@ -181,13 +181,61 @@ begin
     end;
 end;
 
+{REF: https://stackoverflow.com/questions/37825650/compare-version-strings-in-inno-setup}
+function CompareVersion(V1, V2: string): Integer;
+var
+  P, N1, N2: Integer;
+begin
+  Result := 0;
+  while (Result = 0) and ((V1 <> '') or (V2 <> '')) do
+  begin
+    P := Pos('.', V1);
+    if P > 0 then
+    begin
+      N1 := StrToInt(Copy(V1, 1, P - 1));
+      Delete(V1, 1, P);
+    end
+      else
+    if V1 <> '' then
+    begin
+      N1 := StrToInt(V1);
+      V1 := '';
+    end
+      else
+    begin
+      N1 := 0;
+    end;
+
+    P := Pos('.', V2);
+    if P > 0 then
+    begin
+      N2 := StrToInt(Copy(V2, 1, P - 1));
+      Delete(V2, 1, P);
+    end
+      else
+    if V2 <> '' then
+    begin
+      N2 := StrToInt(V2);
+      V2 := '';
+    end
+      else
+    begin
+      N2 := 0;
+    end;
+
+    if N1 < N2 then Result := -1
+      else
+    if N1 > N2 then Result := 1;
+  end;
+end;
+
 procedure HandleUpgrade(targetPath : String);
 var
     prevVerStr : String;
     retCode: Integer;
 begin
-    prevVerStr := GetPreviousVersion();
-    if (CompareStr('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
+    prevVerStr := GetPreviousVersion()
+    if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
     begin
         ConfirmUpgradeDialog;
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
