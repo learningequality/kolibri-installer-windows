@@ -288,7 +288,6 @@ procedure HandlePipSetup;
 var
     PipCommand: string;
     PipPath: string;
-    KolibriHomePath: string;
     ErrorCode: integer;
 
 begin
@@ -329,13 +328,6 @@ begin
         'KOLIBRI_SCRIPT_DIR'
     )
 
-    KolibriHomePath := GetEnv('HOMEPATH') + '\.kolibri';
-    RegWriteStringValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_HOME',
-        KolibriHomePath
-    );
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
     { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }

@@ -52,19 +52,20 @@ char * getKolibriLinkAddress() {
 	*/
 	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
 	if (kolibriHomeEnv == NULL) {
-		kolibriHomeEnv = "";
+		kolibriHomeEnv = joinChr(getenv("HOMEPATH"), "\\.kolibri");
 	}
 	char * configName = "\\server.pid";
 	char * pidFile = joinChr(kolibriHomeEnv, configName);
-	const char * port;
+	char * httpLink = "";
 	std::ifstream file(pidFile);
 	if (file.is_open()) {
 		std::string line;
 		while (getline(file, line)) {
-			port = line.c_str();
+			if (isServerOnline("Kolibri session", joinChr("http://127.0.0.1:", line.c_str()))) {
+				httpLink = joinChr("http://127.0.0.1:", line.c_str());
+			}
 		}
 		file.close();
-		char * httpLink = joinChr("http://127.0.0.1:", line.c_str());
 		return httpLink;
 	}
 	return "";
@@ -137,7 +138,7 @@ void loadBrowserAction()
 {
 	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
-		if (!loadBrowser(joinChr(getKolibriLinkAddress(), "\/learn\/")))
+		if (!loadBrowser(getKolibriLinkAddress()))
 		{
 			// Handle error.
 			printConsole("Failed to open the Kolibri url.\n");
