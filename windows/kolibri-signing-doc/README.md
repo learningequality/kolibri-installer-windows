@@ -7,13 +7,13 @@ Kolibri signing documentation
 You'll need accounts with access to Learning Equality's organization on these services:
 
 * [Buildkite](https://buildkite.com) account.
-* [Google cloud](https://cloud.google.com/) account.
+* [Google Cloud](https://cloud.google.com/) account.
 
 
 ## Setting up the Windows signing pipeline
 
-* Create a Windows VM instance on google cloud
-	- Log in to [Google cloud](https://cloud.google.com/)
+* Create a Windows VM instance on google Cloud
+	- Log in to [Google Cloud](https://cloud.google.com/)
 	- Follow [these instructions](https://cloud.google.com/compute/docs/instances/create-start-instance) to create the VM
 	- To access the VM remotely use [RDP](https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps)
 
@@ -31,10 +31,10 @@ You'll need accounts with access to Learning Equality's organization on these se
 * Set up buildkite environment variables
 	- In buildkite, navigate to Kolibri's `Pipeline Settings` > `Environment variables`
 	- Add the environment variable `WINDOWS_SIGN_SCRIPT_PATH=C:\xxxx\sign_script.bat`
-	- Replace `xxxx` above so the the `sign_script.bat` file path is correct
+	- Replace `xxxx` above so the `sign_script.bat` file path is correct
 
 * Build and sign a Kolibri Windows installer
-	- Navigate to the kolibri pipeline, and click `New Build`
+	- Navigate to the Kolibri pipeline, and click `New Build`
 	- Click `Options` and add the `SIGN_WINDOWS_INSTALLER=true` environment variable
 	- Click `Create Build`
 
