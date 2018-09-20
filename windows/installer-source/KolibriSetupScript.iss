@@ -392,6 +392,7 @@ function InitializeSetup(): Boolean;
 var
   PythonVersionCodeCheck: integer;
   killErrorCode: integer;
+  PythonPath: string;
 begin
     installFlag:=true;
     Result := true;
@@ -402,7 +403,9 @@ begin
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
    
-    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
+
+    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
