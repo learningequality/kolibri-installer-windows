@@ -12,7 +12,7 @@ You'll need accounts with access to Learning Equality's organization on these se
 
 ## Setting up the Windows signing pipeline
 
-* Create a Windows VM instance on google Cloud
+* Create a Windows VM instance on Google Cloud
 	- Log in to [Google Cloud](https://cloud.google.com/)
 	- Follow [these instructions](https://cloud.google.com/compute/docs/instances/create-start-instance) to create the VM
 	- To access the VM remotely use [RDP](https://www.microsoft.com/en-us/p/microsoft-remote-desktop/9wzdncrfj3ps)
