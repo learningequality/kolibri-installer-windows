@@ -40,9 +40,6 @@ Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
 Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
 Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python34\Scripts\"
