@@ -7,6 +7,7 @@
 #include <filesystem>
 #include <io.h>
 #include <atlstr.h>
+#include <fstream>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -44,6 +45,32 @@ wchar_t * getStr(int strId) {
 	return finalStr;
 }
 
+char * getKolibriLinkAddress() {
+	/*
+	This will return the current Kolibri running link url.
+	It will fetch the PORT value from server.pid file.
+	*/
+	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
+	if (kolibriHomeEnv == NULL) {
+		kolibriHomeEnv = joinChr(getenv("HOMEPATH"), "\\.kolibri");
+	}
+	char * configName = "\\server.pid";
+	char * pidFile = joinChr(kolibriHomeEnv, configName);
+	char * httpLink = "";
+	std::ifstream file(pidFile);
+	if (file.is_open()) {
+		std::string line;
+		while (getline(file, line)) {
+			if (isServerOnline("Kolibri session", joinChr("http://127.0.0.1:", line.c_str()))) {
+				httpLink = joinChr("http://127.0.0.1:", line.c_str());
+			}
+		}
+		file.close();
+		return httpLink;
+	}
+	return "";
+}
+
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -53,6 +80,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	:param const DWORD MAX_SIZE: the max size of the buffer parameter. Must be large enough for path string and terminating null byte.
 	:returns: void
 	*/
+
 	LPCSTR kolibri_script_dir = "KOLIBRI_SCRIPT_DIR";
 	DWORD bufsize = GetEnvironmentVariableA(kolibri_script_dir, buffer, MAX_SIZE);
 	if (bufsize == 0)
@@ -64,7 +92,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	{
 		char err_message[255];
 		sprintf(err_message, "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line.", MAX_SIZE, bufsize);
-		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_2_en));
+		MessageBox(HWND_DESKTOP, getStr(ID_STRING_18_en), getStr(ID_STRING_19_en), MB_OK | MB_ICONINFORMATION);
 		buffer = 0;
 	}
 	return;
@@ -108,9 +136,9 @@ void stopServerAction()
 
 void loadBrowserAction()
 {
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
-		if (!loadBrowser("http://127.0.0.1:8080/learn"))
+		if (!loadBrowser(getKolibriLinkAddress()))
 		{
 			// Handle error.
 			printConsole("Failed to open the Kolibri url.\n");
@@ -189,7 +217,7 @@ void serverStartingMsg() {
 void checkServerThread()
 {
 	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
 		mnuLoadBrowser->enable();
 		if (needNotify)
@@ -212,9 +240,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Prevent the Kolibri application to execute multiple instances.
 	HANDLE hMutex = CreateMutexA(NULL, FALSE, "Kolibri");
 	DWORD dwMutexWaitResult = WaitForSingleObject(hMutex, 0);
+	
 	if (dwMutexWaitResult != WAIT_OBJECT_0)
 	{
-		if (isServerOnline("Kolibri session", "http://127.0.0.1:8080/"))
+		if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 		{
 			loadBrowserAction();
 		}
@@ -252,6 +281,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	window->addMenu(mnuExit);
 
 	startServerAction();
+
 
 	// Load configurations.
 	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))

@@ -50,6 +50,7 @@ Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignor
 Source: "..\gui-packed\icon\logo48.ico"; DestDir: "{app}\icon"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
 
+
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
 Name: "{group}\{cm:KolibriHomePage,{#MyAppName}}"; Filename: "{#MyAppURL}"
@@ -371,6 +372,7 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_SCRIPT_DIR'
     )
+
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
     { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }

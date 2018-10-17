@@ -74,6 +74,15 @@ TCHAR* getTCHAR(char * original)
 	return NULL;
 }
 
+char * joinChr(const char * arg1, const  char * arg2)
+{
+	size_t size[2] = { strlen(arg1), strlen(arg2) };
+	char * fStr = new char[size[0] + size[1] + 1];
+	strcpy(fStr, arg1);
+	strcpy(fStr + size[0], arg2);
+	return fStr;
+}
+
 UINT getAvailableID()
 {
 	CURRENT_VALID_ID++;
