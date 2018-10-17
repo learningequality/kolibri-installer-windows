@@ -3,7 +3,7 @@ REM uninstall kolibri.
 REM REF: https://support.microsoft.com/en-us/kb/121170
 
 setlocal enabledelayedexpansion
-set scriptPath=%KOLIBRI_SCRIPT%
+set scriptPath=%KOLIBRI_SCRIPT_DIR%
 set defaultScriptPath=\Python27\Scripts
 
 IF not defined scriptPath goto :NOPATH

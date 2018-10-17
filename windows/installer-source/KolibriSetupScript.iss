@@ -40,9 +40,6 @@ Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
 Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
 Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
-[Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
 Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python34\Scripts\"
@@ -52,6 +49,7 @@ Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
 Source: "..\gui-packed\icon\logo48.ico"; DestDir: "{app}\icon"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
+
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
@@ -181,13 +179,61 @@ begin
     end;
 end;
 
+{REF: https://stackoverflow.com/questions/37825650/compare-version-strings-in-inno-setup}
+function CompareVersion(V1, V2: string): Integer;
+var
+  P, N1, N2: Integer;
+begin
+  Result := 0;
+  while (Result = 0) and ((V1 <> '') or (V2 <> '')) do
+  begin
+    P := Pos('.', V1);
+    if P > 0 then
+    begin
+      N1 := StrToInt(Copy(V1, 1, P - 1));
+      Delete(V1, 1, P);
+    end
+      else
+    if V1 <> '' then
+    begin
+      N1 := StrToInt(V1);
+      V1 := '';
+    end
+      else
+    begin
+      N1 := 0;
+    end;
+
+    P := Pos('.', V2);
+    if P > 0 then
+    begin
+      N2 := StrToInt(Copy(V2, 1, P - 1));
+      Delete(V2, 1, P);
+    end
+      else
+    if V2 <> '' then
+    begin
+      N2 := StrToInt(V2);
+      V2 := '';
+    end
+      else
+    begin
+      N2 := 0;
+    end;
+
+    if N1 < N2 then Result := -1
+      else
+    if N1 > N2 then Result := 1;
+  end;
+end;
+
 procedure HandleUpgrade(targetPath : String);
 var
     prevVerStr : String;
     retCode: Integer;
 begin
-    prevVerStr := GetPreviousVersion();
-    if (CompareStr('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
+    prevVerStr := GetPreviousVersion()
+    if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
     begin
         ConfirmUpgradeDialog;
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
@@ -326,6 +372,7 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_SCRIPT_DIR'
     )
+
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
     { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
@@ -347,6 +394,7 @@ function InitializeSetup(): Boolean;
 var
   PythonVersionCodeCheck: integer;
   killErrorCode: integer;
+  PythonPath: string;
 begin
     installFlag:=true;
     Result := true;
@@ -357,7 +405,9 @@ begin
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
    
-    if ShellExec('open', 'python.exe','-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
+
+    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
