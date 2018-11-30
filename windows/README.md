@@ -5,7 +5,7 @@ This project provides a smoother way to install and run Kolibri in a Windows Mac
 
 ---
 #### This project was built using the following software:
-* Windows 8.1 and above.
+* Windows 8.1 32/64bit or Windows 10 32/64bit
 * Inno Setup 5.5.9 unicode [Download] (http://www.jrsoftware.org/download.php/is-unicode.exe)
 * Microsoft Visual Studio Community 2015 [Website] (https://www.visualstudio.com/)
 * Git (note: install with the option to place the `git` executable in the path, so it can be run within `cmd`)
