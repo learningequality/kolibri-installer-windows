@@ -69,11 +69,11 @@ Count = 0
 totalFiles = folder.Files.Count
 
 For Each file In folder.Files
-	If instr (file.Name, ".whl") Then
-	  whlPackageName = file.Name
+  If instr (file.Name, ".whl") Then
+    whlPackageName = file.Name
   Else
     count = count + 1
-	End If
+  End If
 Next
 
 If count = totalFiles Then
