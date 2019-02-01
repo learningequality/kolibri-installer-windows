@@ -3,9 +3,10 @@
 #define MyAppURL "https://learningequality.org/kolibri"
 #define MyAppSupportURL "https://community.learningequality.org/c/support/kolibri"
 #define MyDocsURL "https://kolibri.readthedocs.io"
-#define MyAppExeName "Kolibri.exe"                                        
-#define TargetVersion = '0.11.0b2'
-#expr DeleteFile(SourcePath+"\version.temp");
+#define MyAppExeName "Kolibri.exe"
+#define TargetVersion =  GetEnv("KOLIBRI_BUILD_VERSION")
+#expr DeleteFile(SourcePath+"\version.temp")
+
 
 [Setup]
 AppId={#MyAppName}-{#MyAppPublisher}
@@ -476,6 +477,3 @@ begin
         'KOLIBRI_GUI_LANG'
     )
 end;
-
-
-

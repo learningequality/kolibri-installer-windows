@@ -34,7 +34,7 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 * Clone this repository;
 * Follow the `Instructions to build "kolibri-static"` and copy the `kolibri\dist\kolibri_static-x.x.x-py2.py3-none-any.whl`.file to this directory.
 * Run the following command from this directory:
-> make.vbs
+> make.bat
 * The output file named "KolibriSetup-X.X.X.exe" will appear within this project folder.
 
 Note: Building is not supported/recommended in Windows 7. However, builds have been tested to work on an updated Windows 7.
