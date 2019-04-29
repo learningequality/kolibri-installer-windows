@@ -4,13 +4,9 @@
 #define MyAppSupportURL "https://community.learningequality.org/c/support/kolibri"
 #define MyDocsURL "https://kolibri.readthedocs.io"
 #define MyAppExeName "Kolibri.exe"
-
-#define getKolibriVersion() \
-    Local[1] = GetEnv("KOLIBRI_BUILD_VERSION")
-
-#define TargetVersion = getKolibriVersion();
-
+#define TargetVersion =  GetEnv("KOLIBRI_BUILD_VERSION")
 #expr DeleteFile(SourcePath+"\version.temp")
+
 
 [Setup]
 AppId={#MyAppName}-{#MyAppPublisher}
@@ -359,7 +355,8 @@ begin
     )
     Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
 
-    { Use this environment varaible to get the selected language for the kolibri GUI application. }    RegWriteStringValue(
+    { Use this environment varaible to get the selected language for the kolibri GUI application. }
+    RegWriteStringValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG',

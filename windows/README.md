@@ -5,7 +5,8 @@ This project provides a smoother way to install and run Kolibri in a Windows Mac
 
 ---
 #### This project was built using the following software:
-* Windows 8.1 32 bit.
+
+* Windows 8.1 32/64bit or Windows 10 32/64bit
 * Inno Setup 5.5.9 unicode [Download] (http://www.jrsoftware.org/download.php/is-unicode.exe)
 * Microsoft Visual Studio Community 2015 [Website] (https://www.visualstudio.com/)
 * Git (note: install with the option to place the `git` executable in the path, so it can be run within `cmd`)
@@ -32,14 +33,11 @@ Note: If you *do* make changes to anything in `gui-source`, be sure to build and
 
 * Clone this repository;
 * Follow the `Instructions to build "kolibri-static"` and copy the `kolibri\dist\kolibri_static-x.x.x-py2.py3-none-any.whl`.file to this directory.
-* Set the environment variable KOLIBRI_BUILD_VERSION to the desired version for the installer, e.g. `0.0.1`.
-  This should match the version in the sdist *exactly*, so `kolibri_static-0.0.1-py2.py3-none-any.whl` means that `KOLIBRI_BUILD_VERSION``
-  should have the value `0.0.1`.
-* Set environment variable using command prompt: > setx KOLIBRI_BUILD_VERSION 0.0.1
-* In Windows, run the following command from this directory:
-> make.vbs
+* Run the following command from this directory:
+> make.bat
 * The output file named "KolibriSetup-X.X.X.exe" will appear within this project folder.
 
+Note: Building is not supported/recommended in Windows 7. However, builds have been tested to work on an updated Windows 7.
 
 ---
 #### Instructions to extract and encode translatable strings from Inno setup .isl file:
