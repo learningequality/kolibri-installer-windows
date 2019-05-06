@@ -1,10 +1,12 @@
-# kolibri windows installer
+# Kolibri Windows Installer
 
-Repository for Kolibri windows installer and launcher application
+Repository for the Kolibri windows installer and launcher application
 
 ## Release history
 
-The installer versions have been applied as follows:
+See https://github.com/learningequality/kolibri-installer-windows/releases
+
+## Python versions
 
 | Installer release | Kolibri versions | Comments        |
 | -----------------:| ----------------:|:--------------- |
@@ -14,4 +16,5 @@ The installer versions have been applied as follows:
 | 1.1.1             | 0.7.1            | Python 2.7.13   |
 | 1.1.2             | 0.9.1            | Python 2.7.13   |
 | 1.2.0             | 0.10.x           | Python 3.4.3    |
-| 1.2.1             | 0.11.x           | Python 3.4.3    |
+| 1.2.1             | 0.11.x,<=0.12.2  | Python 3.4.3    |
+| 1.3.0             | 0.12.3+          | Python 3.4.3    |
