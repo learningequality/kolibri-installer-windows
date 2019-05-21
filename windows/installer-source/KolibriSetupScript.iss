@@ -89,6 +89,22 @@ var
   restoreDatabaseTemp : integer;
   forceCancel : boolean;
 
+function openLogFile:string;
+var
+  logfilepathname: string;
+  logfilename: string;
+  newfilepathname: string;
+begin
+    logfilepathname := expandconstant('{log}');
+    logfilename := ExtractFileName(logfilepathname);
+    RenameFile(logfilename,'Setup_Log.log');
+    newfilepathname := expandconstant('{%HOMEPATH}') + '\Desktop\Setup_Log.log';
+
+    if FileExists(newfilepathname) then DeleteFile(newfilepathname);
+
+    filecopy(logfilepathname, newfilepathname, false);
+end;
+
 procedure InitializeWizard;
 begin
     isUpgrade := False;
@@ -262,21 +278,28 @@ end;
 {REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
 procedure ExitProcess(uExitCode: Integer);
   external 'ExitProcess@kernel32.dll stdcall';
-  
+
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
 begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
-        ExtractTemporaryFile('python-3.4.3.amd64.msi');
-        ExtractTemporaryFile('python-3.4.3.msi');
-        ExtractTemporaryFile('python-exe.bat');
-        ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
+        try
+            ExtractTemporaryFile('python-3.4.3.amd64.msi');
+            ExtractTemporaryFile('python-3.4.3.msi');
+            ExtractTemporaryFile('python-exe.bat');
+            ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
+        except
+            MsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_OK);
+            openLogFile;
+            ExitProcess(1);
+        end;    
     end
     else begin
-        if(MsgBox(CustomMessage('InstallPtythonErrMsg')+ \n + , mbError, MB_OKCANCEL) = idCANCEL) then
+        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
           begin
+            openLogFile;
             forceCancel := True;
             ExitProcess(1);
           end
@@ -288,34 +311,29 @@ end;
 { Used in GetPipPath below }
 const
     DEFAULT_PATH = '\Python34\Scripts\pip.exe';
-
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
 
 function FailedInstallation : String;
 begin
-    MsgBox(CustomMessage('KolibriInstallFailed'), mbError, MB_OK);
-    Log('C:' + DEFAULT_PATH + CustomMessage('PipNotFound'));
+    MsgBox(CustomMessage('KolibriInstallFailed') + 'C:' + DEFAULT_PATH + CustomMessage('PipNotFound'), mbCriticalError, MB_OK);
     RemoveOldInstallation(ExpandConstant('{app}'));
-    forceCancel := True   
+    forceCancel := True
+    openLogFile;
     ExitProcess(1);
     end;
 
 function GetPipPath : String;
 var
     path : string;
-    i : integer;
 begin
-    for i := Ord('C') to Ord('H') do
-    begin
-        path := Chr(i) + ':' + DEFAULT_PATH;
-        if FileExists(path) then
+    path := expandconstant('{sd}') + DEFAULT_PATH;
+    if FileExists(path) then
         begin
-            Result := path;
+          Result := path;
             exit;
         end;
-    end;
     begin
         FailedInstallation;
         Result := '';
@@ -348,45 +366,50 @@ begin
     begin
         FailedInstallation;
     end;
+    try
+        { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
+        RegDeleteValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_SCRIPT_DIR'
+        )
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
 
-    { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
-    RegDeleteValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_SCRIPT_DIR'
-    )
-    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+        { Use this environment varaible to get the selected language for the kolibri GUI application. }
+        RegWriteStringValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_GUI_LANG',
+            ExpandConstant('{language}')
+        );
 
-    { Use this environment varaible to get the selected language for the kolibri GUI application. }
-    RegWriteStringValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_GUI_LANG',
-        ExpandConstant('{language}')
-    );
+        { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
+        RegDeleteValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_SCRIPT_DIR'
+        )
 
-    { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
-    RegDeleteValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_SCRIPT_DIR'
-    )
-
-    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
-    { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-    { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
-    RegWriteStringValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_SCRIPT_DIR',
-        GetPipDir('')
-    );
-    RegDeleteValue(
-        HKLM,
-        'System\CurrentControlSet\Control\Session Manager\Environment',
-        'KOLIBRI_SETUP'
-    )
-    Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+        { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
+        { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
+        RegWriteStringValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_SCRIPT_DIR',
+            GetPipDir('')
+        );
+        RegDeleteValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_SETUP'
+        )
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+    except
+        MsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_OK);
+        openLogFile;
+        ExitProcess(1);
+    end;    
 end;
 
 function InitializeSetup(): Boolean;
@@ -458,7 +481,6 @@ begin
             if Not forceCancel then
         end;
     end;
-
 end;
 
 { Called just prior to uninstall finishing. }
@@ -477,16 +499,4 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG'
     )
-end;
-
-function launchLogFile(errorMessage:string):string;
-var
-logfilepathname, logfilename, newfilepathname: string;
-begin
-    log(errorMessage);
-    logfilepathname := expandconstant('{log}');
-    logfilename := ExtractFileName(logfilepathname);
-    RenameFile(logfilename,'Setup_Log.log');
-    newfilepathname := expandconstant('C:\') +'Setup_Log.log'
-    filecopy(logfilepathname, newfilepathname, false);
 end;
