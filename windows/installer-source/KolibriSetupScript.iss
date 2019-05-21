@@ -26,6 +26,7 @@ SolidCompression=yes
 PrivilegesRequired=admin
 UsePreviousAppDir=yes
 ChangesEnvironment=yes
+SetupLogging=yes
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -261,7 +262,7 @@ end;
 {REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
 procedure ExitProcess(uExitCode: Integer);
   external 'ExitProcess@kernel32.dll stdcall';
-
+  
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -274,7 +275,7 @@ begin
         ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
     end
     else begin
-        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
+        if(MsgBox(CustomMessage('InstallPtythonErrMsg')+ \n + , mbError, MB_OKCANCEL) = idCANCEL) then
           begin
             forceCancel := True;
             ExitProcess(1);
@@ -284,7 +285,6 @@ begin
         end
     end;
 end;
-
 { Used in GetPipPath below }
 const
     DEFAULT_PATH = '\Python34\Scripts\pip.exe';
@@ -292,9 +292,11 @@ const
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
+
 function FailedInstallation : String;
 begin
     MsgBox(CustomMessage('KolibriInstallFailed'), mbError, MB_OK);
+    Log('C:' + DEFAULT_PATH + CustomMessage('PipNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True   
     ExitProcess(1);
@@ -406,7 +408,6 @@ begin
 
     if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
-        Log('The Value is: ' + IntToStr(PythonVersionCodeCheck));
         if PythonVersionCodeCheck = 1 then
         begin
             HandlePythonSetup();
@@ -476,4 +477,16 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG'
     )
+end;
+
+function launchLogFile(errorMessage:string):string;
+var
+logfilepathname, logfilename, newfilepathname: string;
+begin
+    log(errorMessage);
+    logfilepathname := expandconstant('{log}');
+    logfilename := ExtractFileName(logfilepathname);
+    RenameFile(logfilename,'Setup_Log.log');
+    newfilepathname := expandconstant('C:\') +'Setup_Log.log'
+    filecopy(logfilepathname, newfilepathname, false);
 end;
