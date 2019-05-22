@@ -97,13 +97,17 @@ var
 begin
     logfilepathname := expandconstant('{log}');
     logfilename := ExtractFileName(logfilepathname);
-    RenameFile(logfilename,'Setup_Log.log');
-    newfilepathname := expandconstant('{%HOMEPATH}') + '\Desktop\Setup_Log.log';
+    RenameFile(logfilename,'Kolibri-setup.log');
+    newfilepathname := expandconstant('{%HOMEPATH}') + '\Desktop\Kolibri-setup.log';
 
     if FileExists(newfilepathname) then DeleteFile(newfilepathname);
 
     filecopy(logfilepathname, newfilepathname, false);
 end;
+
+{REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
+procedure ExitProcess(uExitCode: Integer);
+  external 'ExitProcess@kernel32.dll stdcall';
 
 procedure InitializeWizard;
 begin
@@ -112,9 +116,16 @@ begin
 
     if WizardForm <> nil then
     begin
-        ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
-        Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
+        try
+            ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+            ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
+            Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
+        except
+            MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
+            expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
+            openLogFile;
+            ExitProcess(1);
+        end;    
     end;
 
 end;
@@ -275,10 +286,6 @@ begin
     end;
 end;
 
-{REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
-procedure ExitProcess(uExitCode: Integer);
-  external 'ExitProcess@kernel32.dll stdcall';
-
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -291,7 +298,8 @@ begin
             ExtractTemporaryFile('python-exe.bat');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
-            MsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_OK);
+            MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
+            expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
             openLogFile;
             ExitProcess(1);
         end;    
@@ -317,13 +325,14 @@ const
 
 function FailedInstallation : String;
 begin
-    MsgBox(CustomMessage('KolibriInstallFailed') + 'C:' + DEFAULT_PATH + CustomMessage('PipNotFound'), mbCriticalError, MB_OK);
+    MsgBox(CustomMessage('KolibriInstallFailed') + expandconstant('{sd}') + DEFAULT_PATH + CustomMessage('PipNotFound') +
+    CustomMessage('Needhelp') + expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log', mbCriticalError, MB_OK);
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
     openLogFile;
     ExitProcess(1);
     end;
-
+ 
 function GetPipPath : String;
 var
     path : string;
@@ -406,7 +415,8 @@ begin
         )
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
     except
-        MsgBox(AddPeriod(GetExceptionMessage),mbCriticalError, MB_OK);
+        MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
+        expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
         openLogFile;
         ExitProcess(1);
     end;    
