@@ -7,7 +7,6 @@
 #define TargetVersion =  GetEnv("KOLIBRI_BUILD_VERSION")
 #expr DeleteFile(SourcePath+"\version.temp")
 
-
 [Setup]
 AppId={#MyAppName}-{#MyAppPublisher}
 AppName={#MyAppName}
@@ -46,7 +45,7 @@ Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\images\logo48.ico"; DestDir: "{app}\images"; Flags: ignoreversion
 Source: "..\gui-packed\icon\logo48.ico"; DestDir: "{app}\icon"; Flags: ignoreversion
 Source: "..\python-setup\*"; DestDir: "{app}\python-setup"; Flags: ignoreversion
-
+Source: "..\inno-compiler\SecurityAndMaintenance_Error.bmp"; DestDir: "{app}";
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\images\logo48.ico"
@@ -89,20 +88,191 @@ var
   restoreDatabaseTemp : integer;
   forceCancel : boolean;
 
-function openLogFile:string;
+function OpenLogFile():string;
 var
   logfilepathname: string;
   logfilename: string;
   newfilepathname: string;
 begin
-    logfilepathname := expandconstant('{log}');
+    logfilepathname := ExpandConstant('{log}');
     logfilename := ExtractFileName(logfilepathname);
     RenameFile(logfilename,'Kolibri-setup.log');
-    newfilepathname := expandconstant('{%HOMEPATH}') + '\Desktop\Kolibri-setup.log';
+    newfilepathname := ExpandConstant('{%HOMEPATH}') + '\Desktop\Kolibri-setup.log';
 
     if FileExists(newfilepathname) then DeleteFile(newfilepathname);
 
     filecopy(logfilepathname, newfilepathname, false);
+end;
+
+procedure URLLabelOnClick(Sender: TObject);
+var
+  errorCode: Integer;
+begin
+  ShellExecAsOriginalUser('open', 'https://community.learningequality.org', '', '', SW_SHOWNORMAL, ewNoWait, errorCode);
+end;
+
+procedure FileLabelOnClick(Sender: TObject);
+var
+  errorCode: Integer;
+begin
+  ShellExecAsOriginalUser('open',  ExpandConstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log', '', '', SW_SHOWNORMAL, ewNoWait, errorCode);
+end;
+
+{Customize message box}
+function CustomizeMsgbox(msgErr: string):integer;
+var
+  form: TSetupForm;
+  okButton: TNewButton;
+  failToInstallLine: TLabel;
+  logPathLine: TLabel;
+  needHelpLine: TLabel;
+  forumsLinkLine: TLabel;
+  errDetailsLine: TLabel;
+  memoErrMsgLine: TNewMemo;
+  parentForm: TSetupForm;
+  bitmapImage: TBitmapImage;
+  bitmapFileName : string;
+begin
+
+  form := CreateCustomForm;
+  with form do
+    begin
+        BorderStyle := bsDialog;
+        Position := poScreenCenter;
+        ClientWidth := ScaleX(380);
+        ClientHeight := ScaleY(240);
+        Caption := 'Setup Error';
+        Color := clWindow;
+        ParentBackground := False;
+    end;
+  
+  failToInstallLine := TLabel.Create(Form);
+  with failToInstallLine do
+    begin
+        Parent := Form;
+        Left := ScaleX(70);
+        Top := ScaleX(16);
+        Width := Form.ClientWidth - 2*ScaleX(130);
+        Height := ScaleY(150);
+        AutoSize := True;
+        WordWrap := false;
+        Caption := CustomMessage('KolibriInstallFailed');
+        Font.Size := 8;
+    end;
+  Log(CustomMessage('KolibriInstallFailed'));
+  
+  logPathLine := TLabel.Create(Form);
+  with logPathLine do
+    begin
+        Parent := Form;
+        Left := ScaleX(70);
+        Top := ScaleX(45);
+        Width := Form.ClientWidth - 2*ScaleX(130);
+        Height := ScaleY(170);
+        AutoSize := True;
+        WordWrap := false;
+        Caption := ExpandConstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log';
+        Cursor := crHand;
+        OnClick := @FileLabelOnClick;
+        Font.Style := LogPathLine.Font.Style + [fsUnderline];
+        Font.Color := clHotLight
+        Font.Size := 8;
+    end;
+  Log(ExpandConstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log');
+  
+  needHelpLine := TLabel.Create(Form);
+  with needHelpLine do
+    begin
+        Parent := Form;
+        Left := ScaleX(70);
+        Top := ScaleX(72);
+        Width := Form.ClientWidth - 2*ScaleX(130);
+        Height := ScaleY(150);
+        AutoSize := True;
+        WordWrap := false;
+        Caption := CustomMessage('Needhelp');
+        Font.Size := 8;  
+    end;
+  Log(CustomMessage('Needhelp'));
+
+  forumsLinkLine := TLabel.Create(Form);
+  with forumsLinkLine do
+    begin
+        Parent := Form;
+        Left := ScaleX(70);
+        Top := ScaleX(89);
+        Width := Form.ClientWidth - 2*ScaleX(130);
+        Height := ScaleY(150);
+        AutoSize := True;
+        WordWrap := false;
+        Caption := 'https://community.learningequality.org';
+        Cursor := crHand;
+        OnClick := @URLLabelOnClick;
+        Font.Style := ForumsLinkLine.Font.Style + [fsUnderline];
+        Font.Color := clHotLight
+        Font.Size := 8;
+    end;
+  Log('https://community.learningequality.org');
+
+  errDetailsLine := TLabel.Create(Form);
+  with errDetailsLine do
+    begin
+        Parent := Form;
+        Left := ScaleX(70);
+        Top := ScaleX(118);
+        Width := Form.ClientWidth - 2*ScaleX(130);
+        Height := ScaleY(150);
+        AutoSize := True;
+        WordWrap := false;
+        Caption := 'Error details:';
+        Font.Size := 8;
+    end;
+  Log('Error details:');
+
+  memoErrMsgLine := TNewMemo.Create(Form);
+  with memoErrMsgLine do
+    begin
+        Left := ScaleX(70);
+        Top := ScaleX(136);
+        Width := Form.ClientWidth - ScaleX(90);
+        Height := ScaleY(60);
+        ScrollBars := ssVertical;
+        Text := msgErr;
+        ReadOnly := True;
+        WordWrap := True;
+        Parent := Form;
+    end;
+  Log(msgErr);
+  
+  okButton := TNewButton.Create(Form);
+  with okButton do
+    begin
+        Parent := Form;
+        Width := ScaleX(80);
+        Height := ScaleY(24);
+        Left :=Form.ClientWidth - 2*ScaleX(48);
+        Top := Form.ClientHeight - OkButton.Height - ScaleY(8);
+        Caption := '&Ok';
+        ModalResult := mrOk;
+    end;
+
+  bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
+  ExtractTemporaryFile(ExtractFileName(bitmapFileName));
+  
+  bitmapImage := TBitmapImage.Create(Form);
+  with bitmapImage do
+    begin
+        Parent := Form;
+        Bitmap.LoadFromFile(BitmapFileName);
+        Stretch := True;
+        Left :=ScaleX(20);
+         Top := ScaleX(12);
+         Width := ScaleX(41);
+        Height := ScaleY(41); 
+    end;
+
+  OpenLogFile();
+  result := Form.ShowModal;
 end;
 
 {REF: http://stackoverflow.com/questions/4438506/exit-from-inno-setup-instalation-from-code}
@@ -121,9 +291,7 @@ begin
             ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
         except
-            MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
-            expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
-            openLogFile;
+           CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end;
@@ -162,7 +330,7 @@ end;
 
 { Get the previous version number by checking the uninstall key registry values. }
 { IS writes quite a bit of information to the registry by default: https://github.com/jrsoftware/issrc/blob/5203240a7de9b83c5432bee0b5b09d467869a02b/Projects/Install.pas#L434 }
-function GetPreviousVersion : String;
+function GetPreviousVersion() : String;
 var
     subkey : String;
 begin
@@ -187,7 +355,7 @@ begin
     end;
 end;
 
-procedure ConfirmUpgradeDialog;
+procedure ConfirmUpgradeDialog();
 begin
     if MsgBox(CustomMessage('UpgradeMsg'), mbInformation,  MB_YESNO or MB_DEFBUTTON1) = IDYES then
     begin
@@ -208,8 +376,8 @@ function CompareVersion(V1, V2: string): Integer;
 var
   P, N1, N2: Integer;
 begin
-  Result := 0;
-  while (Result = 0) and ((V1 <> '') or (V2 <> '')) do
+  result := 0;
+  while (result = 0) and ((V1 <> '') or (V2 <> '')) do
   begin
     P := Pos('.', V1);
     if P > 0 then
@@ -245,9 +413,9 @@ begin
       N2 := 0;
     end;
 
-    if N1 < N2 then Result := -1
+    if N1 < N2 then result := -1
       else
-    if N1 > N2 then Result := 1;
+    if N1 > N2 then result := 1;
   end;
 end;
 
@@ -256,10 +424,10 @@ var
     prevVerStr : String;
     retCode: Integer;
 begin
-    prevVerStr := GetPreviousVersion()
+    prevVerStr := GetPreviousVersion();
     if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
     begin
-        ConfirmUpgradeDialog;
+        ConfirmUpgradeDialog();
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
         if Not forceCancel then
         begin
@@ -298,16 +466,14 @@ begin
             ExtractTemporaryFile('python-exe.bat');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
-            MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
-            expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
-            openLogFile;
+            CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end
     else begin
         if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
           begin
-            openLogFile;
+            OpenLogFile();
             forceCancel := True;
             ExitProcess(1);
           end
@@ -318,40 +484,38 @@ begin
 end;
 { Used in GetPipPath below }
 const
-    DEFAULT_PATH = '\Python34\Scripts\pip.exe';
+    DEFAULT_PIP_PATH = '\Python34\Scripts\pip.exe';
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
 
-function FailedInstallation : String;
+function FailedPipNotFound() : String;
 begin
-    MsgBox(CustomMessage('KolibriInstallFailed') + expandconstant('{sd}') + DEFAULT_PATH + CustomMessage('PipNotFound') +
-    CustomMessage('Needhelp') + expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log', mbCriticalError, MB_OK);
+    CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('PipNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
-    openLogFile;
     ExitProcess(1);
     end;
  
-function GetPipPath : String;
+function GetPipPath() : String;
 var
     path : string;
 begin
-    path := expandconstant('{sd}') + DEFAULT_PATH;
+    path := ExpandConstant('{sd}') + DEFAULT_PIP_PATH;
     if FileExists(path) then
         begin
-          Result := path;
+            result := path;
             exit;
         end;
     begin
-        FailedInstallation;
-        Result := '';
+        FailedPipNotFound();
+        result := '';
     end;
 end;
 
 function GetPipDir(Value: string): String;
 begin
-    result := ExtractFileDir(GetPipPath);
+    result := ExtractFileDir(GetPipPath());
 end;
 
 procedure HandlePipSetup;
@@ -361,7 +525,7 @@ var
     ErrorCode: integer;
 
 begin
-    PipPath := GetPipPath;
+    PipPath := GetPipPath();
     if PipPath = '' then
         exit;
     PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
@@ -370,12 +534,11 @@ begin
     WizardForm.StatusLabel.Font.Style := [fsBold];
     WizardForm.StatusLabel.Caption := CustomMessage('SetupWizardMsg');
     WizardForm.ProgressGauge.Style := npbstMarquee;
-
+    
     if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
-        FailedInstallation;
+        FailedPipNotFound();
     end;
-    try
         { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
         RegDeleteValue(
             HKLM,
@@ -413,13 +576,7 @@ begin
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SETUP'
         )
-        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
-    except
-        MsgBox(AddPeriod(GetExceptionMessage) + CustomMessage('Needhelp') + 
-        expandconstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log',mbCriticalError, MB_OK);
-        openLogFile;
-        ExitProcess(1);
-    end;    
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)   
 end;
 
 function InitializeSetup(): Boolean;
@@ -429,7 +586,7 @@ var
   PythonPath: string;
 begin
     installFlag:=true;
-    Result := true;
+    result := true;
     startupFlag:=''; 
   
     ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, killErrorCode)
