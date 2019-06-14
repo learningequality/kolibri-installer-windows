@@ -78,14 +78,11 @@ function GetPreviousVersion : String; Forward;
 var
   installFlag : boolean;
   startupFlag : string;
-  StartupOptionsPage : TOutputMsgWizardPage;
   isUpgrade : boolean;
   stopServerCode: integer;
   removeOldGuiTool: integer;
   uninstallError: integer;
-  saveDatabaseTemp : integer;
   cleanOldKolibriFolder : integer;
-  restoreDatabaseTemp : integer;
   forceCancel : boolean;
 
 function OpenLogFile():string;
@@ -108,7 +105,7 @@ procedure URLLabelOnClick(Sender: TObject);
 var
   errorCode: Integer;
 begin
-  ShellExecAsOriginalUser('open', 'https://community.learningequality.org', '', '', SW_SHOWNORMAL, ewNoWait, errorCode);
+  ShellExecAsOriginalUser('open', CustomMessage('CommunityLink'), '', '', SW_SHOWNORMAL, ewNoWait, errorCode);
 end;
 
 procedure FileLabelOnClick(Sender: TObject);
@@ -123,17 +120,16 @@ function CustomizeMsgbox(msgErr: string):integer;
 var
   form: TSetupForm;
   okButton: TNewButton;
-  failToInstallLine: TLabel;
-  logPathLine: TLabel;
-  needHelpLine: TLabel;
-  forumsLinkLine: TLabel;
-  errDetailsLine: TLabel;
-  memoErrMsgLine: TNewMemo;
-  parentForm: TSetupForm;
+  failToInstall: TLabel;
+  logPath: TLabel;
+  needHelp: TLabel;
+  forumsLink: TLabel;
+  errDetails: TLabel;
+  memoErrMsg: TNewMemo;
   bitmapImage: TBitmapImage;
   bitmapFileName : string;
-begin
 
+begin
   form := CreateCustomForm;
   with form do
     begin
@@ -146,8 +142,8 @@ begin
         ParentBackground := False;
     end;
   
-  failToInstallLine := TLabel.Create(Form);
-  with failToInstallLine do
+  failToInstall := TLabel.Create(Form);
+  with failToInstall do
     begin
         Parent := Form;
         Left := ScaleX(70);
@@ -161,8 +157,8 @@ begin
     end;
   Log(CustomMessage('KolibriInstallFailed'));
   
-  logPathLine := TLabel.Create(Form);
-  with logPathLine do
+  logPath := TLabel.Create(Form);
+  with logPath do
     begin
         Parent := Form;
         Left := ScaleX(70);
@@ -174,14 +170,14 @@ begin
         Caption := ExpandConstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log';
         Cursor := crHand;
         OnClick := @FileLabelOnClick;
-        Font.Style := LogPathLine.Font.Style + [fsUnderline];
+        Font.Style := LogPath.Font.Style + [fsUnderline];
         Font.Color := clHotLight
         Font.Size := 8;
     end;
   Log(ExpandConstant('{sd}' + '{%HOMEPATH}') + '\Desktop\Kolibri-setup.log');
   
-  needHelpLine := TLabel.Create(Form);
-  with needHelpLine do
+  needHelp := TLabel.Create(Form);
+  with needHelp do
     begin
         Parent := Form;
         Left := ScaleX(70);
@@ -195,8 +191,8 @@ begin
     end;
   Log(CustomMessage('Needhelp'));
 
-  forumsLinkLine := TLabel.Create(Form);
-  with forumsLinkLine do
+  forumsLink := TLabel.Create(Form);
+  with forumsLink do
     begin
         Parent := Form;
         Left := ScaleX(70);
@@ -205,17 +201,17 @@ begin
         Height := ScaleY(150);
         AutoSize := True;
         WordWrap := false;
-        Caption := 'https://community.learningequality.org';
+        Caption := CustomMessage('CommunityLink');
         Cursor := crHand;
         OnClick := @URLLabelOnClick;
-        Font.Style := ForumsLinkLine.Font.Style + [fsUnderline];
+        Font.Style := ForumsLink.Font.Style + [fsUnderline];
         Font.Color := clHotLight
         Font.Size := 8;
     end;
-  Log('https://community.learningequality.org');
+  Log(CustomMessage('CommunityLink'));
 
-  errDetailsLine := TLabel.Create(Form);
-  with errDetailsLine do
+  errDetails := TLabel.Create(Form);
+  with errDetails do
     begin
         Parent := Form;
         Left := ScaleX(70);
@@ -229,13 +225,13 @@ begin
     end;
   Log('Error details:');
 
-  memoErrMsgLine := TNewMemo.Create(Form);
-  with memoErrMsgLine do
+  memoErrMsg := TNewMemo.Create(Form);
+  with memoErrMsg do
     begin
         Left := ScaleX(70);
         Top := ScaleX(136);
         Width := Form.ClientWidth - ScaleX(90);
-        Height := ScaleY(60);
+        Height := ScaleY(60); 
         ScrollBars := ssVertical;
         Text := msgErr;
         ReadOnly := True;
@@ -257,7 +253,7 @@ begin
     end;
 
   bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
-  ExtractTemporaryFile(ExtractFileName(bitmapFileName));
+  //ExtractTemporaryFile(ExtractFileName(bitmapFileName));
   
   bitmapImage := TBitmapImage.Create(Form);
   with bitmapImage do
@@ -295,7 +291,6 @@ begin
             ExitProcess(1);
         end;    
     end;
-
 end;
 
 procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);
@@ -422,7 +417,6 @@ end;
 procedure HandleUpgrade(targetPath : String);
 var
     prevVerStr : String;
-    retCode: Integer;
 begin
     prevVerStr := GetPreviousVersion();
     if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
@@ -491,7 +485,7 @@ const
 
 function FailedPipNotFound() : String;
 begin
-    CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('PipNotFound'));
+    CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
     ExitProcess(1);
@@ -621,8 +615,6 @@ end;
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   informationBoxFlagged: boolean;
-  userKolibriDir: String;
-  extractContent: String;
 begin
     RegWriteStringValue(
       HKLM,
