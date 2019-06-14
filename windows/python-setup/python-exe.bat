@@ -3,6 +3,11 @@
 Set version=3.4.3
 Set python32Bit=python-%version%.msi
 Set python64Bit=python-%version%.amd64.msi
+Set pythonPath=%cd:~0,2%/Python34/Scripts
+
+rem Add the pythonPath to environment variables.
+:Add_python_Path
+Setx Path "%pythonPath%;%Path%"
 
 rem Execute python based on machine architecture.
 :Check_Architecture
