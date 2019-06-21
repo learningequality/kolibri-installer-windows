@@ -4,9 +4,27 @@ Set version=3.4.3
 Set python32Bit=python-%version%.msi
 Set python64Bit=python-%version%.amd64.msi
 Set pythonPath=%cd:~0,2%/Python34/Scripts
+Set envString=%Path%
+Set is_pythonPath=false
+
+rem check if pythonPath exist in environment variables
+:Check_Pyhon_Path_exist
+For /f "tokens=1* delims=;" %%i IN ("%envString%") DO (
+   If %pythonPath% == %%i (
+       Set is_pythonPath=true   
+   )
+   set envString=%%j
+   goto Check_Pyhon_Path_exist
+)
+
+If %is_pythonPath% == false (
+    Goto Add_Python_Path
+) Else (
+    Goto Check_Architecture
+)
 
 rem Add the pythonPath to environment variables.
-:Add_python_Path
+:Add_Python_Path
 Setx Path "%pythonPath%;%Path%"
 
 rem Execute python based on machine architecture.
