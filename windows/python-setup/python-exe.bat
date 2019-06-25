@@ -8,13 +8,13 @@ Set envString=%Path%
 Set is_pythonPath=false
 
 rem check if pythonPath exist in environment variables
-:Check_Pyhon_Path_exist
+:Check_Python_Path_Exist
 For /f "tokens=1* delims=;" %%i IN ("%envString%") DO (
    If %pythonPath% == %%i (
-       Set is_pythonPath=true   
+       Set is_pythonPath=true
    )
-   set envString=%%j
-   goto Check_Pyhon_Path_exist
+   Set envString=%%j
+   Goto Check_Python_Path_Exist
 )
 
 If %is_pythonPath% == false (
@@ -32,10 +32,9 @@ rem Execute python based on machine architecture.
 If /i "%processor_architecture%"=="x86" (
     If NOT DEFINED PROCESSOR_ARCHITEW6432 (
         msiexec /i "%python32Bit%" /passive
-
     ) Else (
         msiexec /i "%python64Bit%" /passive
-    )           
+    )    
 ) Else (
         msiexec /i "%python64Bit%" /passive
 )
