@@ -8,6 +8,7 @@
 #include <io.h>
 #include <atlstr.h>
 #include <fstream>
+#include <cstdlib>
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
@@ -69,6 +70,22 @@ char * getKolibriLinkAddress() {
 		return httpLink;
 	}
 	return "";
+}
+
+wchar_t * getLink(char *linkAddress, wchar_t * strid1, wchar_t * strid2) {
+	wchar_t * strSource = strid1;
+
+	size_t newsize = strlen(linkAddress) + 1;
+
+	wchar_t * wcstring = new wchar_t[newsize];
+
+	size_t convertedChars = 0;
+	mbstowcs_s(&convertedChars, wcstring, newsize, linkAddress, _TRUNCATE);
+
+	wcscat(strSource, wcstring);
+	wcscat(strSource, strid2);
+
+	return strSource;
 }
 
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
@@ -226,7 +243,7 @@ void checkServerThread()
 			{
 				loadBrowserAction();
 			}
-			window->sendTrayMessage(getStr(ID_STRING_10_en), getStr(ID_STRING_11_en));
+			window->sendTrayMessage(getStr(ID_STRING_10_en), getLink(getKolibriLinkAddress(),getStr(ID_STRING_11_en), getStr(ID_STRING_20_en)));
 			needNotify = false;
 		}
 
