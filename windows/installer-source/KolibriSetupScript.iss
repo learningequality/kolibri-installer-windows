@@ -5,7 +5,7 @@
 #define MyDocsURL "https://kolibri.readthedocs.io"
 #define MyAppExeName "Kolibri.exe"
 #define TargetVersion =  GetEnv("KOLIBRI_BUILD_VERSION")
-#expr DeleteFile(SourcePath+"\version.temp")
+#expr DeleteFile(SourcePath+"\version.temp") 
 
 [Setup]
 AppId={#MyAppName}-{#MyAppPublisher}
@@ -84,6 +84,7 @@ var
   uninstallError: integer;
   cleanOldKolibriFolder : integer;
   forceCancel : boolean;
+  isWindowsInstall : boolean;
 
 function OpenLogFile():string;
 var
@@ -420,30 +421,30 @@ var
 begin
     prevVerStr := GetPreviousVersion();
     if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
-    begin
+    begin   
         ConfirmUpgradeDialog();
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
         if Not forceCancel then
         begin
             RemoveOldInstallation(targetPath);
         end;
-    end;
+    end;  
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
     result := True;
-
+    isWindowsInstall := true;
     if CurPageID = wpSelectTasks then
     begin
-        if WizardForm <> nil then
+        if WizardForm <> nil then 
             HandleUpgrade(WizardForm.PrevAppDir);
     end;
-    
+
     if CurPageID = wpSelectDir then
     begin
         { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
-        if Not isUpgrade then
+        if Not isUpgrade then  
             HandleUpgrade(ExpandConstant('{app}'));
     end;
 end;
@@ -594,7 +595,7 @@ begin
     begin
         if PythonVersionCodeCheck = 1 then
         begin
-            HandlePythonSetup();
+            HandlePythonSetup(); 
         end;
     end
     else 
@@ -606,7 +607,30 @@ end;
 function InitializeUninstall(): Boolean;
 var
 ErrorCode: Integer;
+kolibriHomePath: String;
+kolibriHomeEnv: String;
 begin
+  if not isWindowsInstall then
+  begin
+    kolibriHomeEnv := GetEnv('KOLIBRI_HOME');
+    kolibriHomePath :=  GetEnv('USERPROFILE') + '\.kolibri';
+    
+    if DirExists(ExtractFileDir(kolibriHomeEnv)) then
+      begin
+        kolibriHomePath := kolibriHomeEnv
+      end;
+    if DirExists(kolibriHomePath) then
+      begin
+      if(MsgBox(CustomMessage('UninstallKolibriData') + #13#10 + #13#10 + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath, mbConfirmation, MB_YESNO) = idYes) then
+        begin
+          DelTree(kolibriHomePath, True, True, True);
+          if not DirExists(kolibriHomePath) then
+          begin
+            MsgBox(CustomMessage('UninstallKolibriDataSuccess'), mbInformation, MB_OK);  
+          end;
+        end;
+      end;
+  end;
   ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   result := True;

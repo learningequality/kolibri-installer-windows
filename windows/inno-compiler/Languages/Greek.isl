@@ -351,3 +351,6 @@ KolibriDocs=Documentation
 FileNotFound= was not found.
 Needhelp=To get help online, please visit our community forum:
 CommunityLink=https://community.learningequality.org
+UninstallKolibriData=Do you want to delete the Kolibri data files?
+UninstallKolibriPath=This is the directory where the Kolibri data files are located
+UninstallKolibriDataSuccess=Kolibri data files successfully deleted
