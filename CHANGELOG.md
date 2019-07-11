@@ -16,14 +16,9 @@ List of the most important changes for each release.
 
 ## 1.3.0
 
-- NONE: Sorry but this milestone was not created or is missing on Github so we cannot list features/issues for this release.
-
-
-## 1.2.2
-
 - CHANGED: Improve the signing process and installer display
 
-([1.2.2 Github milestone](https://github.com/learningequality/kolibri-installer-windows/milestone/6))
+([1.3.0 Github milestone](https://github.com/learningequality/kolibri-installer-windows/milestone/6))
 
 
 ## 1.2.1
