@@ -9,6 +9,7 @@
 #include <atlstr.h>
 #include <fstream>
 
+
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
 
@@ -71,6 +72,16 @@ char * getKolibriLinkAddress() {
 	return "";
 }
 
+// REF: https://stackoverflow.com/a/8032108
+wchar_t *getWC(char *c)
+{
+	const size_t cSize = strlen(c) + 1;
+	wchar_t* wc = new wchar_t[cSize];
+	mbstowcs(wc, c, cSize);
+
+	return wc;
+}
+
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -97,7 +108,6 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	}
 	return;
 }
-
 
 void startServerAction()
 {
@@ -216,6 +226,12 @@ void serverStartingMsg() {
 
 void checkServerThread()
 {
+	wchar_t msgString[120];
+
+	wcscpy(msgString, getStr(ID_STRING_11_en));
+	wcscat(msgString, getWC(getKolibriLinkAddress()));
+	wcscat(msgString, getStr(ID_STRING_20_en));
+	
 	// We can handle things like checking if the server is online and controlling the state of each component.
 	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 	{
@@ -226,10 +242,9 @@ void checkServerThread()
 			{
 				loadBrowserAction();
 			}
-			window->sendTrayMessage(getStr(ID_STRING_10_en), getStr(ID_STRING_11_en));
+			window->sendTrayMessage(getStr(ID_STRING_10_en), msgString);
 			needNotify = false;
 		}
-
 		isServerStarting = false;
 	}
 }
