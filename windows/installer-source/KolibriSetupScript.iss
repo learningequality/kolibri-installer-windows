@@ -607,39 +607,16 @@ end;
 function InitializeUninstall(): Boolean;
 var
 ErrorCode: Integer;
-kolibriHomePath: String;
-kolibriHomeEnv: String;
-begin
-  if not isWindowsInstall then
-  begin
-    kolibriHomeEnv := GetEnv('KOLIBRI_HOME');
-    kolibriHomePath :=  GetEnv('USERPROFILE') + '\.kolibri';
-    
-    if DirExists(ExtractFileDir(kolibriHomeEnv)) then
-      begin
-        kolibriHomePath := kolibriHomeEnv
-      end;
-    if DirExists(kolibriHomePath) then
-      begin
-      if(MsgBox(CustomMessage('UninstallKolibriData') + #13#10 + #13#10 + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath, mbConfirmation, MB_YESNO) = idYes) then
-        begin
-          DelTree(kolibriHomePath, True, True, True);
-          if not DirExists(kolibriHomePath) then
-          begin
-            MsgBox(CustomMessage('UninstallKolibriDataSuccess'), mbInformation, MB_OK);  
-          end;
-        end;
-      end;
-  end;
+begin 
   ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
-  result := True;
+  result := True;                          
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   informationBoxFlagged: boolean;
-begin
+begin                                                                   
     RegWriteStringValue(
       HKLM,
       'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -682,4 +659,29 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG'
     )
+end;
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+kolibriHomePath: String;
+kolibriHomeEnv: String;
+begin
+  case CurUninstallStep of usUninstall:
+    if not isWindowsInstall then
+    begin
+      kolibriHomeEnv := GetEnv('KOLIBRI_HOME');
+      kolibriHomePath :=  GetEnv('USERPROFILE') + '\.kolibri';
+      if DirExists(ExtractFileDir(kolibriHomeEnv)) then
+        begin
+          kolibriHomePath := kolibriHomeEnv
+        end;
+      if DirExists(kolibriHomePath) then
+        begin
+        if(MsgBox(CustomMessage('UninstallKolibriData') + #13#10 + #13#10 + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath, mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = idYes) then
+          begin
+            DelTree(kolibriHomePath, True, True, True);
+          end;
+        end;
+      end;
+  end;
 end;
