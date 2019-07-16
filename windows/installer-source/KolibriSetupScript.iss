@@ -288,7 +288,7 @@ begin
             ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
         except
-            MsgBox(ExpandConstant('{cm: ' + GetExceptionMessage + '}'), mbInformation, mb_Ok);
+            MsgBox('InitializeWizard - ' + GetExceptionMessage), mbInformation, mb_Ok);
             Log('Exception: ' + GetExceptionMessage);
             // CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
@@ -463,7 +463,7 @@ begin
             ExtractTemporaryFile('python-exe.bat');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
-            MsgBox(ExpandConstant('{cm: ' + GetExceptionMessage + '}'), mbInformation, mb_Ok);
+            MsgBox('HandlePythonSetup - ' + GetExceptionMessage), mbInformation, mb_Ok);
             Log('Exception: ' + GetExceptionMessage);
             // CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
@@ -490,7 +490,7 @@ const
 
 function FailedPipNotFound() : String;
 begin
-    MsgBox(ExpandConstant('{cm: ' + GetExceptionMessage + '}'), mbInformation, mb_Ok);
+    MsgBox('FailedPipNotFound - ' + GetExceptionMessage), mbInformation, mb_Ok);
     Log('Exception: ' + GetExceptionMessage);
     // CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
