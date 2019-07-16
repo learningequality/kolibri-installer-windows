@@ -253,10 +253,11 @@ begin
         ModalResult := mrOk;
     end;
 
-  // TODO(cpauya): This crashes when trying to display an exception like missing `python-3.4.3.amd64.msi`.
-  //  So we comment it out and hard-code the string path for now.
-  // bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
-  bitmapFileName := 'inno-compiler\SecurityAndMaintenance_Error.bmp';
+  // TODO(cpauya): We extract to {tmp} dir, instead of {app}, coz sometimes setup hasn't extracted the
+  // files to their destination folders yet (some dest are to the {app} folder) when an exception occurs.
+  // (example: missing `python-3.4.3.amd64.msi`)
+  ExtractTemporaryFile('SecurityAndMaintenance_Error.bmp');
+  bitmapFileName := ExpandConstant('{tmp}\SecurityAndMaintenance_Error.bmp');
   
   bitmapImage := TBitmapImage.Create(Form);
   with bitmapImage do
