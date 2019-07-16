@@ -253,14 +253,16 @@ begin
         ModalResult := mrOk;
     end;
 
-  bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
-  //ExtractTemporaryFile(ExtractFileName(bitmapFileName));
+  // TODO(cpauya): This crashes when trying to display an exception like missing `python-3.4.3.amd64.msi`.
+  //  So we comment it out and hard-code the string path for now.
+  // bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
+  bitmapFileName := 'inno-compiler\SecurityAndMaintenance_Error.bmp';
   
   bitmapImage := TBitmapImage.Create(Form);
   with bitmapImage do
     begin
         Parent := Form;
-        Bitmap.LoadFromFile(BitmapFileName);
+        Bitmap.LoadFromFile(bitmapFileName);
         Stretch := True;
         Left :=ScaleX(20);
          Top := ScaleX(12);
@@ -288,9 +290,9 @@ begin
             ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
         except
-            MsgBox('InitializeWizard - ' + GetExceptionMessage), mbInformation, mb_Ok);
-            Log('Exception: ' + GetExceptionMessage);
-            // CustomizeMsgbox(AddPeriod(GetExceptionMessage));
+            // MsgBox('InitializeWizard - ' + GetExceptionMessage, mbInformation, mb_Ok);
+            // Log('Exception: ' + GetExceptionMessage);
+            CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end;
@@ -463,14 +465,14 @@ begin
             ExtractTemporaryFile('python-exe.bat');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
-            MsgBox('HandlePythonSetup - ' + GetExceptionMessage), mbInformation, mb_Ok);
-            Log('Exception: ' + GetExceptionMessage);
-            // CustomizeMsgbox(AddPeriod(GetExceptionMessage));
+            // MsgBox('HandlePythonSetup - ' + GetExceptionMessage, mbInformation, mb_Ok);
+            // Log('Exception: ' + GetExceptionMessage);
+            CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end
     else begin
-        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
+        if(MsgBox(CustomMessage('InstallPythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
           begin
             OpenLogFile();
             forceCancel := True;
@@ -490,9 +492,9 @@ const
 
 function FailedPipNotFound() : String;
 begin
-    MsgBox('FailedPipNotFound - ' + GetExceptionMessage), mbInformation, mb_Ok);
-    Log('Exception: ' + GetExceptionMessage);
-    // CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
+    // MsgBox('FailedPipNotFound - ' + GetExceptionMessage, mbInformation, mb_Ok);
+    // Log('Exception: ' + GetExceptionMessage);
+    CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
     ExitProcess(1);
