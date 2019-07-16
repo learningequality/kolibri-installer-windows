@@ -52,7 +52,7 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "
 Name: "{group}\{cm:KolibriHomePage,{#MyAppName}}"; Filename: "{#MyAppURL}"
 Name: "{group}\{cm:KolibriDocs}"; Filename: "{#MyDocsURL}"
 Name: "{group}\{cm:KolibriSupportLink}"; Filename: "{#MyAppSupportURL}"
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; Parameters: "/LOG={commondesktop}\kolibri-uninstall.log";
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
 [Dirs]
@@ -663,8 +663,9 @@ end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
-kolibriHomePath: String;
-kolibriHomeEnv: String;
+  kolibriHomePath: String;
+  kolibriHomeEnv: String;
+  msg: String;
 begin
   case CurUninstallStep of usUninstall:
     if not isWindowsInstall then
@@ -672,16 +673,21 @@ begin
       kolibriHomeEnv := GetEnv('KOLIBRI_HOME');
       kolibriHomePath :=  GetEnv('USERPROFILE') + '\.kolibri';
       if DirExists(ExtractFileDir(kolibriHomeEnv)) then
-        begin
-          kolibriHomePath := kolibriHomeEnv
-        end;
+      begin
+        kolibriHomePath := kolibriHomeEnv
+      end;
       if DirExists(kolibriHomePath) then
+      begin
+        { We do multiple lines to prepare for customization of the message later. }
+        msg := CustomMessage('UninstallKolibriDataLine1') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriDataLine2') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriDataLine3') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath;
+        if(MsgBox(msg, mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES) then
         begin
-        if(MsgBox(CustomMessage('UninstallKolibriData') + #13#10 + #13#10 + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath, mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = idYes) then
-          begin
-            DelTree(kolibriHomePath, True, True, True);
-          end;
+          DelTree(kolibriHomePath, True, True, True);
         end;
       end;
+    end;
   end;
 end;
