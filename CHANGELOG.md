@@ -5,6 +5,7 @@ List of the most important changes for each release.
 
 ## 1.3.1
 
+- ADDED: Update the uninstall script - confirm removal of Kolibri and it's content folder, also includes error logging during uninstall.
 - ADDED: Add a setup logging and enhance the error messages
 - ADDED: Make the kolibri.exe runnable from any path in the Windows Command Prompt.
 - FIXED: Notification message port did not match the Kolibri server port.

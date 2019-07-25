@@ -14,6 +14,7 @@ IF %scriptPath%=="" (
     GOTO YESPATH
 )
 
+
 :YESPATH
 set scriptPath=%scriptPath%
 IF NOT EXIST %scriptPath%\pip.exe (
@@ -21,18 +22,19 @@ IF NOT EXIST %scriptPath%\pip.exe (
 )
 GOTO END
 
+
 :NOPATH
 IF EXIST %defaultScriptPath%\pip.exe (
-   set scriptPath=%defaultScriptPath%
+    set scriptPath=%defaultScriptPath%
 )
 GOTO END
 
+
 :END
-
 IF EXIST %scriptPath%\pip.exe  (
-  %scriptPath%\pip.exe uninstall --yes kolibri
+    %scriptPath%\pip.exe uninstall --yes kolibri
 ) ELSE (
-   @ECHO kolibri not found.
+    @ECHO The executable "%scriptPath%\pip.exe" was not found.
+    EXIT /b 2
+    REM REF: https://www.tutorialspoint.com/batch_script/batch_script_return_code
 )
-
-

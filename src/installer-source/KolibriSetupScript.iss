@@ -5,7 +5,7 @@
 #define MyDocsURL "https://kolibri.readthedocs.io"
 #define MyAppExeName "Kolibri.exe"
 #define TargetVersion =  GetEnv("KOLIBRI_BUILD_VERSION")
-#expr DeleteFile(SourcePath+"\version.temp")
+#expr DeleteFile(SourcePath+"\version.temp") 
 
 [Setup]
 AppId={#MyAppName}-{#MyAppPublisher}
@@ -52,7 +52,7 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "
 Name: "{group}\{cm:KolibriHomePage,{#MyAppName}}"; Filename: "{#MyAppURL}"
 Name: "{group}\{cm:KolibriDocs}"; Filename: "{#MyDocsURL}"
 Name: "{group}\{cm:KolibriSupportLink}"; Filename: "{#MyAppSupportURL}"
-Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
+Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"; Parameters: "/LOG={commondesktop}\kolibri-uninstall.log";
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFilename: "{app}\icon\logo48.ico"
 
 [Dirs]
@@ -84,6 +84,7 @@ var
   uninstallError: integer;
   cleanOldKolibriFolder : integer;
   forceCancel : boolean;
+  isWindowsInstall : boolean;
 
 function OpenLogFile():string;
 var
@@ -252,14 +253,17 @@ begin
         ModalResult := mrOk;
     end;
 
-  bitmapFileName := ExpandConstant('{app}\SecurityAndMaintenance_Error.bmp');
-  //ExtractTemporaryFile(ExtractFileName(bitmapFileName));
+  // TODO(cpauya): We extract to {tmp} dir, instead of {app}, coz sometimes setup hasn't extracted the
+  // files to their destination folders yet (some dest are to the {app} folder) when an exception occurs.
+  // (example: missing `python-3.4.3.amd64.msi`)
+  ExtractTemporaryFile('SecurityAndMaintenance_Error.bmp');
+  bitmapFileName := ExpandConstant('{tmp}\SecurityAndMaintenance_Error.bmp');
   
   bitmapImage := TBitmapImage.Create(Form);
   with bitmapImage do
     begin
         Parent := Form;
-        Bitmap.LoadFromFile(BitmapFileName);
+        Bitmap.LoadFromFile(bitmapFileName);
         Stretch := True;
         Left :=ScaleX(20);
          Top := ScaleX(12);
@@ -287,7 +291,9 @@ begin
             ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, stopServerCode);
             Exec(ExpandConstant('{cmd}'),'/C del winshortcut.vbs', WizardForm.PrevAppDir, SW_HIDE, ewWaitUntilTerminated, removeOldGuiTool);
         except
-           CustomizeMsgbox(AddPeriod(GetExceptionMessage));
+            // MsgBox('InitializeWizard - ' + GetExceptionMessage, mbInformation, mb_Ok);
+            // Log('Exception: ' + GetExceptionMessage);
+            CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end;
@@ -420,30 +426,30 @@ var
 begin
     prevVerStr := GetPreviousVersion();
     if (CompareVersion('{#TargetVersion}', prevVerStr) >= 0) and not (prevVerStr = '') then
-    begin
+    begin   
         ConfirmUpgradeDialog();
         { forceCancel will be true if something went awry in DoGitMigrate... abort instead of trampling the user's data. }
         if Not forceCancel then
         begin
             RemoveOldInstallation(targetPath);
         end;
-    end;
+    end;  
 end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
     result := True;
-
+    isWindowsInstall := true;
     if CurPageID = wpSelectTasks then
     begin
-        if WizardForm <> nil then
+        if WizardForm <> nil then 
             HandleUpgrade(WizardForm.PrevAppDir);
     end;
-    
+
     if CurPageID = wpSelectDir then
     begin
         { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
-        if Not isUpgrade then
+        if Not isUpgrade then  
             HandleUpgrade(ExpandConstant('{app}'));
     end;
 end;
@@ -460,12 +466,14 @@ begin
             ExtractTemporaryFile('python-exe.bat');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
+            // MsgBox('HandlePythonSetup - ' + GetExceptionMessage, mbInformation, mb_Ok);
+            // Log('Exception: ' + GetExceptionMessage);
             CustomizeMsgbox(AddPeriod(GetExceptionMessage));
             ExitProcess(1);
         end;    
     end
     else begin
-        if(MsgBox(CustomMessage('InstallPtythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
+        if(MsgBox(CustomMessage('InstallPythonErrMsg'), mbError, MB_OKCANCEL) = idCANCEL) then
           begin
             OpenLogFile();
             forceCancel := True;
@@ -485,6 +493,8 @@ const
 
 function FailedPipNotFound() : String;
 begin
+    // MsgBox('FailedPipNotFound - ' + GetExceptionMessage, mbInformation, mb_Ok);
+    // Log('Exception: ' + GetExceptionMessage);
     CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
@@ -594,7 +604,7 @@ begin
     begin
         if PythonVersionCodeCheck = 1 then
         begin
-            HandlePythonSetup();
+            HandlePythonSetup(); 
         end;
     end
     else 
@@ -606,16 +616,16 @@ end;
 function InitializeUninstall(): Boolean;
 var
 ErrorCode: Integer;
-begin
+begin 
   ShellExec('open', 'taskkill.exe', '/F /T /im "Kolibri.exe"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
   ShellExec('open', 'tskill.exe', '"Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode);
-  result := True;
+  result := True;                          
 end;
 
 procedure CurStepChanged(CurStep: TSetupStep);
 var
   informationBoxFlagged: boolean;
-begin
+begin                                                                   
     RegWriteStringValue(
       HKLM,
       'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -658,4 +668,35 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG'
     )
+end;
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  kolibriHomePath: String;
+  kolibriHomeEnv: String;
+  msg: String;
+begin
+  case CurUninstallStep of usUninstall:
+    if not isWindowsInstall then
+    begin
+      kolibriHomeEnv := GetEnv('KOLIBRI_HOME');
+      kolibriHomePath :=  GetEnv('USERPROFILE') + '\.kolibri';
+      if DirExists(ExtractFileDir(kolibriHomeEnv)) then
+      begin
+        kolibriHomePath := kolibriHomeEnv
+      end;
+      if DirExists(kolibriHomePath) then
+      begin
+        { We do multiple lines to prepare for customization of the message later. }
+        msg := CustomMessage('UninstallKolibriDataLine1') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriDataLine2') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriDataLine3') + #13#10 + #13#10;
+        msg := msg + CustomMessage('UninstallKolibriPath') + ' ' + kolibriHomePath;
+        if(MsgBox(msg, mbConfirmation, MB_YESNO or MB_DEFBUTTON2) = IDYES) then
+        begin
+          DelTree(kolibriHomePath, True, True, True);
+        end;
+      end;
+    end;
+  end;
 end;
