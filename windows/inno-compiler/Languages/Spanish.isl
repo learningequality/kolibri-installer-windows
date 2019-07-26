@@ -260,12 +260,12 @@ ErrorFunctionFailedWithMessage=%1 ha fallado; code %2.%n%3
 ErrorExecutingProgram=No se puede ejecutar file:%n%1 
 
 ; *** Registry errors
-ErrorRegOpenKey=Error opening registry key:%n%1\%2
-ErrorRegCreateKey=Error creating registry key:%n%1\%2
-ErrorRegWriteKey=Error writing to registry key:%n%1\%2
+ErrorRegOpenKey=Error al abrir la clave de registro: %n%1\%2
+ErrorRegCreateKey=Error al crear la clave de registro: %n%1\%2
+ErrorRegWriteKey=Error al escribir la clave del registro: %n%1\%2
 
 ; *** INI errors
-ErrorIniEntry=Error creating INI entry in file "%1".
+ErrorIniEntry=Error al crear la entrada INI en el archivo "%1".
 
 ; *** File copying errors
 FileAbortRetryIgnore=Haga clic en Reintentar para intentarlo de nuevo, ignorar para omitir este archivo (no recomendado), o abortar para cancelar la instalación. 
@@ -292,17 +292,17 @@ ErrorOpeningReadme=Se ha producido un error al intentar abrir el archivo Léame.
 ErrorRestartingComputer=Instalación no pudo reiniciar la computadora. Por favor hacer esto manualmente. 
 
 ; *** Uninstaller messages
-UninstallNotFound=File "%1" does not exist. Cannot uninstall.
-UninstallOpenError=File "%1" could not be opened. Cannot uninstall
-UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
-UninstallUnknownEntry=Una entrada desconocida (%1) fue encontrada en el registro de desinstalación 
-ConfirmUninstall=Are you sure you would like to remove Kolibri from your computer?
-UninstallOnlyOnWin64=Esta instalación sólo puede ser desinstalada en Windows de 64 bits. 
-OnlyAdminCanUninstall=Esta instalación sólo puede ser desinstalada por un usuario con privilegios administrativos. 
-UninstallStatusLabel=Por favor, espere mientras que %1 es quitado de su equipo. 
+UninstallNotFound=El archvio "%1" no existe. No se puede desinstalar.
+UninstallOpenError=El archivo "%1" no se puede abrir. No se puede desinstalar.
+UninstallUnsupportedVer=El archivo de registro "%1" de la desinstalación tiene un formato que esta versión del instalador no reconoce. No se puede desinstalar
+UninstallUnknownEntry=Una entrada desconocida (%1) fue encontrada en el registro de desinstalación
+ConfirmUninstall=¿Seguro que quiere desinstalar Kolibri de su equipo?
+UninstallOnlyOnWin64=Esta instalación sólo puede ser desinstalada en Windows de 64 bits.
+OnlyAdminCanUninstall=Esta instalación sólo puede ser desinstalada por un usuario con privilegios administrativos.
+UninstallStatusLabel=Por favor, espere mientras que %1 es quitado de su equipo.
 UninstalledAll=Kolibri has been successfully removed from your computer.
-UninstalledMost=%1 desinstalar complete.%n%nSome elementos no podrían ser quitados. Estos pueden ser removidos manualmente. 
-UninstalledAndNeedsRestart=¿Para completar la desinstalación de %1, su computadora debe ser restarted.%n%nWould que quieres reiniciar ahora? 
+UninstalledMost=%1 desinstalar complete.%n%nSome elementos no podrían ser quitados. Estos pueden ser removidos manualmente.
+UninstalledAndNeedsRestart=¿Para completar la desinstalación de %1, su computadora debe ser restarted.%n%nWould que quieres reiniciar ahora?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
 ; *** Uninstallation phase messages
@@ -341,16 +341,16 @@ UpgradeDelMsg=Instalación fresca borrará todos sus datos existentes; ¿Esto es lo
 InstallPythonMsg=La versión 3.4+ de Python es necesaria para instalar Kolibri en Windows. ¿Desea instalar Python 3.4.3, antes de continuar con la instalación de Kolibri?
 InstallPythonErrMsg=Advertencia - Kolibri necesita Python para funcionar. Haga clic en Aceptar para volver e instalar Python, o cancelar para salir del instalador de Kolibri
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
-KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
+KolibriInstallFailed=Instalación de Kolibri ha fallado. Instalador de Kolibri encontró un errorinstallation process%n%n
 SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espere...
 LaunchKolibri=Iniciar Kolibri
-KolibriSupportLink=Community forums
-KolibriHomePage=Homepage
-KolibriDocs=Documentation
-FileNotFound= was not found.
-Needhelp=To get help online, please visit our community forum:
+KolibriSupportLink=Foros de la comunidad
+KolibriHomePage=Página de inicio
+KolibriDocs=Documentación
+FileNotFound=No se encontró el archivo
+Needhelp=Para obtener ayuda online, visite el foro de nuestra comunidad:
 CommunityLink=https://community.learningequality.org
-UninstallKolibriDataLine1=Would you also like to delete all the data associated with Kolibri?
-UninstallKolibriDataLine2=This will permanently remove all downloaded content channels and the user interaction data.
-UninstallKolibriDataLine3=This action cannot be undone.
-UninstallKolibriPath=Data location:
+UninstallKolibriDataLine1=¿Le gustaría borrar también todos los datos asociados a Kolibri?
+UninstallKolibriDataLine2=Esto borrará para siempre todo el contenido descargado de los canales y los datos de las interacciones de los usuarios
+UninstallKolibriDataLine3=Esta acción no se puede deshacer
+UninstallKolibriPath=Ubicación de los datos:
