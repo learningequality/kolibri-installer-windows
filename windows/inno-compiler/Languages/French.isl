@@ -341,17 +341,17 @@ ShutdownBlockReasonUninstallingApp=Désinstalle %1.
 [CustomMessages]
 
 NameAndVersion=%1 version %2
-AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Create a &desktop shortcut
-CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 on the Web
-UninstallProgram=Uninstall %1
-LaunchProgram=Launch %1
-AssocFileExtension=&Associate %1 with the %2 file extension
-AssocingFileExtension=Associating %1 with the %2 file extension...
-AutoStartProgramGroupDescription=Startup:
-AutoStartProgram=Automatically start %1
-AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
+AdditionalIcons=Icônes supplémentaires :
+CreateDesktopIcon=Créer une icône sur le &Bureau
+CreateQuickLaunchIcon=Créer une icône dans la barre de &Lancement rapide
+ProgramOnTheWeb=Page d'accueil de %1
+UninstallProgram=Désinstaller %1
+LaunchProgram=Exécuter %1
+AssocFileExtension=&Associer %1 avec l'extension de fichier %2
+AssocingFileExtension=Associe %1 avec l'extension de fichier %2...
+AutoStartProgramGroupDescription=Démarrage :
+AutoStartProgram=Démarrer automatiquement %1
+AddonHostProgramNotFound=%1 n'a pas été trouvé dans le dossier que vous avez choisi.%n%nVoulez-vous continuer malgré tout ?
 
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?

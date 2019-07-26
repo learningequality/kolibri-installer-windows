@@ -322,29 +322,29 @@ ShutdownBlockReasonUninstallingApp=Desinstalando %1.
 
 [CustomMessages]
 
-NameAndVersion=%1 version %2
-AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Create a &desktop shortcut
-CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 on the Web
-UninstallProgram=Uninstall %1
-LaunchProgram=Launch %1
-AssocFileExtension=&Associate %1 with the %2 file extension
-AssocingFileExtension=Associating %1 with the %2 file extension...
-AutoStartProgramGroupDescription=Startup:
-AutoStartProgram=Automatically start %1
-AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
+NameAndVersion=%1 versión %2 
+AdditionalIcons=Iconos adicionales: 
+CreateDesktopIcon=Crear icono en el &escritorio 
+CreateQuickLaunchIcon=Crear icono de &inicio rápido 
+ProgramOnTheWeb=%1 en la Web 
+UninstallProgram=Desinstalar %1 
+LaunchProgram=Iniciar %1 
+AssocFileExtension=& %1 asociado con la extensión %2 
+AssocingFileExtension=Asociar %1 con la extensión %2... 
+AutoStartProgramGroupDescription=Arranque: 
+AutoStartProgram=%1 se inicia automáticamente 
+AddonHostProgramNotFound=¿%1 no podía ser ubicado en la carpeta selected.%n%nDo que desea continuar de todos modos? 
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
-UpgradeDelMsg=Installing fresh will delete all of your existing data; is this what you really want to do?
-InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
-InstallPythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
+UpgradeMsg=Hemos detectado una instalación existente de Kolibri; ¿quieres actualizar?
+UpgradeDelMsg=Instalación fresca borrará todos sus datos existentes; ¿Esto es lo que realmente quieres hacer?
+InstallPythonMsg=La versión 3.4+ de Python es necesaria para instalar Kolibri en Windows. ¿Desea instalar Python 3.4.3, antes de continuar con la instalación de Kolibri?
+InstallPythonErrMsg=Advertencia - Kolibri necesita Python para funcionar. Haga clic en Aceptar para volver e instalar Python, o cancelar para salir del instalador de Kolibri
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
-KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
-SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
-LaunchKolibri=Launch Kolibri
-KolibriSupportLink=Community forum
+KolibriInstallFailed=Instalación de Kolibri ha fallado. Instalador de Kolibri encontró un errorinstallation process%n%n
+SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espere...
+LaunchKolibri=Iniciar Kolibri
+KolibriSupportLink=Community forums
 KolibriHomePage=Homepage
 KolibriDocs=Documentation
 FileNotFound= was not found.

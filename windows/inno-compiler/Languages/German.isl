@@ -331,18 +331,18 @@ ShutdownBlockReasonUninstallingApp=Deinstallation von %1.
 
 [CustomMessages]
 
-NameAndVersion=%1 version %2
-AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Create a &desktop shortcut
-CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 on the Web
-UninstallProgram=Uninstall %1
-LaunchProgram=Launch %1
-AssocFileExtension=&Associate %1 with the %2 file extension
-AssocingFileExtension=Associating %1 with the %2 file extension...
-AutoStartProgramGroupDescription=Startup:
-AutoStartProgram=Automatically start %1
-AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
+NameAndVersion=%1 Version %2
+AdditionalIcons=Zusätzliche Symbole:
+CreateDesktopIcon=&Desktop-Symbol erstellen
+CreateQuickLaunchIcon=Symbol in der Schnellstartleiste erstellen
+ProgramOnTheWeb=%1 im Internet
+UninstallProgram=%1 entfernen
+LaunchProgram=%1 starten
+AssocFileExtension=&Registriere %1 mit der %2-Dateierweiterung
+AssocingFileExtension=%1 wird mit der %2-Dateierweiterung registriert...
+AutoStartProgramGroupDescription=Beginn des Setups:
+AutoStartProgram=Starte automatisch%1
+AddonHostProgramNotFound=%1 konnte im ausgewählten Ordner nicht gefunden werden.%n%nMöchten Sie dennoch fortfahren?
 
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
@@ -350,7 +350,7 @@ UpgradeDelMsg=Installing fresh will delete all of your existing data; is this wh
 InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
 InstallPythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
-KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
+KolibriInstallFailed=Kolibri installation failed. Kolibri installer encountered an error during the installation process%n%n
 SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
 LaunchKolibri=Launch Kolibri
 KolibriSupportLink=Community forum
