@@ -29,294 +29,294 @@ LanguageCodePage=1253
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Εγκατάσταση
-SetupWindowTitle=Εγκατάσταση - %1
-UninstallAppTitle=Απεγκατάσταση
-UninstallAppFullTitle=%1 Απεγκατάσταση
+SetupAppTitle=ÅãêáôÜóôáóç
+SetupWindowTitle=ÅãêáôÜóôáóç - %1
+UninstallAppTitle=ÁðåãêáôÜóôáóç
+UninstallAppFullTitle=%1 ÁðåãêáôÜóôáóç
 
 ; *** Misc. common
-InformationTitle=Πληροφορίες
-ConfirmTitle=Επιβεβαίωση
-ErrorTitle=Σφάλμα
+InformationTitle=Ðëçñïöïñßåò
+ConfirmTitle=Åðéâåâáßùóç
+ErrorTitle=ÓöÜëìá
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Θα εκτελεστεί η εγκατάσταση του %1. Θέλετε να συνεχίσετε;
-LdrCannotCreateTemp=Σφάλμα στη δημιουργία προσωρινού αρχείου. Η εγκατάσταση τερματίστηκε.
-LdrCannotExecTemp=Αδύνατη η εκτέλεση αρχείου στον φάκελο προσωρινών αρχείων. Η εγκατάσταση τερματίστηκε.
+SetupLdrStartupMessage=Èá åêôåëåóôåß ç åãêáôÜóôáóç ôïõ %1. ÈÝëåôå íá óõíå÷ßóåôå;
+LdrCannotCreateTemp=ÓöÜëìá óôç äçìéïõñãßá ðñïóùñéíïý áñ÷åßïõ. Ç åãêáôÜóôáóç ôåñìáôßóôçêå.
+LdrCannotExecTemp=Áäýíáôç ç åêôÝëåóç áñ÷åßïõ óôïí öÜêåëï ðñïóùñéíþí áñ÷åßùí. Ç åãêáôÜóôáóç ôåñìáôßóôçêå.
 
 ; *** Startup error messages
-LastErrorMessage=%1.%n%nΣφάλμα %2: %3
-SetupFileMissing=Δεν βρίσκεται το αρχείο %1 στον κατάλογο εγκατάστασης. Ίσως χρειάζεται να προμηθευτείτε ένα νέο αντίγραφο του προγράμματος.
-SetupFileCorrupt=Το αρχείο εγκατάστασης είναι κατεστραμμένο. Ίσως χρειάζεται να προμηθευτείτε ένα νέο αντίγραφο του προγράμματος.
-SetupFileCorruptOrWrongVer=Το αρχείο εγκατάστασης είναι κατεστραμμένο ή είναι σε λάθος έκδοση. Ίσως χρειάζεται να προμηθευτείτε ένα νέο αντίγραφο του προγράμματος.
-InvalidParameter=Μία άκυρη παράμετρος χρησιμοποιήθηκε στη γραμμή εντολών:%n%n%1
-SetupAlreadyRunning=Η εγκατάσταση τρέχει ήδη.
-WindowsVersionNotSupported=Αυτό το πρόγραμμα δεν υποστηρίζει την έκδοση των Windows που τρέχει ο υπολογιστής σας.
-WindowsServicePackRequired=Αυτό το πρόγραμμα χρειάζεται %1 Service Pack %2 ή νεότερο.
-NotOnThisPlatform=Αυτό το πρόγραμμα δεν μπορεί να εκτελεστεί σε %1.
-OnlyOnThisPlatform=Αυτό το πρόγραμμα εκτελείται μόνο σε %1.
-OnlyOnTheseArchitectures=Αυτό το πρόγραμμα μπορεί να εγκατασταθεί μονό σε Windows σχεδιασμένα για επεξεργαστές με αρχιτεκτονική:%n%n%1
-MissingWOW64APIs=Η έκδοση των Windows που εκτελείτε δεν διαθέτει λειτουργικότητα 64-bit. Για να διορθωθεί το πρόβλημα εγκαταστήσετε το Service Pack %1.
-WinVersionTooLowError=Αυτό το πρόγραμμα απαιτεί %1 έκδοση ή νεότερη.
-WinVersionTooHighError=Αυτό το πρόγραμμα δεν μπορεί να εκτελεστεί σε %1 έκδοση ή νεότερη.
-AdminPrivilegesRequired=Πρέπει να είστε ο Διαχειριστής συστήματος για να εγκαταστήσετε αυτό το πρόγραμμα.
-PowerUserPrivilegesRequired=Πρέπει να είστε ο Διαχειριστής συστήματος ή Power User για να εγκαταστήσετε αυτό το πρόγραμμα.
-SetupAppRunningError=Η εγκατάσταση εντόπισε ότι εκτελείται η εφαρμογή %1.%n%nΠαρακαλώ κλείστε την εφαρμογή τώρα και πατήστε Εντάξει για να συνεχίσετε, ή ’κυρο για έξοδο.
-UninstallAppRunningError=Η απεγκατάσταση εντόπισε ότι εκτελείται η εφαρμογή %1.%n%nΠαρακαλώ κλείστε την εφαρμογή τώρα και πατήστε Εντάξει για να συνεχίσετε, ή ’κυρο για έξοδο.
+LastErrorMessage=%1.%n%nÓöÜëìá %2: %3
+SetupFileMissing=Äåí âñßóêåôáé ôï áñ÷åßï %1 óôïí êáôÜëïãï åãêáôÜóôáóçò. ºóùò ÷ñåéÜæåôáé íá ðñïìçèåõôåßôå Ýíá íÝï áíôßãñáöï ôïõ ðñïãñÜììáôïò.
+SetupFileCorrupt=Ôï áñ÷åßï åãêáôÜóôáóçò åßíáé êáôåóôñáììÝíï. ºóùò ÷ñåéÜæåôáé íá ðñïìçèåõôåßôå Ýíá íÝï áíôßãñáöï ôïõ ðñïãñÜììáôïò.
+SetupFileCorruptOrWrongVer=Ôï áñ÷åßï åãêáôÜóôáóçò åßíáé êáôåóôñáììÝíï Þ åßíáé óå ëÜèïò Ýêäïóç. ºóùò ÷ñåéÜæåôáé íá ðñïìçèåõôåßôå Ýíá íÝï áíôßãñáöï ôïõ ðñïãñÜììáôïò.
+InvalidParameter=Ìßá Üêõñç ðáñÜìåôñïò ÷ñçóéìïðïéÞèçêå óôç ãñáììÞ åíôïëþí:%n%n%1
+SetupAlreadyRunning=Ç åãêáôÜóôáóç ôñÝ÷åé Þäç.
+WindowsVersionNotSupported=Áõôü ôï ðñüãñáììá äåí õðïóôçñßæåé ôçí Ýêäïóç ôùí Windows ðïõ ôñÝ÷åé ï õðïëïãéóôÞò óáò.
+WindowsServicePackRequired=Áõôü ôï ðñüãñáììá ÷ñåéÜæåôáé %1 Service Pack %2 Þ íåüôåñï.
+NotOnThisPlatform=Áõôü ôï ðñüãñáììá äåí ìðïñåß íá åêôåëåóôåß óå %1.
+OnlyOnThisPlatform=Áõôü ôï ðñüãñáììá åêôåëåßôáé ìüíï óå %1.
+OnlyOnTheseArchitectures=Áõôü ôï ðñüãñáììá ìðïñåß íá åãêáôáóôáèåß ìïíü óå Windows ó÷åäéáóìÝíá ãéá åðåîåñãáóôÝò ìå áñ÷éôåêôïíéêÞ:%n%n%1
+MissingWOW64APIs=Ç Ýêäïóç ôùí Windows ðïõ åêôåëåßôå äåí äéáèÝôåé ëåéôïõñãéêüôçôá 64-bit. Ãéá íá äéïñèùèåß ôï ðñüâëçìá åãêáôáóôÞóåôå ôï Service Pack %1.
+WinVersionTooLowError=Áõôü ôï ðñüãñáììá áðáéôåß %1 Ýêäïóç Þ íåüôåñç.
+WinVersionTooHighError=Áõôü ôï ðñüãñáììá äåí ìðïñåß íá åêôåëåóôåß óå %1 Ýêäïóç Þ íåüôåñç.
+AdminPrivilegesRequired=ÐñÝðåé íá åßóôå ï Äéá÷åéñéóôÞò óõóôÞìáôïò ãéá íá åãêáôáóôÞóåôå áõôü ôï ðñüãñáììá.
+PowerUserPrivilegesRequired=ÐñÝðåé íá åßóôå ï Äéá÷åéñéóôÞò óõóôÞìáôïò Þ Power User ãéá íá åãêáôáóôÞóåôå áõôü ôï ðñüãñáììá.
+SetupAppRunningError=Ç åãêáôÜóôáóç åíôüðéóå üôé åêôåëåßôáé ç åöáñìïãÞ %1.%n%nÐáñáêáëþ êëåßóôå ôçí åöáñìïãÞ ôþñá êáé ðáôÞóôå ÅíôÜîåé ãéá íá óõíå÷ßóåôå, Þ ¢êõñï ãéá Ýîïäï.
+UninstallAppRunningError=Ç áðåãêáôÜóôáóç åíôüðéóå üôé åêôåëåßôáé ç åöáñìïãÞ %1.%n%nÐáñáêáëþ êëåßóôå ôçí åöáñìïãÞ ôþñá êáé ðáôÞóôå ÅíôÜîåé ãéá íá óõíå÷ßóåôå, Þ ¢êõñï ãéá Ýîïäï.
 
 ; *** Misc. errors
-ErrorCreatingDir=Η εγκατάσταση δεν μπορεί να δημιουργήσει τον φάκελο %1
-ErrorTooManyFilesInDir=Δεν μπορεί να δημιουργηθεί ένα αρχείο στον φάκελο "%1" επειδή ήδη περιέχει πολλά αρχεία
+ErrorCreatingDir=Ç åãêáôÜóôáóç äåí ìðïñåß íá äçìéïõñãÞóåé ôïí öÜêåëï %1
+ErrorTooManyFilesInDir=Äåí ìðïñåß íá äçìéïõñãçèåß Ýíá áñ÷åßï óôïí öÜêåëï "%1" åðåéäÞ Þäç ðåñéÝ÷åé ðïëëÜ áñ÷åßá
 
 ; *** Setup common messages
-ExitSetupTitle=Τέλος Εγκατάστασης
-ExitSetupMessage=Η εγκατάσταση δεν έχει τελειώσει. Αν τη σταματήσετε τώρα, το πρόγραμμα δεν θα εγκατασταθεί.%n%nΜπορείτε να εκτελέσετε ξανά την εγκατάσταση αργότερα.%n%nΈξοδος;
-AboutSetupMenuItem=&Σχετικά με την Εγκατάσταση...
-AboutSetupTitle=Σχετικά με την Εγκατάσταση
-AboutSetupMessage=%1 έκδοση %2%n%3%n%n%1 προσωπική σελίδα%n%4
+ExitSetupTitle=ÔÝëïò ÅãêáôÜóôáóçò
+ExitSetupMessage=Ç åãêáôÜóôáóç äåí Ý÷åé ôåëåéþóåé. Áí ôç óôáìáôÞóåôå ôþñá, ôï ðñüãñáììá äåí èá åãêáôáóôáèåß.%n%nÌðïñåßôå íá åêôåëÝóåôå îáíÜ ôçí åãêáôÜóôáóç áñãüôåñá.%n%n¸îïäïò;
+AboutSetupMenuItem=&Ó÷åôéêÜ ìå ôçí ÅãêáôÜóôáóç...
+AboutSetupTitle=Ó÷åôéêÜ ìå ôçí ÅãêáôÜóôáóç
+AboutSetupMessage=%1 Ýêäïóç %2%n%3%n%n%1 ðñïóùðéêÞ óåëßäá%n%4
 AboutSetupNote=
-TranslatorNote=Αρχική μετάφραση από τον Anastasis Chatzioglou.%nΕνημερώσεις και βελτιώσεις από τον XhmikosR, my_nickname at yahoo dot com
+TranslatorNote=Áñ÷éêÞ ìåôÜöñáóç áðü ôïí Anastasis Chatzioglou.%nÅíçìåñþóåéò êáé âåëôéþóåéò áðü ôïí XhmikosR, my_nickname at yahoo dot com
 
 ; *** Buttons
-ButtonBack=< &Πίσω
-ButtonNext=&Επόμενο >
-ButtonInstall=&Εγκατάσταση
-ButtonOK=Ε&ντάξει
-ButtonCancel=&Ακυρο
-ButtonYes=Ν&αι
-ButtonYesToAll=Ναι σε &Ολα
-ButtonNo=Ό&χι
-ButtonNoToAll=Όχι &σε όλα
-ButtonFinish=&Τέλος
-ButtonBrowse=&Αναζήτηση...
-ButtonWizardBrowse=&Εύρεση...
-ButtonNewFolder=&Δημιουργία νέου φακέλου
+ButtonBack=< &Ðßóù
+ButtonNext=&Åðüìåíï >
+ButtonInstall=&ÅãêáôÜóôáóç
+ButtonOK=Å&íôÜîåé
+ButtonCancel=&Áêõñï
+ButtonYes=Í&áé
+ButtonYesToAll=Íáé óå &Ïëá
+ButtonNo=¼&÷é
+ButtonNoToAll=¼÷é &óå üëá
+ButtonFinish=&ÔÝëïò
+ButtonBrowse=&ÁíáæÞôçóç...
+ButtonWizardBrowse=&Åýñåóç...
+ButtonNewFolder=&Äçìéïõñãßá íÝïõ öáêÝëïõ
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Επιλογή της γλώσσας εγκατάστασης
-SelectLanguageLabel=Επιλέξτε τη γλώσσα που θα χρησιμοποιηθεί κατά τη διάρκεια της εγκατάστασης:
+SelectLanguageTitle=ÅðéëïãÞ ôçò ãëþóóáò åãêáôÜóôáóçò
+SelectLanguageLabel=ÅðéëÝîôå ôç ãëþóóá ðïõ èá ÷ñçóéìïðïéçèåß êáôÜ ôç äéÜñêåéá ôçò åãêáôÜóôáóçò:
 
 ; *** Common wizard text
-ClickNext=Πατήστε Επόμενο για να συνεχίσετε ή ’κυρο για να τερματίσετε την εγκατάσταση.
+ClickNext=ÐáôÞóôå Åðüìåíï ãéá íá óõíå÷ßóåôå Þ ¢êõñï ãéá íá ôåñìáôßóåôå ôçí åãêáôÜóôáóç.
 BeveledLabel=
-BrowseDialogTitle=Εύρεση φακέλου
-BrowseDialogLabel=Επιλέξτε ένα φάκελο από την ακόλουθη λίστα και μετά πατήστε OK.
-NewFolderName=Νέος φάκελος
+BrowseDialogTitle=Åýñåóç öáêÝëïõ
+BrowseDialogLabel=ÅðéëÝîôå Ýíá öÜêåëï áðü ôçí áêüëïõèç ëßóôá êáé ìåôÜ ðáôÞóôå OK.
+NewFolderName=ÍÝïò öÜêåëïò
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Καλωσορίσατε στην εγκατάσταση του [name]
-WelcomeLabel2=Θα γίνει εγκατάσταση του [name/ver] στον υπολογιστή σας.%n%nΣας συνιστούμε να κλείσετε κάθε άλλη εφαρμογή πριν συνεχίσετε.
+WelcomeLabel1=Êáëùóïñßóáôå óôçí åãêáôÜóôáóç ôïõ [name]
+WelcomeLabel2=Èá ãßíåé åãêáôÜóôáóç ôïõ [name/ver] óôïí õðïëïãéóôÞ óáò.%n%nÓáò óõíéóôïýìå íá êëåßóåôå êÜèå Üëëç åöáñìïãÞ ðñéí óõíå÷ßóåôå.
 
 ; *** "Password" wizard page
-WizardPassword=Εισαγωγή Κωδικού
-PasswordLabel1=Αυτή η εγκατάσταση προστατεύεται με κωδικό.
-PasswordLabel3=Παρακαλώ εισάγετε τον κωδικό και πατήστε Επόμενο.
-PasswordEditLabel=&Κωδικός:
-IncorrectPassword=Ο κωδικός που εισάγατε είναι λάθος. Παρακαλώ, προσπαθήστε ξανά.
+WizardPassword=ÅéóáãùãÞ Êùäéêïý
+PasswordLabel1=ÁõôÞ ç åãêáôÜóôáóç ðñïóôáôåýåôáé ìå êùäéêü.
+PasswordLabel3=Ðáñáêáëþ åéóÜãåôå ôïí êùäéêü êáé ðáôÞóôå Åðüìåíï.
+PasswordEditLabel=&Êùäéêüò:
+IncorrectPassword=Ï êùäéêüò ðïõ åéóÜãáôå åßíáé ëÜèïò. Ðáñáêáëþ, ðñïóðáèÞóôå îáíÜ.
 
 ; *** "License Agreement" wizard page
-WizardLicense=’δεια Χρήσης
-LicenseLabel=Παρακαλώ διαβάστε προσεκτικά τις παρακάτω πληροφορίες πριν συνεχίσετε.
-LicenseLabel3=Παρακαλώ διαβάστε προσεκτικά τις παρακάτω πληροφορίες πριν συνεχίσετε. Πρέπει να αποδεχθείτε τους όρους της ’δειας Χρήσης πριν συνεχίσετε την εγκατάσταση.
-LicenseAccepted=&Αποδέχομαι τους όρους της ’δειας Χρήσης
-LicenseNotAccepted=Δεν &αποδέχομαι τους όρους της ’δειας Χρήσης
+WizardLicense=¢äåéá ×ñÞóçò
+LicenseLabel=Ðáñáêáëþ äéáâÜóôå ðñïóåêôéêÜ ôéò ðáñáêÜôù ðëçñïöïñßåò ðñéí óõíå÷ßóåôå.
+LicenseLabel3=Ðáñáêáëþ äéáâÜóôå ðñïóåêôéêÜ ôéò ðáñáêÜôù ðëçñïöïñßåò ðñéí óõíå÷ßóåôå. ÐñÝðåé íá áðïäå÷èåßôå ôïõò üñïõò ôçò ¢äåéáò ×ñÞóçò ðñéí óõíå÷ßóåôå ôçí åãêáôÜóôáóç.
+LicenseAccepted=&ÁðïäÝ÷ïìáé ôïõò üñïõò ôçò ¢äåéáò ×ñÞóçò
+LicenseNotAccepted=Äåí &áðïäÝ÷ïìáé ôïõò üñïõò ôçò ¢äåéáò ×ñÞóçò
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Πληροφορίες
-InfoBeforeLabel=Παρακαλώ διαβάστε προσεκτικά τις παρακάτω πληροφορίες πριν συνεχίσετε.
-InfoBeforeClickLabel=Όταν είστε έτοιμοι να συνεχίσετε με την Εγκατάσταση, πατήστε Επόμενο.
-WizardInfoAfter=Πληροφορίες
-InfoAfterLabel=Παρακαλώ διαβάστε προσεκτικά τις παρακάτω πληροφορίες πριν συνεχίσετε.
-InfoAfterClickLabel=Όταν είστε έτοιμοι να συνεχίσετε με την Εγκατάσταση, πατήστε Επόμενο.
+WizardInfoBefore=Ðëçñïöïñßåò
+InfoBeforeLabel=Ðáñáêáëþ äéáâÜóôå ðñïóåêôéêÜ ôéò ðáñáêÜôù ðëçñïöïñßåò ðñéí óõíå÷ßóåôå.
+InfoBeforeClickLabel=¼ôáí åßóôå Ýôïéìïé íá óõíå÷ßóåôå ìå ôçí ÅãêáôÜóôáóç, ðáôÞóôå Åðüìåíï.
+WizardInfoAfter=Ðëçñïöïñßåò
+InfoAfterLabel=Ðáñáêáëþ äéáâÜóôå ðñïóåêôéêÜ ôéò ðáñáêÜôù ðëçñïöïñßåò ðñéí óõíå÷ßóåôå.
+InfoAfterClickLabel=¼ôáí åßóôå Ýôïéìïé íá óõíå÷ßóåôå ìå ôçí ÅãêáôÜóôáóç, ðáôÞóôå Åðüìåíï.
 
 ; *** "User Information" wizard page
-WizardUserInfo=Πληροφορίες Χρήστη
-UserInfoDesc=Παρακαλώ εισάγετε τις πληροφορίες σας.
-UserInfoName=&Ονομα Χρήστη:
-UserInfoOrg=&Εταιρεία:
-UserInfoSerial=&Σειριακός Αριθμός:
-UserInfoNameRequired=Πρέπει να εισάγετε ένα όνομα.
+WizardUserInfo=Ðëçñïöïñßåò ×ñÞóôç
+UserInfoDesc=Ðáñáêáëþ åéóÜãåôå ôéò ðëçñïöïñßåò óáò.
+UserInfoName=&Ïíïìá ×ñÞóôç:
+UserInfoOrg=&Åôáéñåßá:
+UserInfoSerial=&Óåéñéáêüò Áñéèìüò:
+UserInfoNameRequired=ÐñÝðåé íá åéóÜãåôå Ýíá üíïìá.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Επιλέξτε τον φάκελο στον οποίο θα εγκατασταθεί το πρόγραμμα
-SelectDirDesc=Πού θα εγκατασταθεί το [name];
-SelectDirLabel3=Το [name] θα εγκατασταθεί στον ακόλουθο φάκελο.
-SelectDirBrowseLabel=Για συνέχεια πατήστε Επόμενο. Αν θέλετε άλλο φάκελο, πατήστε Εύρεση.
-DiskSpaceMBLabel=Αυτό το πρόγραμμα χρειάζεται [mb] MB χώρο στον δίσκο.
-CannotInstallToNetworkDrive=Η εγκατάσταση δεν μπορεί να γίνει σε δίσκο δικτύου.
-CannotInstallToUNCPath=Η εγκατάσταση δεν μπορεί να γίνει σε διαδρομή UNC.
-InvalidPath=Πρέπει να δώσετε την πλήρη διαδρομή με το γράμμα δίσκου: π.χ. %n%nC:\APP%n%nή μια διαδρομή UNC της μορφής:%n%n\\server\share
-InvalidDrive=Ο τοπικός δίσκος ή ο δίσκος δικτύου που επιλέξατε δεν υπάρχει ή δεν είναι προσβάσιμος. Επιλέξτε άλλον.
-DiskSpaceWarningTitle=Δεν υπάρχει αρκετός χώρος στο δίσκο
-DiskSpaceWarning=Η εγκατάσταση χρειάζεται τουλάχιστον %1 KB ελεύθερο χώρο στο δίσκο αλλά ο επιλεγμένος οδηγός διαθέτει μόνον %2 KB.%n%nΘέλετε να συνεχίσετε οπωσδήποτε;
-DirNameTooLong=Το όνομα του φακέλου είναι πολύ μεγάλο.
-InvalidDirName=Λάθος όνομα φακέλου.
-BadDirName32=Τα ονόματα φακέλων δεν μπορούν να περιέχουν κάποιον από τους παρακάτω χαρακτήρες:%n%n%1
-DirExistsTitle=Ο φάκελος υπάρχει
-DirExists=Ο φάκελος:%n%n%1%n%nυπάρχει ήδη. Θέλετε να γίνει η εγκατάσταση σε αυτόν τον φάκελο;
-DirDoesntExistTitle=Ο φάκελος δεν υπάρχει
-DirDoesntExist=Ο φάκελος:%n%n%1%n%nδεν υπάρχει. Θέλετε να δημιουργηθεί;
+WizardSelectDir=ÅðéëÝîôå ôïí öÜêåëï óôïí ïðïßï èá åãêáôáóôáèåß ôï ðñüãñáììá
+SelectDirDesc=Ðïý èá åãêáôáóôáèåß ôï [name];
+SelectDirLabel3=Ôï [name] èá åãêáôáóôáèåß óôïí áêüëïõèï öÜêåëï.
+SelectDirBrowseLabel=Ãéá óõíÝ÷åéá ðáôÞóôå Åðüìåíï. Áí èÝëåôå Üëëï öÜêåëï, ðáôÞóôå Åýñåóç.
+DiskSpaceMBLabel=Áõôü ôï ðñüãñáììá ÷ñåéÜæåôáé [mb] MB ÷þñï óôïí äßóêï.
+CannotInstallToNetworkDrive=Ç åãêáôÜóôáóç äåí ìðïñåß íá ãßíåé óå äßóêï äéêôýïõ.
+CannotInstallToUNCPath=Ç åãêáôÜóôáóç äåí ìðïñåß íá ãßíåé óå äéáäñïìÞ UNC.
+InvalidPath=ÐñÝðåé íá äþóåôå ôçí ðëÞñç äéáäñïìÞ ìå ôï ãñÜììá äßóêïõ: ð.÷. %n%nC:\APP%n%nÞ ìéá äéáäñïìÞ UNC ôçò ìïñöÞò:%n%n\\server\share
+InvalidDrive=Ï ôïðéêüò äßóêïò Þ ï äßóêïò äéêôýïõ ðïõ åðéëÝîáôå äåí õðÜñ÷åé Þ äåí åßíáé ðñïóâÜóéìïò. ÅðéëÝîôå Üëëïí.
+DiskSpaceWarningTitle=Äåí õðÜñ÷åé áñêåôüò ÷þñïò óôï äßóêï
+DiskSpaceWarning=Ç åãêáôÜóôáóç ÷ñåéÜæåôáé ôïõëÜ÷éóôïí %1 KB åëåýèåñï ÷þñï óôï äßóêï áëëÜ ï åðéëåãìÝíïò ïäçãüò äéáèÝôåé ìüíïí %2 KB.%n%nÈÝëåôå íá óõíå÷ßóåôå ïðùóäÞðïôå;
+DirNameTooLong=Ôï üíïìá ôïõ öáêÝëïõ åßíáé ðïëý ìåãÜëï.
+InvalidDirName=ËÜèïò üíïìá öáêÝëïõ.
+BadDirName32=Ôá ïíüìáôá öáêÝëùí äåí ìðïñïýí íá ðåñéÝ÷ïõí êÜðïéïí áðü ôïõò ðáñáêÜôù ÷áñáêôÞñåò:%n%n%1
+DirExistsTitle=Ï öÜêåëïò õðÜñ÷åé
+DirExists=Ï öÜêåëïò:%n%n%1%n%nõðÜñ÷åé Þäç. ÈÝëåôå íá ãßíåé ç åãêáôÜóôáóç óå áõôüí ôïí öÜêåëï;
+DirDoesntExistTitle=Ï öÜêåëïò äåí õðÜñ÷åé
+DirDoesntExist=Ï öÜêåëïò:%n%n%1%n%näåí õðÜñ÷åé. ÈÝëåôå íá äçìéïõñãçèåß;
 
 ; *** "Select Components" wizard page
-WizardSelectComponents=Επιλογή Συστατικών
-SelectComponentsDesc=Ποια συστατικά θέλετε να εγκατασταθούν;
-SelectComponentsLabel2=Επιλέξτε τα συστατικά που θέλετε να εγκαταστήσετε και πατήστε Επόμενο για συνέχεια της εγκατάστασης.
-FullInstallation=Πλήρης Εγκατάσταση
+WizardSelectComponents=ÅðéëïãÞ Óõóôáôéêþí
+SelectComponentsDesc=Ðïéá óõóôáôéêÜ èÝëåôå íá åãêáôáóôáèïýí;
+SelectComponentsLabel2=ÅðéëÝîôå ôá óõóôáôéêÜ ðïõ èÝëåôå íá åãêáôáóôÞóåôå êáé ðáôÞóôå Åðüìåíï ãéá óõíÝ÷åéá ôçò åãêáôÜóôáóçò.
+FullInstallation=ÐëÞñçò ÅãêáôÜóôáóç
 ; if possible don't translate 'Compact' as 'Minimal' (I mean 'Minimal' in your language)
-CompactInstallation=Περιορισμένη Εγκατάσταση
-CustomInstallation=Προσαρμοσμένη Εγκατάσταση
-NoUninstallWarningTitle=Τα συστατικά υπάρχουν
-NoUninstallWarning=Η εγκατάσταση εντόπισε ότι τα ακόλουθα συστατικά είναι ήδη εγκατεστημένα στον υπολογιστή σας:%n%n%1%n%nΑποεπιλέγοντας αυτά τα συστατικά δεν θα απεγκατασταθούν.%n%nΘέλετε να συνεχίσετε παρόλα αυτά;
+CompactInstallation=ÐåñéïñéóìÝíç ÅãêáôÜóôáóç
+CustomInstallation=ÐñïóáñìïóìÝíç ÅãêáôÜóôáóç
+NoUninstallWarningTitle=Ôá óõóôáôéêÜ õðÜñ÷ïõí
+NoUninstallWarning=Ç åãêáôÜóôáóç åíôüðéóå üôé ôá áêüëïõèá óõóôáôéêÜ åßíáé Þäç åãêáôåóôçìÝíá óôïí õðïëïãéóôÞ óáò:%n%n%1%n%nÁðïåðéëÝãïíôáò áõôÜ ôá óõóôáôéêÜ äåí èá áðåãêáôáóôáèïýí.%n%nÈÝëåôå íá óõíå÷ßóåôå ðáñüëá áõôÜ;
 ComponentSize1=%1 KB
 ComponentSize2=%1 MB
-ComponentsDiskSpaceMBLabel=Η συγκεκριμένη επιλογή απαιτεί τουλάχιστον [mb] MB ελεύθερο χώρο στον δίσκο.
+ComponentsDiskSpaceMBLabel=Ç óõãêåêñéìÝíç åðéëïãÞ áðáéôåß ôïõëÜ÷éóôïí [mb] MB åëåýèåñï ÷þñï óôïí äßóêï.
 
 ; *** "Select Additional Tasks" wizard page
-WizardSelectTasks=Επιλογή Επιπλέον Ενεργειών
-SelectTasksDesc=Ποιες επιπλέον ενέργειες θέλετε να γίνουν;
-SelectTasksLabel2=Επιλέξτε τις επιπλέον ενέργειες που θέλετε να γίνουν κατά την εγκατάσταση του [name] και πατήστε Επόμενο.
+WizardSelectTasks=ÅðéëïãÞ ÅðéðëÝïí Åíåñãåéþí
+SelectTasksDesc=Ðïéåò åðéðëÝïí åíÝñãåéåò èÝëåôå íá ãßíïõí;
+SelectTasksLabel2=ÅðéëÝîôå ôéò åðéðëÝïí åíÝñãåéåò ðïõ èÝëåôå íá ãßíïõí êáôÜ ôçí åãêáôÜóôáóç ôïõ [name] êáé ðáôÞóôå Åðüìåíï.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Επιλογή Καταλόγου Στο Μενού Εκκίνηση
-SelectStartMenuFolderDesc=Πού θα τοποθετηθούν οι συντομεύσεις του προγράμματος;
-SelectStartMenuFolderLabel3=Η εγκατάσταση θα δημιουργήσει τις συντομεύσεις του προγράμματος στην ακόλουθη ομάδα.
-SelectStartMenuFolderBrowseLabel=Για συνέχεια, πατήστε Επόμενο. Αν θέλετε άλλη ομάδα, πατήστε Εύρεση.
-MustEnterGroupName=Πρέπει να δώσετε το όνομα ενός καταλόγου.
-GroupNameTooLong=Το όνομα του καταλόγου είναι πολύ μεγάλο.
-InvalidGroupName=Το όνομα του καταλόγου δεν είναι σωστό.
-BadGroupName=Ονόματα καταλόγων δεν μπορούν να περιέχουν κάποιον από τους παρακάτω χαρακτήρες:%n%n%1
-NoProgramGroupCheck2=&Χωρίς δημιουργία καταλόγου στο μενού Έναρξης.
+WizardSelectProgramGroup=ÅðéëïãÞ Êáôáëüãïõ Óôï Ìåíïý Åêêßíçóç
+SelectStartMenuFolderDesc=Ðïý èá ôïðïèåôçèïýí ïé óõíôïìåýóåéò ôïõ ðñïãñÜììáôïò;
+SelectStartMenuFolderLabel3=Ç åãêáôÜóôáóç èá äçìéïõñãÞóåé ôéò óõíôïìåýóåéò ôïõ ðñïãñÜììáôïò óôçí áêüëïõèç ïìÜäá.
+SelectStartMenuFolderBrowseLabel=Ãéá óõíÝ÷åéá, ðáôÞóôå Åðüìåíï. Áí èÝëåôå Üëëç ïìÜäá, ðáôÞóôå Åýñåóç.
+MustEnterGroupName=ÐñÝðåé íá äþóåôå ôï üíïìá åíüò êáôáëüãïõ.
+GroupNameTooLong=Ôï üíïìá ôïõ êáôáëüãïõ åßíáé ðïëý ìåãÜëï.
+InvalidGroupName=Ôï üíïìá ôïõ êáôáëüãïõ äåí åßíáé óùóôü.
+BadGroupName=Ïíüìáôá êáôáëüãùí äåí ìðïñïýí íá ðåñéÝ÷ïõí êÜðïéïí áðü ôïõò ðáñáêÜôù ÷áñáêôÞñåò:%n%n%1
+NoProgramGroupCheck2=&×ùñßò äçìéïõñãßá êáôáëüãïõ óôï ìåíïý ¸íáñîçò.
 
 ; *** "Ready to Install" wizard page
-WizardReady=Έτοιμος για εγκατάσταση
-ReadyLabel1=Η εγκατάσταση του [name] είναι έτοιμη να εκτελεστεί στον υπολογιστή σας.
-ReadyLabel2a=Πατήστε Εγκατάσταση για να συνεχίσετε ή Πίσω αν θέλετε να αλλάξετε κάποιες ρυθμίσεις.
-ReadyLabel2b=Πατήστε Εγκατάσταση για να συνεχίσετε.
-ReadyMemoUserInfo=Πληροφορίες Χρήστη:
-ReadyMemoDir=Φάκελος προορισμού:
-ReadyMemoType=Είδος εγκατάστασης:
-ReadyMemoComponents=Επιλεγμένα συστατικά:
-ReadyMemoGroup=Κατάλογος στο μενού Προγράμματα:
-ReadyMemoTasks=Επιπλέον Ενέργειες:
+WizardReady=¸ôïéìïò ãéá åãêáôÜóôáóç
+ReadyLabel1=Ç åãêáôÜóôáóç ôïõ [name] åßíáé Ýôïéìç íá åêôåëåóôåß óôïí õðïëïãéóôÞ óáò.
+ReadyLabel2a=ÐáôÞóôå ÅãêáôÜóôáóç ãéá íá óõíå÷ßóåôå Þ Ðßóù áí èÝëåôå íá áëëÜîåôå êÜðïéåò ñõèìßóåéò.
+ReadyLabel2b=ÐáôÞóôå ÅãêáôÜóôáóç ãéá íá óõíå÷ßóåôå.
+ReadyMemoUserInfo=Ðëçñïöïñßåò ×ñÞóôç:
+ReadyMemoDir=ÖÜêåëïò ðñïïñéóìïý:
+ReadyMemoType=Åßäïò åãêáôÜóôáóçò:
+ReadyMemoComponents=ÅðéëåãìÝíá óõóôáôéêÜ:
+ReadyMemoGroup=ÊáôÜëïãïò óôï ìåíïý ÐñïãñÜììáôá:
+ReadyMemoTasks=ÅðéðëÝïí ÅíÝñãåéåò:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Προετοιμασία Εγκατάστασης
-PreparingDesc=Η εγκατάσταση προετοιμάζεται να εγκαταστήσει το πρόγραμμα [name] στον υπολογιστή σας.
-PreviousInstallNotCompleted=Η εγκατάσταση/αφαίρεση ενός προηγούμενου προγράμματος δεν ολοκληρώθηκε. Θα χρειαστεί να επανεκκινήσετε τον υπολογιστή σας ώστε να ολοκληρώσετε εκείνη την εγκατάσταση.%n%nΜετά την επανεκκίνηση του υπολογιστή σας, εκτελέστε την Εγκατάσταση πάλι για να ολοκληρώσετε την εγκατάσταση του [name].
-CannotContinue=Η εγκατάσταση δε μπορεί να συνεχίσει. Παρακαλώ πατήστε ’κυρο για τερματισμό.
-ApplicationsFound=Οι ακόλουθες εφαρμογές χρησιμοποιούν αρχεία τα οποία πρέπει να ενημερωθούν από την Εγκατάσταση. Προτείνεται να επιτρέψετε στην Εγκατάσταση να κλείσει αυτές τις εφαρμογές αυτόματα.
-ApplicationsFound2=Οι ακόλουθες εφαρμογές χρησιμοποιούν αρχεία τα οποία πρέπει να ενημερωθούν από την Εγκατάσταση. Προτείνεται να επιτρέψετε στην Εγκατάσταση να κλείσει αυτές τις εφαρμογές αυτόματα. Μετά την ολοκλήρωση της διαδικασίας, η Εγκατάσταση θα προσπαθήσει να επανεκκινήσει τις εφαρμογές.
-CloseApplications=&Αυτόματο κλείσιμο των εφαρμογών
-DontCloseApplications=&Χωρίς κλείσιμο των εφαρμογών
-ErrorCloseApplications=Η Εγκατάσταση απέτυχε να κλείσει αυτόματα όλες τις εφαρμογές. Προτείνεται να κλείσετε όλες τις εφαρμογές που χρησιμοποιούν αρχεία τα οποία πρέπει να ενημερωθούν από την Εγκατάσταση προτού συνεχίσετε.
+WizardPreparing=Ðñïåôïéìáóßá ÅãêáôÜóôáóçò
+PreparingDesc=Ç åãêáôÜóôáóç ðñïåôïéìÜæåôáé íá åãêáôáóôÞóåé ôï ðñüãñáììá [name] óôïí õðïëïãéóôÞ óáò.
+PreviousInstallNotCompleted=Ç åãêáôÜóôáóç/áöáßñåóç åíüò ðñïçãïýìåíïõ ðñïãñÜììáôïò äåí ïëïêëçñþèçêå. Èá ÷ñåéáóôåß íá åðáíåêêéíÞóåôå ôïí õðïëïãéóôÞ óáò þóôå íá ïëïêëçñþóåôå åêåßíç ôçí åãêáôÜóôáóç.%n%nÌåôÜ ôçí åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò, åêôåëÝóôå ôçí ÅãêáôÜóôáóç ðÜëé ãéá íá ïëïêëçñþóåôå ôçí åãêáôÜóôáóç ôïõ [name].
+CannotContinue=Ç åãêáôÜóôáóç äå ìðïñåß íá óõíå÷ßóåé. Ðáñáêáëþ ðáôÞóôå ¢êõñï ãéá ôåñìáôéóìü.
+ApplicationsFound=Ïé áêüëïõèåò åöáñìïãÝò ÷ñçóéìïðïéïýí áñ÷åßá ôá ïðïßá ðñÝðåé íá åíçìåñùèïýí áðü ôçí ÅãêáôÜóôáóç. Ðñïôåßíåôáé íá åðéôñÝøåôå óôçí ÅãêáôÜóôáóç íá êëåßóåé áõôÝò ôéò åöáñìïãÝò áõôüìáôá.
+ApplicationsFound2=Ïé áêüëïõèåò åöáñìïãÝò ÷ñçóéìïðïéïýí áñ÷åßá ôá ïðïßá ðñÝðåé íá åíçìåñùèïýí áðü ôçí ÅãêáôÜóôáóç. Ðñïôåßíåôáé íá åðéôñÝøåôå óôçí ÅãêáôÜóôáóç íá êëåßóåé áõôÝò ôéò åöáñìïãÝò áõôüìáôá. ÌåôÜ ôçí ïëïêëÞñùóç ôçò äéáäéêáóßáò, ç ÅãêáôÜóôáóç èá ðñïóðáèÞóåé íá åðáíåêêéíÞóåé ôéò åöáñìïãÝò.
+CloseApplications=&Áõôüìáôï êëåßóéìï ôùí åöáñìïãþí
+DontCloseApplications=&×ùñßò êëåßóéìï ôùí åöáñìïãþí
+ErrorCloseApplications=Ç ÅãêáôÜóôáóç áðÝôõ÷å íá êëåßóåé áõôüìáôá üëåò ôéò åöáñìïãÝò. Ðñïôåßíåôáé íá êëåßóåôå üëåò ôéò åöáñìïãÝò ðïõ ÷ñçóéìïðïéïýí áñ÷åßá ôá ïðïßá ðñÝðåé íá åíçìåñùèïýí áðü ôçí ÅãêáôÜóôáóç ðñïôïý óõíå÷ßóåôå.
 
 ; *** "Installing" wizard page
-WizardInstalling=Πρόοδος Εγκατάστασης
-InstallingLabel=Παρακαλώ περιμένετε να ολοκληρωθεί η εγκατάσταση του [name] στον υπολογιστή σας.
+WizardInstalling=Ðñüïäïò ÅãêáôÜóôáóçò
+InstallingLabel=Ðáñáêáëþ ðåñéìÝíåôå íá ïëïêëçñùèåß ç åãêáôÜóôáóç ôïõ [name] óôïí õðïëïãéóôÞ óáò.
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Ολοκληρώνοντας τον Οδηγό Εγκατάστασης του [name]
-FinishedLabelNoIcons=Η εγκατάσταση του [name] στον υπολογιστή σας ολοκληρώθηκε με επιτυχία.
-FinishedLabel=Η εγκατάσταση του [name] στον υπολογιστή σας ολοκληρώθηκε με επιτυχία. Μπορείτε να ξεκινήσετε το πρόγραμμα επιλέγοντας τα εικονίδια που δημιουργήθηκαν.
-ClickFinish=Πατήστε Τέλος για να τερματίσετε το πρόγραμμα εγκατάστασης.
-FinishedRestartLabel=Για να ολοκληρωθεί η εγκατάσταση του [name] πρέπει να γίνει επανεκκίνηση του υπολογιστή σας. Θέλετε να γίνει επανεκκίνηση τώρα;
-FinishedRestartMessage=Για να ολοκληρωθεί η εγκατάσταση του [name] πρέπει να γίνει επανεκκίνηση του υπολογιστή σας.%n%nΘέλετε να γίνει επανεκκίνηση τώρα;
-ShowReadmeCheck=Ναι, θέλω να διαβάσω τις πληροφορίες του προγράμματος
-YesRadio=&Ναι, να γίνει επανεκκίνηση τώρα
-NoRadio=&Οχι, θα κάνω επανεκκίνηση αργότερα
+FinishedHeadingLabel=Ïëïêëçñþíïíôáò ôïí Ïäçãü ÅãêáôÜóôáóçò ôïõ [name]
+FinishedLabelNoIcons=Ç åãêáôÜóôáóç ôïõ [name] óôïí õðïëïãéóôÞ óáò ïëïêëçñþèçêå ìå åðéôõ÷ßá.
+FinishedLabel=Ç åãêáôÜóôáóç ôïõ [name] óôïí õðïëïãéóôÞ óáò ïëïêëçñþèçêå ìå åðéôõ÷ßá. Ìðïñåßôå íá îåêéíÞóåôå ôï ðñüãñáììá åðéëÝãïíôáò ôá åéêïíßäéá ðïõ äçìéïõñãÞèçêáí.
+ClickFinish=ÐáôÞóôå ÔÝëïò ãéá íá ôåñìáôßóåôå ôï ðñüãñáììá åãêáôÜóôáóçò.
+FinishedRestartLabel=Ãéá íá ïëïêëçñùèåß ç åãêáôÜóôáóç ôïõ [name] ðñÝðåé íá ãßíåé åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò. ÈÝëåôå íá ãßíåé åðáíåêêßíçóç ôþñá;
+FinishedRestartMessage=Ãéá íá ïëïêëçñùèåß ç åãêáôÜóôáóç ôïõ [name] ðñÝðåé íá ãßíåé åðáíåêêßíçóç ôïõ õðïëïãéóôÞ óáò.%n%nÈÝëåôå íá ãßíåé åðáíåêêßíçóç ôþñá;
+ShowReadmeCheck=Íáé, èÝëù íá äéáâÜóù ôéò ðëçñïöïñßåò ôïõ ðñïãñÜììáôïò
+YesRadio=&Íáé, íá ãßíåé åðáíåêêßíçóç ôþñá
+NoRadio=&Ï÷é, èá êÜíù åðáíåêêßíçóç áñãüôåñá
 ; used for example as 'Run MyProg.exe'
-RunEntryExec=Να εκτελεστεί το πρόγραμμα %1
+RunEntryExec=Íá åêôåëåóôåß ôï ðñüãñáììá %1
 ; used for example as 'View Readme.txt'
-RunEntryShellExec=Να εκτελεστεί το %1
+RunEntryShellExec=Íá åêôåëåóôåß ôï %1
 
 ; *** "Setup Needs the Next Disk" stuff
-ChangeDiskTitle=Η Εγκατάσταση χρειάζεται τον επόμενο δίσκο/δισκέτα
-SelectDiskLabel2=Παρακαλώ, εισάγετε το Δίσκο/Δισκέτα %1 και πατήστε OK.%n%nΑν τα αρχεία αυτού του δίσκου/δισκέτας βρίσκονται σε κάποιον φάκελο εκτός αυτού που φαίνεται παρακάτω, εισάγετε τη σωστή διαδρομή ή πατήστε Εύρεση.
-PathLabel=&Διαδρομή:
-FileNotInDir2=Το αρχείο "%1" δε βρέθηκε στο "%2". Παρακαλώ εισάγετε το σωστό δίσκο/δισκέτα ή επιλέξτε κάποιον άλλο φάκελο.
-SelectDirectoryLabel=Παρακαλώ καθορίσετε την τοποθεσία του επόμενου δίσκου/δισκέτας.
+ChangeDiskTitle=Ç ÅãêáôÜóôáóç ÷ñåéÜæåôáé ôïí åðüìåíï äßóêï/äéóêÝôá
+SelectDiskLabel2=Ðáñáêáëþ, åéóÜãåôå ôï Äßóêï/ÄéóêÝôá %1 êáé ðáôÞóôå OK.%n%nÁí ôá áñ÷åßá áõôïý ôïõ äßóêïõ/äéóêÝôáò âñßóêïíôáé óå êÜðïéïí öÜêåëï åêôüò áõôïý ðïõ öáßíåôáé ðáñáêÜôù, åéóÜãåôå ôç óùóôÞ äéáäñïìÞ Þ ðáôÞóôå Åýñåóç.
+PathLabel=&ÄéáäñïìÞ:
+FileNotInDir2=Ôï áñ÷åßï "%1" äå âñÝèçêå óôï "%2". Ðáñáêáëþ åéóÜãåôå ôï óùóôü äßóêï/äéóêÝôá Þ åðéëÝîôå êÜðïéïí Üëëï öÜêåëï.
+SelectDirectoryLabel=Ðáñáêáëþ êáèïñßóåôå ôçí ôïðïèåóßá ôïõ åðüìåíïõ äßóêïõ/äéóêÝôáò.
 
 ; *** Installation phase messages
-SetupAborted=Η εγκατάσταση δεν ολοκληρώθηκε.%n%nΠαρακαλώ, διορθώστε το πρόβλημα και εκτελέστε ξανά την Εγκατάσταση.
-EntryAbortRetryIgnore=Πατήστε Retry για να ξαναπροσπαθήσετε, Ignore για να συνεχίσετε ή Abort για να τερματίσετε την Εγκατάσταση.
+SetupAborted=Ç åãêáôÜóôáóç äåí ïëïêëçñþèçêå.%n%nÐáñáêáëþ, äéïñèþóôå ôï ðñüâëçìá êáé åêôåëÝóôå îáíÜ ôçí ÅãêáôÜóôáóç.
+EntryAbortRetryIgnore=ÐáôÞóôå Retry ãéá íá îáíáðñïóðáèÞóåôå, Ignore ãéá íá óõíå÷ßóåôå Þ Abort ãéá íá ôåñìáôßóåôå ôçí ÅãêáôÜóôáóç.
 
 ; *** Installation status messages
-StatusClosingApplications=Κλείσιμο εφαρμογών...
-StatusCreateDirs=Δημιουργία φακέλων...
-StatusExtractFiles=Αποσυμπίεση αρχείων...
-StatusCreateIcons=Δημιουργία εικονιδίων...
-StatusCreateIniEntries=Καταχώρηση στο ΙΝΙ αρχείο...
-StatusCreateRegistryEntries=Καταχώρηση στο μητρώο συστήματος...
-StatusRegisterFiles=Καταχώρηση αρχείων...
-StatusSavingUninstall=Πληροφορίες απεγκατάστασης...
-StatusRunProgram=Τελειώνοντας την εγκατάσταση...
-StatusRestartingApplications=Επανεκκίνηση εφαρμογών...
-StatusRollback=Επαναφορά αλλαγών...
+StatusClosingApplications=Êëåßóéìï åöáñìïãþí...
+StatusCreateDirs=Äçìéïõñãßá öáêÝëùí...
+StatusExtractFiles=Áðïóõìðßåóç áñ÷åßùí...
+StatusCreateIcons=Äçìéïõñãßá åéêïíéäßùí...
+StatusCreateIniEntries=Êáôá÷þñçóç óôï ÉÍÉ áñ÷åßï...
+StatusCreateRegistryEntries=Êáôá÷þñçóç óôï ìçôñþï óõóôÞìáôïò...
+StatusRegisterFiles=Êáôá÷þñçóç áñ÷åßùí...
+StatusSavingUninstall=Ðëçñïöïñßåò áðåãêáôÜóôáóçò...
+StatusRunProgram=Ôåëåéþíïíôáò ôçí åãêáôÜóôáóç...
+StatusRestartingApplications=Åðáíåêêßíçóç åöáñìïãþí...
+StatusRollback=ÅðáíáöïñÜ áëëáãþí...
 
 ; *** Misc. errors
-ErrorInternal2=Εσωτερικό σφάλμα: %1
-ErrorFunctionFailedNoCode=%1 Σφάλμα
-ErrorFunctionFailed=%1 απέτυχε, κωδικός %2
-ErrorFunctionFailedWithMessage=%1 απέτυχε, κωδικός %2.%n%3
-ErrorExecutingProgram=Αδύνατη η εκτέλεση του αρχείου:%n%1
+ErrorInternal2=Åóùôåñéêü óöÜëìá: %1
+ErrorFunctionFailedNoCode=%1 ÓöÜëìá
+ErrorFunctionFailed=%1 áðÝôõ÷å, êùäéêüò %2
+ErrorFunctionFailedWithMessage=%1 áðÝôõ÷å, êùäéêüò %2.%n%3
+ErrorExecutingProgram=Áäýíáôç ç åêôÝëåóç ôïõ áñ÷åßïõ:%n%1
 
 ; *** Registry errors
-ErrorRegOpenKey=Δεν μπορεί να διαβαστεί το κλειδί μητρώου συστήματος:%n%1\%2
-ErrorRegCreateKey=Δεν μπορεί να δημιουργηθεί το κλειδί μητρώου συστήματος:%n%1\%2
-ErrorRegWriteKey=Δεν μπορεί να γίνει καταχώρηση στο κλειδί μητρώου συστήματος:%n%1\%2
+ErrorRegOpenKey=Äåí ìðïñåß íá äéáâáóôåß ôï êëåéäß ìçôñþïõ óõóôÞìáôïò:%n%1\%2
+ErrorRegCreateKey=Äåí ìðïñåß íá äçìéïõñãçèåß ôï êëåéäß ìçôñþïõ óõóôÞìáôïò:%n%1\%2
+ErrorRegWriteKey=Äåí ìðïñåß íá ãßíåé êáôá÷þñçóç óôï êëåéäß ìçôñþïõ óõóôÞìáôïò:%n%1\%2
 
 ; *** INI errors
-ErrorIniEntry=Δεν μπορεί να γίνει καταχώρηση στο αρχείο ΙΝΙ "%1".
+ErrorIniEntry=Äåí ìðïñåß íá ãßíåé êáôá÷þñçóç óôï áñ÷åßï ÉÍÉ "%1".
 
 ; *** File copying errors
-FileAbortRetryIgnore=Πατήστε Retry για να ξαναπροσπαθήσετε, Ignore για να παραλείψετε το αρχείο (δεν προτείνεται) ή Abort για να τερματίσετε την εγκατάσταση.
-FileAbortRetryIgnore2=Πατήστε Retry για να ξαναπροσπαθήσετε, Ignore για να παραλείψετε το αρχείο (δεν προτείνεται) ή Abort για να τερματίσετε την εγκατάσταση.
-SourceIsCorrupted=Το αρχείο προέλευσης είναι κατεστραμμένο
-SourceDoesntExist=Το αρχείο προέλευσης "%1" δεν υπάρχει
-ExistingFileReadOnly=Το αρχείο είναι μαρκαρισμένο μόνο για ανάγνωση.%n%nΠατήστε Retry για να το ξεμαρκάρετε και να προσπαθήσετε πάλι, Ignore για να παραλείψετε το αρχείο ή Abort για να τερματίσετε την εγκατάσταση.
-ErrorReadingExistingDest=Παρουσιάστηκε σφάλμα κατά την ανάγνωση του αρχείου:
-FileExists=Το αρχείο υπάρχει ήδη.%n%nΘέλετε να ξαναγραφτεί;
-ExistingFileNewer=Ένα αρχείο που βρέθηκε στον υπολογιστή σας είναι νεότερης έκδοσης από εκείνο της εγκατάστασης. Προτείνεται να κρατήσετε το υπάρχον αρχείο.%n%nΘέλετε να κρατήσετε το υπάρχον αρχείο;
-ErrorChangingAttr=Προέκυψε σφάλμα στην προσπάθεια να αλλαχτούν τα χαρακτηριστικά του αρχείου:
-ErrorCreatingTemp=Προέκυψε σφάλμα στην προσπάθεια να δημιουργηθεί ένα αρχείο στον κατάλογο προορισμού:
-ErrorReadingSource=Προέκυψε σφάλμα στην προσπάθεια ανάγνωσης του αρχείου προέλευσης:
-ErrorCopying=Προέκυψε σφάλμα στην προσπάθεια να αντιγραφεί το αρχείο:
-ErrorReplacingExistingFile=Προέκυψε σφάλμα στην προσπάθεια να αντικατασταθεί το υπάρχον αρχείο:
-ErrorRestartReplace=Προέκυψε σφάλμα στην προσπάθεια να γίνει επανεκκίνηση και αντικατάσταση αρχείου:
-ErrorRenamingTemp=Προέκυψε σφάλμα στην προσπάθεια μετονομασίας ενός αρχείου στον κατάλογο προορισμού:
-ErrorRegisterServer=Προέκυψε σφάλμα στην προσπάθεια καταχώρησης DLL/OCX: %1
-ErrorRegSvr32Failed=Το RegSvr32 απέτυχε με κωδικό εξόδου %1
-ErrorRegisterTypeLib=Αδύνατη η καταχώρηση της βιβλιοθήκης τύπων: %1
+FileAbortRetryIgnore=ÐáôÞóôå Retry ãéá íá îáíáðñïóðáèÞóåôå, Ignore ãéá íá ðáñáëåßøåôå ôï áñ÷åßï (äåí ðñïôåßíåôáé) Þ Abort ãéá íá ôåñìáôßóåôå ôçí åãêáôÜóôáóç.
+FileAbortRetryIgnore2=ÐáôÞóôå Retry ãéá íá îáíáðñïóðáèÞóåôå, Ignore ãéá íá ðáñáëåßøåôå ôï áñ÷åßï (äåí ðñïôåßíåôáé) Þ Abort ãéá íá ôåñìáôßóåôå ôçí åãêáôÜóôáóç.
+SourceIsCorrupted=Ôï áñ÷åßï ðñïÝëåõóçò åßíáé êáôåóôñáììÝíï
+SourceDoesntExist=Ôï áñ÷åßï ðñïÝëåõóçò "%1" äåí õðÜñ÷åé
+ExistingFileReadOnly=Ôï áñ÷åßï åßíáé ìáñêáñéóìÝíï ìüíï ãéá áíÜãíùóç.%n%nÐáôÞóôå Retry ãéá íá ôï îåìáñêÜñåôå êáé íá ðñïóðáèÞóåôå ðÜëé, Ignore ãéá íá ðáñáëåßøåôå ôï áñ÷åßï Þ Abort ãéá íá ôåñìáôßóåôå ôçí åãêáôÜóôáóç.
+ErrorReadingExistingDest=ÐáñïõóéÜóôçêå óöÜëìá êáôÜ ôçí áíÜãíùóç ôïõ áñ÷åßïõ:
+FileExists=Ôï áñ÷åßï õðÜñ÷åé Þäç.%n%nÈÝëåôå íá îáíáãñáöôåß;
+ExistingFileNewer=¸íá áñ÷åßï ðïõ âñÝèçêå óôïí õðïëïãéóôÞ óáò åßíáé íåüôåñçò Ýêäïóçò áðü åêåßíï ôçò åãêáôÜóôáóçò. Ðñïôåßíåôáé íá êñáôÞóåôå ôï õðÜñ÷ïí áñ÷åßï.%n%nÈÝëåôå íá êñáôÞóåôå ôï õðÜñ÷ïí áñ÷åßï;
+ErrorChangingAttr=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá áëëá÷ôïýí ôá ÷áñáêôçñéóôéêÜ ôïõ áñ÷åßïõ:
+ErrorCreatingTemp=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá äçìéïõñãçèåß Ýíá áñ÷åßï óôïí êáôÜëïãï ðñïïñéóìïý:
+ErrorReadingSource=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá áíÜãíùóçò ôïõ áñ÷åßïõ ðñïÝëåõóçò:
+ErrorCopying=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá áíôéãñáöåß ôï áñ÷åßï:
+ErrorReplacingExistingFile=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá áíôéêáôáóôáèåß ôï õðÜñ÷ïí áñ÷åßï:
+ErrorRestartReplace=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá ãßíåé åðáíåêêßíçóç êáé áíôéêáôÜóôáóç áñ÷åßïõ:
+ErrorRenamingTemp=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá ìåôïíïìáóßáò åíüò áñ÷åßïõ óôïí êáôÜëïãï ðñïïñéóìïý:
+ErrorRegisterServer=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá êáôá÷þñçóçò DLL/OCX: %1
+ErrorRegSvr32Failed=Ôï RegSvr32 áðÝôõ÷å ìå êùäéêü åîüäïõ %1
+ErrorRegisterTypeLib=Áäýíáôç ç êáôá÷þñçóç ôçò âéâëéïèÞêçò ôýðùí: %1
 
 ; *** Post-installation errors
-ErrorOpeningReadme=Προέκυψε σφάλμα στην προσπάθεια να φορτωθεί το αρχείο πληροφοριών.
-ErrorRestartingComputer=Προέκυψε σφάλμα στην προσπάθεια επανεκκίνησης του υπολογιστή. Παρακαλώ επανεκκινήσετε τον υπολογιστή σας μόνοι σας.
+ErrorOpeningReadme=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá íá öïñôùèåß ôï áñ÷åßï ðëçñïöïñéþí.
+ErrorRestartingComputer=ÐñïÝêõøå óöÜëìá óôçí ðñïóðÜèåéá åðáíåêêßíçóçò ôïõ õðïëïãéóôÞ. Ðáñáêáëþ åðáíåêêéíÞóåôå ôïí õðïëïãéóôÞ óáò ìüíïé óáò.
 
 ; *** Uninstaller messages
-UninstallNotFound=Το αρχείο "%1" δεν βρέθηκε. Η απεγκατάσταση δεν μπορεί να γίνει.
-UninstallOpenError=Το αρχείο "%1" δεν μπόρεσε να φορτωθεί. Η απεγκατάσταση δεν μπορεί να γίνει
-UninstallUnsupportedVer=Το αρχείο "%1" δεν αναγνωρίζεται από αυτή την έκδοση της εγκατάστασης, Η απεγκατάσταση δεν μπορεί να εκτελεστεί
-UninstallUnknownEntry=Το αρχείο "%1" δεν αναγνωρίζεται από αυτή την έκδοση της εγκατάστασης, Η απεγκατάσταση δεν μπορεί να εκτελεστεί
+UninstallNotFound=Ôï áñ÷åßï "%1" äåí âñÝèçêå. Ç áðåãêáôÜóôáóç äåí ìðïñåß íá ãßíåé.
+UninstallOpenError=Ôï áñ÷åßï "%1" äåí ìðüñåóå íá öïñôùèåß. Ç áðåãêáôÜóôáóç äåí ìðïñåß íá ãßíåé
+UninstallUnsupportedVer=Ôï áñ÷åßï "%1" äåí áíáãíùñßæåôáé áðü áõôÞ ôçí Ýêäïóç ôçò åãêáôÜóôáóçò, Ç áðåãêáôÜóôáóç äåí ìðïñåß íá åêôåëåóôåß
+UninstallUnknownEntry=Ôï áñ÷åßï "%1" äåí áíáãíùñßæåôáé áðü áõôÞ ôçí Ýêäïóç ôçò åãêáôÜóôáóçò, Ç áðåãêáôÜóôáóç äåí ìðïñåß íá åêôåëåóôåß
 ConfirmUninstall=Are you sure you would like to remove Kolibri from your computer?
-UninstallOnlyOnWin64=Αυτή η εφαρμογή μπορεί να απεγκατασταθεί μόνο σε 64-bit Windows.
-OnlyAdminCanUninstall=Η απεγκατάσταση μπορεί να εκτελεστεί μόνο από τον Διαχειριστή συστήματος.
-UninstallStatusLabel=Παρακαλώ περιμένετε όσο το %1 διαγράφεται από τον υπολογιστή σας.
+UninstallOnlyOnWin64=ÁõôÞ ç åöáñìïãÞ ìðïñåß íá áðåãêáôáóôáèåß ìüíï óå 64-bit Windows.
+OnlyAdminCanUninstall=Ç áðåãêáôÜóôáóç ìðïñåß íá åêôåëåóôåß ìüíï áðü ôïí Äéá÷åéñéóôÞ óõóôÞìáôïò.
+UninstallStatusLabel=Ðáñáêáëþ ðåñéìÝíåôå üóï ôï %1 äéáãñÜöåôáé áðü ôïí õðïëïãéóôÞ óáò.
 UninstalledAll=Kolibri has been successfully removed from your computer.
-UninstalledMost=Η απεγκατάσταση του %1 έγινε με επιτυχία.%n%nΚάποια συστατικά δεν ήταν δυνατόν να διαγραφούν. Αυτά μπορούν να διαγραφούν από εσάς.
-UninstalledAndNeedsRestart=Για να ολοκληρώσετε την απεγκατάσταση του %1, θα πρέπει να επανεκκινήσετε τον υπολογιστή σας.%n%nΘα θέλατε να κάνετε επανεκκίνηση τώρα;
-UninstallDataCorrupted="%1" Αυτό το αρχείο είναι κατεστραμμένο. Δεν μπορεί να γίνει απεγκατάσταση
+UninstalledMost=Ç áðåãêáôÜóôáóç ôïõ %1 Ýãéíå ìå åðéôõ÷ßá.%n%nÊÜðïéá óõóôáôéêÜ äåí Þôáí äõíáôüí íá äéáãñáöïýí. ÁõôÜ ìðïñïýí íá äéáãñáöïýí áðü åóÜò.
+UninstalledAndNeedsRestart=Ãéá íá ïëïêëçñþóåôå ôçí áðåãêáôÜóôáóç ôïõ %1, èá ðñÝðåé íá åðáíåêêéíÞóåôå ôïí õðïëïãéóôÞ óáò.%n%nÈá èÝëáôå íá êÜíåôå åðáíåêêßíçóç ôþñá;
+UninstallDataCorrupted="%1" Áõôü ôï áñ÷åßï åßíáé êáôåóôñáììÝíï. Äåí ìðïñåß íá ãßíåé áðåãêáôÜóôáóç
 
 ; *** Uninstallation phase messages
-ConfirmDeleteSharedFileTitle=Θέλετε να διαγραφούν τα κοινά αρχεία;
-ConfirmDeleteSharedFile2=Τα κοινά αρχεία δεν χρησιμοποιούνται από κάποιο πρόγραμμα. Θέλετε να διαγραφούν;%n%nΑν κάποιο πρόγραμμα τα χρησιμοποιεί ίσως δεν εκτελείται σωστά αν τα διαγράψετε. Αν δεν είστε σίγουροι, επιλέξτε Όχι. Αφήνοντάς τα στο σύστημά σας δεν προκαλούν κάποιο πρόβλημα.
-SharedFileNameLabel=Όνομα Αρχείου:
-SharedFileLocationLabel=Τοποθεσία:
-WizardUninstalling=Πρόοδος Απεγκατάστασης
-StatusUninstalling=Απεγκατάσταση του %1...
+ConfirmDeleteSharedFileTitle=ÈÝëåôå íá äéáãñáöïýí ôá êïéíÜ áñ÷åßá;
+ConfirmDeleteSharedFile2=Ôá êïéíÜ áñ÷åßá äåí ÷ñçóéìïðïéïýíôáé áðü êÜðïéï ðñüãñáììá. ÈÝëåôå íá äéáãñáöïýí;%n%nÁí êÜðïéï ðñüãñáììá ôá ÷ñçóéìïðïéåß ßóùò äåí åêôåëåßôáé óùóôÜ áí ôá äéáãñÜøåôå. Áí äåí åßóôå óßãïõñïé, åðéëÝîôå ¼÷é. ÁöÞíïíôÜò ôá óôï óýóôçìÜ óáò äåí ðñïêáëïýí êÜðïéï ðñüâëçìá.
+SharedFileNameLabel=¼íïìá Áñ÷åßïõ:
+SharedFileLocationLabel=Ôïðïèåóßá:
+WizardUninstalling=Ðñüïäïò ÁðåãêáôÜóôáóçò
+StatusUninstalling=ÁðåãêáôÜóôáóç ôïõ %1...
 
 ; *** Shutdown block reasons
-ShutdownBlockReasonInstallingApp=Εγκατάσταση του %1.
-ShutdownBlockReasonUninstallingApp=Απεγκατάσταση του %1.
+ShutdownBlockReasonInstallingApp=ÅãêáôÜóôáóç ôïõ %1.
+ShutdownBlockReasonUninstallingApp=ÁðåãêáôÜóôáóç ôïõ %1.
 
 ; The custom messages below aren't used by Setup itself, but if you make
 ; use of them in your scripts, you'll want to translate them.
@@ -342,7 +342,7 @@ UpgradeDelMsg=Installing fresh will delete all of your existing data; is this wh
 InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
 InstallPythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
-KolibriInstallFailed=Kolibri installation failed. Kolibri installer encountered an error during the installation process%n%n
+KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
 SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
 LaunchKolibri=Launch Kolibri
 KolibriSupportLink=Community forums
@@ -355,3 +355,4 @@ UninstallKolibriDataLine1=Would you also like to delete all the data associated 
 UninstallKolibriDataLine2=This will permanently remove all downloaded content channels and the user interaction data.
 UninstallKolibriDataLine3=This action cannot be undone.
 UninstallKolibriPath=Data location:
+
