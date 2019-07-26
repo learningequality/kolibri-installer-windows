@@ -300,10 +300,10 @@ ConfirmUninstall=¿Seguro que quiere desinstalar Kolibri de su equipo?
 UninstallOnlyOnWin64=Esta instalación sólo puede ser desinstalada en Windows de 64 bits.
 OnlyAdminCanUninstall=Esta instalación sólo puede ser desinstalada por un usuario con privilegios administrativos.
 UninstallStatusLabel=Por favor, espere mientras que %1 es quitado de su equipo.
-UninstalledAll=Kolibri has been successfully removed from your computer.
+UninstalledAll=Kolibri se ha eliminado correctamente de su equipo
 UninstalledMost=%1 desinstalar complete.%n%nSome elementos no podrían ser quitados. Estos pueden ser removidos manualmente.
 UninstalledAndNeedsRestart=¿Para completar la desinstalación de %1, su computadora debe ser restarted.%n%nWould que quieres reiniciar ahora?
-UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
+UninstallDataCorrupted=El archivo "%1" está corrupto. No se puede desinstalar
 
 ; *** Uninstallation phase messages
 ConfirmDeleteSharedFileTitle=¿Quitar archivo compartido? 
