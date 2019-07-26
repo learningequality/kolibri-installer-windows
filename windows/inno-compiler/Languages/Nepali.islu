@@ -325,18 +325,18 @@ ShutdownBlockReasonUninstallingApp=%1 निष्कासित हुँद�
 
 [CustomMessages]
 
-NameAndVersion=%1 संस्करण %2
-AdditionalIcons=अतिरिक्त प्रतिमा:
-CreateDesktopIcon=&डेस्कटपमा प्रतिमाको सिर्जना होस् 
-CreateQuickLaunchIcon=&तुरुन्तै सक्रिय प्रतिमाको सिर्जना गर । 
-ProgramOnTheWeb=वेभमा %1
-UninstallProgram=%1 लाई निष्कासन गरि देउ
-LaunchProgram=%1 लाई सक्रिय बनाउ
-AssocFileExtension=%1 लाई %2 फाइलको विस्तार सित &आबद्ध गरी देउ । 
-AssocingFileExtension=%1 लाई %2 फाइलको विस्तार सित आबद्धता दिँदै छु । 
-AutoStartProgramGroupDescription=सुरुवात:
-AutoStartProgram=%1 स्वचालित रूपले सुरु होस् । 
-AddonHostProgramNotFound=तपाइले चयन गर्नु भएको थैली मा %1 लाई फेला पार्न सकिएन । %n %n के जसरी पनि कार्य निरन्तर राख्ने हो?
+NameAndVersion=%1 version %2
+AdditionalIcons=Additional shortcuts:
+CreateDesktopIcon=Create a &desktop shortcut
+CreateQuickLaunchIcon=Create a &Quick Launch shortcut
+ProgramOnTheWeb=%1 on the Web
+UninstallProgram=Uninstall %1
+LaunchProgram=Launch %1
+AssocFileExtension=&Associate %1 with the %2 file extension
+AssocingFileExtension=Associating %1 with the %2 file extension...
+AutoStartProgramGroupDescription=Startup:
+AutoStartProgram=Automatically start %1
+AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
@@ -344,10 +344,10 @@ UpgradeDelMsg=Installing fresh will delete all of your existing data; is this wh
 InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
 InstallPythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
-KolibriInstallFailed=Kolibri installation failed. Kolibri installer encountered an error during the installation process%n%n
+KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
 SetupWizardMsg=Setup wizard is copying files. This may take a while, please wait..
 LaunchKolibri=Launch Kolibri
-KolibriSupportLink=Community forums
+KolibriSupportLink=Community forum
 KolibriHomePage=Homepage
 KolibriDocs=Documentation
 FileNotFound= was not found.
@@ -357,3 +357,4 @@ UninstallKolibriDataLine1=Would you also like to delete all the data associated 
 UninstallKolibriDataLine2=This will permanently remove all downloaded content channels and the user interaction data.
 UninstallKolibriDataLine3=This action cannot be undone.
 UninstallKolibriPath=Data location:
+
