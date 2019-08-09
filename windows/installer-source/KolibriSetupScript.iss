@@ -33,7 +33,7 @@ Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "ne"; MessagesFile: "compiler:Languages\Nepali.isl"
 Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
 [Files]
