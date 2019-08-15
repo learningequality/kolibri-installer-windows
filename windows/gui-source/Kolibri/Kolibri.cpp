@@ -72,16 +72,6 @@ char * getKolibriLinkAddress() {
 	return "";
 }
 
-// REF: https://stackoverflow.com/a/8032108
-wchar_t *getWC(char *c)
-{
-	const size_t cSize = strlen(c) + 1;
-	wchar_t* wc = new wchar_t[cSize];
-	mbstowcs(wc, c, cSize);
-
-	return wc;
-}
-
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 {
 	/*
@@ -114,35 +104,49 @@ void startServerAction()
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (_access(script_dir, 0) == 0) {
-		if (!runShellScript("kolibri.exe", "start", script_dir))
-		{
-			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_3_en));
-		}
-		else
+	if (!_access(script_dir, 0) == 0) {
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_5_en));
+		return;
+	}
+	SHELLEXECUTEINFO commandInfo = getCommandInfo("kolibri.exe", "start", script_dir);
+	ShellExecuteEx(&commandInfo);
+	WaitForSingleObject(commandInfo.hProcess, 10000L);
+
+	Sleep(500);
+	DWORD exitCode = 9000;
+	GetExitCodeProcess(commandInfo.hProcess, &exitCode);
+	WCHAR code[100];
+	swprintf_s(code, L"%d", exitCode);
+	OutputDebugString(code);
+	wstring wstrcode = std::wstring(code);
+
+	if (wstrcode == std::wstring(L"1")) {
+		if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
 		{
 			needNotify = true;
 			isServerStarting = true;
 			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
 		}
-	}
-	else
-	{
-		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_5_en));
+		else
+		{
+			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_3_en));
+			// Kolibri failed to start
+		}
 	}
 
-}
-
-void stopServerAction()
-{
-	const DWORD MAX_SIZE = 255;
-	char script_dir[MAX_SIZE];
-	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri.exe", "stop", script_dir))
-	{
-		// Handle error.
+	if (wstrcode == std::wstring(L"259")) {
+		needNotify = true;
+		isServerStarting = true;
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
+		// Kolibri still starting
+	}
+	OutputDebugString(code);
+	if (wstrcode == std::wstring(L"9000")) {
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_3_en));
+		// Kolibri failed to start
 	}
 }
+
 
 void loadBrowserAction()
 {
@@ -161,6 +165,42 @@ void loadBrowserAction()
 
 }
 
+void checkServerThread()
+{
+	wchar_t msgString[120];
+
+	wcscpy(msgString, getStr(ID_STRING_11_en));
+	wcscat(msgString, getWC(getKolibriLinkAddress()));
+	wcscat(msgString, getStr(ID_STRING_20_en));
+
+	// We can handle things like checking if the server is online and controlling the state of each component.
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
+	{
+		mnuLoadBrowser->enable();
+		if (needNotify)
+		{
+			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER"))
+			{
+				loadBrowserAction();
+			}
+			window->sendTrayMessage(getStr(ID_STRING_10_en), msgString);
+			needNotify = false;
+		}
+		isServerStarting = false;
+	}
+}
+
+void stopServerAction()
+{
+	const DWORD MAX_SIZE = 255;
+	char script_dir[MAX_SIZE];
+	kolibriScriptPath(script_dir, MAX_SIZE);
+	if (!runShellScript("kolibri.exe", "stop", script_dir))
+	{
+		// Handle error.
+	}
+}
+
 void exitKolibriAction()
 {
 
@@ -171,7 +211,7 @@ void exitKolibriAction()
 		window->quit();
 	}
 }
-
+ 
 void runUserLogsInAction()
 {
 	if (mnuRunUserLogsIn->isChecked())
@@ -224,31 +264,6 @@ void serverStartingMsg() {
 	}
 }
 
-void checkServerThread()
-{
-	wchar_t msgString[120];
-
-	wcscpy(msgString, getStr(ID_STRING_11_en));
-	wcscat(msgString, getWC(getKolibriLinkAddress()));
-	wcscat(msgString, getStr(ID_STRING_20_en));
-	
-	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", getKolibriLinkAddress()))
-	{
-		mnuLoadBrowser->enable();
-		if (needNotify)
-		{
-			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER"))
-			{
-				loadBrowserAction();
-			}
-			window->sendTrayMessage(getStr(ID_STRING_10_en), msgString);
-			needNotify = false;
-		}
-		isServerStarting = false;
-	}
-}
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	// REF: http://stackoverflow.com/questions/8799646/preventing-multiple-instances-of-my-application
@@ -279,8 +294,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			return false;
 		}
 	}
-	startThread(NULL, TRUE, 3000, &checkServerThread);
+
+    startThread(NULL, TRUE, 3000, &checkServerThread);
 	startThread(NULL, TRUE, 5000, &serverStartingMsg);
+
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
