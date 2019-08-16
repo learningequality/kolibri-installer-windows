@@ -55,13 +55,23 @@ WindowsServicePackRequired=Este programa requiere %1 Service Pack %2 o posterior
 NotOnThisPlatform=Este programa no se ejecutará en %1. 
 OnlyOnThisPlatform=Este programa se debe ejecutar en %1. 
 OnlyOnTheseArchitectures=Este programa sólo se puede instalar en versiones de Windows diseñadas para las siguientes arquitecturas de procesador:%n%n%1 
-MissingWOW64APIs=La versión de Windows que está ejecutando no incluye funcionalidad requerida por la instalación para realizar una instalación de 64 bits. Para corregir este problema, instale Service Pack %1. 
+; MissingWOW64APIs=La versión de Windows que está ejecutando no incluye funcionalidad requerida por la instalación para realizar una instalación de 64 bits. Para corregir este problema, instale Service Pack %1. 
 WinVersionTooLowError=Este programa requiere %1 versión %2 o posterior. 
 WinVersionTooHighError=Este programa no puede instalarse en %1 versión %2 o posterior. 
 AdminPrivilegesRequired=Tiene que iniciar la sesión como administrador para instalar este programa. 
 PowerUserPrivilegesRequired=Tiene que iniciar la sesión como administrador o miembro del grupo Power Users para instalar este programa. 
 SetupAppRunningError=Instalación ha detectado que %1 está running.%n%nPlease cerca todas las instancias de la misma, luego haga clic en Aceptar para continuar o cancelación para salir. 
 UninstallAppRunningError=Desinstalar ha detectado que %1 está running.%n%nPlease cerca todas las instancias de la misma, luego haga clic en Aceptar para continuar o Cancelar para salir. 
+
+; *** Startup questions
+PrivilegesRequiredOverrideTitle=Selección del Modo de Instalación
+PrivilegesRequiredOverrideInstruction=Seleccione el modo de instalación
+PrivilegesRequiredOverrideText1=%1 puede ser instalado para todos los usuarios (requiere privilegios administrativos), o solo para Ud.
+PrivilegesRequiredOverrideText2=%1 puede ser instalado solo para Ud, o para todos los usuarios (requiere privilegios administrativos).
+PrivilegesRequiredOverrideAllUsers=Instalar para &todos los usuarios
+PrivilegesRequiredOverrideAllUsersRecommended=Instalar para &todos los usuarios (recomendado)
+PrivilegesRequiredOverrideCurrentUser=Instalar para &mí solamente
+PrivilegesRequiredOverrideCurrentUserRecommended=Instalar para &mí solamente (recomendado)
 
 ; *** Misc. errors
 ErrorCreatingDir=Instalación no pudo crear el directorio "%1"
@@ -237,7 +247,11 @@ SelectDirectoryLabel=Por favor, especifique la ubicación del siguiente disco.
 
 ; *** Installation phase messages
 SetupAborted=Configuración fue no completed.%n%nPlease correctamente el problema y vuelva a ejecutar Setup. 
-EntryAbortRetryIgnore=Haga clic en Reintentar para intentarlo de nuevo, ignorar para proceder de todas formas, o abortar para cancelar la instalación. 
+; EntryAbortRetryIgnore=Haga clic en Reintentar para intentarlo de nuevo, ignorar para proceder de todas formas, o abortar para cancelar la instalación. 
+AbortRetryIgnoreSelectAction=Seleccione acción
+AbortRetryIgnoreRetry=&Reintentar
+AbortRetryIgnoreIgnore=&Ignorar el error y continuar
+AbortRetryIgnoreCancel=Cancelar instalación
 
 ; *** Installation status messages
 StatusClosingApplications=Cerrar aplicaciones... 
@@ -268,11 +282,16 @@ ErrorRegWriteKey=Error al escribir la clave del registro: %n%1\%2
 ErrorIniEntry=Error al crear la entrada INI en el archivo "%1".
 
 ; *** File copying errors
-FileAbortRetryIgnore=Haga clic en Reintentar para intentarlo de nuevo, ignorar para omitir este archivo (no recomendado), o abortar para cancelar la instalación. 
-FileAbortRetryIgnore2=Haga clic en Reintentar para intentarlo de nuevo, ignorar para proceder de todos modos (no recomendado) o abortar para cancelar la instalación. 
+; FileAbortRetryIgnore=Haga clic en Reintentar para intentarlo de nuevo, ignorar para omitir este archivo (no recomendado), o abortar para cancelar la instalación. 
+; FileAbortRetryIgnore2=Haga clic en Reintentar para intentarlo de nuevo, ignorar para proceder de todos modos (no recomendado) o abortar para cancelar la instalación. 
+FileAbortRetryIgnoreSkipNotRecommended=&Omitir este archivo (no recomendado)
+FileAbortRetryIgnoreIgnoreNotRecommended=&Ignorar el error y continuar (no recomendado)
 SourceIsCorrupted=El archivo de origen está dañado 
 SourceDoesntExist=The source file "%1" does not exist
-ExistingFileReadOnly=El archivo existente está marcado como read-only.%n%nClick Reintentar para quitar el atributo de sólo lectura y probar nuevamente, ignorar para omitir este archivo o abortar para cancelar la instalación. 
+; ExistingFileReadOnly=El archivo existente está marcado como read-only.%n%nClick Reintentar para quitar el atributo de sólo lectura y probar  nuevamente, ignorar para omitir este archivo o abortar para cancelar la instalación. 
+ExistingFileReadOnly2=El archivo existente no puede ser reemplazado debido a que está marcado como sólo-lectura.
+ExistingFileReadOnlyRetry=&Elimine el atributo de sólo-lectura y reintente
+ExistingFileReadOnlyKeepExisting=&Mantener el archivo existente
 ErrorReadingExistingDest=Error al intentar leer el archivo existente: 
 FileExists=¿El archivo ya exists.%n%nWould como configurar para sobrescribirlo? 
 ExistingFileNewer=El archivo existente es más reciente que el programa de instalación está intentando instalar. ¿Se recomienda que usted mantenga el file.%n%nDo existente que desea conservar el archivo existente? 
@@ -286,6 +305,14 @@ ErrorRenamingTemp=Se ha producido un error al intentar renombrar un archivo en e
 ErrorRegisterServer=No se pudo registrar el DLL/OCX: %1 
 ErrorRegSvr32Failed=RegSvr32 falló con código de salida %1 
 ErrorRegisterTypeLib=No se pudo registrar la biblioteca de tipos: %1 
+
+; *** Uninstall display name markings
+UninstallDisplayNameMark=%1 (%2)
+UninstallDisplayNameMarks=%1 (%2, %3)
+UninstallDisplayNameMark32Bit=32-bit
+UninstallDisplayNameMark64Bit=64-bit
+UninstallDisplayNameMarkAllUsers=Todos los usuarios
+UninstallDisplayNameMarkCurrentUser=Usuario actual
 
 ; *** Post-installation errors
 ErrorOpeningReadme=Se ha producido un error al intentar abrir el archivo Léame. 

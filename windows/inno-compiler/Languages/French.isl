@@ -1,4 +1,4 @@
-﻿; *** Inno Setup version 5.5.3+ French messages ***
+﻿; *** Inno Setup version 6.0.0+ French messages ***
 ;
 ; To download user-contributed translations of this file, go to:
 ;   http://www.jrsoftware.org/files/istrans/
@@ -24,11 +24,12 @@
 ; + Use more standard verbs for click and retry
 ;     "click": "Clicker" instead of "Appuyer" 
 ;     "retry": "Recommencer" au lieu de "Réessayer"
+; + Added new 6.0.0 messages
 
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Fran<00E7>ais
+LanguageName=Français
 LanguageID=$040C
 LanguageCodePage=1252
 ; If the language you are translating to requires special font faces or
@@ -59,6 +60,7 @@ ErrorTitle=Erreur
 SetupLdrStartupMessage=Cet assistant va installer %1. Voulez-vous continuer ?
 LdrCannotCreateTemp=Impossible de créer un fichier temporaire. Abandon de l'installation
 LdrCannotExecTemp=Impossible d'exécuter un fichier depuis le dossier temporaire. Abandon de l'installation
+HelpTextNote=
 
 ; *** Startup error messages
 LastErrorMessage=%1.%n%nErreur %2 : %3
@@ -72,13 +74,22 @@ WindowsServicePackRequired=Ce programme a besoin de %1 Service Pack %2 ou d'une 
 NotOnThisPlatform=Ce programme ne fonctionne pas sous %1.
 OnlyOnThisPlatform=Ce programme ne peut fonctionner que sous %1.
 OnlyOnTheseArchitectures=Ce programme ne peut être installé que sur des versions de Windows qui supportent ces architectures : %n%n%1
-MissingWOW64APIs=La version de Windows que vous utilisez ne dispose pas des fonctionnalités nécessaires pour que l'assistant puisse réaliser une installation 64 bits. Pour corriger ce problème vous devez installer le Service Pack %1.
 WinVersionTooLowError=Ce programme requiert la version %2 ou supérieure de %1.
 WinVersionTooHighError=Ce programme ne peut pas être installé sous %1 version %2 ou supérieure.
 AdminPrivilegesRequired=Vous devez disposer des droits d'administration de cet ordinateur pour installer ce programme.
 PowerUserPrivilegesRequired=Vous devez disposer des droits d'administration ou faire partie du groupe « Utilisateurs avec pouvoir » de cet ordinateur pour installer ce programme.
 SetupAppRunningError=L'assistant d'installation a détecté que %1 est actuellement en cours d'exécution.%n%nVeuillez fermer toutes les instances de cette application puis cliquer sur OK pour continuer, ou bien cliquer sur Annuler pour abandonner l'installation.
 UninstallAppRunningError=La procédure de désinstallation a détecté que %1 est actuellement en cours d'exécution.%n%nVeuillez fermer toutes les instances de cette application  puis cliquer sur OK pour continuer, ou bien cliquer sur Annuler pour abandonner la désinstallation.
+
+; *** Startup questions
+PrivilegesRequiredOverrideTitle=Choix du Mode d'Installation
+PrivilegesRequiredOverrideInstruction=Choisissez le mode d'installation
+PrivilegesRequiredOverrideText1=%1 peut être installé pour tous les utilisateurs (nécessite des privilèges administrateur), ou seulement pour vous.
+PrivilegesRequiredOverrideText2=%1 peut-être installé seulement pour vous, ou pour tous les utilisateurs (nécessite des privilèges administrateur).
+PrivilegesRequiredOverrideAllUsers=Installer pour &tous les utilisateurs
+PrivilegesRequiredOverrideAllUsersRecommended=Installer pour &tous les utilisateurs (recommandé)
+PrivilegesRequiredOverrideCurrentUser=Installer seulement pour &moi
+PrivilegesRequiredOverrideCurrentUserRecommended=Installer seulement pour &moi (recommandé)
 
 ; *** Misc. errors
 ErrorCreatingDir=L'assistant d'installation n'a pas pu créer le dossier "%1"
@@ -110,7 +121,7 @@ ButtonNewFolder=Nouveau &dossier
 
 ; *** "Select Language" dialog messages
 SelectLanguageTitle=Langue de l'assistant d'installation
-SelectLanguageLabel=Veuillez sélectionner la langue qui sera utilisée par l'assistant d'installation :
+SelectLanguageLabel=Veuillez sélectionner la langue qui sera utilisée par l'assistant d'installation.
 
 ; *** Common wizard text
 ClickNext=Cliquez sur Suivant pour continuer ou sur Annuler pour abandonner l'installation.
@@ -254,7 +265,10 @@ SelectDirectoryLabel=Veuillez indiquer l'emplacement du disque suivant.
 
 ; *** Installation phase messages
 SetupAborted=L'installation n'est pas terminée.%n%nVeuillez corriger le problème et relancer l'installation.
-EntryAbortRetryIgnore=Cliquez sur Recommencer pour essayer à nouveau, Ignorer pour continuer malgré tout, ou Abandonner pour annuler l'installation.
+AbortRetryIgnoreSelectAction=Choisissez une action
+AbortRetryIgnoreRetry=&Recommencer
+AbortRetryIgnoreIgnore=&Ignorer l'erreur et continuer
+AbortRetryIgnoreCancel=Annuler l'installation
 
 ; *** Installation status messages
 StatusClosingApplications=Ferme les applications...
@@ -285,11 +299,13 @@ ErrorRegWriteKey=Erreur lors de l'écriture de la clé de registre :%n%1\%2
 ErrorIniEntry=Erreur d'écriture d'une entrée dans le fichier INI "%1".
 
 ; *** File copying errors
-FileAbortRetryIgnore=Cliquez sur Recommencer pour essayer à nouveau, Ignorer pour passer ce fichier (déconseillé), ou Abandonner pour annuler l'installation.
-FileAbortRetryIgnore2=Cliquez sur Recommencer pour essayer à nouveau, Ignorer pour continuer malgré tout (déconseillé), ou Abandonner pour annuler l'installation.
+FileAbortRetryIgnoreSkipNotRecommended=&Ignorer ce fichier (non recommandé)
+FileAbortRetryIgnoreIgnoreNotRecommended=&Ignorer l'erreur et continuer (non recommandé)
 SourceIsCorrupted=Le fichier source est altéré
 SourceDoesntExist=Le fichier source "%1" n'existe pas
-ExistingFileReadOnly=Le fichier existant est protégé en lecture seule.%n%nCliquez sur Recommencer pour enlever la protection et essayer à nouveau, Ignorer pour passer ce fichier, ou Abandonner pour annuler l'installation.
+ExistingFileReadOnly2=Le fichier existant ne peut pas être remplacé parce qu'il est protégé par l'attribut lecture seule.
+ExistingFileReadOnlyRetry=&Supprimer l'attribut lecture seule et réessayer
+ExistingFileReadOnlyKeepExisting=&Conserver le fichier existant
 ErrorReadingExistingDest=Une erreur s'est produite lors de la tentative de lecture du fichier existant :
 FileExists=Le fichier existe déjà.%n%nSouhaitez-vous que l'installation le remplace ?
 ExistingFileNewer=Le fichier existant est plus récent que celui que l'assistant essaie d'installer. Il est recommandé de conserver le fichier existant.%n%nSouhaitez-vous conserver le fichier existant ?
@@ -304,6 +320,16 @@ ErrorRegisterServer=Impossible d'enregistrer la bibliothèque DLL/OCX : %1
 ErrorRegSvr32Failed=RegSvr32 a échoué et a retourné le code d'erreur %1
 ErrorRegisterTypeLib=Impossible d'enregistrer la bibliothèque de type : %1
 
+; *** Nom d'affichage pour la désinstallaton
+; par exemple 'Mon Programme (32-bit)'
+UninstallDisplayNameMark=%1 (%2)
+; ou par exemple 'Mon Programme (32-bit, Tous les utilisateurs)'
+UninstallDisplayNameMarks=%1 (%2, %3)
+UninstallDisplayNameMark32Bit=32-bit
+UninstallDisplayNameMark64Bit=64-bit
+UninstallDisplayNameMarkAllUsers=Tous les utilisateurs
+UninstallDisplayNameMarkCurrentUser=Utilisateur courant
+
 ; *** Post-installation errors
 ErrorOpeningReadme=Une erreur est survenue à l'ouverture du fichier LISEZMOI.
 ErrorRestartingComputer=L'installation n'a pas pu redémarrer l'ordinateur. Merci de bien vouloir le faire vous-même.
@@ -313,11 +339,11 @@ UninstallNotFound=Le fichier "%1" n'existe pas. Impossible de désinstaller.
 UninstallOpenError=Le fichier "%1" n'a pas pu être ouvert. Impossible de désinstaller
 UninstallUnsupportedVer=Le format du fichier journal de désinstallation "%1" n'est pas reconnu par cette version de la procédure de désinstallation. Impossible de désinstaller
 UninstallUnknownEntry=Une entrée inconnue (%1) a été rencontrée dans le fichier journal de désinstallation
-ConfirmUninstall=Are you sure you would like to remove Kolibri from your computer?
+ConfirmUninstall=Voulez-vous vraiment désinstaller complètement %1 ainsi que tous ses composants ?
 UninstallOnlyOnWin64=La désinstallation de ce programme ne fonctionne qu'avec une version 64 bits de Windows.
 OnlyAdminCanUninstall=Ce programme ne peut être désinstallé que par un utilisateur disposant des droits d'administration.
 UninstallStatusLabel=Veuillez patienter pendant que %1 est retiré de votre ordinateur.
-UninstalledAll=Kolibri has been successfully removed from your computer.
+UninstalledAll=%1 a été correctement désinstallé de cet ordinateur.
 UninstalledMost=La désinstallation de %1 est terminée.%n%nCertains éléments n'ont pas pu être supprimés automatiquement. Vous pouvez les supprimer manuellement.
 UninstalledAndNeedsRestart=Vous devez redémarrer l'ordinateur pour terminer la désinstallation de %1.%n%nVoulez-vous redémarrer maintenant ?
 UninstallDataCorrupted=Le ficher "%1" est altéré. Impossible de désinstaller
