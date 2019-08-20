@@ -44,17 +44,23 @@ wchar_t * getStr(int strId) {
 	return finalStr;
 }
 
+char * getKolibriHomePath()
+{
+	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
+	if (kolibriHomeEnv == NULL) {
+		kolibriHomeEnv = joinChr(getenv("HOMEPATH"), "\\.kolibri");
+	}
+	return kolibriHomeEnv;
+}
+
 char * getKolibriLinkAddress() {
 	/*
 	This will return the current Kolibri running link url.
 	It will fetch the PORT value from server.pid file.
 	*/
-	char * kolibriHomeEnv = getenv("KOLIBRI_HOME");
-	if (kolibriHomeEnv == NULL) {
-		kolibriHomeEnv = joinChr(getenv("HOMEPATH"), "\\.kolibri");
-	}
+	
 	char * configName = "\\server.pid";
-	char * pidFile = joinChr(kolibriHomeEnv, configName);
+	char * pidFile = joinChr(getKolibriHomePath(), configName);
 	char * httpLink = "";
 	std::ifstream file(pidFile);
 	if (file.is_open()) {
@@ -68,16 +74,6 @@ char * getKolibriLinkAddress() {
 		return httpLink;
 	}
 	return "";
-}
-
-// REF: https://stackoverflow.com/a/8032108
-wchar_t *getWC(char *c)
-{
-	const size_t cSize = strlen(c) + 1;
-	wchar_t* wc = new wchar_t[cSize];
-	mbstowcs(wc, c, cSize);
-
-	return wc;
 }
 
 void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
@@ -105,36 +101,57 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 	return;
 }
 
+void kolibriFailedMessage() {
+	MessageBox(HWND_DESKTOP, concatenateWchar(getStr(ID_STRING_21_en), getWC(getKolibriHomePath()), getWC("\\logs\\kolibri.log")), L"Kolibri", MB_OK | MB_ICONINFORMATION);
+}
+
 void startServerAction()
 {
 	const DWORD MAX_SIZE = 255;
 	char script_dir[MAX_SIZE];
 	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (_access(script_dir, 0) == 0) {
-		if (!runShellScript("kolibri.exe", "start", script_dir)) {
-			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_3_en));
-		}
-		else {
+	if (!_access(script_dir, 0) == 0) {
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_5_en));
+		return;
+	}
+	SHELLEXECUTEINFO commandInfo = getCommandInfo("kolibri.exe", "start", script_dir);
+	ShellExecuteEx(&commandInfo);
+	WaitForSingleObject(commandInfo.hProcess, 10000L);
+
+	Sleep(200);
+	DWORD exitCode = 9000;
+	GetExitCodeProcess(commandInfo.hProcess, &exitCode);
+	WCHAR code[100];
+	swprintf_s(code, L"%d", exitCode);
+	OutputDebugString(code);
+	wstring wstrcode = std::wstring(code);
+
+	if (wstrcode == std::wstring(L"1")) {
+		if (isServerOnline("Kolibri session", getKolibriLinkAddress())){
 			needNotify = true;
 			isServerStarting = true;
 			window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
+			// Kolibri server started
+		}
+		else {
+			kolibriFailedMessage();			
+			// Kolibri failed to start
 		}
 	}
-	else {
-		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_5_en));
+
+	if (wstrcode == std::wstring(L"259")) {
+		needNotify = true;
+		isServerStarting = true;
+		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
+		// Kolibri still starting
 	}
-
-}
-
-void stopServerAction()
-{
-	const DWORD MAX_SIZE = 255;
-	char script_dir[MAX_SIZE];
-	kolibriScriptPath(script_dir, MAX_SIZE);
-	if (!runShellScript("kolibri.exe", "stop", script_dir)) {
-		// Handle error.
+	OutputDebugString(code);
+	if (wstrcode == std::wstring(L"9000")) {
+		kolibriFailedMessage();
+		// Kolibri failed to start
 	}
 }
+
 
 void loadBrowserAction()
 {
@@ -150,6 +167,33 @@ void loadBrowserAction()
 
 }
 
+void checkServerThread()
+{
+
+	// We can handle things like checking if the server is online and controlling the state of each component.
+	if (isServerOnline("Kolibri session", getKolibriLinkAddress())) {
+		mnuLoadBrowser->enable();
+		if (needNotify) {
+			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER")) {
+				loadBrowserAction();
+			}
+			window->sendTrayMessage(getStr(ID_STRING_10_en), concatenateWchar(getStr(ID_STRING_11_en), getWC(getKolibriLinkAddress()), getStr(ID_STRING_20_en)));
+			needNotify = false;
+		}
+		isServerStarting = false;
+	}
+}
+
+void stopServerAction()
+{
+	const DWORD MAX_SIZE = 255;
+	char script_dir[MAX_SIZE];
+	kolibriScriptPath(script_dir, MAX_SIZE);
+	if (!runShellScript("kolibri.exe", "stop", script_dir)) {
+		// Handle error.
+	}
+}
+
 void exitKolibriAction()
 {
 
@@ -159,11 +203,12 @@ void exitKolibriAction()
 		window->quit();
 	}
 }
-
+ 
 void runUserLogsInAction()
 {
 	if (mnuRunUserLogsIn->isChecked()) {
-		if (!runShellScript("guitools.vbs", "1", NULL)) {
+		if (!runShellScript("guitools.vbs", "1", NULL))
+		{
 			// Handle error.
 			printConsole("Failed to remove startup schortcut.\n");
 		}
@@ -173,13 +218,13 @@ void runUserLogsInAction()
 			setConfigurationValue("DONT_START", "TRUE");
 		}
 	}
-	else
-	{
+	else {
 		if (!runShellScript("guitools.vbs", "0", NULL)) {
 			// Handle error.
 			printConsole("Failed to add startup schortcut.\n");
 		}
-		else {
+		else
+		{
 			mnuRunUserLogsIn->check();
 			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
 		}
@@ -193,8 +238,7 @@ void runOpenBrowserOption()
 		setConfigurationValue("RUN_OPEN_BROWSER", "FALSE");
 		setConfigurationValue("OPEN_BROWSER_OPTION", "TRUE");
 	}
-	else
-	{
+	else {
 		mnuOpenBrowserOption->check();
 		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
@@ -203,28 +247,6 @@ void runOpenBrowserOption()
 void serverStartingMsg() {
 	if (isServerStarting) {
 		window->sendTrayMessage(L"Kolibri", getStr(ID_STRING_4_en));
-	}
-}
-
-void checkServerThread()
-{
-	wchar_t msgString[120];
-
-	wcscpy(msgString, getStr(ID_STRING_11_en));
-	wcscat(msgString, getWC(getKolibriLinkAddress()));
-	wcscat(msgString, getStr(ID_STRING_20_en));
-	
-	// We can handle things like checking if the server is online and controlling the state of each component.
-	if (isServerOnline("Kolibri session", getKolibriLinkAddress())) {
-		mnuLoadBrowser->enable();
-		if (needNotify) {
-			if (isSetConfigurationValueTrue("RUN_OPEN_BROWSER")) {
-				loadBrowserAction();
-			}
-			window->sendTrayMessage(getStr(ID_STRING_10_en), msgString);
-			needNotify = false;
-		}
-		isServerStarting = false;
 	}
 }
 
@@ -239,7 +261,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		if (isServerOnline("Kolibri session", getKolibriLinkAddress())) {
 			loadBrowserAction();
 		}
-		else  {
+		else {
 			MessageBox(HWND_DESKTOP, getStr(ID_STRING_12_en), getStr(ID_STRING_13_en), MB_OK | MB_ICONINFORMATION);
 		}
 		CloseHandle(hMutex);
@@ -254,8 +276,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			return false;
 		}
 	}
-	startThread(NULL, TRUE, 3000, &checkServerThread);
+
+    startThread(NULL, TRUE, 3000, &checkServerThread);
 	startThread(NULL, TRUE, 5000, &serverStartingMsg);
+
 	window = new fle_TrayWindow(&hInstance);
 	window->setTrayIcon("images\\logo48.ico");
 
@@ -274,21 +298,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
 	// Load configurations.
-	if (isSetConfigurationValueTrue("RUN_AT_LOGIN")) {
+	if (isSetConfigurationValueTrue("RUN_AT_LOGIN"))
+	{
 		mnuRunUserLogsIn->check();
 	}
 
-	if (!isSetConfigurationValueTrue("DONT_START")) {
-		if (!runShellScript("guitools.vbs", "0", NULL)) {
+	if (!isSetConfigurationValueTrue("DONT_START"))
+	{
+		if (!runShellScript("guitools.vbs", "0", NULL))
+		{
 			// Handle error.
 			printConsole("Failed to add startup schortcut.\n");
 		}
-		else {
+		else
+		{
 			mnuRunUserLogsIn->check();
 			setConfigurationValue("RUN_AT_LOGIN", "TRUE");
 		}
 	}
-	if (!isSetConfigurationValueTrue("OPEN_BROWSER_OPTION")) {
+	if (!isSetConfigurationValueTrue("OPEN_BROWSER_OPTION"))
+	{
 		mnuOpenBrowserOption->check();
 		setConfigurationValue("RUN_OPEN_BROWSER", "TRUE");
 	}
