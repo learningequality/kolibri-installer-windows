@@ -1,4 +1,4 @@
-﻿; *** Inno; *** Inno Setup version 6.0.0+ Greek messages ***
+﻿; *** Inno Setup version 6.0.0+ Greek messages ***
 ;
 ; To download user-contributed translations of this file, go to:
 ;   http://www.jrsoftware.org/files/istrans/
@@ -326,11 +326,11 @@ UninstallNotFound=Το αρχείο "%1" δεν υπάρχει. Δεν είνα�
 UninstallOpenError=Το αρχείο "%1" δεν ήταν δυνατό να ανοίξει. Δεν είναι δυνατή η απεγκατάσταση
 UninstallUnsupportedVer=Το αρχείο καταγραφής απεγκατάστασης "%1" είναι σε μορφή που δεν αναγνωρίζεται από αυτήν την έκδοση του Οδηγού Απεγκατάστασης. Δεν ήταν δυνατή η απεγκατάσταση
 UninstallUnknownEntry=Μια άγνωστη καταχώρηση (%1) εντοπίστηκε στο αρχείο καταγραφής απεγκατάστασης
-ConfirmUninstall=Είστε βέβαιοι ότι θέλετε να καταργήσετε εντελώς το %1 και όλα τα στοιχεία του;
+ConfirmUninstall=Are you sure you would like to remove Kolibri from your computer?
 UninstallOnlyOnWin64=Αυτή η εγκατάσταση μπορεί να απεγκατασταθεί μόνο σε Windows 64-bit.
 OnlyAdminCanUninstall=Αυτή η εγκατάσταση μπορεί να απεγκατασταθεί μόνο από χρήστη με δικαιώματα διαχειριστή.
 UninstallStatusLabel=Παρακαλώ περιμένετε μέχρι να καταργηθεί το %1 από τον υπολογιστή σας.
-UninstalledAll=Το %1 αφαιρέθηκε με επιτυχία από τον υπολογιστή σας.
+UninstalledAll=Kolibri has been successfully removed from your computer.
 UninstalledMost=Το %1 αφαιρέθηκε με επιτυχία.%n%nΟρισμένα στοιχεία δεν ήταν δυνατό να καταργηθούν. Αυτά μπορούν να αφαιρεθούν από εσάς.
 UninstalledAndNeedsRestart=Για να ολοκληρώσετε την απεγκατάσταση του %1, ο υπολογιστής σας πρέπει να επανεκκινηθεί.%n%nΘα θέλατε να κάνετε επανεκκίνηση τώρα;
 UninstallDataCorrupted=Το "%1" αρχείο είναι κατεστραμμένο. Δεν ήταν δυνατή η απεγκατάσταση
@@ -364,7 +364,6 @@ AssocingFileExtension=Γίνεται συσχέτιση του %1 με την ε
 AutoStartProgramGroupDescription=Εκκίνηση:
 AutoStartProgram=Αυτόματη εκκίνηση του %1
 AddonHostProgramNotFound=Το %1 δε βρέθηκε στο φάκελο που επιλέξατε.%n%nΘέλετε να συνεχίσετε παρόλα αυτά;
-
 
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
