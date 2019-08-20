@@ -15,7 +15,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 OutputDir=..\
 OutputBaseFilename=KolibriSetup-{#TargetVersion}
@@ -26,6 +26,7 @@ PrivilegesRequired=admin
 UsePreviousAppDir=yes
 ChangesEnvironment=yes
 SetupLogging=yes
+UsedUserAreasWarning=no
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
