@@ -15,7 +15,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 OutputDir=..\
 OutputBaseFilename=KolibriSetup-{#TargetVersion}
@@ -26,6 +26,7 @@ PrivilegesRequired=admin
 UsePreviousAppDir=yes
 ChangesEnvironment=yes
 SetupLogging=yes
+UsedUserAreasWarning=no
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
@@ -33,7 +34,7 @@ Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "ne"; MessagesFile: "compiler:Languages\Nepali.islu"
+Name: "ne"; MessagesFile: "compiler:Languages\Nepali.isl"
 Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
 
 [Files]
