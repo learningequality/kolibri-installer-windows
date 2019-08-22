@@ -103,6 +103,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 
 void kolibriFailedMessage() {
 	MessageBox(HWND_DESKTOP, concatenateWchar(getStr(ID_STRING_21_en), getWC(getKolibriHomePath()), getWC("\\logs\\kolibri.log")), L"Kolibri", MB_OK | MB_ICONINFORMATION);
+	window->quit();
 }
 
 void startServerAction()
