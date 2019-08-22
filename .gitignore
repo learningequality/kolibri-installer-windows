@@ -20,10 +20,10 @@
 *.suo
 
 # Compiled executable
-!*.exe
+!src/*.exe
 
 # Dynamic link library
-!*.dll
+!src/*.dll
 
 # KA Lite source folder
 ka-lite/

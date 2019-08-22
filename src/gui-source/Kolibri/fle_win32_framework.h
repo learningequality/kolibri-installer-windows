@@ -1,4 +1,3 @@
-#ifndef fle_win32_framework
 #define fle_win32_framework
 
 #include <Windows.h>
@@ -81,6 +80,27 @@ char * joinChr(const char * arg1, const  char * arg2)
 	strcpy(fStr, arg1);
 	strcpy(fStr + size[0], arg2);
 	return fStr;
+}
+
+wchar_t *getWC(char *c)
+{
+	const size_t cSize = strlen(c) + 1;
+	wchar_t* wc = new wchar_t[cSize];
+	mbstowcs(wc, c, cSize);
+
+	return wc;
+}
+
+wchar_t *concatenateWchar(wchar_t *arg1, wchar_t *arg2, wchar_t *arg3)
+{
+	//Kolibri failed to start for additional information can be found in the log file
+	wchar_t combineStings[10000];
+
+	wcscpy(combineStings, arg1);
+	wcscat(combineStings, arg2);
+	wcscat(combineStings, arg3);
+	
+	return combineStings;
 }
 
 UINT getAvailableID()
@@ -671,14 +691,6 @@ void fle_TrayWindow::show()
 	fle_BaseWindow::test();
 }
 
-
-
-
-
-
-
-
-
 class fle_Window : public fle_BaseWindow
 {
 	private:
@@ -707,10 +719,7 @@ void fle_Window::show()
 	fle_BaseWindow::test();
 }
 
-
-
-// RunSript
-bool runShellScript(char * script_name, char * script_parameters, char * script_path)
+SHELLEXECUTEINFO getCommandInfo(char * script_name, char * script_parameters, char * script_path)
 {
 	TCHAR * t_script_name = getTCHAR(script_name);
 	TCHAR * t_script_parameters = getTCHAR(script_parameters);
@@ -726,13 +735,19 @@ bool runShellScript(char * script_name, char * script_parameters, char * script_
 	shellExecuteInfo.lpDirectory = t_script_path;
 	shellExecuteInfo.nShow = SW_HIDE;
 	shellExecuteInfo.hInstApp = NULL;
-	
-	if(ShellExecuteEx(&shellExecuteInfo))
+	return shellExecuteInfo;
+}
+
+// RunSript
+bool runShellScript(char * script_name, char * script_parameters, char * script_path)
+{
+
+	if (ShellExecuteEx(&getCommandInfo(script_name, script_parameters, script_path)))
 	{
 		return true;
 	}
-
 	return false;
+
 }
 
 void printConsole(char * message)
@@ -897,5 +912,3 @@ int loadBrowser(char * url)
 	}
 	return TRUE;
 }
-
-#endif
