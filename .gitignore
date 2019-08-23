@@ -25,9 +25,6 @@
 # Dynamic link library
 !src/*.dll
 
-# KA Lite source folder
-ka-lite/
-
 # C extensions
 *.so
 
