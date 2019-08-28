@@ -39,6 +39,8 @@ See https://github.com/learningequality/kolibri-installer-windows/releases
 | 1.2.1             | 0.11.x,<=0.12.2  | Python 3.4.3    |
 | 1.3.0             | 0.12.3+          | Python 3.4.3    |
 | 1.3.1             | 0.12.5+          | Python 3.4.3    |
+| 1.3.2             | 0.12.6+          | Python 3.4.3    |
+| 1.3.3             | 0.12.8+          | Python 3.4.3    |
 ---
 #### This project was built using the following software:
 
