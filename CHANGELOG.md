@@ -2,6 +2,9 @@
 
 List of the most important changes for each release.
 
+## 1.3.4
+
+- CHANGED: Update `README.md` and merge develop to master branch.
 
 ## 1.3.3
 
