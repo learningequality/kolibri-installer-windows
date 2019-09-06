@@ -3,6 +3,20 @@
 List of the most important changes for each release.
 
 
+## 1.3.3
+
+- FIXED: Migrate translation files to UTF-8
+- FIXED: Infinite "server is starting" notification
+- FIXED: Remove the duplicated structure (and files) of the repo.
+
+([1.3.1 Github milestone](https://github.com/learningequality/kolibri-installer-windows/milestone/8))
+
+
+## 1.3.2
+
+- FIXED: Spanish translations and encoding
+
+
 ## 1.3.1
 
 - ADDED: Update the uninstall script - confirm removal of Kolibri and it's content folder, also includes error logging during uninstall.
