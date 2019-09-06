@@ -10,10 +10,10 @@ These are the steps how to do releases for the Kolibri Windows installer.  Note 
 
 We are releasing `v1.3.1` as an example here.
 
-1. Tag the `develop` branch as `v1.3.1` at `kolibri-installer-windows`
+1. Tag the `master` branch as `v1.3.1` at `kolibri-installer-windows`
     1. Go to the [releases](https://github.com/learningequality/kolibri-installer-windows/releases/) page then `Draft a new release`.
     1. Put `v1.3.1` as the tag and title for the release.
-    1. Select `develop` as the target for the release.
+    1. Select `master` as the target for the release.
     1. Add the features or fixes in the description.
     1. Click on the `Publish release` when done.
 1. Make a Pull Request (PR) at the `kolibri` repo pointing to the appropriate branch (example: `develop`).
@@ -41,11 +41,12 @@ See https://github.com/learningequality/kolibri-installer-windows/releases
 | 1.3.1             | 0.12.5+          | Python 3.4.3    |
 | 1.3.2             | 0.12.6+          | Python 3.4.3    |
 | 1.3.3             | 0.12.8+          | Python 3.4.3    |
+| 1.3.4             | 0.12.9+          | Python 3.4.3    |
 ---
 #### This project was built using the following software:
 
 * Windows 8.1 32/64bit or Windows 10 32/64bit
-* Inno Setup 5.5.9 Unicode [Download] (http://files.jrsoftware.org/is/5/)
+* Inno Setup 6.0.2 Unicode [Download] (http://files.jrsoftware.org/is/6/)
 * Microsoft Visual Studio Community 2015 [Website] (https://www.visualstudio.com/)
 * Git (Note: Install with the option to place the `git` executable in the path, so it can be run within `cmd`.)
 
