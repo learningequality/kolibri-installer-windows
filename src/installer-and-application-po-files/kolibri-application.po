@@ -50,7 +50,7 @@ msgstr ""
 msgid "Kolibri is running"
 msgstr ""
 
-#: Kolibri.cpp:201
+#: Kolibri.cpp:
 msgid "Kolibri is now accessible locally at: http://127.0.0.1:8080. Select Load in browser."
 msgstr ""
 
@@ -80,4 +80,22 @@ msgstr ""
 
 #: Kolibri.cpp:236
 msgid "Exit"
+msgstr ""
+
+msgid "You can restart it from the desktop shortcut."
+msgstr ""
+
+msgid "Error: KOLIBRI_SCRIPT_DIR path not found."
+msgstr ""
+
+msgid "Kolibri installation is in progress. Please wait for the installer to finish, and Kolibri will open in your default browser."
+msgstr ""
+
+msgid "Installation in progress."
+msgstr ""
+
+msgid "Kolibri failed to start. Additional information can be found in the log file:"
+msgstr ""
+
+msgid "Kolibri has stopped..."
 msgstr ""

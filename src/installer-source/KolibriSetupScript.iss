@@ -35,7 +35,13 @@ Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
 Name: "de"; MessagesFile: "compiler:Languages\German.isl"
 Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
 Name: "ne"; MessagesFile: "compiler:Languages\Nepali.isl"
-Name: "pt"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "pt_BR"; MessagesFile: "compiler:Languages\Portuguese.isl"
+Name: "vi"; MessagesFile: "compiler:Languages\Vietnamese.isl"
+Name: "mr"; MessagesFile: "compiler:Languages\Marathi.islu"
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "hi"; MessagesFile: "compiler:Languages\Hindi.islu"
+Name: "bg"; MessagesFile: "compiler:Languages\Bulgarian.isl"
+Name: "bn"; MessagesFile: "compiler:Languages\Bengali.islu"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
@@ -528,19 +534,22 @@ var
     PipCommand: string;
     PipPath: string;
     ErrorCode: integer;
+    TempFilePath: string;
+    SetEnvCmd: string;
 
 begin
     PipPath := GetPipPath();
     if PipPath = '' then
         exit;
-    PipCommand := 'install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
+    PipCommand := PipPath + ' install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
+    TempFilePath := GetEnv('HOMEDRIVE') + '\\temp'
+    SetEnvCmd := 'set TMP=' + TempFilePath + ' && ' + 'set TEMP=' + TempFilePath
     WizardForm.StatusLabel.WordWrap := true;
     WizardForm.StatusLabel.Height:=50 
     WizardForm.StatusLabel.Font.Style := [fsBold];
     WizardForm.StatusLabel.Caption := CustomMessage('SetupWizardMsg');
     WizardForm.ProgressGauge.Style := npbstMarquee;
-    
-    if not Exec(PipPath, PipCommand, '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
+    if not Exec('cmd.exe', '/S /C " ' + SetEnvCmd + ' && ' + PipCommand + '"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode) then
     begin
         FailedPipNotFound();
     end;
