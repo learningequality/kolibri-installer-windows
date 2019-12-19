@@ -2,6 +2,11 @@
 
 List of the most important changes for each release.
 
+## 1.3.5
+
+- ADDED: Integrate the latest translations from Crowdin.
+- FIXED: v0.13.0-beta1 installer on Windows not working.
+
 ## 1.3.4
 
 - CHANGED: Update `README.md` and merge develop to master branch.
