@@ -109,7 +109,7 @@ void kolibriScriptPath(char *buffer, const DWORD MAX_SIZE)
 }
 
 void kolibriFailedMessage() {
-	MessageBox(HWND_DESKTOP, concatenateWchar(getStr(ID_STRING_21_en), getWC(getKolibriHomePath()), getWC("\\logs\\kolibri.log")), L"Kolibri", MB_OK | MB_ICONINFORMATION);
+	MessageBox(HWND_DESKTOP, concatenateWchar(getStr(ID_STRING_21_en), getWC(getKolibriHomePath()), getWC("\\logs")), L"Kolibri", MB_OK | MB_ICONINFORMATION);
 	window->quit();
 }
 
@@ -218,7 +218,7 @@ void runUserLogsInAction()
 		if (!runShellScript("guitools.vbs", "1", NULL))
 		{
 			// Handle error.
-			printConsole("Failed to remove startup schortcut.\n");
+			printConsole("Failed to remove startup shortcut.\n");
 		}
 		else {
 			mnuRunUserLogsIn->uncheck();
@@ -229,7 +229,7 @@ void runUserLogsInAction()
 	else {
 		if (!runShellScript("guitools.vbs", "0", NULL)) {
 			// Handle error.
-			printConsole("Failed to add startup schortcut.\n");
+			printConsole("Failed to add startup shortcut.\n");
 		}
 		else
 		{
@@ -316,7 +316,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		if (!runShellScript("guitools.vbs", "0", NULL))
 		{
 			// Handle error.
-			printConsole("Failed to add startup schortcut.\n");
+			printConsole("Failed to add startup shortcut.\n");
 		}
 		else
 		{
