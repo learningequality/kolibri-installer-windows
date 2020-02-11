@@ -94,7 +94,7 @@ msgstr ""
 msgid "Installation in progress."
 msgstr ""
 
-msgid "Kolibri failed to start. Additional information can be found in the directory: "
+msgid "Kolibri is unable to start. You can find additional information in your Kolibri home folder: "
 msgstr ""
 
 msgid "Kolibri has stopped..."
