@@ -443,6 +443,39 @@ begin
     end;  
 end;
 
+{ Used in GetPipPath below }
+const
+    DEFAULT_PIP_PATH = '\Python34\Scripts\pip.exe';
+{ Returns the path of pip.exe on the system. }
+{ Tries several different locations before prompting user. }
+
+function GetDefaultPip() : String;
+begin
+  result := ExpandConstant('{sd}') + DEFAULT_PIP_PATH; 
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+    result := True;
+    isWindowsInstall := true;
+    if not (FileExists(GetDefaultPip())) then
+    begin
+      HandlePythonSetup();
+    end;
+    if CurPageID = wpSelectTasks then
+    begin
+        if WizardForm <> nil then 
+            HandleUpgrade(WizardForm.PrevAppDir);
+    end;
+
+    if CurPageID = wpSelectDir then
+    begin
+        { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
+        if Not isUpgrade then  
+            HandleUpgrade(ExpandConstant('{app}'));
+    end;
+end;
+
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -452,8 +485,8 @@ begin
         try
             ExtractTemporaryFile('python-3.4.3.amd64.msi');
             ExtractTemporaryFile('python-3.4.3.msi');
-            ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
             ExtractTemporaryFile('python-exe.bat');
+            ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
             // MsgBox('HandlePythonSetup - ' + GetExceptionMessage, mbInformation, mb_Ok);
@@ -474,11 +507,6 @@ begin
         end
     end;
 end;
-{ Used in GetPipPath below }
-const
-    DEFAULT_PIP_PATH = '\Python34\Scripts\pip.exe';
-{ Returns the path of pip.exe on the system. }
-{ Tries several different locations before prompting user. }
 
 function FailedPipNotFound() : String;
 begin
@@ -488,18 +516,13 @@ begin
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
     ExitProcess(1);
-end;
-
-function GetDefaultPip() : String;
-begin
-  result := ExpandConstant('{sd}') + DEFAULT_PIP_PATH; 
-end;
-
+    end;
+ 
 function GetPipPath() : String;
 var
     path : string;
 begin
-    path := GetDefaultPip()
+    path := ExpandConstant('{sd}') + DEFAULT_PIP_PATH;
     if FileExists(path) then
         begin
             result := path;
@@ -508,30 +531,6 @@ begin
     begin
         FailedPipNotFound();
         result := '';
-    end;
-end;
-
-function NextButtonClick(CurPageID: Integer): Boolean;
-begin
-    result := True;
-    isWindowsInstall := true;
-    if not (FileExists(GetDefaultPip())) then
-      begin
-        HandlePythonSetup();
-      end;
-    if CurPageID = wpSelectTasks then
-    begin
-        if WizardForm <> nil then
-          begin
-            HandleUpgrade(WizardForm.PrevAppDir);;
-          end;
-    end;
-
-    if CurPageID = wpSelectDir then
-    begin
-        { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
-        if Not isUpgrade then  
-            HandleUpgrade(ExpandConstant('{app}'));
     end;
 end;
 
@@ -631,7 +630,7 @@ begin
     else 
     begin
         HandlePythonSetup();
-    end;
+    end; 
 end;
 
 function InitializeUninstall(): Boolean;

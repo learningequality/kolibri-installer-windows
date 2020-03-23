@@ -14,19 +14,19 @@ Setx Path "%pythonScriptPath%;%Path%"
 
 rem Execute python based on machine architecture.
 If /i "%processor_architecture%"=="x86" (
-    If NOT DEFINED PROCESSOR_ARCHITEW6432 (
-        msiexec /i "%python32Bit%" /passive
-    ) Else (
-        msiexec /i "%python64Bit%" /passive
-    )    
+  If NOT DEFINED PROCESSOR_ARCHITEW6432 (
+      msiexec /i "%python32Bit%" /passive
+  ) Else (
+      msiexec /i "%python64Bit%" /passive
+  )    
 ) Else (
-        msiexec /i "%python64Bit%" /passive
+    msiexec /i "%python64Bit%" /passive
 )
 
 rem reinstall pip
 If exist %pythonExe% (
-    If NOT exist "%pythonScriptPath%/pip.exe" (
-      %pythonExe% %pipWhl%/pip install --upgrade --no-index %pipWhl%
-    )
+  If NOT exist "%pythonScriptPath%/pip.exe" (
+    %pythonExe% %pipWhl%/pip install --upgrade --no-index %pipWhl%
+  )
 )
 
