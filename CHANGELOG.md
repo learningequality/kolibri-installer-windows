@@ -2,6 +2,11 @@
 
 List of the most important changes for each release.
 
+## 1.3.6
+
+- FIXED: Update alert message and fix typo error.
+- FIXED: Fix `pip.exe` not found error.
+
 ## 1.3.5
 
 - ADDED: Integrate the latest translations from Crowdin.
