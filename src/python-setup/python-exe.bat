@@ -3,38 +3,30 @@
 Set version=3.4.3
 Set python32Bit=python-%version%.msi
 Set python64Bit=python-%version%.amd64.msi
-Set pythonPath=%cd:~0,2%/Python34/Scripts
-Set envString=%Path%
-Set is_pythonPath=false
-
-rem check if pythonPath exist in environment variables
-:Check_Python_Path_Exist
-For /f "tokens=1* delims=;" %%i IN ("%envString%") DO (
-   If %pythonPath% == %%i (
-       Set is_pythonPath=true
-   )
-   Set envString=%%j
-   Goto Check_Python_Path_Exist
-)
-
-If %is_pythonPath% == false (
-    Goto Add_Python_Path
-) Else (
-    Goto Check_Architecture
-)
+Set pythonPath=%cd:~0,2%/Python34
+Set pythonScriptPath="%pythonPath%/Scripts"
+Set pythonExe="%pythonPath%/python.exe"
+Set pipWhl=pip-6.0.8-py2.py3-none-any.whl
 
 rem Add the pythonPath to environment variables.
-:Add_Python_Path
-Setx Path "%pythonPath%;%Path%"
+echo %pythonScriptPath%
+Setx Path "%pythonScriptPath%;%Path%"
 
 rem Execute python based on machine architecture.
-:Check_Architecture
 If /i "%processor_architecture%"=="x86" (
-    If NOT DEFINED PROCESSOR_ARCHITEW6432 (
-        msiexec /i "%python32Bit%" /passive
-    ) Else (
-        msiexec /i "%python64Bit%" /passive
-    )    
+  If NOT DEFINED PROCESSOR_ARCHITEW6432 (
+      msiexec /i "%python32Bit%" /passive
+  ) Else (
+      msiexec /i "%python64Bit%" /passive
+  )    
 ) Else (
-        msiexec /i "%python64Bit%" /passive
+    msiexec /i "%python64Bit%" /passive
 )
+
+rem reinstall pip
+If exist %pythonExe% (
+  If NOT exist "%pythonScriptPath%/pip.exe" (
+    %pythonExe% %pipWhl%/pip install --upgrade --no-index %pipWhl%
+  )
+)
+
