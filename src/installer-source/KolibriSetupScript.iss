@@ -454,28 +454,6 @@ begin
   result := ExpandConstant('{sd}') + DEFAULT_PIP_PATH; 
 end;
 
-function NextButtonClick(CurPageID: Integer): Boolean;
-begin
-    result := True;
-    isWindowsInstall := true;
-    if not (FileExists(GetDefaultPip())) then
-    begin
-      HandlePythonSetup();
-    end;
-    if CurPageID = wpSelectTasks then
-    begin
-        if WizardForm <> nil then 
-            HandleUpgrade(WizardForm.PrevAppDir);
-    end;
-
-    if CurPageID = wpSelectDir then
-    begin
-        { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
-        if Not isUpgrade then  
-            HandleUpgrade(ExpandConstant('{app}'));
-    end;
-end;
-
 procedure HandlePythonSetup;
 var
     installPythonErrorCode : Integer;
@@ -505,6 +483,28 @@ begin
         else begin
            HandlePythonSetup(); 
         end
+    end;
+end;
+
+function NextButtonClick(CurPageID: Integer): Boolean;
+begin
+    result := True;
+    isWindowsInstall := true;
+    if not (FileExists(GetDefaultPip())) then
+    begin
+        HandlePythonSetup();
+    end;
+    if CurPageID = wpSelectTasks then
+    begin
+        if WizardForm <> nil then 
+            HandleUpgrade(WizardForm.PrevAppDir);
+    end;
+
+    if CurPageID = wpSelectDir then
+    begin
+        { Unclear what the logic here is. This is only executed if HandleUpgrade was not previously run. }
+        if Not isUpgrade then  
+            HandleUpgrade(ExpandConstant('{app}'));
     end;
 end;
 
