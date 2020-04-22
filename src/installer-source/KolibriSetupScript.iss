@@ -600,7 +600,14 @@ begin
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SETUP'
         )
-        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)   
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+        {Set kolibri command to Path}
+        RegWriteStringValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'Path',
+            GetPipDir('')
+        );   
 end;
 
 function InitializeSetup(): Boolean;
