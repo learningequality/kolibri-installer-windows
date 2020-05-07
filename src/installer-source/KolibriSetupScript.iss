@@ -539,10 +539,32 @@ begin
     result := ExtractFileDir(GetPipPath());
 end;
 
+{REF: https://stackoverflow.com/questions/3304463/how-do-i-modify-the-path-environment-variable-when-running-an-inno-setup-install}
+function EnvAddPath(param: string): boolean;
+var
+  Paths: string;
+begin
+  { Retrieve current path (use empty string if entry not exists) }
+    if not RegQueryStringValue(HKEY_LOCAL_MACHINE, 'System\CurrentControlSet\Control\Session Manager\Environment', 'Path', Paths)
+    then Paths := '';
+
+    { Skip if string already found in path }
+    if Pos(';' + Uppercase(param) + ';', ';' + Uppercase(Paths) + ';') > 0 then exit;
+
+    { App string to the end of the path variable }
+    Paths := Paths + ';'+ param +';'
+
+    { Overwrite (or create if missing) path environment variable }
+    if RegWriteStringValue(HKEY_LOCAL_MACHINE, 'System\CurrentControlSet\Control\Session Manager\Environment', 'Path', Paths)
+    then Log(Format('The [%s] added to PATH: [%s]', [param, Paths]))
+    else Log(Format('Error while adding the [%s] to PATH: [%s]', [param, Paths]));
+end;
+
 procedure HandlePipSetup;
 var
     PipCommand: string;
     PipPath: string;
+    PipDir: string;
     ErrorCode: integer;
     TempFilePath: string;
     SetEnvCmd: string;
@@ -585,7 +607,7 @@ begin
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SCRIPT_DIR'
         )
-
+        PipDir := GetPipDir('')
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
         { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
@@ -593,7 +615,7 @@ begin
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SCRIPT_DIR',
-            GetPipDir('')
+            PipDir
         );
         RegDeleteValue(
             HKLM,
@@ -602,12 +624,9 @@ begin
         )
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         {Set kolibri command to Path}
-        RegWriteStringValue(
-            HKLM,
-            'System\CurrentControlSet\Control\Session Manager\Environment',
-            'Path',
-            GetPipDir('')
-        );   
+        
+        EnvAddPath(PipDir) 
+
 end;
 
 function InitializeSetup(): Boolean;
