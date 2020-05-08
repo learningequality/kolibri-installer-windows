@@ -552,7 +552,7 @@ begin
     if Pos(';' + Uppercase(param) + ';', ';' + Uppercase(Paths) + ';') > 0 then exit;
 
     { App string to the end of the path variable }
-    Paths := Paths + ';'+ param +';'
+    Paths := param + ';'+ Paths +';'
 
     { Overwrite (or create if missing) path environment variable }
     if RegWriteStringValue(HKEY_LOCAL_MACHINE, 'System\CurrentControlSet\Control\Session Manager\Environment', 'Path', Paths)
