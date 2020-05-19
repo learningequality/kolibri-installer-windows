@@ -4,9 +4,9 @@ Repository for the Kolibri windows installer and launcher application
 
 This project provides a smoother way to install and run Kolibri in a Windows Machine.
 
-## Steps for making Windows installer releases
+_**ATTENTION: this readme needs some updates. See [issue #169](https://github.com/learningequality/kolibri-installer-windows/issues/169) for additional assistance building the projects.**_
 
-_**Note:** this README needs some updates. See [issue #169](https://github.com/learningequality/kolibri-installer-windows/issues/169) for additional assistance building the projects._
+## Steps for making Windows installer releases
 
 These are the steps how to do releases for the Kolibri Windows installer.  Note that this involves the [kolibri](https://github.com/learningequality/kolibri) repo.  
 
