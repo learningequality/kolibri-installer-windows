@@ -6,6 +6,8 @@ This project provides a smoother way to install and run Kolibri in a Windows Mac
 
 ## Steps for making Windows installer releases
 
+**Note:** this README needs some updates. See [issue #169](https://github.com/learningequality/kolibri-installer-windows/issues/169) for additional assistance building the projects.
+
 These are the steps how to do releases for the Kolibri Windows installer.  Note that this involves the [kolibri](https://github.com/learningequality/kolibri) repo.  
 
 We are releasing `v1.3.1` as an example here.
