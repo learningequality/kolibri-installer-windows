@@ -1,0 +1,303 @@
+msgid "" 
+msgstr "" 
+"Project-Id-Version: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: French.isl.isl 32 
+msgid "English" 
+msgstr "FranÃ§ais" 
+
+#: French.isl.isl 49 
+msgid "Setup" 
+msgstr "Installation" 
+
+#: French.isl.isl 50 
+msgid "Setup - %1" 
+msgstr "Installation - %1" 
+
+#: French.isl.isl 51 
+msgid "Uninstall" 
+msgstr "DÃ©sinstallation" 
+
+#: French.isl.isl 52 
+msgid "%1 Uninstall" 
+msgstr "DÃ©sinstallation - %1" 
+
+#: French.isl.isl 55 
+msgid "Information" 
+msgstr "Information" 
+
+#: French.isl.isl 56 
+msgid "Confirm" 
+msgstr "Confirmation" 
+
+#: French.isl.isl 57 
+msgid "Error" 
+msgstr "Erreur" 
+
+#: French.isl.isl 60 
+msgid "This will install %1. Do you wish to continue?" 
+msgstr "Cet assistant va installer %1. Voulez-vous continuer ?" 
+
+#: French.isl.isl 71 
+msgid "Setup is already running." 
+msgstr "L'assistant d'installation est dÃ©jÃ  en cours d'exÃ©cution." 
+
+#: French.isl.isl 72 
+msgid "This program does not support the version of Windows your computer is running." 
+msgstr "Ce programme n'est pas prÃ©vu pour fonctionner avec la version de Windows utilisÃ©e sur votre ordinateur." 
+
+#: French.isl.isl 100 
+msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
+msgstr "L'installation n'est pas terminÃ©e. Si vous abandonnez maintenant, le programme ne sera pas installÃ©.%n%nVous devrez relancer cet assistant pour finir l'installation.%n%nVoulez-vous quand mÃªme quitter l'assistant d'installation ?" 
+
+#: French.isl.isl 108 
+msgid "< &Back" 
+msgstr "< &PrÃ©cÃ©dent" 
+
+#: French.isl.isl 109 
+msgid "&Next >" 
+msgstr "&Suivant >" 
+
+#: French.isl.isl 110 
+msgid "&Install" 
+msgstr "&Installer" 
+
+#: French.isl.isl 111 
+msgid "OK" 
+msgstr "OK" 
+
+#: French.isl.isl 112 
+msgid "Cancel" 
+msgstr "Annuler" 
+
+#: French.isl.isl 113 
+msgid "&Yes" 
+msgstr "&Oui" 
+
+#: French.isl.isl 114 
+msgid "Yes to &All" 
+msgstr "Oui pour &tout" 
+
+#: French.isl.isl 115 
+msgid "&No" 
+msgstr "&Non" 
+
+#: French.isl.isl 116 
+msgid "N&o to All" 
+msgstr "N&on pour tout" 
+
+#: French.isl.isl 117 
+msgid "&Finish" 
+msgstr "&Terminer" 
+
+#: French.isl.isl 118 
+msgid "&Browse..." 
+msgstr "Pa&rcourir..." 
+
+#: French.isl.isl 119 
+msgid "B&rowse..." 
+msgstr "Pa&rcourir..." 
+
+#: French.isl.isl 120 
+msgid "&Make New Folder" 
+msgstr "Nouveau &dossier" 
+
+#: French.isl.isl 123 
+msgid "Select Setup Language" 
+msgstr "Langue de l'assistant d'installation" 
+
+#: French.isl.isl 124 
+msgid "Select the language to use during the installation." 
+msgstr "Veuillez sÃ©lectionner la langue qui sera utilisÃ©e par l'assistant d'installation." 
+
+#: French.isl.isl 127 
+msgid "Click Next to continue, or Cancel to exit Setup." 
+msgstr "Cliquez sur Suivant pour continuer ou sur Annuler pour abandonner l'installation." 
+
+#: French.isl.isl 129 
+msgid "Browse For Folder" 
+msgstr "Parcourir les dossiers" 
+
+#: French.isl.isl 130 
+msgid "Select a folder in the list below, then click OK." 
+msgstr "Veuillez choisir un dossier de destination, puis cliquez sur OK." 
+
+#: French.isl.isl 131 
+msgid "New Folder" 
+msgstr "Nouveau dossier" 
+
+#: French.isl.isl 134 
+msgid "Welcome to the [name] Setup Wizard" 
+msgstr "Bienvenue dans l'assistant d'installation de [name]" 
+
+#: French.isl.isl 135 
+msgid "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing." 
+msgstr "Cet assistant va vous guider dans l'installation de [name/ver] sur votre ordinateur.%n%nIl est recommandÃ© de fermer toutes les applications actives avant de continuer." 
+
+#: French.isl.isl 152 
+msgid "Information" 
+msgstr "Information" 
+
+#: French.isl.isl 155 
+msgid "Information" 
+msgstr "Information" 
+
+#: French.isl.isl 168 
+msgid "Select Destination Location" 
+msgstr "Dossier de destination" 
+
+#: French.isl.isl 169 
+msgid "Where should [name] be installed?" 
+msgstr "OÃ¹ [name] doit-il Ãªtre installÃ© ?" 
+
+#: French.isl.isl 170 
+msgid "Setup will install [name] into the following folder." 
+msgstr "L'assistant va installer [name] dans le dossier suivant." 
+
+#: French.isl.isl 171 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Pour continuer, cliquez sur Suivant. Si vous souhaitez choisir un dossier diffÃ©rent, cliquez sur Parcourir." 
+
+#: French.isl.isl 173 
+msgid "At least [mb] MB of free disk space is required." 
+msgstr "Le programme requiert au moins [mb] Mo d'espace disque disponible." 
+
+#: French.isl.isl 178 
+msgid "Not Enough Disk Space" 
+msgstr "Espace disponible insuffisant" 
+
+#: French.isl.isl 209 
+msgid "Select Start Menu Folder" 
+msgstr "SÃ©lection du dossier du menu DÃ©marrer" 
+
+#: French.isl.isl 210 
+msgid "Where should Setup place the program's shortcuts?" 
+msgstr "OÃ¹ l'assistant d'installation doit-il placer les raccourcis du programme ?" 
+
+#: French.isl.isl 211 
+msgid "Setup will create the program's shortcuts in the following Start Menu folder." 
+msgstr "L'assistant va crÃ©er les raccourcis du programme dans le dossier du menu DÃ©marrer indiquÃ© ci-dessous." 
+
+#: French.isl.isl 212 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Cliquez sur Suivant pour continuer. Cliquez sur Parcourir si vous souhaitez sÃ©lectionner un autre dossier du menu DÃ©marrer." 
+
+#: French.isl.isl 213 
+msgid "You must enter a folder name." 
+msgstr "Vous devez saisir un nom de dossier du menu DÃ©marrer." 
+
+#: French.isl.isl 216 
+msgid "The folder name cannot include any of the following characters:%n%n%1" 
+msgstr "Le nom du dossier ne doit contenir aucun des caractÃ¨res suivants :%n%n%1" 
+
+#: French.isl.isl 220 
+msgid "Ready to Install" 
+msgstr "PrÃªt Ã  installer" 
+
+#: French.isl.isl 221 
+msgid "Setup is now ready to begin installing [name] on your computer." 
+msgstr "L'assistant dispose Ã  prÃ©sent de toutes les informations pour installer [name] sur votre ordinateur." 
+
+#: French.isl.isl 222 
+msgid "Click Install to continue with the installation, or click Back if you want to review or change any settings." 
+msgstr "Cliquez sur Installer pour procÃ©der Ã  l'installation ou sur PrÃ©cÃ©dent pour revoir ou modifier une option d'installation." 
+
+#: French.isl.isl 223 
+msgid "Click Install to continue with the installation." 
+msgstr "Cliquez sur Installer pour procÃ©der Ã  l'installation." 
+
+#: French.isl.isl 225 
+msgid "Destination location:" 
+msgstr "Dossier de destination :" 
+
+#: French.isl.isl 228 
+msgid "Start Menu folder:" 
+msgstr "Dossier du menu DÃ©marrer :" 
+
+#: French.isl.isl 232 
+msgid "Preparing to Install" 
+msgstr "PrÃ©paration de l'installation" 
+
+#: French.isl.isl 233 
+msgid "Setup is preparing to install [name] on your computer." 
+msgstr "L'assistant d'installation prÃ©pare l'installation de [name] sur votre ordinateur." 
+
+#: French.isl.isl 235 
+msgid "Setup cannot continue. Please click Cancel to exit." 
+msgstr "L'assistant ne peut pas continuer. Veuillez cliquer sur Annuler pour abandonner l'installation." 
+
+#: French.isl.isl 244 
+msgid "Installing" 
+msgstr "Installation en cours" 
+
+#: French.isl.isl 245 
+msgid "Please wait while Setup installs [name] on your computer." 
+msgstr "Veuillez patienter pendant que l'assistant installe [name] sur votre ordinateur." 
+
+#: French.isl.isl 248 
+msgid "Completing the [name] Setup Wizard" 
+msgstr "Fin de l'installation de [name]" 
+
+#: French.isl.isl 249 
+msgid "Setup has finished installing [name] on your computer." 
+msgstr "L'assistant a terminÃ© l'installation de [name] sur votre ordinateur." 
+
+#: French.isl.isl 250 
+msgid "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts." 
+msgstr "L'assistant a terminÃ© l'installation de [name] sur votre ordinateur. L'application peut Ãªtre lancÃ©e Ã  l'aide des icÃ´nes crÃ©Ã©es sur le Bureau par l'installation." 
+
+#: French.isl.isl 251 
+msgid "Click Finish to exit Setup." 
+msgstr "Veuillez cliquer sur Terminer pour quitter l'assistant d'installation." 
+
+#: French.isl.isl 274 
+msgid "Cancel installation" 
+msgstr "Annuler l'installation" 
+
+#: French.isl.isl 279 
+msgid "Extracting files..." 
+msgstr "Extraction des fichiers..." 
+
+#: French.isl.isl 285 
+msgid "Finishing installation..." 
+msgstr "Finalisation de l'installation..." 
+
+#: French.isl.isl 345 
+msgid "Are you sure you want to completely remove %1 and all of its components?" 
+msgstr "Voulez-vous vraiment dÃ©sinstaller complÃ¨tement %1 ainsi que tous ses composants ?" 
+
+#: French.isl.isl 348 
+msgid "Please wait while %1 is removed from your computer." 
+msgstr "Veuillez patienter pendant que %1 est retirÃ© de votre ordinateur." 
+
+#: French.isl.isl 349 
+msgid "%1 was successfully removed from your computer." 
+msgstr "%1 a Ã©tÃ© correctement dÃ©sinstallÃ© de cet ordinateur." 
+
+#: French.isl.isl 350 
+msgid "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually." 
+msgstr "La dÃ©sinstallation de %1 est terminÃ©e.%n%nCertains Ã©lÃ©ments n'ont pas pu Ãªtre supprimÃ©s automatiquement. Vous pouvez les supprimer manuellement." 
+
+#: French.isl.isl 374 
+msgid "Create a &desktop shortcut" 
+msgstr "CrÃ©er une icÃ´ne sur le &Bureau" 
+
+#: French.isl.isl 376 
+msgid "%1 on the Web" 
+msgstr "Page d'accueil de %1" 
+
+#: French.isl.isl 377 
+msgid "Uninstall %1" 
+msgstr "DÃ©sinstaller %1" 
+
+#: French.isl.isl 378 
+msgid "Launch %1" 
+msgstr "ExÃ©cuter %1" 
+

@@ -1,0 +1,221 @@
+[
+    {
+        "LanguageName": "English"
+    }, 
+    {
+        "SetupAppTitle": "Setup"
+    }, 
+    {
+        "SetupWindowTitle": "Setup - %1"
+    }, 
+    {
+        "UninstallAppTitle": "Uninstall"
+    }, 
+    {
+        "UninstallAppFullTitle": "%1 Uninstall"
+    }, 
+    {
+        "InformationTitle": "Information"
+    }, 
+    {
+        "ConfirmTitle": "Confirm"
+    }, 
+    {
+        "ErrorTitle": "Error"
+    }, 
+    {
+        "SetupLdrStartupMessage": "This will install %1. Do you wish to continue?"
+    }, 
+    {
+        "SetupAlreadyRunning": "Setup is already running."
+    }, 
+    {
+        "WindowsVersionNotSupported": "This program does not support the version of Windows your computer is running."
+    }, 
+    {
+        "ExitSetupMessage": "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?"
+    }, 
+    {
+        "ButtonBack": "< &Back"
+    }, 
+    {
+        "ButtonNext": "&Next >"
+    }, 
+    {
+        "ButtonInstall": "&Install"
+    }, 
+    {
+        "ButtonOK": "OK"
+    }, 
+    {
+        "ButtonCancel": "Cancel"
+    }, 
+    {
+        "ButtonYes": "&Yes"
+    }, 
+    {
+        "ButtonYesToAll": "Yes to &All"
+    }, 
+    {
+        "ButtonNo": "&No"
+    }, 
+    {
+        "ButtonNoToAll": "N&o to All"
+    }, 
+    {
+        "ButtonFinish": "&Finish"
+    }, 
+    {
+        "ButtonBrowse": "&Browse..."
+    }, 
+    {
+        "ButtonWizardBrowse": "B&rowse..."
+    }, 
+    {
+        "ButtonNewFolder": "&Make New Folder"
+    }, 
+    {
+        "SelectLanguageTitle": "Select Setup Language"
+    }, 
+    {
+        "SelectLanguageLabel": "Select the language to use during the installation."
+    }, 
+    {
+        "ClickNext": "Click Next to continue, or Cancel to exit Setup."
+    }, 
+    {
+        "BrowseDialogTitle": "Browse For Folder"
+    }, 
+    {
+        "BrowseDialogLabel": "Select a folder in the list below, then click OK."
+    }, 
+    {
+        "NewFolderName": "New Folder"
+    }, 
+    {
+        "WelcomeLabel1": "Welcome to the [name] Setup Wizard"
+    }, 
+    {
+        "WelcomeLabel2": "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing."
+    }, 
+    {
+        "WizardInfoBefore": "Information"
+    }, 
+    {
+        "WizardInfoAfter": "Information"
+    }, 
+    {
+        "WizardSelectDir": "Select Destination Location"
+    }, 
+    {
+        "SelectDirDesc": "Where should [name] be installed?"
+    }, 
+    {
+        "SelectDirLabel3": "Setup will install [name] into the following folder."
+    }, 
+    {
+        "SelectDirBrowseLabel": "To continue, click Next. If you would like to select a different folder, click Browse."
+    }, 
+    {
+        "DiskSpaceMBLabel": "At least [mb] MB of free disk space is required."
+    }, 
+    {
+        "DiskSpaceWarningTitle": "Not Enough Disk Space"
+    }, 
+    {
+        "WizardSelectProgramGroup": "Select Start Menu Folder"
+    }, 
+    {
+        "SelectStartMenuFolderDesc": "Where should Setup place the program's shortcuts?"
+    }, 
+    {
+        "SelectStartMenuFolderLabel3": "Setup will create the program's shortcuts in the following Start Menu folder."
+    }, 
+    {
+        "SelectStartMenuFolderBrowseLabel": "To continue, click Next. If you would like to select a different folder, click Browse."
+    }, 
+    {
+        "MustEnterGroupName": "You must enter a folder name."
+    }, 
+    {
+        "BadGroupName": "The folder name cannot include any of the following characters:%n%n%1"
+    }, 
+    {
+        "WizardReady": "Ready to Install"
+    }, 
+    {
+        "ReadyLabel1": "Setup is now ready to begin installing [name] on your computer."
+    }, 
+    {
+        "ReadyLabel2a": "Click Install to continue with the installation, or click Back if you want to review or change any settings."
+    }, 
+    {
+        "ReadyLabel2b": "Click Install to continue with the installation."
+    }, 
+    {
+        "ReadyMemoDir": "Destination location:"
+    }, 
+    {
+        "ReadyMemoGroup": "Start Menu folder:"
+    }, 
+    {
+        "WizardPreparing": "Preparing to Install"
+    }, 
+    {
+        "PreparingDesc": "Setup is preparing to install [name] on your computer."
+    }, 
+    {
+        "CannotContinue": "Setup cannot continue. Please click Cancel to exit."
+    }, 
+    {
+        "WizardInstalling": "Installing"
+    }, 
+    {
+        "InstallingLabel": "Please wait while Setup installs [name] on your computer."
+    }, 
+    {
+        "FinishedHeadingLabel": "Completing the [name] Setup Wizard"
+    }, 
+    {
+        "FinishedLabelNoIcons": "Setup has finished installing [name] on your computer."
+    }, 
+    {
+        "FinishedLabel": "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts."
+    }, 
+    {
+        "ClickFinish": "Click Finish to exit Setup."
+    }, 
+    {
+        "AbortRetryIgnoreCancel": "Cancel installation"
+    }, 
+    {
+        "StatusExtractFiles": "Extracting files..."
+    }, 
+    {
+        "StatusRunProgram": "Finishing installation..."
+    }, 
+    {
+        "ConfirmUninstall": "Are you sure you want to completely remove %1 and all of its components?"
+    }, 
+    {
+        "UninstallStatusLabel": "Please wait while %1 is removed from your computer."
+    }, 
+    {
+        "UninstalledAll": "%1 was successfully removed from your computer."
+    }, 
+    {
+        "UninstalledMost": "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually."
+    }, 
+    {
+        "CreateDesktopIcon": "Create a &desktop shortcut"
+    }, 
+    {
+        "ProgramOnTheWeb": "%1 on the Web"
+    }, 
+    {
+        "UninstallProgram": "Uninstall %1"
+    }, 
+    {
+        "LaunchProgram": "Launch %1"
+    }
+]
