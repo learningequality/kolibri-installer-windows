@@ -9,295 +9,295 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: BrazilianPortuguese.isl 21 
+#: BrazilianPortuguese.isl.isl 14 
 msgid "English" 
-msgstr "Italiano" 
+msgstr "Português Brasileiro" 
 
-#: BrazilianPortuguese.isl 38 
+#: BrazilianPortuguese.isl.isl 31 
 msgid "Setup" 
-msgstr "Installazione" 
+msgstr "Instalador" 
 
-#: BrazilianPortuguese.isl 39 
+#: BrazilianPortuguese.isl.isl 32 
 msgid "Setup - %1" 
-msgstr "Installazione di %1" 
+msgstr "%1 - Instalador" 
 
-#: BrazilianPortuguese.isl 40 
+#: BrazilianPortuguese.isl.isl 33 
 msgid "Uninstall" 
-msgstr "Disinstallazione" 
+msgstr "Desinstalar" 
 
-#: BrazilianPortuguese.isl 41 
+#: BrazilianPortuguese.isl.isl 34 
 msgid "%1 Uninstall" 
-msgstr "Disinstallazione di %1" 
+msgstr "Desinstalar %1" 
 
-#: BrazilianPortuguese.isl 44 
+#: BrazilianPortuguese.isl.isl 37 
 msgid "Information" 
-msgstr "Informazioni" 
+msgstr "Informação" 
 
-#: BrazilianPortuguese.isl 45 
+#: BrazilianPortuguese.isl.isl 38 
 msgid "Confirm" 
-msgstr "Conferma" 
+msgstr "Confirmar" 
 
-#: BrazilianPortuguese.isl 46 
+#: BrazilianPortuguese.isl.isl 39 
 msgid "Error" 
-msgstr "Errore" 
+msgstr "Erro" 
 
-#: BrazilianPortuguese.isl 49 
+#: BrazilianPortuguese.isl.isl 42 
 msgid "This will install %1. Do you wish to continue?" 
-msgstr "Questa è l'installazione di %1.%n%nVuoi continuare?" 
+msgstr "Isto instalará o %1. Você deseja continuar?" 
 
-#: BrazilianPortuguese.isl 59 
+#: BrazilianPortuguese.isl.isl 53 
 msgid "Setup is already running." 
-msgstr "Il processo di installazione è già in funzione." 
+msgstr "O instalador já está em execução." 
 
-#: BrazilianPortuguese.isl 60 
+#: BrazilianPortuguese.isl.isl 54 
 msgid "This program does not support the version of Windows your computer is running." 
-msgstr "Questo programma non supporta la versione di Windows installata nel computer." 
+msgstr "Este programa não suporta a versão do Windows que seu computador está executando." 
 
-#: BrazilianPortuguese.isl 88 
+#: BrazilianPortuguese.isl.isl 82 
 msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
-msgstr "L'installazione non è completa.%n%nUscendo dall'installazione in questo momento, il programma non sarà installato.%n%nÈ possibile eseguire l'installazione in un secondo tempo.%n%nVuoi uscire dall'installazione?" 
+msgstr "A Instalação não está completa. Se você sair agora o programa não será instalado.%n%nVocê pode executar o instalador de novo outra hora pra completar a instalação.%n%nSair do Instalador?" 
 
-#: BrazilianPortuguese.isl 96 
+#: BrazilianPortuguese.isl.isl 90 
 msgid "< &Back" 
-msgstr "< &Indietro" 
+msgstr "< &Voltar" 
 
-#: BrazilianPortuguese.isl 97 
+#: BrazilianPortuguese.isl.isl 91 
 msgid "&Next >" 
-msgstr "&Avanti >" 
+msgstr "&Próximo >" 
 
-#: BrazilianPortuguese.isl 98 
+#: BrazilianPortuguese.isl.isl 92 
 msgid "&Install" 
-msgstr "Inst&alla" 
+msgstr "&Instalar" 
 
-#: BrazilianPortuguese.isl 99 
+#: BrazilianPortuguese.isl.isl 93 
 msgid "OK" 
 msgstr "OK" 
 
-#: BrazilianPortuguese.isl 100 
+#: BrazilianPortuguese.isl.isl 94 
 msgid "Cancel" 
-msgstr "Annulla" 
+msgstr "Cancelar" 
 
-#: BrazilianPortuguese.isl 101 
+#: BrazilianPortuguese.isl.isl 95 
 msgid "&Yes" 
-msgstr "&Si" 
+msgstr "&Sim" 
 
-#: BrazilianPortuguese.isl 102 
+#: BrazilianPortuguese.isl.isl 96 
 msgid "Yes to &All" 
-msgstr "Sì a &tutto" 
+msgstr "Sim pra &Todos" 
 
-#: BrazilianPortuguese.isl 103 
+#: BrazilianPortuguese.isl.isl 97 
 msgid "&No" 
-msgstr "&No" 
+msgstr "&Não" 
 
-#: BrazilianPortuguese.isl 104 
+#: BrazilianPortuguese.isl.isl 98 
 msgid "N&o to All" 
-msgstr "N&o a tutto" 
+msgstr "Nã&o pra Todos" 
 
-#: BrazilianPortuguese.isl 105 
+#: BrazilianPortuguese.isl.isl 99 
 msgid "&Finish" 
-msgstr "&Fine" 
+msgstr "&Concluir" 
 
-#: BrazilianPortuguese.isl 106 
+#: BrazilianPortuguese.isl.isl 100 
 msgid "&Browse..." 
-msgstr "&Sfoglia..." 
+msgstr "&Procurar..." 
 
-#: BrazilianPortuguese.isl 107 
+#: BrazilianPortuguese.isl.isl 101 
 msgid "B&rowse..." 
-msgstr "S&foglia..." 
+msgstr "P&rocurar..." 
 
-#: BrazilianPortuguese.isl 108 
+#: BrazilianPortuguese.isl.isl 102 
 msgid "&Make New Folder" 
-msgstr "&Crea nuova cartella" 
+msgstr "&Criar Nova Pasta" 
 
-#: BrazilianPortuguese.isl 111 
+#: BrazilianPortuguese.isl.isl 105 
 msgid "Select Setup Language" 
-msgstr "Seleziona la lingua dell'installazione" 
+msgstr "Selecione o Idioma do Instalador" 
 
-#: BrazilianPortuguese.isl 112 
+#: BrazilianPortuguese.isl.isl 106 
 msgid "Select the language to use during the installation." 
-msgstr "Seleziona la lingua da usare durante l'installazione." 
+msgstr "Selecione o idioma pra usar durante a instalação:" 
 
-#: BrazilianPortuguese.isl 115 
+#: BrazilianPortuguese.isl.isl 109 
 msgid "Click Next to continue, or Cancel to exit Setup." 
-msgstr "Seleziona "Avanti" per continuare, o "Annulla" per uscire." 
+msgstr "Clique em Próximo pra continuar ou em Cancelar pra sair do Instalador." 
 
-#: BrazilianPortuguese.isl 117 
+#: BrazilianPortuguese.isl.isl 111 
 msgid "Browse For Folder" 
-msgstr "Sfoglia cartelle" 
+msgstr "Procurar Pasta" 
 
-#: BrazilianPortuguese.isl 118 
+#: BrazilianPortuguese.isl.isl 112 
 msgid "Select a folder in the list below, then click OK." 
-msgstr "Seleziona una cartella nell'elenco, e quindi seleziona "OK"." 
+msgstr "Selecione uma pasta na lista abaixo, então clique em OK." 
 
-#: BrazilianPortuguese.isl 119 
+#: BrazilianPortuguese.isl.isl 113 
 msgid "New Folder" 
-msgstr "Nuova cartella" 
+msgstr "Nova Pasta" 
 
-#: BrazilianPortuguese.isl 122 
+#: BrazilianPortuguese.isl.isl 116 
 msgid "Welcome to the [name] Setup Wizard" 
-msgstr "Installazione di [name]" 
+msgstr "Bem-vindo ao Assistente do Instalador do [name]" 
 
-#: BrazilianPortuguese.isl 123 
+#: BrazilianPortuguese.isl.isl 117 
 msgid "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing." 
-msgstr "[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive." 
+msgstr "Isto instalará o [name/ver] no seu computador.%n%nÉ recomendado que você feche todos os outros aplicativos antes de continuar." 
 
-#: BrazilianPortuguese.isl 140 
+#: BrazilianPortuguese.isl.isl 134 
 msgid "Information" 
-msgstr "Informazioni" 
+msgstr "Informação" 
 
-#: BrazilianPortuguese.isl 143 
+#: BrazilianPortuguese.isl.isl 137 
 msgid "Information" 
-msgstr "Informazioni" 
+msgstr "Informação" 
 
-#: BrazilianPortuguese.isl 156 
+#: BrazilianPortuguese.isl.isl 150 
 msgid "Select Destination Location" 
-msgstr "Selezione cartella di installazione" 
+msgstr "Selecione o Local de Destino" 
 
-#: BrazilianPortuguese.isl 157 
+#: BrazilianPortuguese.isl.isl 151 
 msgid "Where should [name] be installed?" 
-msgstr "Dove vuoi installare [name]?" 
+msgstr "Aonde o [name] deve ser instalado?" 
 
-#: BrazilianPortuguese.isl 158 
+#: BrazilianPortuguese.isl.isl 152 
 msgid "Setup will install [name] into the following folder." 
-msgstr "[name] sarà installato nella seguente cartella." 
+msgstr "O Instalador instalará o [name] na seguinte pasta." 
 
-#: BrazilianPortuguese.isl 159 
+#: BrazilianPortuguese.isl.isl 153 
 msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
-msgstr "Per continuare seleziona "Avanti".%nPer scegliere un'altra cartella seleziona "Sfoglia"." 
+msgstr "Pra continuar clique em Próximo. Se você gostaria de selecionar uma pasta diferente, clique em Procurar." 
 
-#: BrazilianPortuguese.isl 161 
+#: BrazilianPortuguese.isl.isl 154 
 msgid "At least [mb] MB of free disk space is required." 
-msgstr "Sono richiesti almeno [mb] MB di spazio libero nel disco." 
+msgstr "Pelo menos [mb] MBs de espaço livre em disco são requeridos." 
 
-#: BrazilianPortuguese.isl 166 
+#: BrazilianPortuguese.isl.isl 159 
 msgid "Not Enough Disk Space" 
-msgstr "Spazio su disco insufficiente" 
+msgstr "Sem Espaço em Disco o Bastante" 
 
-#: BrazilianPortuguese.isl 197 
+#: BrazilianPortuguese.isl.isl 189 
 msgid "Select Start Menu Folder" 
-msgstr "Selezione della cartella nel menu Avvio/Start" 
+msgstr "Selecionar a Pasta do Menu Iniciar" 
 
-#: BrazilianPortuguese.isl 198 
+#: BrazilianPortuguese.isl.isl 190 
 msgid "Where should Setup place the program's shortcuts?" 
-msgstr "Dove vuoi inserire i collegamenti al programma?" 
+msgstr "Aonde o Instalador deve colocar os atalhos do programa?" 
 
-#: BrazilianPortuguese.isl 199 
+#: BrazilianPortuguese.isl.isl 191 
 msgid "Setup will create the program's shortcuts in the following Start Menu folder." 
-msgstr "Verranno creati i collegamenti al programma nella seguente cartella del menu Avvio/Start." 
+msgstr "O Instalador criará os atalhos do programa na seguinte pasta do Menu Iniciar." 
 
-#: BrazilianPortuguese.isl 200 
+#: BrazilianPortuguese.isl.isl 192 
 msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
-msgstr "Per continuare, seleziona "Avanti".%nPer selezionare un'altra cartella, seleziona "Sfoglia"." 
+msgstr "Pra continuar clique em Próximo. Se você gostaria de selecionar uma pasta diferente, clique em Procurar." 
 
-#: BrazilianPortuguese.isl 201 
+#: BrazilianPortuguese.isl.isl 193 
 msgid "You must enter a folder name." 
-msgstr "Devi inserire il nome della cartella." 
+msgstr "Você deve inserir um nome de pasta." 
 
-#: BrazilianPortuguese.isl 204 
+#: BrazilianPortuguese.isl.isl 196 
 msgid "The folder name cannot include any of the following characters:%n%n%1" 
-msgstr "Il nome della cartella non può includere nessuno dei seguenti caratteri:%n%n%1" 
+msgstr "O nome da pasta não pode incluir quaisquer dos seguintes caracteres:%n%n%1" 
 
-#: BrazilianPortuguese.isl 208 
+#: BrazilianPortuguese.isl.isl 200 
 msgid "Ready to Install" 
-msgstr "Pronto per l'installazione" 
+msgstr "Pronto pra Instalar" 
 
-#: BrazilianPortuguese.isl 209 
+#: BrazilianPortuguese.isl.isl 201 
 msgid "Setup is now ready to begin installing [name] on your computer." 
-msgstr "Il programma è pronto per iniziare l'installazione di [name] nel computer." 
+msgstr "O Instalador está agora pronto pra começar a instalar o [name] no seu computador." 
 
-#: BrazilianPortuguese.isl 210 
+#: BrazilianPortuguese.isl.isl 202 
 msgid "Click Install to continue with the installation, or click Back if you want to review or change any settings." 
-msgstr "Seleziona "Installa" per continuare con l'installazione, o "Indietro" per rivedere o modificare le impostazioni." 
+msgstr "Clique em Instalar pra continuar com a instalação ou clique em Voltar se você quer revisar ou mudar quaisquer configurações." 
 
-#: BrazilianPortuguese.isl 211 
+#: BrazilianPortuguese.isl.isl 203 
 msgid "Click Install to continue with the installation." 
-msgstr "Per procedere con l'installazione seleziona "Installa"." 
+msgstr "Clique em Instalar pra continuar com a instalação." 
 
-#: BrazilianPortuguese.isl 213 
+#: BrazilianPortuguese.isl.isl 205 
 msgid "Destination location:" 
-msgstr "Cartella di installazione:" 
+msgstr "Local de destino:" 
 
-#: BrazilianPortuguese.isl 216 
+#: BrazilianPortuguese.isl.isl 208 
 msgid "Start Menu folder:" 
-msgstr "Cartella del menu Avvio/Start:" 
+msgstr "Pasta do Menu Iniciar:" 
 
-#: BrazilianPortuguese.isl 220 
+#: BrazilianPortuguese.isl.isl 212 
 msgid "Preparing to Install" 
-msgstr "Preparazione all'installazione" 
+msgstr "Preparando pra Instalar" 
 
-#: BrazilianPortuguese.isl 221 
+#: BrazilianPortuguese.isl.isl 213 
 msgid "Setup is preparing to install [name] on your computer." 
-msgstr "Preparazione all'installazione di [name] nel computer." 
+msgstr "O Instalador está se preparando pra instalar o [name] no seu computador." 
 
-#: BrazilianPortuguese.isl 223 
+#: BrazilianPortuguese.isl.isl 215 
 msgid "Setup cannot continue. Please click Cancel to exit." 
-msgstr "L'installazione non può continuare. Seleziona "Annulla" per uscire." 
+msgstr "O Instalador não pode continuar. Por favor clique em Cancelar pra sair." 
 
-#: BrazilianPortuguese.isl 232 
+#: BrazilianPortuguese.isl.isl 223 
 msgid "Installing" 
-msgstr "Installazione in corso" 
+msgstr "Instalando" 
 
-#: BrazilianPortuguese.isl 233 
+#: BrazilianPortuguese.isl.isl 224 
 msgid "Please wait while Setup installs [name] on your computer." 
-msgstr "Attendi il completamento dell'installazione di [name] nel computer." 
+msgstr "Por favor espere enquanto o Instalador instala o [name] no seu computador." 
 
-#: BrazilianPortuguese.isl 236 
+#: BrazilianPortuguese.isl.isl 227 
 msgid "Completing the [name] Setup Wizard" 
-msgstr "Installazione di [name] completata" 
+msgstr "Completando o Assistente do Instalador do [name]" 
 
-#: BrazilianPortuguese.isl 237 
+#: BrazilianPortuguese.isl.isl 228 
 msgid "Setup has finished installing [name] on your computer." 
-msgstr "Installazione di [name] completata." 
+msgstr "O Instalador terminou de instalar o [name] no seu computador." 
 
-#: BrazilianPortuguese.isl 238 
+#: BrazilianPortuguese.isl.isl 229 
 msgid "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts." 
-msgstr "Installazione di [name] completata.%n%nL'applicazione può essere eseguita selezionando le relative icone." 
+msgstr "O Instalador terminou de instalar o [name] no seu computador. O aplicativo pode ser iniciado selecionando os atalhos instalados." 
 
-#: BrazilianPortuguese.isl 239 
+#: BrazilianPortuguese.isl.isl 230 
 msgid "Click Finish to exit Setup." 
-msgstr "Seleziona "Fine" per uscire dall'installazione." 
+msgstr "Clique em Concluir pra sair do Instalador." 
 
-#: BrazilianPortuguese.isl 262 
+#: BrazilianPortuguese.isl.isl 253 
 msgid "Cancel installation" 
-msgstr "Annulla installazione" 
+msgstr "Cancelar instalação" 
 
-#: BrazilianPortuguese.isl 267 
+#: BrazilianPortuguese.isl.isl 258 
 msgid "Extracting files..." 
-msgstr "Estrazione file..." 
+msgstr "Extraindo arquivos..." 
 
-#: BrazilianPortuguese.isl 273 
+#: BrazilianPortuguese.isl.isl 264 
 msgid "Finishing installation..." 
-msgstr "Termine dell'installazione..." 
+msgstr "Concluindo a instalação..." 
 
-#: BrazilianPortuguese.isl 333 
+#: BrazilianPortuguese.isl.isl 324 
 msgid "Are you sure you want to completely remove %1 and all of its components?" 
-msgstr "Vuoi rimuovere completamente %1 e tutti i suoi componenti?" 
+msgstr "Você tem certeza que você quer remover completamente o %1 e todos os seus componentes?" 
 
-#: BrazilianPortuguese.isl 336 
+#: BrazilianPortuguese.isl.isl 327 
 msgid "Please wait while %1 is removed from your computer." 
-msgstr "Attendi fino a che %1 è stato rimosso dal computer." 
+msgstr "Por favor espere enquanto o %1 é removido do seu computador." 
 
-#: BrazilianPortuguese.isl 337 
+#: BrazilianPortuguese.isl.isl 328 
 msgid "%1 was successfully removed from your computer." 
-msgstr "Disinstallazione di %1 completata." 
+msgstr "O %1 foi removido com sucesso do seu computador." 
 
-#: BrazilianPortuguese.isl 338 
+#: BrazilianPortuguese.isl.isl 329 
 msgid "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually." 
-msgstr "Disinstallazione di %1 completata.%n%nAlcuni elementi non possono essere rimossi.%n%nDovranno essere rimossi manualmente." 
+msgstr "Desinstalação do %1 completa.%n%nAlguns elementos não puderam ser removidos. Estes podem ser removidos manualmente." 
 
-#: BrazilianPortuguese.isl 361 
+#: BrazilianPortuguese.isl.isl 352 
 msgid "Create a &desktop shortcut" 
-msgstr "Crea un'icona sul &desktop" 
+msgstr "Criar um atalho &na área de trabalho" 
 
-#: BrazilianPortuguese.isl 363 
+#: BrazilianPortuguese.isl.isl 354 
 msgid "%1 on the Web" 
-msgstr "Sito web di %1" 
+msgstr "%1 na Web" 
 
-#: BrazilianPortuguese.isl 364 
+#: BrazilianPortuguese.isl.isl 355 
 msgid "Uninstall %1" 
-msgstr "Disinstalla %1" 
+msgstr "Desinstalar o %1" 
 
-#: BrazilianPortuguese.isl 365 
+#: BrazilianPortuguese.isl.isl 356 
 msgid "Launch %1" 
-msgstr "Avvia %1" 
+msgstr "Iniciar o %1" 
 

@@ -34,7 +34,7 @@ ID_LIST = ['LanguageName', 'SetupAppTitle', 'SetupWindowTitle', 'UninstallAppTit
 
 
 ROOT_DIR_PATH = os.getcwd()
-TEMPLATE_NAME = 'template-strings.json'
+TEMPLATE_NAME = 'en-template.json'
 TEMPLATE_PATH = os.path.join(ROOT_DIR_PATH, TEMPLATE_NAME)
 
 PO_FILE_HEADER_LIST = [
