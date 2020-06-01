@@ -56,23 +56,23 @@ FOR /f "tokens=1,2 delims=-" %%a in ("%WHL_FILE_NAME%") DO (
 :DOWNLOAD_PYTHON
 ECHO STEP 3/4. Downloading Python installers...
 :: TODO(cpauya): Find a way to get get this from a file like `PYTHON_VERSION.txt` instead of hard-coding here.
-SET VERSION=3.4.3
+SET VERSION=3.6.8
 SET PYTHON_URL=https://www.python.org/ftp/python/%VERSION%/python-%VERSION%
 SET PYTHON_DIR=%~dp0python-setup\python-%VERSION%
 
-SET PYTHON_MSI="%PYTHON_DIR%.msi"
-SET PYTHON_AMD64_MSI="%PYTHON_DIR%.amd64.msi"
+SET PYTHON_EXE="%PYTHON_DIR%.exe"
+SET PYTHON_AMD64_EXE="%PYTHON_DIR%.amd64.exe"
 
 :: MUST: Do not download the Python installers if they already exist!
-IF EXIST %PYTHON_MSI% (
-    ECHO ... found %PYTHON_MSI% so will NOT download it.
+IF EXIST %PYTHON_EXE% (
+    ECHO ... found %PYTHON_EXE% so will NOT download it.
 ) ELSE (
-    BITSADMIN /TRANSFER python-%VERSION%.msi /DOWNLOAD /PRIORITY NORMAL "%PYTHON_URL%.msi" "%PYTHON_MSI%"
+    BITSADMIN /TRANSFER python-%VERSION%.exe /DOWNLOAD /PRIORITY NORMAL "%PYTHON_URL%.exe" "%PYTHON_EXE%"
 )
-IF EXIST %PYTHON_AMD64_MSI% (
-    ECHO ... found %PYTHON_AMD64_MSI% so will NOT download it.
+IF EXIST %PYTHON_AMD64_EXE% (
+    ECHO ... found %PYTHON_AMD64_EXE% so will NOT download it.
 ) ELSE (
-    BITSADMIN /TRANSFER python-%VERSION%.amd64.msi /DOWNLOAD /PRIORITY NORMAL "%PYTHON_URL%.amd64.msi" "%PYTHON_AMD64_MSI%"
+    BITSADMIN /TRANSFER python-%VERSION%.amd64.exe /DOWNLOAD /PRIORITY NORMAL "%PYTHON_URL%.amd64.exe" "%PYTHON_AMD64_EXE%"
 )
 
 

@@ -45,7 +45,7 @@ Name: "bn"; MessagesFile: "compiler:Languages\Bengali.islu"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python34\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python36\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -445,7 +445,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PIP_PATH = '\Python34\Scripts\pip.exe';
+    DEFAULT_PIP_PATH = '\Python36\Scripts\pip.exe';
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
@@ -461,8 +461,8 @@ begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         try
-            ExtractTemporaryFile('python-3.4.3.amd64.msi');
-            ExtractTemporaryFile('python-3.4.3.msi');
+            ExtractTemporaryFile('python-3.6.8-amd64.exe');
+            ExtractTemporaryFile('python-3.6.8.exe');
             ExtractTemporaryFile('python-exe.bat');
             ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
@@ -588,7 +588,7 @@ begin
 
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-        { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
+        { Should by in the same directory as pip.exe, e.g. 'C:\Python36\Scripts' }
         RegWriteStringValue(
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -620,7 +620,7 @@ begin
    
     PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
 
-    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 6, 0,) and sys.version_info < (3, 6, 9,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         if PythonVersionCodeCheck = 1 then
         begin
