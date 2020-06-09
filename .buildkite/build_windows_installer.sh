@@ -2,20 +2,10 @@
 
 set -euo pipefail
 
-# Goto location of this script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# Go to parent path (where kolibri sources are assumed to live)
-cd "$DIR"
-cd ..
-PARENT_PATH=`pwd`
-cd "$PARENT_PATH"
-
-# You are right back where this script started, anyway.
-
 # Not necessary for triggered builds
-mkdir -p dist
-buildkite-agent artifact download 'dist/*.whl' dist/
+buildkite-agent artifact download 'dist/*.whl'
+
+# TODO define installer version to pin?
 
 make docker-windows
 
