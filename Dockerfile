@@ -23,19 +23,21 @@ RUN apt-get update -y && \
 
 RUN git lfs install
 
+ENV PYTHON_VERSION=3.4.3 PY_DL_DIR=tmp/python_downloads
 
+# Download python 3.4 distributions, for later use
+ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.msi \
+	${PY_DL_DIR}/python-${PYTHON_VERSION}.msi
+ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.amd64.msi \
+	${PY_DL_DIR}/python-${PYTHON_VERSION}.amd64.msi
 
-# TODO(cpauya): Verify the checksums of the downloaded Python installers.
+COPY src src
 
-CMD git clone https://github.com/learningequality/kolibri-installer-windows.git && \
-      cd kolibri-installer-windows && \
-      git checkout $KOLIBRI_WINDOWS_INSTALLER_VERSION && \
-      cd src && \
-      cp /kolibridist/kolibri-$KOLIBRI_VERSION*.whl . && \
-      export KOLIBRI_BUILD_VERSION=$KOLIBRI_VERSION && \
-      make && \
-      curl -sS https://www.python.org/ftp/python/3.4.3/python-3.4.3.msi --output "python-setup/python-3.4.3.msi" && \
-      curl -sS https://www.python.org/ftp/python/3.4.3/python-3.4.3.amd64.msi --output "python-setup/python-3.4.3.amd64.msi" && \
-      wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss && \
-      mv *.exe kolibri-$KOLIBRI_VERSION-unsigned.exe && \
-      cp *.exe /kolibridist/
+WORKDIR src
+
+RUN mv ${PY_DL_DIR}/* python-setup/
+
+CMD cp /kolibridist/kolibri-$KOLIBRI_VERSION*.whl . && \
+	export KOLIBRI_BUILD_VERSION=$KOLIBRI_VERSION && \
+	wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss && \
+	cp *.exe /kolibridist/kolibri-$KOLIBRI_VERSION-unsigned.exe
