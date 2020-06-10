@@ -1,3 +1,11 @@
+FROM python:3 AS py-cold-prep
+
+RUN mkdir whl version && \
+	pip download kolibri -d /whl && \
+	pip install whl/kolibri*.whl && \
+	python -c "import kolibri; print(kolibri.__version__)" > /version/VERSION
+
+
 FROM ubuntu:bionic
 
 # Install wine and related packages
@@ -23,7 +31,7 @@ RUN apt-get update -y && \
 
 RUN git lfs install
 
-ENV PYTHON_VERSION=3.4.3 PY_DL_DIR=tmp/python_downloads
+ENV PYTHON_VERSION=3.4.3 PY_DL_DIR=/tmp/python_downloads
 
 # Download python 3.4 distributions, for later use
 ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.msi \
@@ -31,13 +39,17 @@ ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}
 ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.amd64.msi \
 	${PY_DL_DIR}/python-${PYTHON_VERSION}.amd64.msi
 
+COPY --from=py-cold-prep whl/*.whl /whl/
+COPY --from=py-cold-prep version/VERSION /version/VERSION
+
 COPY src src
 
 WORKDIR src
 
 RUN mv ${PY_DL_DIR}/* python-setup/
 
-CMD cp /kolibridist/kolibri-$KOLIBRI_VERSION*.whl . && \
-	export KOLIBRI_BUILD_VERSION=$KOLIBRI_VERSION && \
+CMD mv /whl/*.whl . && \
+	export KOLIBRI_BUILD_VERSION=$(cat /version/VERSION) && \
 	wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss && \
-	cp *.exe /kolibridist/kolibri-$KOLIBRI_VERSION-unsigned.exe
+	mkdir /exe && \
+	cp *.exe /exe/kolibri-$KOLIBRI_BUILD_VERSION-unsigned.exe
