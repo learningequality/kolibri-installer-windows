@@ -12,12 +12,12 @@ Set pipWhl=pip-6.0.8-py2.py3-none-any.whl
 rem Execute python based on machine architecture.
 If /i "%processor_architecture%"=="x86" (
   If NOT DEFINED PROCESSOR_ARCHITEW6432 (
-      start "" "%python32Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
+    	"%python32Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
   ) Else (
-      start "" "%python64Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
+    	"%python64Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
   )    
 ) Else (
-    start "" "%python64Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
+   		"%python64Bit%" /passive DefaultJustForMeTargetDir="C:\%folderName%"
 )
 
 rem reinstall pip

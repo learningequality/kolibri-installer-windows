@@ -369,7 +369,7 @@ AddonHostProgramNotFound=%1은(는) 선택한 폴더에 위치할 수 없습니다.%n%n그래도 계
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=We have detected an existing Kolibri installation; would you like to upgrade?
 UpgradeDelMsg=Installing fresh will delete all of your existing data; is this what you really want to do?
-InstallPythonMsg=Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?
+InstallPythonMsg=Python 3.6+ is required to install Kolibri on Windows; do you wish to first install Python 3.6.8, before continuing with the installation of Kolibri?
 InstallPythonErrMsg=Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
 KolibriInstallFailed=Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:
