@@ -365,7 +365,7 @@ AddonHostProgramNotFound=¿%1 no podía ser ubicado en la carpeta selected.%n%nD
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Hemos detectado una instalación existente de Kolibri; ¿quieres actualizar?
 UpgradeDelMsg=Instalación fresca borrará todos sus datos existentes; ¿Esto es lo que realmente quieres hacer?
-InstallPythonMsg=La versión 3.4+ de Python es necesaria para instalar Kolibri en Windows. ¿Desea instalar Python 3.4.3, antes de continuar con la instalación de Kolibri?
+InstallPythonMsg=La versión 3.6+ de Python es necesaria para instalar Kolibri en Windows. ¿Desea instalar Python 3.6.8, antes de continuar con la instalación de Kolibri?
 InstallPythonErrMsg=Advertencia - Kolibri necesita Python para funcionar. Haga clic en Aceptar para volver e instalar Python, o cancelar para salir del instalador de Kolibri
 SetupKolibriErrMsg=Critical error. Dependencies have failed to install. Error Number:
 KolibriInstallFailed=Instalación de Kolibri ha fallado. Instalador de Kolibri encontró un errorinstallation process%n%n
