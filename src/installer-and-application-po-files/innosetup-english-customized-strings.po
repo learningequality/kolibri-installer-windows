@@ -10,6 +10,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
  
 
+#: Default.isl:324 
+msgid "Are you sure you want to completely remove %1 and all of its components?" 
+msgstr "" 
+
+#: Default.isl:327 
+msgid "Kolibri has been successfully removed from your computer." 
+msgstr "" 
+
 #: Default.isl:364 
 msgid "We have detected an existing Kolibri installation; would you like to upgrade?" 
 msgstr "" 
