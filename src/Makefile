@@ -1,9 +1,9 @@
 
-VERSION := 3.4.3
+VERSION := 3.6.8
 DIR := python-setup
 URL := https://www.python.org/ftp/python/$(VERSION)
-PY_32 := python-$(VERSION).msi
-PY_64 := python-$(VERSION).amd64.msi
+PY_32 := python-$(VERSION).exe
+PY_64 := python-$(VERSION)-amd64.exe
 
 all:
 	wget -r -c --tries=20 -O $(DIR)/$(PY_32) $(URL)/$(PY_32)
