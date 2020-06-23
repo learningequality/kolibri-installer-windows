@@ -19,15 +19,15 @@ msgid "Kolibri has been successfully removed from your computer."
 msgstr "" 
 
 #: Default.isl:364 
-msgid "We have detected an existing Kolibri installation; would you like to upgrade?" 
+msgid "There is an existing installation of Kolibri on this device. Would you like to update it?" 
 msgstr "" 
 
 #: Default.isl:365 
-msgid "Installing fresh will delete all of your existing data; is this what you really want to do?" 
+msgid "If you choose to do a new installation and not to update, you will loose all of your existing data. Please confirm you want to continue with the new installation." 
 msgstr "" 
 
 #: Default.isl:366 
-msgid "Python 3.4+ is required to install Kolibri on Windows; do you wish to first install Python 3.4.3, before continuing with the installation of Kolibri?" 
+msgid "You need to have Python 3.6+ installed in order to run Kolibri. Setup Wizard was not able to find Python on your system and will now proceed to install it. Please click 'Yes' to confirm and continue with the installation." 
 msgstr "" 
 
 #: Default.isl:367 

@@ -51,7 +51,7 @@ msgid "Kolibri is running"
 msgstr ""
 
 #: Kolibri.cpp:
-msgid "Kolibri is now accessible locally at: http://127.0.0.1:8080. Select Load in browser."
+msgid "Kolibri can now be accessed locally at: http://127.0.0.1:8080. If the browser does not open, select 'Load in browser' from the icon in the taskbar notification area."
 msgstr ""
 
 #: Kolibri.cpp:224
