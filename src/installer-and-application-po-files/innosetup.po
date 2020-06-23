@@ -257,10 +257,6 @@ msgstr ""
 msgid "Finishing installation..." 
 msgstr "" 
 
-#: Default.isl:324 
-msgid "Are you sure you want to completely remove %1 and all of its components?" 
-msgstr "" 
-
 #: Default.isl:327 
 msgid "Please wait while %1 is removed from your computer." 
 msgstr "" 
