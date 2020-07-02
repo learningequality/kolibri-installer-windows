@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Spanish 
+LanguageName=Yoruba 
 LanguageID=0 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
@@ -28,18 +28,18 @@ LanguageCodePage=0
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Asistente de instalación 
-SetupWindowTitle=Asistente de instalación - %1 
-UninstallAppTitle=Desinstalar 
-UninstallAppFullTitle=Desinstalar %1 
+SetupAppTitle=Ṣeto 
+SetupWindowTitle=Ṣeto- %1 
+UninstallAppTitle=Aifi si po 
+UninstallAppFullTitle=%1 Aifi si po 
 
 ; *** Misc. common
-InformationTitle=Información 
-ConfirmTitle=Confirmar 
-ErrorTitle=Error 
+InformationTitle=Alaye 
+ConfirmTitle=Jẹ́risí 
+ErrorTitle=Àṣìṣe 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Se va a instalar %1. ¿Deseas continuar? 
+SetupLdrStartupMessage=Eyi Yoo fi sori ẹrọ %1. ṣe iwọ fẹ si tẹsiwaju? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=La instalación ya se está ejecutando. 
-WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de tu ordenador. 
+SetupAlreadyRunning=Ṣeto jẹ tẹlẹ nṣiṣẹ. 
+WindowsVersionNotSupported=Eyi iwe eto ṣe kii ṣe atilẹyin Awọn ti ikede ti ferese rẹ kọmputa jẹnṣiṣẹ. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=La instalación no está completa. Si cancelas ahora, el programa no será instalado.%n%nPuedes ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
+ExitSetupMessage=Ṣeto jẹkii ṣe pari. ti o baiwọ tẹlẹ bayi, Awọn etoYoo kii ṣe jẹ fi sori ẹrọ. %n%niwọ Ṣe ṣiṣe ṣeto lẹẹkansi ni miiranaago si pari Awọn fifi soriẹrọ.%n%ntẹlẹ ṣeto? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Atrás 
-ButtonNext=&Siguiente > 
-ButtonInstall=&Instalar 
-ButtonOK=Aceptar 
-ButtonCancel=Cancelar 
-ButtonYes=&Sí 
-ButtonYesToAll=Sí a &todo 
-ButtonNo=&No 
-ButtonNoToAll=N&o a todo 
-ButtonFinish=&Finalizar 
-ButtonBrowse=&Examinar... 
-ButtonWizardBrowse=E&xaminar... 
-ButtonNewFolder=&Crear nueva carpeta 
+ButtonBack=< &Pada 
+ButtonNext=&Itele > 
+ButtonInstall=&Fi sori ẹrọ 
+ButtonOK=Óti da 
+ButtonCancel=Fagilée 
+ButtonYes=&Bẹ́ẹ̀ni 
+ButtonYesToAll=Bẹẹni si &Bbogbo 
+ButtonNo=&Rara 
+ButtonNoToAll=N&Eyin si gbogbo 
+ButtonFinish=&Parí 
+ButtonBrowse=&lọkiriayelujara... 
+ButtonWizardBrowse=B&rowse... 
+ButtonNewFolder=&ṣe Titun Folda 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Seleccionar idioma de instalación 
-SelectLanguageLabel=Seleccione el idioma a utilizar durante la instalación. 
+SelectLanguageTitle=Yan ṣeto Ede 
+SelectLanguageLabel=Yan awọn ede si lilo nigba Awọn fifi sori ẹrọ. 
 
 ; *** Common wizard text
-ClickNext=Haz clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
+ClickNext=Tẹ Itele si tẹsiwaju tabi Fagilee si tẹlẹ ṣeto. 
 BeveledLabel=
-BrowseDialogTitle=Explorar carpetas 
-BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
-NewFolderName=Nueva carpeta 
+BrowseDialogTitle=Lọ kiri ayelujara Fun Folda 
+BrowseDialogLabel=Yan a obinrin folda ni Awọn Akojọ ni isalẹ, lẹhinna tẹ O dara. 
+NewFolderName=Titun Folda 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
-WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
+WelcomeLabel1=Kaabo si Awọn [orukọ] ṣeto Oluṣeto 
+WelcomeLabel2=Eyi Yoo fi sori ẹrọ [orukọ/ver] lori rẹ kọmputa. %n%no jẹ niyanju pe iwọ sunmọ gbogbo miiran ohun elo ṣaaju ki o to tẹsiwaju. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Información 
+WizardInfoBefore=Alaye 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Información 
+WizardInfoAfter=Alaye 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Seleccionar la ubicación de destino 
-SelectDirDesc=¿Dónde deseas instalar [name]? 
-SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
-SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
+WizardSelectDir=Yan Ibi ti nlo ipo 
+SelectDirDesc=Nibi ti yẹ [orukọ] jẹ fi sori ẹrọ? 
+SelectDirLabel3=Ṣeto yoo fi sori ẹrọ [name] sinu Awọn wọnyi folda. 
+SelectDirBrowseLabel=Si tẹsiwaju, tẹ Itele. Ti o ba iwọ yoo bi si yan a obinrin yatọ folda, tẹ lọ kiri ayelujara. 
+DiskSpaceMBLabel=Ni o kere [mb] MB ti ṣ''ofo disiki Aaye jẹ ti a beer. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=No hay suficiente espacio en disco 
+DiskSpaceWarningTitle=Kii ṣe to disiki Aaye 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
-SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
-SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
-SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-MustEnterGroupName=Hay que introducir un nombre de carpeta. 
+WizardSelectProgramGroup=Yan bẹrẹ akojọ aṣayan folda 
+SelectStartMenuFolderDesc=Wà yẹ ṣeto Ibi Awọn awọn eto ọna Abuja? 
+SelectStartMenuFolderLabel3=Ṣeto eto yoo ṣẹda Awọn awọn eto awọn ọna abuja ni Awọn wọnyi bẹrẹ akojọ aṣayan folda. 
+SelectStartMenuFolderBrowseLabel=Si tẹsiwaju, tẹ Itele. Ti o ba iwọ yoo bi si yan a obinrin yatọ folda, tẹ lọ kiri ayelujara. 
+MustEnterGroupName=Iwọ gbọdọ tẹ a obinrin folda orukọ. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=El nombre de carpeta no puede contener los siguientes caracteres:%n%n%1 
+BadGroupName=Awọn folda orukọ ko le ṣe pẹlu eyikeyi ti Awọn wọnyi ohun kikọ:%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
-ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
-ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
+WizardReady=Setan si fi sori ẹrọ 
+ReadyLabel1=Ṣeto jẹ bayi setan si berè fifi sori ẹrọ [orukọ] lori rẹ kọmputa. 
+ReadyLabel2a=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ, tabi tẹ pada ti o ba iwọ fẹ si atunyẹwo tabi iyipada eyikeyi ètò. 
+ReadyLabel2b=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Ubicación de destino: 
+ReadyMemoDir=Ibi ti nlo ipo: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Carpeta menú Inicio: 
+ReadyMemoGroup=Bẹrẹ akojọ aṣayan folda: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Preparando para instalar 
-PreparingDesc=Preparando para instalar [name] en tu ordenador. 
+WizardPreparing=Ngbaradi si fi sori ẹrọ 
+PreparingDesc=Ṣeto jẹ ngbaradi si fi sori ẹrọ [orukọ] lori rẹ kọmputa. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Programa de instalación no puede continuar. Por favor, haz clic en 'Cancelar' para salir. 
+CannotContinue=Ṣeto ko le ṣe tẹsiwaju. Jowo tẹ Fagilee si tẹlẹ. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Instalando 
-InstallingLabel=Espera mientras el programa de instalación acabe de instalar [name] en tu ordenador. 
+WizardInstalling=Fifi sori ẹrọ 
+InstallingLabel=Jowo duro nigba ti ṣeto nfi sii [orukọ] lori rẹ kọmputa. 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Finalizando la instalación de [name] 
-FinishedLabelNoIcons=Se ha terminado de instalar [name] en tu equipo. 
-FinishedLabel=La instalación de [name] en tu equipo ha terminado. Puedes iniciar el programa usando los accesos directos. 
-ClickFinish=Haz clic en 'Finalizar' para salir de la instalación. 
+FinishedHeadingLabel=I pari Awọn [orukọ] ṣeto oluṣeto 
+FinishedLabelNoIcons=Ṣeto ni o ni pari fifi sori ẹrọ [name] lori rẹ kọmputa. 
+FinishedLabel=Ṣeto yoo pari fifi sori ẹrọ [name] lori rẹ kọmputa. Awọn ohun elo Ṣe jẹ se igbekale nipasẹ yiyan Awọn fi sori ẹrọ ọna abuja. 
+ClickFinish=Tẹ pari si tẹlẹ ṣeto. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Cancelar instalación 
+AbortRetryIgnoreCancel=Fagilee fifi sori ẹrọ 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Extrayendo archivos... 
+StatusExtractFiles=Jijade awọn faili... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Finalizando instalación... 
+StatusRunProgram=Ipari fifi sori ẹrọ... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Por favor, confirma que deseas eliminar %1 y todos sus componentes. 
+ConfirmUninstall=Jẹ iwọ daju iwọ fẹ si patapata yọ kuro %1 ati gbogbo ti awọn oniwe- patapata? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Por favor, espera mientras el %1 se elimine de tu equipo. 
-UninstalledAll=%1 fue eliminado con éxito de tu equipo. 
-UninstalledMost=La desinstalación de %1 está completa.%n%nAlgunos elementos no pudieron ser eliminados pero se pueden eliminar manualmente. 
+UninstallStatusLabel=Jowo duro nigba ti %1 jẹ yọ kuro lati rẹ kọmputa. 
+UninstalledAll=%1 je ni ifijišẹ yọ kuro lati rẹ kọmputa. 
+UninstalledMost=%1 aifi si po pari. %n%nDiẹ ninu awọn awọn eroja Le kii ṣe jẹ kuro. wọnyi le jẹ kuro pẹlu ọwọ. 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Crear acceso directo en el escritorio 
+CreateDesktopIcon=Ṣẹda a obinrin &tabili ọna abuja 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 en la Web 
-UninstallProgram=Desinstalar %1 
-LaunchProgram=Iniciar %1 
+ProgramOnTheWeb=%1 lori Awọn wẹẹbu 
+UninstallProgram=Aifi si po %1 
+LaunchProgram=Ifilole %1 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
-UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
-InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
-SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
-KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
-LaunchKolibri=Iniciar Kolibri 
-KolibriSupportLink=Foro de la comunidad 
-KolibriHomePage=Página web 
-KolibriDocs=Documentación 
-FileNotFound= no encontrado. 
-Needhelp=Para obtener ayuda en línea, por favor visita el nuestro foro de la comunidad: 
-CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=¿Deseas eliminar también todos los datos asociados con Kolibri? 
-UninstallKolibriDataLine2=Esto eliminará permanentemente todos los canales de contenido descargados y la base de datos de los usuarios. 
-UninstallKolibriDataLine3=Esta acción no se puede deshacer. 
-UninstallKolibriPath=Ubicación de datos: 
+UpgradeMsg=Ní bẹ jẹ ohun tẹlẹ fifi sori ẹrọ ti kolibri lori eyi ẹrọ. Yoo iwọ tun bi si imudojuiwọn o? 
+UpgradeDelMsg=Ti o ba iwọ yan si ṣe a obinrin titun fifi sori ẹrọ ati kii ṣe si imudojuiwọn, iwọ Yoo alaimuṣinṣin gbogbo ti iwọ tẹlẹ data. Jowo jẹrisi iwọ fẹ si tẹsiwaju pẹlu Awọn titun fifi sori ẹrọ. 
+InstallPythonMsg=Iwọ nilo si ni python 3.6+ fi sori ẹrọ ni aṣẹ si ṣiṣe kolibri. ṣeto oluṣeto je kii ṣe anfani si wa python lori rẹ eto ati Yoo ki ibayi tẹsiwaju si o. Jowo tẹ bẹẹni' si jẹrisi ati tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
+InstallPythonErrMsg=Kolibri ko le ṣe ṣiṣe laisi fifi sori ẹrọ python. tẹ O dara si lọ pada ati fi sori ẹrọ python, tabi Fagilee si oyimbo Awọn kolibri insitola 
+SetupKolibriErrMsg=Pataki aṣiṣe. dependences ni kuna si fi sori ẹrọ. aṣiṣe nọmba: 
+KolibriInstallFailed=Nkan kan lọ aṣiṣe nigba kolibri ṣeto. %nAfikun alaye le jẹ ri ni Awọn wọle faili: 
+SetupWizardMsg=Ṣeto oluṣeto jẹ didaakọ awọn faili. Eyi Ṣe ya a obinrin nigba ti, Jowo duro.. 
+LaunchKolibri=Ifilole kolibri 
+KolibriSupportLink=Agbegbe apero 
+KolibriHomePage=Akọọkan 
+KolibriDocs=Kikọ sí inu iwe 
+FileNotFound= je kii ṣe ri. 
+Needhelp=Si gba Egba Mi O online, Jowo ibewo wa agbegbe apero: 
+CommunityLink=http:// agbegbe.ẹkọdeede. Org 
+UninstallKolibriDataLine1=Yoo iwọ tun bi si paarẹ gbogbo Awọn data ni nkan ṣe pẹlu kolibri? 
+UninstallKolibriDataLine2=Eyi Yoo permanently yọ kuro gbogbo gba lati ayelujara akoonu awọn ikanni ati Awọn olumulo ibaraenisepo data. 
+UninstallKolibriDataLine3=Eyi iṣẹ ko le ṣe jẹ ko ṣeeṣe. 
+UninstallKolibriPath=Data ipo: 

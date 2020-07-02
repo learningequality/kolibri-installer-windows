@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Spanish 
+LanguageName=Spanish, Latin America 
 LanguageID=0 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
@@ -39,7 +39,7 @@ ConfirmTitle=Confirmar
 ErrorTitle=Error 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Se va a instalar %1. ¿Deseas continuar? 
+SetupLdrStartupMessage=Se va a instalar %1. ¿Desea continuar? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -51,7 +51,7 @@ SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the 
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
 SetupAlreadyRunning=La instalación ya se está ejecutando. 
-WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de tu ordenador. 
+WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de su computadora. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=La instalación no está completa. Si cancelas ahora, el programa no será instalado.%n%nPuedes ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
+ExitSetupMessage=La instalación no está completa. Si cancela ahora, el programa no será instalado.%n%nPuede ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,7 +87,7 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Atrás 
+ButtonBack=< &Volver 
 ButtonNext=&Siguiente > 
 ButtonInstall=&Instalar 
 ButtonOK=Aceptar 
@@ -106,15 +106,15 @@ SelectLanguageTitle=Seleccionar idioma de instalación
 SelectLanguageLabel=Seleccione el idioma a utilizar durante la instalación. 
 
 ; *** Common wizard text
-ClickNext=Haz clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
+ClickNext=Haga clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
 BeveledLabel=
 BrowseDialogTitle=Explorar carpetas 
-BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
+BrowseDialogLabel=Seleccione una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
 NewFolderName=Nueva carpeta 
 
 ; *** "Welcome" wizard page
 WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
-WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
+WelcomeLabel2=[name/ver] será instalado en su computadora.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -148,9 +148,9 @@ UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
 WizardSelectDir=Seleccionar la ubicación de destino 
-SelectDirDesc=¿Dónde deseas instalar [name]? 
+SelectDirDesc=¿Dónde desea instalar [name]? 
 SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
-SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
+SelectDirBrowseLabel=Para continuar, haga clic en 'Siguiente'. Si desea seleccionar una carpeta diferente, haga clic en 'Examinar'. 
 DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
@@ -189,7 +189,7 @@ SelectTasksLabel2=Select the additional tasks you would like Setup to perform wh
 WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
 SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
 SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
-SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
+SelectStartMenuFolderBrowseLabel=Para continuar, haga clic en 'Siguiente'. Si desea seleccionar una carpeta diferente, haga clic en 'Examinar'. 
 MustEnterGroupName=Hay que introducir un nombre de carpeta. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
@@ -198,9 +198,9 @@ NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
 WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
-ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
-ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
+ReadyLabel1=Asistente de instalación está listo para comenzar a instalar [name] en su computadora. 
+ReadyLabel2a=Haga clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
+ReadyLabel2b=Haga clic en 'Instalar' para continuar con la instalación. 
 ReadyMemoUserInfo=User information:
 ReadyMemoDir=Ubicación de destino: 
 ReadyMemoType=Setup type:
@@ -212,7 +212,7 @@ ReadyMemoTasks=Additional tasks:
 WizardPreparing=Preparando para instalar 
 PreparingDesc=Preparando para instalar [name] en tu ordenador. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Programa de instalación no puede continuar. Por favor, haz clic en 'Cancelar' para salir. 
+CannotContinue=Asistente de instalación no puede continuar. Por favor, haga clic en 'Cancelar' para salir. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -221,13 +221,13 @@ ErrorCloseApplications=Setup was unable to automatically close all applications.
 
 ; *** "Installing" wizard page
 WizardInstalling=Instalando 
-InstallingLabel=Espera mientras el programa de instalación acabe de instalar [name] en tu ordenador. 
+InstallingLabel=Espere mientras Asistente de instalación acabe de instalar [name] en su computadora. 
 
 ; *** "Setup Completed" wizard page
 FinishedHeadingLabel=Finalizando la instalación de [name] 
-FinishedLabelNoIcons=Se ha terminado de instalar [name] en tu equipo. 
-FinishedLabel=La instalación de [name] en tu equipo ha terminado. Puedes iniciar el programa usando los accesos directos. 
-ClickFinish=Haz clic en 'Finalizar' para salir de la instalación. 
+FinishedLabelNoIcons=Se ha terminado de instalar [name] en su equipo. 
+FinishedLabel=La instalación de [name] en su equipo ha terminado. Puede iniciar el programa usando los accesos directos. 
+ClickFinish=Haga clic en 'Finalizar' para salir de la instalación. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -321,11 +321,11 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Por favor, confirma que deseas eliminar %1 y todos sus componentes. 
+ConfirmUninstall=Por favor, confirme que desea eliminar %1 y todos sus componentes. 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Por favor, espera mientras el %1 se elimine de tu equipo. 
-UninstalledAll=%1 fue eliminado con éxito de tu equipo. 
+UninstallStatusLabel=Por favor, espere mientras %1 se elimine de su equipo. 
+UninstalledAll=%1 fue eliminado con éxito de su equipo. 
 UninstalledMost=La desinstalación de %1 está completa.%n%nAlgunos elementos no pudieron ser eliminados pero se pueden eliminar manualmente. 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
-UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
-InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
+UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Desea actualizarla? 
+UpgradeDelMsg=Si decide hacer una instalación nueva y no actualizar, perderá todos los datos existentes. Por favor, confirme que desea continuar con la nueva instalación. 
+InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haga clic en 'Sí' para confirmar y continuar con la instalación. 
+InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haga clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
 SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
-KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
+KolibriInstallFailed=Algo salió mal durante la configuración de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
+SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espere... 
 LaunchKolibri=Iniciar Kolibri 
 KolibriSupportLink=Foro de la comunidad 
 KolibriHomePage=Página web 
 KolibriDocs=Documentación 
 FileNotFound= no encontrado. 
-Needhelp=Para obtener ayuda en línea, por favor visita el nuestro foro de la comunidad: 
+Needhelp=Para obtener ayuda en línea, por favor visite el nuestro foro de la comunidad: 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=¿Deseas eliminar también todos los datos asociados con Kolibri? 
+UninstallKolibriDataLine1=¿Desea eliminar también todos los datos asociados con Kolibri? 
 UninstallKolibriDataLine2=Esto eliminará permanentemente todos los canales de contenido descargados y la base de datos de los usuarios. 
 UninstallKolibriDataLine3=Esta acción no se puede deshacer. 
 UninstallKolibriPath=Ubicación de datos: 

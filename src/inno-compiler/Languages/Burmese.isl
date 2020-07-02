@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Spanish 
+LanguageName=Burmese 
 LanguageID=0 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
@@ -28,18 +28,18 @@ LanguageCodePage=0
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Asistente de instalación 
-SetupWindowTitle=Asistente de instalación - %1 
-UninstallAppTitle=Desinstalar 
-UninstallAppFullTitle=Desinstalar %1 
+SetupAppTitle=သတ်မှတ် 
+SetupWindowTitle=သတ်မှတ်-%1 
+UninstallAppTitle=ဖြုတ်ချမှု 
+UninstallAppFullTitle=%1 ဖြုတ်ချမှု 
 
 ; *** Misc. common
-InformationTitle=Información 
-ConfirmTitle=Confirmar 
-ErrorTitle=Error 
+InformationTitle=အချက်အလက် 
+ConfirmTitle=အတည်ပြုမည် 
+ErrorTitle=ချို့ယွင်းချက် 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Se va a instalar %1. ¿Deseas continuar? 
+SetupLdrStartupMessage=%1 ကိုထည့်သွင်းမည်။ ဆက်လုပ်လိုပါသလား။ 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=La instalación ya se está ejecutando. 
-WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de tu ordenador. 
+SetupAlreadyRunning=သတ်မှတ်မှုက အလုပ်လုပ်နှင့်ပြီးဖြစ်သည်။ 
+WindowsVersionNotSupported=ယခုပရိုဂရမ်က သင့်ကွန်ပျူတာရှိဝင်းဒိုးပုံစံကို မထောက်ပံ့ပါ။ 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=La instalación no está completa. Si cancelas ahora, el programa no será instalado.%n%nPuedes ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
+ExitSetupMessage=သတ်မှတ်မှုက မပြီးသေးပါ။ ယခုထွက်သွားလျှင် ပရိုဂရမ်ကိုသွင်းမည်မဟုတ်ပါ။ %n%n ပရိုဂရမ်သွင်းမှုပြီးစီးစေရန် နောက်တစ်ကြိမ်တွင် သတ်မှတ်မှုကိုပြန်လုပ်ရမည်ဖြစ်သည်။ %n%n သတ်မှတ်မှုကို ထွက်မည်လား။ 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Atrás 
-ButtonNext=&Siguiente > 
-ButtonInstall=&Instalar 
-ButtonOK=Aceptar 
-ButtonCancel=Cancelar 
-ButtonYes=&Sí 
-ButtonYesToAll=Sí a &todo 
-ButtonNo=&No 
-ButtonNoToAll=N&o a todo 
-ButtonFinish=&Finalizar 
-ButtonBrowse=&Examinar... 
-ButtonWizardBrowse=E&xaminar... 
-ButtonNewFolder=&Crear nueva carpeta 
+ButtonBack=< နောက်သို့ 
+ButtonNext=ရှေ့သို့> 
+ButtonInstall=သွင်းပါ 
+ButtonOK=အိုကေ 
+ButtonCancel=ပယ်ဖျက်မည် 
+ButtonYes=လက်ခံသည် 
+ButtonYesToAll=အားလုံးလက်ခံသည် 
+ButtonNo=လက်မခံပါ 
+ButtonNoToAll=အားလုံးလက်မခံပါ 
+ButtonFinish=ပြီးဆုံးသည် 
+ButtonBrowse=ဖွင့်ပါ 
+ButtonWizardBrowse=ဖွင့်ပါ 
+ButtonNewFolder=ဖိုဒါအသစ်ဆောက်ပါ 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Seleccionar idioma de instalación 
-SelectLanguageLabel=Seleccione el idioma a utilizar durante la instalación. 
+SelectLanguageTitle=သတ်မှတ်ဘာသာစကားရွေးပါ 
+SelectLanguageLabel=ဆော့ဝဲသွင်းမှုအတွင်းအသုံးပြုမည့် ဘာသာစကားကိုရွေးပါ 
 
 ; *** Common wizard text
-ClickNext=Haz clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
+ClickNext=ဆက်သွားရန် ရှေ့သို့ ကိုနှိပ်ပါ သို့မဟုတ် သတ်မှတ်မှုမှထွက်ရန် ပယ်ဖျက်မည်ကိုနှိပ်ပါ 
 BeveledLabel=
-BrowseDialogTitle=Explorar carpetas 
-BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
-NewFolderName=Nueva carpeta 
+BrowseDialogTitle=ဖိုဒါအတွက်ဖွင့်ပါ 
+BrowseDialogLabel=အောက်တွင်ဖော်ပြထားသောစာရင်းရှိ ဖိုဒါတစ်ခုကိုရွေးပြီး အိုကေကိုနှိပ်ပါ 
+NewFolderName=ဖိုဒါအသစ် 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
-WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
+WelcomeLabel1=[name] သတ်မှတ်မှုမှ ကြိုဆိုပါတယ် 
+WelcomeLabel2=ဒါက [name/ver] ကို သင့်ကွန်ပျူတာအတွင်းထည့်သွင်းသွားပါမယ်။ %n%n ဆက်လက်မလုပ်ဆောင်ခင် အခြားအပလီကေးရှင်းများအားလုံးကို ပိတ်ပေးပါ။ 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Información 
+WizardInfoBefore=အချက်အလက် 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Información 
+WizardInfoAfter=အချက်အလက် 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Seleccionar la ubicación de destino 
-SelectDirDesc=¿Dónde deseas instalar [name]? 
-SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
-SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
+WizardSelectDir=သတ်မှတ်တည်နေရာကိုရွေးပါ 
+SelectDirDesc=[name] ကို ဘယ်နေရာတွင် ထည့်သွင်းရမလဲ 
+SelectDirLabel3=သတ်မှတ်မှုက [name] ကို အောက်ပါဖိုဒါထဲသို့ ထည့်သွင်းသွားပါမယ် 
+SelectDirBrowseLabel=ဆက်လက်လုပ်ဆောင်ရန် ရှေ့သို့ ကိုနှိပ်ပါ။ အခြားဖိုဒါတစ်ခုကိုရွေးလိုပါက ဖွင့်ပါကို နှိပ်ပါ 
+DiskSpaceMBLabel=အနည်းဆုံး [mb] မဂ္ဂါဘိုက်လိုအပ်ပါတယ် 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=No hay suficiente espacio en disco 
+DiskSpaceWarningTitle=စက်အတွင်းသိုလှောင်ရန်နေရာမလုံလောက်ပါ 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
-SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
-SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
-SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-MustEnterGroupName=Hay que introducir un nombre de carpeta. 
+WizardSelectProgramGroup=စတင်မှုလုပ်ငန်းများပါဖိုဒါကို ရွေးပါ 
+SelectStartMenuFolderDesc=သတ်မှတ်မှုက ပရိုဂရမ်၏ ဖြတ်လမ်းများကို ဘယ်နေရာတွင်ထားရမလဲ 
+SelectStartMenuFolderLabel3=သတ်မှတ်မှုက ပရိုဂရမ်၏ဖြတ်လမ်းများကို အောက်ပါစတင်မှုလုပ်ငန်းများပါဖိုဒါထဲသို့ ထည့်သွင်းသွားပါမယ် 
+SelectStartMenuFolderBrowseLabel=ဆက်လက်လုပ်ဆောင်ရန် ရှေ့သို့ ကိုနှိပ်ပါ။ အခြားဖိုဒါတစ်ခုကိုရွေးလိုပါက ဖွင့်ပါကို နှိပ်ပါ 
+MustEnterGroupName=ဖိုဒါကိုနာမည်ပေးရပါမယ် 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=El nombre de carpeta no puede contener los siguientes caracteres:%n%n%1 
+BadGroupName=ဖိုဒါနာမည်က အောက်ပါအက္ခရာများ မပါဝင်ရပါ။ %n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
-ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
-ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
+WizardReady=ထည့်သွင်းရန်အသင့် 
+ReadyLabel1=သတ်မှတ်မှုက [name] ကို သင့်ကွန်ပျူတာတွင်စတင်ထည့်သွင်းရန် အသင့်ဖြစ်နေပါပြီ 
+ReadyLabel2a=ထည့်သွင်းမှုကိုဆက်လက်လုပ်ဆောင်ရန် သွင်းပါကိုနှိပ်ပါ။ သို့မဟုတ် မည်သည့်ချိန်ညှိမှုကိုမဆိုပြန်သုံးသပ်လိုပါက သို့မဟုတ် ပြောင်းလဲလိုပါက နောက်သို့ကိုနှိပ်ပါ။ 
+ReadyLabel2b=ထည့်သွင်းမှုကိုဆက်လုပ်ရန် သွင်းပါကိုနှိပ်ပါ 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Ubicación de destino: 
+ReadyMemoDir=သတ်မှတ်တည်နေရာ - 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Carpeta menú Inicio: 
+ReadyMemoGroup=စတင်မှုလုပ်ငန်းများပါဖိုဒါ 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Preparando para instalar 
-PreparingDesc=Preparando para instalar [name] en tu ordenador. 
+WizardPreparing=ထည့်သွင်းရန်ပြင်ဆင်နေသည် 
+PreparingDesc=သတ်မှတ်မှုက [name] ကို သင့်ကွန်ပျူတာတွင်စတင်ထည့်သွင်းရန် ပြင်ဆင်နေပါတယ် 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Programa de instalación no puede continuar. Por favor, haz clic en 'Cancelar' para salir. 
+CannotContinue=သတ်မှတ်မှုက ဆက်လုပ်လို့မရပါ။ ထွက်ရန် ပယ်ဖျက်မည်ကိုနှိပ်ပါ 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Instalando 
-InstallingLabel=Espera mientras el programa de instalación acabe de instalar [name] en tu ordenador. 
+WizardInstalling=ထည့်သွင်းနေသည် 
+InstallingLabel=သတ်မှတ်မှုက [name] ကို သင့်ကွန်ပျူတာထဲထည့်သွင်းနေစဉ် ခဏစောင့်ပါ 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Finalizando la instalación de [name] 
-FinishedLabelNoIcons=Se ha terminado de instalar [name] en tu equipo. 
-FinishedLabel=La instalación de [name] en tu equipo ha terminado. Puedes iniciar el programa usando los accesos directos. 
-ClickFinish=Haz clic en 'Finalizar' para salir de la instalación. 
+FinishedHeadingLabel=[name] သတ်မှတ်မှုပြီးဆုံးပါပြီ 
+FinishedLabelNoIcons=သတ်မှတ်မှုက [name] ကို သင့်ကွန်ပျူတာထဲထည့်သွင်းမှု ပြီးဆုံးပါပြီ 
+FinishedLabel=သတ်မှတ်မှုက [name] ကို သင့်ကွန်ပျူတာအတွင်းထည့်သွင်းမှု ပြီးဆုံးပါပြီ။ ထည့်သွင်းထားသောဖြတ်လမ်းများကိုနှိပ်ခြင်းဖြင့် အပလီကေးရှင်းကိုစတင်နိုင်ပါမယ်။ 
+ClickFinish=သတ်မှတ်မှုမှထွက်ရန် ပြီးဆုံးသည်ကိုနှိပ်ပါ 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Cancelar instalación 
+AbortRetryIgnoreCancel=ထည့်သွင်းမှုကို ပယ်ဖျက်မယ် 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Extrayendo archivos... 
+StatusExtractFiles=ဖိုင်များကို အကျယ်ချဲ့နေသည် 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Finalizando instalación... 
+StatusRunProgram=ထည့်သွင်းမှုကို လက်စသတ်နေသည် 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Por favor, confirma que deseas eliminar %1 y todos sus componentes. 
+ConfirmUninstall=%1 နှင့်ဆက်စပ်အရာများအားလုံးကို အပြီးတိုင်ဖယ်ရှားလိုတာ သေချာပါသလား 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Por favor, espera mientras el %1 se elimine de tu equipo. 
-UninstalledAll=%1 fue eliminado con éxito de tu equipo. 
-UninstalledMost=La desinstalación de %1 está completa.%n%nAlgunos elementos no pudieron ser eliminados pero se pueden eliminar manualmente. 
+UninstallStatusLabel=%1 ကို သင့်ကွန်ပျူတာမှဖယ်ရှားစဉ် ခဏစောင့်ပါ 
+UninstalledAll=%1 ကိုသင့်ကွန်ပျူတာမှ အောင်မြင်စွာဖယ်ရှားပြီးပါပြီ 
+UninstalledMost=%1 ကိုဖြုတ်ချမှုပြီးဆုံးပါပြီ။ %n%n အချို့အရာများကို ဖယ်ရှားလို့မရပါ။ ကိုယ်တိုင်ဖယ်ရှားမှသာရပါမယ်။ 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Crear acceso directo en el escritorio 
+CreateDesktopIcon=မျက်နှာပြင်တွင် ဖြတ်လမ်းတစ်ခုကိုဖန်တီးပါ 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 en la Web 
-UninstallProgram=Desinstalar %1 
-LaunchProgram=Iniciar %1 
+ProgramOnTheWeb=ဝက်ဆိုက်ရှိ %1 
+UninstallProgram=%1 ကိုဖြုတ်ချပါ 
+LaunchProgram=%1 ကိုဖွင့်ပါ 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
-UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
-InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
-SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
-KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
-LaunchKolibri=Iniciar Kolibri 
-KolibriSupportLink=Foro de la comunidad 
-KolibriHomePage=Página web 
-KolibriDocs=Documentación 
-FileNotFound= no encontrado. 
-Needhelp=Para obtener ayuda en línea, por favor visita el nuestro foro de la comunidad: 
+UpgradeMsg=ဒီပစ္စည်းတွင် Kolibri ကို ထည့်သွင်းထားပြီးဖြစ်ပါတယ်။ အဲဒါကိုအဆင့်မြှင့်လိုပါသလား။ 
+UpgradeDelMsg=အဆင့်မမြှင့်ဘဲ အသစ်ထည့်သွင်းလိုပါက ရှိပြီးသားအချက်အလက်များအားလုံးဆုံးရှုံးသွားပါမယ်။ အသစ်ထည့်သွင်းမှုကိုဆက်လုပ်လိုပါက အတည်ပြုပေးပါ။ 
+InstallPythonMsg=Kolibri ကိုဖွင့်ဖို့ သင့်မှာ Python 3.6+ ရှိရပါမယ်။ သတ်မှတ်မှုက သင်၏ကွန်ပျူတာစနစ်တွင် Python ကိုမတွေ့သည့်အတွက် အဲဒါကိုထည့်သွင်းသွားပါမယ်။ အတည်ပြုရန်နှင့်ထည့်သွင်းမှုကိုဆက်လုပ်ရန် လက်ခံသည်ကိုနှိပ်ပါ။ 
+InstallPythonErrMsg=Python ကိုမထည့်သွင်းဘဲ Kolibri ကိုမဖွင့်နိုင်ပါ။ နောက်သို့ပြန်သွားပြီး Python ကိုထည့်သွင်းရန် အိုကေကိုနှိပ်ပါ သို့မဟုတ် Kolibri ထည့်သွင်းမှုမှထွက်ရန် ပယ်ဖျက်မည်ကိုနှိပ်ပါ။ 
+SetupKolibriErrMsg=အရေးကြီးမှားယွင်းမှု။ ထောက်ပံ့မှုများကို မထည့်သွင်းနိုင်ပါ။ မှားယွင်းမှုအမှတ်စဉ် - 
+KolibriInstallFailed=Kolibri သတ်မှတ်မှုအတွင်း တစ်ခုခုမှားယွင်းသွားပါတယ်။ %n နောက်ထပ်အချက်အလက်တွေကို မှတ်တမ်းဖိုင်ထဲမှာတွေ့နိုင်ပါတယ်။ 
+SetupWizardMsg=သတ်မှတ်မှုက ဖိုင်များကိုကူးယူနေပါတယ်။ အချိန်အနည်းငယ်ကြာပါမယ်။ ခဏစောင့်ပါ 
+LaunchKolibri=Kolibri ကိုဖွင့်ပါ 
+KolibriSupportLink=အစုအဖွဲ့ဖိုရမ် 
+KolibriHomePage=ပင်မစာမျက်နှာ 
+KolibriDocs=မှတ်တမ်းတင်ခြင်း 
+FileNotFound= ကိုမတွေ့ပါ။ 
+Needhelp=အွန်လိုင်းတွင်အကူအညီရယူရန် မိမိတို့၏အစုအဖွဲ့ဖိုရမ်သို့သွားပါ။ 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=¿Deseas eliminar también todos los datos asociados con Kolibri? 
-UninstallKolibriDataLine2=Esto eliminará permanentemente todos los canales de contenido descargados y la base de datos de los usuarios. 
-UninstallKolibriDataLine3=Esta acción no se puede deshacer. 
-UninstallKolibriPath=Ubicación de datos: 
+UninstallKolibriDataLine1=Kolibri နှင့်ပတ်သက်သောအချက်အလက်များအားလုံးကိုဖျက်ချင်ပါသလား 
+UninstallKolibriDataLine2=ဒါက ဒေါင်းလုပ်ဆွဲထားသောအကြောင်းအရာလမ်းကြောင်းများနှင့် အသုံးပြုသူအကျိုးပြုမှုအချက်အလက်များကို အမြဲတမ်းဖျက်သွားပါမယ် 
+UninstallKolibriDataLine3=ဒီလုပ်ဆောင်မှုကို မရပ်တန့်နိုင်ပါ 
+UninstallKolibriPath=အချက်အလက်တည်နေရာ 

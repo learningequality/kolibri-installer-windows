@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Spanish 
+LanguageName=Telugu 
 LanguageID=0 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
@@ -28,18 +28,18 @@ LanguageCodePage=0
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Asistente de instalación 
-SetupWindowTitle=Asistente de instalación - %1 
-UninstallAppTitle=Desinstalar 
-UninstallAppFullTitle=Desinstalar %1 
+SetupAppTitle=సెటప్ 
+SetupWindowTitle=సెటప్ - %1 
+UninstallAppTitle=అన్‌ఇన్‌స్టాల్ చేయి 
+UninstallAppFullTitle=%1 అన్‌ఇన్‌స్టాల్ చేయి 
 
 ; *** Misc. common
-InformationTitle=Información 
-ConfirmTitle=Confirmar 
-ErrorTitle=Error 
+InformationTitle=సమాచారం 
+ConfirmTitle=నిర్ధారించు 
+ErrorTitle=లోపం 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Se va a instalar %1. ¿Deseas continuar? 
+SetupLdrStartupMessage=ఇది %1 ని ఇన్‌స్టాల్ చేస్తుంది. మీరు కొనసాగాలని కోరుకుంటున్నారా? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=La instalación ya se está ejecutando. 
-WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de tu ordenador. 
+SetupAlreadyRunning=సెటప్ ఇప్పటికే అమలులో ఉంది. 
+WindowsVersionNotSupported=మీ కంప్యూటర్‍‌లో అమలులో ఉన్న విండోస్ యొక్క సంస్కరణకు ఈ ప్రోగ్రామ్‌లో మద్దతు లేదు. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=La instalación no está completa. Si cancelas ahora, el programa no será instalado.%n%nPuedes ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
+ExitSetupMessage=సెటప్ పూర్తి కాలేదు. మీరు ఇప్పుడు నిష్క్రమిస్తే, ప్రోగ్రామ్ ఇన్‌స్టాల్ చేయబడదు. %n%nఇన్‌స్టాలేషన్ ని పూర్తి చేయడానికి మీరు సెటప్‌ని మరో సమయంలో అమలు చేయవచ్చు. %n%nసెటప్ నుంచి నిష్క్రమించాలా? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Atrás 
-ButtonNext=&Siguiente > 
-ButtonInstall=&Instalar 
-ButtonOK=Aceptar 
-ButtonCancel=Cancelar 
-ButtonYes=&Sí 
-ButtonYesToAll=Sí a &todo 
-ButtonNo=&No 
-ButtonNoToAll=N&o a todo 
-ButtonFinish=&Finalizar 
-ButtonBrowse=&Examinar... 
-ButtonWizardBrowse=E&xaminar... 
-ButtonNewFolder=&Crear nueva carpeta 
+ButtonBack=< &వెనుకకు 
+ButtonNext=&తరువాత > 
+ButtonInstall=&ఇన్‌స్టాల్ 
+ButtonOK=సరే 
+ButtonCancel=రద్దు చేయు 
+ButtonYes=&అవును 
+ButtonYesToAll=&అన్నిటికీ అవును 
+ButtonNo=&కాదు 
+ButtonNoToAll=మొ&త్తానికి వద్దు 
+ButtonFinish=&పూర్తయింది 
+ButtonBrowse=&బ్రౌజ్ చేయి... 
+ButtonWizardBrowse=బ్రౌ&జ్ చేయి... 
+ButtonNewFolder=&కొత్త ఫోల్డర్ రూపొందించు 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Seleccionar idioma de instalación 
-SelectLanguageLabel=Seleccione el idioma a utilizar durante la instalación. 
+SelectLanguageTitle=సెటప్ భాషను ఎంచుకోండి 
+SelectLanguageLabel=ఇన్‌స్టాలేషన్ సమయంలో వాడే భాషను ఎంచుకోండి. 
 
 ; *** Common wizard text
-ClickNext=Haz clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
+ClickNext=కొనసాగించేందుకు తరువాతపై క్లిక్ చేయండి, లేదా సెటప్ నుండి నిష్క్రమించడానికి రద్దు పై క్లిక్ చేయండి. 
 BeveledLabel=
-BrowseDialogTitle=Explorar carpetas 
-BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
-NewFolderName=Nueva carpeta 
+BrowseDialogTitle=ఫోల్డర్ కొరకు బ్రౌజ్ చేయండి 
+BrowseDialogLabel=క్రింది జాబితాలో ఒక ఫోల్డర్‌ను ఎంచుకోండి, ఆపై సరే క్లిక్ చేయండి. 
+NewFolderName=కొత్త ఫోల్డర్ 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
-WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
+WelcomeLabel1=[name] సెటప్ విజార్డ్‌కి స్వాగతం 
+WelcomeLabel2=ఇది మీ కంప్యూటర్ పై [name/ver] ను ఇన్‌స్టాల్ చేస్తుంది.%n%nకొనసాగించే ముందు మీరు అన్నీ ఇతర అప్లికేషన్‌లను మూసివేయాలని సిఫార్సు చేయబడుతుంది. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Información 
+WizardInfoBefore=సమాచారం 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Información 
+WizardInfoAfter=సమాచారం 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Seleccionar la ubicación de destino 
-SelectDirDesc=¿Dónde deseas instalar [name]? 
-SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
-SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
+WizardSelectDir=గమ్యస్థానాన్ని ఎంచుకోండి 
+SelectDirDesc=[name] ను ఎక్కడ ఇన్‌స్టాల్ చేయాలి? 
+SelectDirLabel3=[name] సెటప్‌ను క్రింది ఫోల్డర్‌లో ఇన్‌స్టాల్ చేస్తుంది. 
+SelectDirBrowseLabel=కొనసాగించడానికి, తరువాత పై క్లిక్ చేయండి. వేరే ఫోల్డర్ ఎంచుకోవాలంటే, బ్రౌజ్ క్లిక్ చేయండి. 
+DiskSpaceMBLabel=డిస్క్‌లో కనీసం [mb] MB ఖాళీ స్థలం అవసరం. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=No hay suficiente espacio en disco 
+DiskSpaceWarningTitle=తగినంత ఖాళీ స్థలం లేదు 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
-SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
-SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
-SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-MustEnterGroupName=Hay que introducir un nombre de carpeta. 
+WizardSelectProgramGroup=స్టార్ట్ మెనూ ఫోల్డర్‌ని ఎంచుకోండి 
+SelectStartMenuFolderDesc=ప్రోగ్రామ్ షార్ట్‌కట్‌ల సెటప్‌ను ఎక్కడ ఉంచాలి? 
+SelectStartMenuFolderLabel3=ప్రోగ్రామ్ షార్ట్‌కట్‌ల సెటప్‌ను క్రింది స్టార్ట్ మెనూ ఫోల్డర్‌లో సృష్టిస్తుంది. 
+SelectStartMenuFolderBrowseLabel=కొనసాగించడానికి, తరువాత పై క్లిక్ చేయండి. వేరే ఫోల్డర్ ఎంచుకోవాలంటే, బ్రౌజ్ క్లిక్ చేయండి. 
+MustEnterGroupName=మీరు ఫోల్డర్ పేరుని తప్పనిసరిగా నమోదు చేయాలి. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=El nombre de carpeta no puede contener los siguientes caracteres:%n%n%1 
+BadGroupName=ఫోల్డర్ పేరు క్రింది అక్షరాలలో దేనిని కలిగి ఉండరాదు:%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
-ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
-ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
+WizardReady=ఇన్‌స్టాల్ చేయడానికి సిద్ధంగా ఉంది 
+ReadyLabel1=మీ కంప్యూటర్ పై [name] ని ఇన్‌స్టాల్ చేయడానికి సెటప్ ఇప్పుడు సిద్ధంగా ఉంది. 
+ReadyLabel2a=ఇన్‌స్టాలేషన్‌ను కొనసాగించడానికి ఇన్‌స్టాల్ పై క్లిక్ చేయండి, లేదా సెట్టింగ్‌లను పరిశీలించడానికి లేదా మార్చడానికి వెనుకకు పై క్లిక్ చేయండి. 
+ReadyLabel2b=ఇన్‌స్టాలేషన్‌ను కొనసాగించడానికి ఇన్‌స్టాల్‌‌పై క్లిక్ చేయండి. 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Ubicación de destino: 
+ReadyMemoDir=గమ్యస్థానం: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Carpeta menú Inicio: 
+ReadyMemoGroup=స్టార్ట్ మెనూ ఫోల్డర్: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Preparando para instalar 
-PreparingDesc=Preparando para instalar [name] en tu ordenador. 
+WizardPreparing=ఇన్‌స్టాల్ చేయడానికి సిద్ధం చేస్తోంది 
+PreparingDesc=మీ కంప్యూటర్ పై [name] ని ఇన్‌స్టాల్ చేయడానికి సెటప్ సిద్ధం చేస్తోంది. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Programa de instalación no puede continuar. Por favor, haz clic en 'Cancelar' para salir. 
+CannotContinue=సెటప్ కొనసాగించడం సాధ్యం కాదు. దయచేసి నిష్క్రమించడానికి రద్దు చేయిని క్లిక్ చేయండి. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Instalando 
-InstallingLabel=Espera mientras el programa de instalación acabe de instalar [name] en tu ordenador. 
+WizardInstalling=ఇన్‌స్టాల్ చేస్తోంది 
+InstallingLabel=దయచేసి మీ కంప్యూటర్‌పై [name] ని ఇన్‌స్టాల్ చేస్తున్నప్పుడు వేచి ఉండండి. 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Finalizando la instalación de [name] 
-FinishedLabelNoIcons=Se ha terminado de instalar [name] en tu equipo. 
-FinishedLabel=La instalación de [name] en tu equipo ha terminado. Puedes iniciar el programa usando los accesos directos. 
-ClickFinish=Haz clic en 'Finalizar' para salir de la instalación. 
+FinishedHeadingLabel=[name] సెటప్ విజార్డ్‌ని పూర్తి చేస్తోంది 
+FinishedLabelNoIcons=సెటప్ మీ కంప్యూటర్‌పై [name] ని ఇన్‌స్టాల్ చేయడం పూర్తి చేసింది. 
+FinishedLabel=సెటప్ మీ కంప్యూటర్‌పై [name] ని ఇన్‌స్టాల్ చేయడం పూర్తి చేసింది. ఇన్‌స్టాల్ చేసిన షార్ట్‌కట్‌లను ఎంచుకోవడం ద్వారా అప్లికేషన్‌ని ప్రారంభించవచ్చు. 
+ClickFinish=సెటప్‌ని నిష్క్రమించడానికి, పూర్తయింది ఎంపికపై క్లిక్ చేయండి. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Cancelar instalación 
+AbortRetryIgnoreCancel=ఇన్‌స్టాలేషన్‌ను రద్దు చేయండి 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Extrayendo archivos... 
+StatusExtractFiles=ఫైల్‌లను సంగ్రహిస్తోంది... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Finalizando instalación... 
+StatusRunProgram=ఇన్‌స్టాలేషన్ ముగిస్తోంది... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Por favor, confirma que deseas eliminar %1 y todos sus componentes. 
+ConfirmUninstall=మీరు ఖచ్చితంగా %1 మరియు దాని అన్ని భాగాలను తీసివేయాలనుకుంటున్నారా? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Por favor, espera mientras el %1 se elimine de tu equipo. 
-UninstalledAll=%1 fue eliminado con éxito de tu equipo. 
-UninstalledMost=La desinstalación de %1 está completa.%n%nAlgunos elementos no pudieron ser eliminados pero se pueden eliminar manualmente. 
+UninstallStatusLabel=దయచేసి మీ కంప్యూటర్ నుంచి %1 ని తీస్తునప్పుడు వేచి ఉండండి. 
+UninstalledAll=%1 మీ కంప్యూటర్ నుంచి విజయవంతంగా తీసివేయబడింది. 
+UninstalledMost=%1 అన్‌ఇన్‌స్టాల్ పూర్తయ్యింది. %n%nకొన్ని మూలకాలు తొలగించడం సాధ్యం కాలేదు. అవి మాన్యువల్‌గా తొలగించవచ్చు. 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Crear acceso directo en el escritorio 
+CreateDesktopIcon=&డెస్క్‌టాప్ సత్వరమార్గాన్ని సృష్టించు 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 en la Web 
-UninstallProgram=Desinstalar %1 
-LaunchProgram=Iniciar %1 
+ProgramOnTheWeb=%1 వెబ్‌లో 
+UninstallProgram=%1ని అన్‌ఇన్‌స్టాల్ చేయి 
+LaunchProgram=%1ని ప్రారంభించండి 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
-UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
-InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
-SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
-KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
-LaunchKolibri=Iniciar Kolibri 
-KolibriSupportLink=Foro de la comunidad 
-KolibriHomePage=Página web 
-KolibriDocs=Documentación 
-FileNotFound= no encontrado. 
-Needhelp=Para obtener ayuda en línea, por favor visita el nuestro foro de la comunidad: 
+UpgradeMsg=ఈ పరికరంలో ఇప్పటికే Kolibri ఇన్‌స్టాల్ చేసి ఉంది. మీరు దానిని అప్‌డేట్ చేయాలనుకుంటున్నారా? 
+UpgradeDelMsg=మీరు అప్‌డేట్ చేయకుండా కొత్తగా ఇన్‌స్టాల్ చేయాలనుకున్నట్లయితే, మీరు ప్రస్తుతం కలిగి ఉన్న డేటా పూర్తిగా తొలగించబడుతుంది. దయచేసి కొత్త ఇన్‌స్టాలేషన్‌ని కొనసాగించాలనుకుంటారా, లేదా అని నిర్ధారించండి. 
+InstallPythonMsg=Kolibriని అమలు పరచడానికి మీ పరికరంలో Python 3.6+ ఇన్‌స్టాల్ చేసి ఉండాలి. సెటప్ విజార్డ్‌ మీ పరికరంలో Pythonని కనుగొనలేకపోయింది, అందుకని ఇప్పుడు దానిని ఇన్‌స్టాల్ చేయబోతోంది. ఇన్‌స్టాలేషన్‌ని కొనసాగించడానికి సరే క్లిక్ చేయండి. 
+InstallPythonErrMsg=Python ఇన్‌స్టాల్ చేయకుండా Kolibri పని చేయదు. వెనుకకు వెళ్ళి Python ఇన్‌స్టాల్ చేయడానికి సరే క్లిక్ చేయండి, లేదా Kolibri ఇన్‌స్టాలర్ ని నిష్క్రమించడానికి రద్దు చేయి క్లిక్ చేయండి 
+SetupKolibriErrMsg=కీలకమైన లోపం. ఆధారితాలు ఇన్‌స్టాల్ అవ్వలేదు. లోపం సంఖ్య: 
+KolibriInstallFailed=Kolibri సెటప్ లో ఏదో తప్పు జరిగింది.%nఅదనపు సమాచారం లాగ్ ఫైల్‌లో ఉంది: 
+SetupWizardMsg=సెటప్ విజార్డ్ ఫైల్‌లను కాపీ చేస్తోంది. ఇందుకు కొంత సమయం పట్టవచ్చు, దయచేసి వేచి ఉండండి.. 
+LaunchKolibri=Kolibriని ప్రారంభించండి 
+KolibriSupportLink=కమ్యూనిటీ ఫోరమ్‌ 
+KolibriHomePage=హోమ్ పేజీ 
+KolibriDocs=డాక్యుమెంటేషన్ 
+FileNotFound= కనుగొనబడలేదు. 
+Needhelp=ఆన్‌లైన్ సహాయం కోసం, దయచేసి మా కమ్యూనిటీ ఫోరమ్‌లని సందర్శించండి: 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=¿Deseas eliminar también todos los datos asociados con Kolibri? 
-UninstallKolibriDataLine2=Esto eliminará permanentemente todos los canales de contenido descargados y la base de datos de los usuarios. 
-UninstallKolibriDataLine3=Esta acción no se puede deshacer. 
-UninstallKolibriPath=Ubicación de datos: 
+UninstallKolibriDataLine1=మీరు Kolibri యొక్క మొత్తం అనుబంధిత డేటాని తొలగించాలనుకుంటున్నారా? 
+UninstallKolibriDataLine2=ఈ చర్య డౌన్‌లోడ్ చేసిన అన్ని కంటెంట్ ఛానల్‌లను మరియు యూజర్ ఇంటరాక్షన్ డేటా ను శాశ్వతంగా తొలగిస్తుంది. 
+UninstallKolibriDataLine3=ఈ చర్యను రద్దు చేయడం సాధ్యం కాదు. 
+UninstallKolibriPath=డేటా స్థానం: 

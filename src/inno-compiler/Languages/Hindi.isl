@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Spanish 
+LanguageName=Hindi 
 LanguageID=0 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
@@ -28,18 +28,18 @@ LanguageCodePage=0
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Asistente de instalación 
-SetupWindowTitle=Asistente de instalación - %1 
-UninstallAppTitle=Desinstalar 
-UninstallAppFullTitle=Desinstalar %1 
+SetupAppTitle=सेटअप 
+SetupWindowTitle=सेटअप - %1 
+UninstallAppTitle=अनइंस्टॉल करें 
+UninstallAppFullTitle=%1 अनइंस्टॉल करें 
 
 ; *** Misc. common
-InformationTitle=Información 
-ConfirmTitle=Confirmar 
-ErrorTitle=Error 
+InformationTitle=जानकारी 
+ConfirmTitle=की पुष्टि करें 
+ErrorTitle=त्रुटि 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Se va a instalar %1. ¿Deseas continuar? 
+SetupLdrStartupMessage=यह %1 को इंस्टॉल करेगा। क्या आप जारी रखना चाहते हैं? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=La instalación ya se está ejecutando. 
-WindowsVersionNotSupported=Este programa no es compatible con la versión de Windows de tu ordenador. 
+SetupAlreadyRunning=सेटअप पहले से चल रहा है। 
+WindowsVersionNotSupported=आपके कंप्यूटर में विंडोज़ का को वर्शन चल रहा है उसे यह प्रोग्राम समर्थन नहीं करता है। 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=La instalación no está completa. Si cancelas ahora, el programa no será instalado.%n%nPuedes ejecutar la instalación de nuevo en otro momento para completar la instalación.%n%n¿Salir de la instalación? 
+ExitSetupMessage=सेटअप पूरा नहीं हुआ है। यदि आप अभी बाहर निकलते हैं, तो प्रोग्राम इंस्टॉल नहीं होगा। %n%n आप सं स्थापना को पूरा करने के लिए किसी अन्य समय पर फिर से सेटअप चला सकते हैं। %n%n सेटअप से बाहर निकलें? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Atrás 
-ButtonNext=&Siguiente > 
-ButtonInstall=&Instalar 
-ButtonOK=Aceptar 
-ButtonCancel=Cancelar 
-ButtonYes=&Sí 
-ButtonYesToAll=Sí a &todo 
-ButtonNo=&No 
-ButtonNoToAll=N&o a todo 
-ButtonFinish=&Finalizar 
-ButtonBrowse=&Examinar... 
-ButtonWizardBrowse=E&xaminar... 
-ButtonNewFolder=&Crear nueva carpeta 
+ButtonBack=< &पीछे 
+ButtonNext=&आगे > 
+ButtonInstall=&संस्थापित करें 
+ButtonOK=ठीक है 
+ButtonCancel=रद्द करें 
+ButtonYes=&हाँ 
+ButtonYesToAll=&सभी के लिए हाँ 
+ButtonNo=&नहीं 
+ButtonNoToAll=सभी के लिए &नहीं 
+ButtonFinish=&समाप्त 
+ButtonBrowse=&ब्राउज़ करें... 
+ButtonWizardBrowse=&ब्राउज़ करें... 
+ButtonNewFolder=&नया फोल्डर बनाएं 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Seleccionar idioma de instalación 
-SelectLanguageLabel=Seleccione el idioma a utilizar durante la instalación. 
+SelectLanguageTitle=सेटअप भाषा चुनें 
+SelectLanguageLabel=संस्थापना के दौरान उपयोग की जाने वाली भाषा चुनें। 
 
 ; *** Common wizard text
-ClickNext=Haz clic en 'Siguiente' para continuar o 'Cancelar' para salir de la instalación. 
+ClickNext=जारी रखने के लिए अगला पर, या सेटअप से बाहर जाने के लिए रद्द करें पर क्लिक करें। 
 BeveledLabel=
-BrowseDialogTitle=Explorar carpetas 
-BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic en 'Aceptar'. 
-NewFolderName=Nueva carpeta 
+BrowseDialogTitle=फोल्डर के लिए ब्राउस करें 
+BrowseDialogLabel=नीचे दी गई सूची में एक फोल्डर चुनें, फिर ओके पर क्लिक करें। 
+NewFolderName=नया फोल्डर 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
-WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
+WelcomeLabel1=[name] सेटअप विज़ार्ड में आपका स्वागत है 
+WelcomeLabel2=यह आपके कंप्यूटर पर [name/ver] इंस्टॉल करेगा।%n%nयह सलाह दी जाती है कि आप जारी रखने से पहले अन्य सभी एप्लिकेशन्स को बंद कर दें। 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Información 
+WizardInfoBefore=जानकारी 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Información 
+WizardInfoAfter=जानकारी 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Seleccionar la ubicación de destino 
-SelectDirDesc=¿Dónde deseas instalar [name]? 
-SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
-SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
+WizardSelectDir=गंतव्य स्थान चुनें 
+SelectDirDesc=[name] को कहां इंस्टॉल करना चाहिए? 
+SelectDirLabel3=सेटअप [name] को निम्नलिखित फ़ोल्डर में इंस्टॉल करेगा। 
+SelectDirBrowseLabel=जारी रखने के लिए, आगे पर क्लिक करें। यदि आप एक अलग फ़ोल्डर चुनना चाहते हैं, तो ब्राउज़ पर क्लिक करें। 
+DiskSpaceMBLabel=कम-से-कम [mb] एमबी का डिस्क स्थान अपेक्षित है। 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=No hay suficiente espacio en disco 
+DiskSpaceWarningTitle=डिस्क में पर्याप्त स्थान नहीं 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
-SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
-SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
-SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
-MustEnterGroupName=Hay que introducir un nombre de carpeta. 
+WizardSelectProgramGroup=स्टार्ट मेनू फोल्डर चुनें 
+SelectStartMenuFolderDesc=प्रोग्राम्स के शॉर्टकट्स को सेटअप ने कहा रखना चाहिये। 
+SelectStartMenuFolderLabel3=सेटअप निम्नलिखित स्टार्ट मेनू फ़ोल्डर में प्रोग्राम्स के शॉर्टकटस बनाएगा। 
+SelectStartMenuFolderBrowseLabel=जारी रखने के लिए, आगे पर क्लिक करें। यदि आप एक अलग फ़ोल्डर चुनना चाहते हैं, तो ब्राउज़ पर क्लिक करें। 
+MustEnterGroupName=फोल्डर का नाम दर्ज करना आवश्यक है 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=El nombre de carpeta no puede contener los siguientes caracteres:%n%n%1 
+BadGroupName=फ़ोल्डर नाम में निम्न में से कोई भी वर्ण शामिल नहीं हो सकते है:%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
-ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
-ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
+WizardReady=संस्थापना के लिए तैयार 
+ReadyLabel1=आपके कंप्यूटर पर [name] को इंंस्टॉल करना शुरू करने के लिए सेटअप अब तैयार है। 
+ReadyLabel2a=संस्थापना जारी रखने के लिए इंसटॉल करें पर क्लिक करें, या यदि आप किसी सेटिंग की समीक्षा करना या बदलना चाहते हैं तो पीछे पर क्लिक करें। 
+ReadyLabel2b=संस्थापना शुरू करने के लिए इंसटॉल करें पर क्लिक करें। 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Ubicación de destino: 
+ReadyMemoDir=गंतव्य स्थान: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Carpeta menú Inicio: 
+ReadyMemoGroup=स्टार्ट मेनू फोल्डर: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Preparando para instalar 
-PreparingDesc=Preparando para instalar [name] en tu ordenador. 
+WizardPreparing=इनस्टॉल करने को तैयार हो रहा है 
+PreparingDesc=आपके कंप्यूटर पर [name] को इंंस्टॉल करने के लिए सेटअप तैयार हो रहा है। 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Programa de instalación no puede continuar. Por favor, haz clic en 'Cancelar' para salir. 
+CannotContinue=सेटअप जारी नहीं रह सकता। कृपया बाहर निकलने के लिए 'रद्द करें' पर क्लिक करें। 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Instalando 
-InstallingLabel=Espera mientras el programa de instalación acabe de instalar [name] en tu ordenador. 
+WizardInstalling=इंस्टॉल हो रहा है 
+InstallingLabel=कृपया अपने कंप्यूटर पर सेटअप [name] इनस्टॉल करते समय प्रतीक्षा करें। 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Finalizando la instalación de [name] 
-FinishedLabelNoIcons=Se ha terminado de instalar [name] en tu equipo. 
-FinishedLabel=La instalación de [name] en tu equipo ha terminado. Puedes iniciar el programa usando los accesos directos. 
-ClickFinish=Haz clic en 'Finalizar' para salir de la instalación. 
+FinishedHeadingLabel=[name] सेटअप विज़ार्ड पूरा हो रहा है 
+FinishedLabelNoIcons=सेटअप ने आपके कंप्यूटर पर [name] इंस्टॉल करना समाप्त कर दिया है। 
+FinishedLabel=सेटअप ने आपके कंप्यूटर पर [name] इंस्टॉल करना समाप्त कर दिया है।इंस्टॉल किए गए शॉर्टकट्स का चयन करके एप्लिकेशन लॉन्च किया जा सकता है। 
+ClickFinish=सेटअप से बाहर आने के लिए समाप्त पर क्लिक करें। 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Cancelar instalación 
+AbortRetryIgnoreCancel=इंस्टॉल करना रद्द करें 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Extrayendo archivos... 
+StatusExtractFiles=फ़ाइलें निकाली जा रही हैं... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Finalizando instalación... 
+StatusRunProgram=इंस्टॉलेशन ख़तम हो रहा है 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Por favor, confirma que deseas eliminar %1 y todos sus componentes. 
+ConfirmUninstall=क्या आप वाकई %1 और उसके सभी घटकों को पूरी तरह से हटाना चाहते हैं? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Por favor, espera mientras el %1 se elimine de tu equipo. 
-UninstalledAll=%1 fue eliminado con éxito de tu equipo. 
-UninstalledMost=La desinstalación de %1 está completa.%n%nAlgunos elementos no pudieron ser eliminados pero se pueden eliminar manualmente. 
+UninstallStatusLabel=कृपया प्रतीक्षा करें जबकि %1 आपके कंप्यूटर से निकाला जा रहा है। 
+UninstalledAll=%1 आपके कंप्यूटर से सफलतापूर्वक हटा दिया गया था। 
+UninstalledMost=%1 अनइंस्टॉल पूरा हो गया है।%n%nकुछ भाग नहीं निकाले जा सकते।इन्हें खुदके हाथोंसे निकाला जा सकता है। 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Crear acceso directo en el escritorio 
+CreateDesktopIcon=डेस्कटॉप शॉर्टकट बनाएँ 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 en la Web 
-UninstallProgram=Desinstalar %1 
-LaunchProgram=Iniciar %1 
+ProgramOnTheWeb=वेब पर %1 
+UninstallProgram=%1 को अनइंस्टॉल करें 
+LaunchProgram=%1 लांच करें 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
-UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.6+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
-InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
-SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
-KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
-LaunchKolibri=Iniciar Kolibri 
-KolibriSupportLink=Foro de la comunidad 
-KolibriHomePage=Página web 
-KolibriDocs=Documentación 
-FileNotFound= no encontrado. 
-Needhelp=Para obtener ayuda en línea, por favor visita el nuestro foro de la comunidad: 
+UpgradeMsg=इस उपकरण पर पहले से ही कोलिब्री का एक इंस्टॉलेशन मौजूद है। क्या आप इसे अपडेट करना चाहेंगे? 
+UpgradeDelMsg=यदि आप एक नया इंस्टॉलेशन करना चाहते हैं और अपडेट नहीं करना चाहते हैं, तो आप अपने सभी मौजूदा डेटा को खो देंगे। कृपया पुष्टि करें कि आप नया इंस्टॉलेशन करना जारी रखना चाहते हैं। 
+InstallPythonMsg=कोलिब्री को चलाने के लिए आपको पायथन 3.6+ इंस्टॉल करना होगा। सेटअप विज़ार्ड आपके उपकरण पर पायथन को खोजने में सफल नहीं हुआ और अब वो इसे इनस्टॉल करने के लिए आगे बढ़ेगा। इंस्टॉलेशन करने के लिए को पुष्टि देने और जारी रखने के लिए कृपया 'हाँ' पर क्लिक करें। 
+InstallPythonErrMsg=पायथन को स्थापित किए बिना कोलिब्री नहीं चल सकता है। पाइथन स्थापित करने के लिए वापस जाएँ और ओके पर क्लिक करें या कोलिब्री इंस्टॉलर को छोड़ने के लिए कैंसिल पर क्लिक करें | 
+SetupKolibriErrMsg=गंभीर त्रुटि। निर्भरताएं स्थापित करने में विफल रही हैं। त्रुटि संख्या: 
+KolibriInstallFailed=कोलिब्री स्थापना के दौरान कुछ गड़बड़ हो गई.%nअतिरिक्त जानकारी लॉग फ़ाइल में मिल सकती है: 
+SetupWizardMsg=सेटअप विज़ार्ड फ़ाइलों की प्रतिलिपि बना रहा है। इसमें थोड़ा समय लग सकता है, कृपया प्रतीक्षा करें.. 
+LaunchKolibri=कोलीब्री लॉन्च करें 
+KolibriSupportLink=सामुदायिक मंच 
+KolibriHomePage=मुखपृष्ठ 
+KolibriDocs=प्रलेखन 
+FileNotFound= नहीं मिला। 
+Needhelp=ऑनलाइन सहायता प्राप्त करने के लिए, कृपया हमारे सामुदायिक मंच पर जाएँ: 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=¿Deseas eliminar también todos los datos asociados con Kolibri? 
-UninstallKolibriDataLine2=Esto eliminará permanentemente todos los canales de contenido descargados y la base de datos de los usuarios. 
-UninstallKolibriDataLine3=Esta acción no se puede deshacer. 
-UninstallKolibriPath=Ubicación de datos: 
+UninstallKolibriDataLine1=क्या आप कोलिब्री से जुड़े सभी डेटा को हटाना भी चाहेंगे? 
+UninstallKolibriDataLine2=यह सभी डाउनलोड किए गए सामग्री चैनल और उपयोगकर्ता उपयोगकर्ता संपर्क डेटा को स्थायी रूप से हटा देगा। 
+UninstallKolibriDataLine3=इस क्रिया को पूर्ववत नहीं किया जा सकता है। 
+UninstallKolibriPath=डेटा स्थान: 
