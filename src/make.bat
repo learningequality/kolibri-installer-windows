@@ -61,7 +61,7 @@ SET PYTHON_URL=https://www.python.org/ftp/python/%VERSION%/python-%VERSION%
 SET PYTHON_DIR=%~dp0python-setup\python-%VERSION%
 
 SET PYTHON_EXE="%PYTHON_DIR%.exe"
-SET PYTHON_AMD64_EXE="%PYTHON_DIR%.amd64.exe"
+SET PYTHON_AMD64_EXE="%PYTHON_DIR%-amd64.exe"
 
 :: MUST: Do not download the Python installers if they already exist!
 IF EXIST %PYTHON_EXE% (

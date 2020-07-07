@@ -34,12 +34,13 @@ wchar_t * getStr(int strId) {
 	str.LoadString(strId);
 	char * userEnv = getenv("KOLIBRI_GUI_LANG");
 	if (userEnv != NULL) {
-		string langArr[21] = { "es_ES", "ar", "bg", "bn", "fa", "fr", \
-			"fv", "gu_IN", "hi", "ko", "la", "mr",  "my", "ny", \
-			"pt_BR", "sw_TZ", "te", "tl",  "ur_PK",  "vi",  "yo", };
+		string langArr[28] = { "vi", "sw_TZ", "km", "es_ES", "mr", "fv", "it", "te", 
+			"tl", "gu_IN", "yo", "zh_CN", "my", "ar", "pt_BR", "bg", "bn", "hi", "ka", \
+			"de", "ny", "ko", "fr", "fa", "la", "ne_NP", "ur_PK", "tr" };
+
 		int loopCount;
 		loopCount = 0;
-		for (string* lang = &langArr[0]; lang != &langArr[21]; ++lang) {
+		for (string* lang = &langArr[0]; lang != &langArr[28]; ++lang) {
 			loopCount++;
 			if (userEnv == std::string(*lang)) {
 				str.LoadString(strId + loopCount);

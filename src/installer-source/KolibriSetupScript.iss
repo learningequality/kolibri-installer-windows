@@ -27,7 +27,7 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 SetupLogging=yes
 UsedUserAreasWarning=no
-ShowLanguageDialog=auto
+ShowLanguageDialog=yes
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"

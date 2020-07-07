@@ -19,7 +19,7 @@ msgstr ""
 
 #: Kolibri.cpp:84
 #, c-format
-msgid "Error: the value of KOLIBRI_SCRIPT_DIR must be less than %d, but it was length %d. Please start Kolibri from the command line."
+msgid "Error: the value of KOLIBRI_SCRIPT_DIR must be less than 255. Please start Kolibri from the command line."
 msgstr ""
 
 #: Kolibri.cpp:100
@@ -51,7 +51,11 @@ msgid "Kolibri is running"
 msgstr ""
 
 #: Kolibri.cpp:
-msgid "Kolibri can now be accessed locally at: http://127.0.0.1:8080. If the browser does not open, select 'Load in browser' from the icon in the taskbar notification area."
+msgid "Kolibri can now be accessed locally at: "
+msgstr ""
+
+#: Kolibri.cpp:
+msgid ". If the browser does not open, select 'Load in browser' from the icon in the taskbar notification area."
 msgstr ""
 
 #: Kolibri.cpp:224
