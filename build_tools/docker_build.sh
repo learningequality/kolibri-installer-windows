@@ -26,19 +26,19 @@ then
   echo "--- Creating exe from custom WHL"
   # Run build for just KOLIBRI_VERSION
   docker run \
+    --rm \
     -v $PWD/src_whl:/whl \
+    -v windows_version:/version
     --cidfile version.cid \
     whl-prep-image
-  VERSION_CID=$(< version.cid)
-  docker cp $VERSION_CID:/version .
-  docker rm $VERSION_CID
 
   docker run \
     --cidfile $CIDFILE \
-    -v $PWD/version:/version \
+    -v windows_version:/version \
     -v $PWD/src_whl:/whl \
-    --env KOLIBRI_VERSION \
     $(< $IIDFILE)
+
+  docker volume rm windows_version
 else
   echo "--- Creating exe from PyPi WHL"
   # docker run --env-file ./docker/env.list -v $$PWD/dist:/kolibridist "learningequality/kolibri-windows"
