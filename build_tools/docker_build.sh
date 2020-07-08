@@ -51,4 +51,4 @@ fi
 
 CID=$(< $CIDFILE)
 trap "rm *.cid *.iid && docker rm $CID" exit
-docker cp $CID:/exe/ dist/
+docker cp $CID:/exe dist
