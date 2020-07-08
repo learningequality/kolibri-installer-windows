@@ -21,13 +21,13 @@ docker build \
   --iidfile $IIDFILE \
   .
 
-if [ -a $PWD/src_whl/*.whl ]
+if [ -a $PWD/build_src/*.whl ]
 then
   echo "--- Creating exe from custom WHL"
   # Run build for just KOLIBRI_VERSION
   docker run \
     --rm \
-    -v $PWD/src_whl:/whl \
+    -v $PWD/build_src:/whl \
     -v windows_version:/version
     --cidfile version.cid \
     whl-prep-image
@@ -35,7 +35,7 @@ then
   docker run \
     --cidfile $CIDFILE \
     -v windows_version:/version \
-    -v $PWD/src_whl:/whl \
+    -v $PWD/build_src:/whl \
     $(< $IIDFILE)
 
   docker volume rm windows_version
