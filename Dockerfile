@@ -1,9 +1,11 @@
 FROM python:3 AS whl-cold-prep
 
 RUN mkdir whl version && \
-	pip download kolibri -d /whl && \
-	pip install whl/kolibri*.whl && \
-	python -c "import kolibri; print(kolibri.__version__)" > /version/VERSION
+	pip download kolibri -d /whl
+
+COPY build_tools/docker_get_version.sh .
+
+RUN ./docker_get_version.sh
 
 FROM ubuntu:bionic AS download-python
 
