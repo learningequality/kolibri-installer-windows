@@ -1,10 +1,18 @@
-FROM python:3 AS py-cold-prep
+FROM python:3 AS whl-cold-prep
 
 RUN mkdir whl version && \
 	pip download kolibri -d /whl && \
 	pip install whl/kolibri*.whl && \
 	python -c "import kolibri; print(kolibri.__version__)" > /version/VERSION
 
+FROM ubuntu:bionic AS download-python
+
+COPY src/Makefile .
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt install -y make wget
+
+RUN mkdir python-setup && make
 
 FROM ubuntu:bionic
 
@@ -31,16 +39,11 @@ RUN apt-get update -y && \
 
 RUN git lfs install
 
-ENV PYTHON_VERSION=3.4.3 PY_DL_DIR=/tmp/python_downloads
+ENV PY_DL_DIR=/tmp/python_downloads
 
-# Download python 3.4 distributions, for later use
-ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.msi \
-	${PY_DL_DIR}/python-${PYTHON_VERSION}.msi
-ADD https://www.python.org/ftp/python/${PYTHON_VERSION}/python-${PYTHON_VERSION}.amd64.msi \
-	${PY_DL_DIR}/python-${PYTHON_VERSION}.amd64.msi
-
-COPY --from=py-cold-prep whl/*.whl /whl/
-COPY --from=py-cold-prep version/VERSION /version/VERSION
+COPY --from=download-python /python-setup/ ${PY_DL_DIR}
+COPY --from=whl-cold-prep whl/*.whl /whl/
+COPY --from=whl-cold-prep version/VERSION /version/VERSION
 
 COPY src src
 
