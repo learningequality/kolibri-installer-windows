@@ -37,10 +37,8 @@ then
     -v windows_version:/version \
     -v $PWD/build_src:/whl \
     $(< $IIDFILE)
-
 else
   echo "--- Creating exe from PyPi WHL"
-  # docker run --env-file ./docker/env.list -v $$PWD/dist:/kolibridist "learningequality/kolibri-windows"
   docker run \
   --cidfile $CIDFILE \
   --env KOLIBRI_VERSION \
@@ -50,4 +48,5 @@ fi
 
 CID=$(< $CIDFILE)
 trap "rm *.cid *.iid && docker rm $CID" exit
+rm -rf dist
 docker cp $CID:/exe dist

@@ -8,7 +8,7 @@ if [[ $LE_TRIGGERED_FROM_BUILD_ID ]]
 then
   echo "--- Downloading from triggered build"
   buildkite-agent artifact download "dist/*.whl" . --build $LE_TRIGGERED_FROM_BUILD_ID
-  mv dist/*.whl build_src/
+  mv dist build_src
   if [[ -z $BUILDKITE_TRIGGERED_FROM_BUILD_ID ]]
   then
     buildkite-agent annotate "This is a rebuild from a triggered build. Using parent's tarball" --style warning

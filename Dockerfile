@@ -53,7 +53,7 @@ WORKDIR src
 
 RUN mv ${PY_DL_DIR}/* python-setup/
 
-CMD mv /whl/*.whl . && \
+CMD cp /whl/*.whl . && \
 	export KOLIBRI_BUILD_VERSION=$(cat /version/VERSION) && \
 	wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss && \
 	mkdir /exe && \
