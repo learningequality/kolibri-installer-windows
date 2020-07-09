@@ -38,7 +38,6 @@ then
     -v $PWD/build_src:/whl \
     $(< $IIDFILE)
 
-  docker volume rm windows_version
 else
   echo "--- Creating exe from PyPi WHL"
   # docker run --env-file ./docker/env.list -v $$PWD/dist:/kolibridist "learningequality/kolibri-windows"
