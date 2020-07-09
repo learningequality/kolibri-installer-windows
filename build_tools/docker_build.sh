@@ -28,7 +28,7 @@ then
   docker run \
     --rm \
     -v $PWD/build_src:/whl \
-    -v windows_version:/version
+    -v windows_version:/version \
     --cidfile version.cid \
     whl-prep-image
 
