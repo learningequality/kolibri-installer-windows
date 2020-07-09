@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -exuo pipefail
+set -euo pipefail
 
 # A file, managed by Docker, with the ID of the created container.
 # Provides a consistent, unique reference to the container without using a tag.
@@ -21,8 +21,6 @@ docker build \
   --iidfile $IIDFILE \
   .
 
-ls $PWD
-ls $PWD/build_src
 if [ -a $PWD/build_src/*.whl ]
 then
   echo "--- Creating exe from custom WHL"
