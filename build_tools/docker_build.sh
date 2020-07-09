@@ -32,7 +32,7 @@ then
     -v $PWD/build_src:/whl \
     -v windows_version:/version \
     --cidfile version.cid \
-    whl-prep-image
+    whl-prep-image ./docker_get_version.sh
 
   docker run \
     --cidfile $CIDFILE \
