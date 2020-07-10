@@ -12,8 +12,8 @@
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
 LanguageName=Italian 
-LanguageID=$0410
-LanguageCodePage=1252
+LanguageID=$0410 
+LanguageCodePage=1252 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
 ;DialogFontName=
@@ -30,8 +30,8 @@ LanguageCodePage=1252
 ; *** Application titles
 SetupAppTitle=Configurazione 
 SetupWindowTitle=Configurazione - %1 
-UninstallAppTitle=Disinstallazione 
-UninstallAppFullTitle=Disinstallazione %1 
+UninstallAppTitle=Disinstalla 
+UninstallAppFullTitle=Disinstalla %1 
 
 ; *** Misc. common
 InformationTitle=Informazioni 
@@ -51,7 +51,7 @@ SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the 
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
 SetupAlreadyRunning=Il processo di installazione è già in esecuzione. 
-WindowsVersionNotSupported=Questo programma non supporta la versione di Windows nel computer in esecuzione. 
+WindowsVersionNotSupported=Questo programma non supporta la versione di Windows nel tuo computer. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=L'installazione non è completa. Se si esce ora, il programma non verrà installato.%n%nÈ possibile eseguire il Setup di nuovo o in un altro momento per completare l'installazione.%n%nUscire dall'installazione? 
+ExitSetupMessage=L'installazione non è completa. Se si esce ora, il programma non verrà installato.%n%nÈ possibile eseguire l'installazione di nuovo o in un altro momento per finire.%n%nUscire dall'installazione? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -88,32 +88,32 @@ TranslatorNote=
 
 ; *** Buttons
 ButtonBack=< &Indietro 
-ButtonNext=&Successivo > 
-ButtonInstall=&Installazione 
+ButtonNext=&Avanti > 
+ButtonInstall=&Installa 
 ButtonOK=OK 
 ButtonCancel=Cancella 
 ButtonYes=&Si 
 ButtonYesToAll=Sì a &tutti 
 ButtonNo=&No 
-ButtonNoToAll=N&o a tutti 
-ButtonFinish=&Finito 
+ButtonNoToAll=N&o a tutto 
+ButtonFinish=&Fine 
 ButtonBrowse=&Sfoglia... 
 ButtonWizardBrowse=S&foglia... 
-ButtonNewFolder=&Crea Nuova Cartella 
+ButtonNewFolder=&Crea nuova cartella 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Selezionare Lingua Installazione 
+SelectLanguageTitle=Seleziona la lingua dell'installazione 
 SelectLanguageLabel=Selezionare la lingua da usare durante l'installazione. 
 
 ; *** Common wizard text
-ClickNext=Seleziona "Avanti" per continuare, o "Annulla" per uscire. 
+ClickNext=Seleziona 'Avanti' per continuare, o 'Cancella' per uscire. 
 BeveledLabel=
-BrowseDialogTitle=Sfoglia per Cartella 
+BrowseDialogTitle=Selezionare una destinazione 
 BrowseDialogLabel=Selezionare una cartella nell'elenco qui sotto, quindi fare clic su OK. 
-NewFolderName=Nuova Cartella 
+NewFolderName=Nuova cartella 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Benvenuto nella [name] procedura guidata di configurazione 
+WelcomeLabel1=Benvenuti nella procedura guidata di configurazione di [name] 
 WelcomeLabel2=Questo installerà [nome/ver] sul tuo computer.%n%nSi consiglia di chiudere tutte le altre applicazioni prima di continuare. 
 
 ; *** "Password" wizard page
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Seleziona Posizione di Destinazione 
-SelectDirDesc=Dove dovrebbe [name] essere installato? 
+WizardSelectDir=Selezionare la cartella di installazione 
+SelectDirDesc=Dove dovrebbe essere installato [name]? 
 SelectDirLabel3=La configurazione installerà [name] nella seguente cartella. 
-SelectDirBrowseLabel=Per continuare, fare clic su Avanti. Se si desidera selezionare una cartella diversa, fare clic su Sfoglia. 
-DiskSpaceMBLabel=È richiesto almeno [mb] MB di spazio libero su disco. 
+SelectDirBrowseLabel=Per continuare, fare clic su 'Avanti'. Se si desidera selezionare una cartella diversa, fare clic su 'Sfoglia'. 
+DiskSpaceMBLabel=È necessario avere almeno [mb] MB di spazio libero su disco. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=Spazio su Disco Insufficiente 
+DiskSpaceWarningTitle=Spazio su disco insufficiente 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,10 +186,10 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Seleziona Cartella Menu Iniziale 
-SelectStartMenuFolderDesc=Dove dovrebbe essere installato il collegamento del programma? 
-SelectStartMenuFolderLabel3=La configurazione creerà il collegamento del programma nella seguente cartella del menu di avvio. 
-SelectStartMenuFolderBrowseLabel=Per continuare, fare clic su Avanti. Se si desidera selezionare una cartella diversa, fare clic su Sfoglia. 
+WizardSelectProgramGroup=Selezione della cartella nel menu Avvio/Start 
+SelectStartMenuFolderDesc=Dove dovrebbero essere installati i collegamenti del programma? 
+SelectStartMenuFolderLabel3=Verranno creati i collegamenti al programma nella seguente cartella del menu Avvio/Start. 
+SelectStartMenuFolderBrowseLabel=Per continuare, fare clic su 'Avanti'. Se si desidera selezionare una cartella diversa, fare clic su 'Sfoglia'. 
 MustEnterGroupName=Devi inserire un nome alla cartella. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
@@ -197,22 +197,22 @@ BadGroupName=Il nome della cartella non può includere nessuno dei seguenti cara
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Pronto per l'Installazione 
-ReadyLabel1=La configurazione è ora pronta per iniziare l'installazione [name] sul tuo computer. 
-ReadyLabel2a=Fare clic su Installa per continuare con l'installazione, oppure fare clic su Indietro se si desidera rivedere o modificare le impostazioni. 
-ReadyLabel2b=Fare clic su Installa per continuare con l'installazione. 
+WizardReady=Pronto per l'installazione 
+ReadyLabel1=Il programma è pronto per iniziare l'installazione di [name] sul computer. 
+ReadyLabel2a=Fare clic su 'Installa' per continuare con l'installazione, oppure fare clic su 'Indietro' se si desidera rivedere o modificare le impostazioni. 
+ReadyLabel2b=Fare clic su 'Installa' per continuare con l'installazione. 
 ReadyMemoUserInfo=User information:
 ReadyMemoDir=Cartella di installazione: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Cartella Menu iniziale: 
+ReadyMemoGroup=Cartella del menu Avvio/Start: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Preparazione all'installazione 
+WizardPreparing=Preparando l'installazione 
 PreparingDesc=La configurazione si sta preparando per installare [name] sul computer. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=La configurazione non può continuare. Clicca su Annulla per uscire. 
+CannotContinue=La configurazione non può continuare. Clicca su 'Annulla' per uscire. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -224,10 +224,10 @@ WizardInstalling=Installazione in corso
 InstallingLabel=Attendi il completamento dell'installazione di [name] nel computer. 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Completamento della [name] procedura guidata di configurazione 
-FinishedLabelNoIcons=La configurazione ha terminato l'installazione [name] sul tuo computer. 
+FinishedHeadingLabel=Completamento della procedura guidata di configurazione di [name] 
+FinishedLabelNoIcons=La configurazione ha terminato l'installazione di [name] sul tuo computer. 
 FinishedLabel=La configurazione ha terminato l'installazione [name] sul computer. L'applicazione può essere avviata selezionando le scorciatoie installate. 
-ClickFinish=Fare clic su Fine per uscire dalla Configurazione. 
+ClickFinish=Fare clic su 'Fine' per uscire dalla configurazione. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -261,7 +261,7 @@ StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Termine dell'installazione... 
+StatusRunProgram=Finendo l'installazione... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -363,13 +363,13 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=C'è un'installazione esistente di Kolibri su questo dispositivo. Vuoi aggiornarla? 
 UpgradeDelMsg=Se si sceglie di fare una nuova installazione e non di aggiornare, si perderanno tutti i dati esistenti. Si prega di confermare se si desidera continuare con la nuova installazione. 
-InstallPythonMsg=È necessario avere installato Python 3.6+ per avviare Kolibri. La procedura guidata di configurazione non è stata in grado di trovare Python sul tuo sistema e ora procederà all'installazione. Fare clic su 'Sì' per confermare e continuare con l'installazione. 
-InstallPythonErrMsg=Kolibri non può essere eseguito senza installare Python. Fare clic su Ok per tornare indietro e installare Python, o Annulla per uscire dal programma di installazione Kolibri 
+InstallPythonMsg=È necessario avere installato Python 3.6+ per avviare Kolibri. La procedura guidata di configurazione non ha trovato Python sul tuo sistema e ora procederà all'installazione. Fare clic su 'Sì' per confermare e continuare con l'installazione. 
+InstallPythonErrMsg=Kolibri non può essere eseguito senza installare Python. Fare clic su 'Ok' per tornare indietro e installare Python, o 'Annulla' per uscire dal programma di installazione Kolibri 
 SetupKolibriErrMsg=Errore critico. L'installazione delle dipendenze non è riuscita. Numero di errore: 
 KolibriInstallFailed=Qualcosa è andato storto durante la configurazione di Kolibri.%nUlteriori informazioni possono essere trovate nel file log: 
 SetupWizardMsg=La procedura guidata di configurazione sta copiando i file. Questo potrebbe richiedere un po' di tempo, attendere prego.. 
 LaunchKolibri=Avvia Kolibri 
-KolibriSupportLink=Forum della Comunità 
+KolibriSupportLink=Forum della comunità 
 KolibriHomePage=Homepage 
 KolibriDocs=Documentazione 
 FileNotFound= non è stato trovato. 

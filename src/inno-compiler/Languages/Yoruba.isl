@@ -12,7 +12,7 @@
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
 LanguageName=Yoruba 
-LanguageID=$006A
+LanguageID=$006A 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
@@ -113,8 +113,8 @@ BrowseDialogLabel=Yan a obinrin folda ni Awọn Akojọ ni isalẹ, lẹhinna t�
 NewFolderName=Titun Folda 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Kaabo si Awọn [orukọ] ṣeto Oluṣeto 
-WelcomeLabel2=Eyi Yoo fi sori ẹrọ [orukọ/ver] lori rẹ kọmputa. %n%no jẹ niyanju pe iwọ sunmọ gbogbo miiran ohun elo ṣaaju ki o to tẹsiwaju. 
+WelcomeLabel1=Kaabo si Awọn [name] ṣeto Oluṣeto 
+WelcomeLabel2=Eyi Yoo fi sori ẹrọ [name/ver] lori rẹ kọmputa. %n%no jẹ niyanju pe iwọ sunmọ gbogbo miiran ohun elo ṣaaju ki o to tẹsiwaju. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -148,7 +148,7 @@ UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
 WizardSelectDir=Yan Ibi ti nlo ipo 
-SelectDirDesc=Nibi ti yẹ [orukọ] jẹ fi sori ẹrọ? 
+SelectDirDesc=Nibi ti yẹ [name] jẹ fi sori ẹrọ? 
 SelectDirLabel3=Ṣeto yoo fi sori ẹrọ [name] sinu Awọn wọnyi folda. 
 SelectDirBrowseLabel=Si tẹsiwaju, tẹ Itele. Ti o ba iwọ yoo bi si yan a obinrin yatọ folda, tẹ lọ kiri ayelujara. 
 DiskSpaceMBLabel=Ni o kere [mb] MB ti ṣ''ofo disiki Aaye jẹ ti a beer. 
@@ -198,7 +198,7 @@ NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
 WizardReady=Setan si fi sori ẹrọ 
-ReadyLabel1=Ṣeto jẹ bayi setan si berè fifi sori ẹrọ [orukọ] lori rẹ kọmputa. 
+ReadyLabel1=Ṣeto jẹ bayi setan si berè fifi sori ẹrọ [name] lori rẹ kọmputa. 
 ReadyLabel2a=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ, tabi tẹ pada ti o ba iwọ fẹ si atunyẹwo tabi iyipada eyikeyi ètò. 
 ReadyLabel2b=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
 ReadyMemoUserInfo=User information:

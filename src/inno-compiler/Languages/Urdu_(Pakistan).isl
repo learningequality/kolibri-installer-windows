@@ -11,8 +11,8 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Urdu (Pakistan)
-LanguageID=$0420
+LanguageName=Urdu (Pakistan) 
+LanguageID=$0420 
 LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
