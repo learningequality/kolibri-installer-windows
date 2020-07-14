@@ -11,7 +11,7 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Français 
+LanguageName=French 
 LanguageID=$040C 
 LanguageCodePage=1252 
 ; If the language you are translating to requires special font faces or
@@ -361,9 +361,9 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=Il y a une installation existante de Kolibri sur cet appareil. Voulez-vous la mettre à jour ? 
-UpgradeDelMsg=Si vous choisissez de faire une nouvelle installation et de ne pas la mettre à jour, vous perdrez toutes vos données existantes. Veuillez confirmer que vous souhaitez poursuivre la nouvelle installation. 
-InstallPythonMsg=Vous devez avoir Python 3.6+ installé pour exécuter Kolibri. L'assistant d'installation n'a pas pu trouver Python sur votre système et va maintenant procéder à son installation. Veuillez cliquer sur "Oui" pour confirmer et continuer l'installation. 
+UpgradeMsg=Il y a déjà une installation de Kolibri sur cet appareil. Voulez-vous la mettre à jour ? 
+UpgradeDelMsg=Si vous choisissez de faire une nouvelle installation au lieu de faire une mise à jour, vous perdrez toutes vos données existantes. Veuillez confirmer que vous souhaitez poursuivre la nouvelle installation. 
+InstallPythonMsg=Vous devez avoir Python 3.6+ installé pour exécuter Kolibri. L'assistant d'installation n'a pas pu trouver Python sur votre système et va donc procéder à son installation. Veuillez cliquer sur "Oui" pour confirmer et continuer l'installation. 
 InstallPythonErrMsg=Kolibri ne peut pas fonctionner sans installer Python. Cliquez sur Ok pour revenir en arrière et installer Python, ou sur Annuler pour quitter l'installateur de Kolibri 
 SetupKolibriErrMsg=Erreur critique. Les dépendances n'ont pas pu être installées. Numéro d'erreur : 
 KolibriInstallFailed=Une erreur s'est produite lors de l'installation de Kolibri.%nDes informations supplémentaires peuvent être trouvées dans le fichier de log : 
