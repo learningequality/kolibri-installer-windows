@@ -11,9 +11,9 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Bulgarian 
-LanguageID=$0402 
-LanguageCodePage=1251 
+LanguageName=Italian 
+LanguageID=$0410 
+LanguageCodePage=1252 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
 ;DialogFontName=
@@ -28,18 +28,18 @@ LanguageCodePage=1251
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Инсталиране 
-SetupWindowTitle=Инсталиране - %1 
-UninstallAppTitle=Деинсталиране 
-UninstallAppFullTitle=%1 Деинсталиране 
+SetupAppTitle=Configurazione 
+SetupWindowTitle=Configurazione - %1 
+UninstallAppTitle=Disinstalla 
+UninstallAppFullTitle=Disinstalla %1 
 
 ; *** Misc. common
-InformationTitle=Информация 
-ConfirmTitle=Потвърди 
-ErrorTitle=Грешка 
+InformationTitle=Informazioni 
+ConfirmTitle=Conferma 
+ErrorTitle=Errore 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Това ще инсталира %1. Искаш ли да продължиш? 
+SetupLdrStartupMessage=Questo installerà %1. Vuoi continuare? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=Инсталирането вече е стартирано. 
-WindowsVersionNotSupported=Тази програма не поддържа версията на Windows, която компютърът ти използва. 
+SetupAlreadyRunning=Il processo di installazione è già in esecuzione. 
+WindowsVersionNotSupported=Questo programma non supporta la versione di Windows nel tuo computer. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=Инсталирането не е завършено. Ако излезеш, програмата няма да се инсталира.%n%nМоже да стартираш Инсталиране отново по-късно, за да се довърши инсталацията.%n%nПрекъсване на инсталацията? 
+ExitSetupMessage=L'installazione non è completa. Se si esce ora, il programma non verrà installato.%n%nÈ possibile eseguire l'installazione di nuovo o in un altro momento per finire.%n%nUscire dall'installazione? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Назад 
-ButtonNext=&Напред > 
-ButtonInstall=&Инсталиране 
-ButtonOK=Добре 
-ButtonCancel=Отказ 
-ButtonYes=&Да 
-ButtonYesToAll=Да за &всичко 
-ButtonNo=&Не 
-ButtonNoToAll=Н&е за всичко 
-ButtonFinish=&Завършване 
-ButtonBrowse=&Разглеждане... 
-ButtonWizardBrowse=Р&азглеждане... 
-ButtonNewFolder=&Добавяне на нова папка 
+ButtonBack=< &Indietro 
+ButtonNext=&Avanti > 
+ButtonInstall=&Installa 
+ButtonOK=OK 
+ButtonCancel=Cancella 
+ButtonYes=&Si 
+ButtonYesToAll=Sì a &tutti 
+ButtonNo=&No 
+ButtonNoToAll=N&o a tutto 
+ButtonFinish=&Fine 
+ButtonBrowse=&Sfoglia... 
+ButtonWizardBrowse=S&foglia... 
+ButtonNewFolder=&Crea nuova cartella 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Избор на език за инсталиране 
-SelectLanguageLabel=Избери език за ползване по време на инсталирането. 
+SelectLanguageTitle=Seleziona la lingua dell'installazione 
+SelectLanguageLabel=Selezionare la lingua da usare durante l'installazione. 
 
 ; *** Common wizard text
-ClickNext=Избери "Напред" за продължаване или "Отказ", за да прекратиш инсталирането. 
+ClickNext=Seleziona 'Avanti' per continuare, o 'Cancella' per uscire. 
 BeveledLabel=
-BrowseDialogTitle=Търсене на папка 
-BrowseDialogLabel=Избери папка от списъка и натисни "Добре". 
-NewFolderName=Нова папка 
+BrowseDialogTitle=Selezionare una destinazione 
+BrowseDialogLabel=Selezionare una cartella nell'elenco qui sotto, quindi fare clic su OK. 
+NewFolderName=Nuova cartella 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Добре дошъл в Помощника за инсталиране на [name] 
-WelcomeLabel2=Това ще инсталира [name/ver] на твоя компютър.%n%nПреди да продължиш, препоръчително е да затвориш всички други приложения. 
+WelcomeLabel1=Benvenuti nella procedura guidata di configurazione di [name] 
+WelcomeLabel2=Questo installerà [nome/ver] sul tuo computer.%n%nSi consiglia di chiudere tutte le altre applicazioni prima di continuare. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Информация 
+WizardInfoBefore=Informazioni 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Информация 
+WizardInfoAfter=Informazioni 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Избор на крайно местоположение 
-SelectDirDesc=Къде да се инсталира [name]? 
-SelectDirLabel3=Програмата ще инсталира [name] в следната папка. 
-SelectDirBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-DiskSpaceMBLabel=Необходимо е най-малко [mb] МВ свободно пространство на диска. 
+WizardSelectDir=Selezionare la cartella di installazione 
+SelectDirDesc=Dove dovrebbe essere installato [name]? 
+SelectDirLabel3=La configurazione installerà [name] nella seguente cartella. 
+SelectDirBrowseLabel=Per continuare, fare clic su 'Avanti'. Se si desidera selezionare una cartella diversa, fare clic su 'Sfoglia'. 
+DiskSpaceMBLabel=È necessario avere almeno [mb] MB di spazio libero su disco. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=Няма достатъчно свободно място на диска 
+DiskSpaceWarningTitle=Spazio su disco insufficiente 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Избери папка Начално меню 
-SelectStartMenuFolderDesc=Къде да се инсталират преките пътища за връзка на програмата? 
-SelectStartMenuFolderLabel3=Помощникът ще създаде преките пътища за връзка на програмата в следната папка на Началното меню. 
-SelectStartMenuFolderBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-MustEnterGroupName=Трябва да въведеш име на папка. 
+WizardSelectProgramGroup=Selezione della cartella nel menu Avvio/Start 
+SelectStartMenuFolderDesc=Dove dovrebbero essere installati i collegamenti del programma? 
+SelectStartMenuFolderLabel3=Verranno creati i collegamenti al programma nella seguente cartella del menu Avvio/Start. 
+SelectStartMenuFolderBrowseLabel=Per continuare, fare clic su 'Avanti'. Se si desidera selezionare una cartella diversa, fare clic su 'Sfoglia'. 
+MustEnterGroupName=Devi inserire un nome alla cartella. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=Името на папката не може да съдържа следните символи:%n%n%1 
+BadGroupName=Il nome della cartella non può includere nessuno dei seguenti caratteri:%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Готовност за инсталиране 
-ReadyLabel1=Помощникът е готов да започне инсталиране на [name] на твоя компютър. 
-ReadyLabel2a=Избери "Инсталиране" за да продължиш с инсталирането или избери "Назад" ако искаш да прегледаш или промениш настройките. 
-ReadyLabel2b=Избери "Инсталиране" за да продължиш с инсталирането. 
+WizardReady=Pronto per l'installazione 
+ReadyLabel1=Il programma è pronto per iniziare l'installazione di [name] sul computer. 
+ReadyLabel2a=Fare clic su 'Installa' per continuare con l'installazione, oppure fare clic su 'Indietro' se si desidera rivedere o modificare le impostazioni. 
+ReadyLabel2b=Fare clic su 'Installa' per continuare con l'installazione. 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Избор на крайно местоположение: 
+ReadyMemoDir=Cartella di installazione: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Папка Начално меню: 
+ReadyMemoGroup=Cartella del menu Avvio/Start: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Подготовка за инсталиране 
-PreparingDesc=Помощникът се подготвя да започне инсталиране на [name] на твоя компютър. 
+WizardPreparing=Preparando l'installazione 
+PreparingDesc=La configurazione si sta preparando per installare [name] sul computer. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Инсталирането не може да продължи. Моля, избери "Отказ" за прекратяване. 
+CannotContinue=La configurazione non può continuare. Clicca su 'Annulla' per uscire. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Инсталиране 
-InstallingLabel=Моля изчакай докато Помощникът инсталира [name] на твоя компютър. 
+WizardInstalling=Installazione in corso 
+InstallingLabel=Attendi il completamento dell'installazione di [name] nel computer. 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Приключване на Помощника за инсталиране на [name] 
-FinishedLabelNoIcons=Помощникът приключи с инсталирането на [name] на твоя компютър. 
-FinishedLabel=Помощникът приключи с инсталирането на [name] на твоя компютър. Стартирай приложението като избереш преките пътища. 
-ClickFinish=Избери „Приключване“ за изход от Помощника. 
+FinishedHeadingLabel=Completamento della procedura guidata di configurazione di [name] 
+FinishedLabelNoIcons=La configurazione ha terminato l'installazione di [name] sul tuo computer. 
+FinishedLabel=La configurazione ha terminato l'installazione [name] sul computer. L'applicazione può essere avviata selezionando le scorciatoie installate. 
+ClickFinish=Fare clic su 'Fine' per uscire dalla configurazione. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Отмяна на инсталирането 
+AbortRetryIgnoreCancel=Annulla installazione 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Извличане на файлове... 
+StatusExtractFiles=Estrazione file... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Приключване на инсталирането... 
+StatusRunProgram=Finendo l'installazione... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Наистина ли искаш напълно да изтриеш %1 и всичките прилежащи компоненти? 
+ConfirmUninstall=Sei sicuro di voler rimuovere completamente %1 e tutti i suoi componenti? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Моля изчакай докато %1 се изтрие от твоя компютър. 
-UninstalledAll=%1 беше успешно изтрито от твоя компютър. 
-UninstalledMost=%1 деинсталиране завършено.%n%nНякои елементи не могат да се изтрият. Те могат да се изтрият ръчно. 
+UninstallStatusLabel=Attendere mentre %1 viene rimosso dal computer. 
+UninstalledAll=%1 è stato rimosso dal tuo computer. 
+UninstalledMost=%1 disinstallazione completata.%n%nAlcuni elementi non possono essere rimossi. Questi possono essere rimossi manualmente. 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Създай пряк път на &работния плот 
+CreateDesktopIcon=Crea un'icona sul &desktop 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 в мрежата 
-UninstallProgram=Деинсталиране %1 
-LaunchProgram=Стартиране %1 
+ProgramOnTheWeb=%1 sul Web 
+UninstallProgram=Disinstalla %1 
+LaunchProgram=Avvia %1 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=На това устройство вече е инсталирана Колибри. Искаш ли да я актуализираш? 
-UpgradeDelMsg=При избор на нова инсталация вместо актуализиране, всички вече съществуващи данни ще се изгубят. Моля, потвърди продължаване с нова инсталация. 
-InstallPythonMsg=За да тръгне Колибри е необходимо да има инсталирана Python 3.6+. Помощникът за инсталиране не може да намери Python в системата и няма да продължи инсталирането. Моля, избери 'Да' за потвърждение и продължаване на инсталирането. 
-InstallPythonErrMsg=Колибри не може да тръгне без да се инсталира Python. Избери Ok за да се върнеш и инсталираш Python или избери Cancel за да прекратиш инсталирането на Колибри 
-SetupKolibriErrMsg=Критична грешка. Зависимостите не са успели да се инсталират. Номер на грешката: 
-KolibriInstallFailed=Нещо се обърка по време на инсталирането на Колибри.%nДопълнителна информация намери в регистрационния файл: 
-SetupWizardMsg=Инсталационният помощник копира файлове. Това може да отнеме време, моля изчакай.. 
-LaunchKolibri=Стартиране на Колибри 
-KolibriSupportLink=Форум на общността 
-KolibriHomePage=Начална страница 
-KolibriDocs=Документация 
-FileNotFound= не беше открито. 
-Needhelp=Потърси помощ онлайн в нашия форум на общността: 
+UpgradeMsg=C'è un'installazione esistente di Kolibri su questo dispositivo. Vuoi aggiornarla? 
+UpgradeDelMsg=Se si sceglie di fare una nuova installazione e non di aggiornare, si perderanno tutti i dati esistenti. Si prega di confermare se si desidera continuare con la nuova installazione. 
+InstallPythonMsg=È necessario avere installato Python 3.6+ per avviare Kolibri. La procedura guidata di configurazione non ha trovato Python sul tuo sistema e ora procederà all'installazione. Fare clic su 'Sì' per confermare e continuare con l'installazione. 
+InstallPythonErrMsg=Kolibri non può essere eseguito senza installare Python. Fare clic su 'Ok' per tornare indietro e installare Python, o 'Annulla' per uscire dal programma di installazione Kolibri 
+SetupKolibriErrMsg=Errore critico. L'installazione delle dipendenze non è riuscita. Numero di errore: 
+KolibriInstallFailed=Qualcosa è andato storto durante la configurazione di Kolibri.%nUlteriori informazioni possono essere trovate nel file log: 
+SetupWizardMsg=La procedura guidata di configurazione sta copiando i file. Questo potrebbe richiedere un po' di tempo, attendere prego.. 
+LaunchKolibri=Avvia Kolibri 
+KolibriSupportLink=Forum della comunità 
+KolibriHomePage=Homepage 
+KolibriDocs=Documentazione 
+FileNotFound= non è stato trovato. 
+Needhelp=Per ottenere aiuto online, visita il nostro forum della comunità: 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=Искаш ли да изтриеш всички данни, свързани с Колибри? 
-UninstallKolibriDataLine2=Това ще премахне трайно всички изтеглени канали за съдържание и данните за взаимодействието на потребителя. 
-UninstallKolibriDataLine3=Това действие не може да бъде отменено. 
-UninstallKolibriPath=Местоположение на данните: 
+UninstallKolibriDataLine1=Vuoi anche eliminare tutti i dati associati a Kolibri? 
+UninstallKolibriDataLine2=Questo rimuoverà permanentemente tutti i canali di contenuti scaricati e i dati di interazione dell'utente. 
+UninstallKolibriDataLine3=Questa azione non può essere annullata. 
+UninstallKolibriPath=Posizione dei dati: 

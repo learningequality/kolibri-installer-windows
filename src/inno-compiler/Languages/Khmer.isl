@@ -11,9 +11,9 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Bulgarian 
-LanguageID=$0402 
-LanguageCodePage=1251 
+LanguageName=Khmer 
+LanguageID=$0053 
+LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
 ;DialogFontName=
@@ -28,18 +28,18 @@ LanguageCodePage=1251
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Инсталиране 
-SetupWindowTitle=Инсталиране - %1 
-UninstallAppTitle=Деинсталиране 
-UninstallAppFullTitle=%1 Деинсталиране 
+SetupAppTitle=រៀបចំ 
+SetupWindowTitle=រៀបចំ- %1 
+UninstallAppTitle=លុបចេញ 
+UninstallAppFullTitle=%1 លុបចេញ 
 
 ; *** Misc. common
-InformationTitle=Информация 
-ConfirmTitle=Потвърди 
-ErrorTitle=Грешка 
+InformationTitle=ពត៍មាន 
+ConfirmTitle=បញ្ជាក់ 
+ErrorTitle=កំហុស 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Това ще инсталира %1. Искаш ли да продължиш? 
+SetupLdrStartupMessage=នេះនឹងតំឡើង %1។ តើអ្នកចង់បន្តដែរទេ? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=Инсталирането вече е стартирано. 
-WindowsVersionNotSupported=Тази програма не поддържа версията на Windows, която компютърът ти използва. 
+SetupAlreadyRunning=ការរៀបចំកំពុងដំណើរការ។ 
+WindowsVersionNotSupported=កម្មវិធីនេះមិនគាំទ្រជំនាន់ Windows ដែលកុំព្យូទ័ររបស់អ្នកកំពុងដំណើរការទេ។ 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=Инсталирането не е завършено. Ако излезеш, програмата няма да се инсталира.%n%nМоже да стартираш Инсталиране отново по-късно, за да се довърши инсталацията.%n%nПрекъсване на инсталацията? 
+ExitSetupMessage=ការរៀបចំមិនបានបញ្ចប់។ ប្រសិនបើអ្នកចាកចេញឥឡូវនេះ កម្មវិធីនឹងមិនត្រូវបានដំឡើងទេ។ %n%nអ្នកអាចដំណើរការការរៀបចំម្ដងទៀតនៅពេលវេលាមួយផ្សេងទៀតដើម្បីបញ្ចប់ការដំឡើងនោះ។ %n%nចាកចេញពីការរៀបចំ? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Назад 
-ButtonNext=&Напред > 
-ButtonInstall=&Инсталиране 
-ButtonOK=Добре 
-ButtonCancel=Отказ 
-ButtonYes=&Да 
-ButtonYesToAll=Да за &всичко 
-ButtonNo=&Не 
-ButtonNoToAll=Н&е за всичко 
-ButtonFinish=&Завършване 
-ButtonBrowse=&Разглеждане... 
-ButtonWizardBrowse=Р&азглеждане... 
-ButtonNewFolder=&Добавяне на нова папка 
+ButtonBack=< &បកក្រោយ 
+ButtonNext=&បន្ទាប់ > 
+ButtonInstall=&ដំឡើង 
+ButtonOK=យល់ព្រម 
+ButtonCancel=បោះ​បង់ 
+ButtonYes=&បាទ 
+ButtonYesToAll=បាទ &ទាំងអស់ 
+ButtonNo=&ទេ 
+ButtonNoToAll=N&o ទៅទាំងអស់ 
+ButtonFinish=&បញ្ចប់ 
+ButtonBrowse=&រុករក... 
+ButtonWizardBrowse=B&rowse...
+ButtonNewFolder=&បង្កើតសឺមីថ្មី 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Избор на език за инсталиране 
-SelectLanguageLabel=Избери език за ползване по време на инсталирането. 
+SelectLanguageTitle=ជ្រើសរើសរៀបចំភាសា 
+SelectLanguageLabel=ជ្រើសរើសភាសាដែលត្រូវប្រើកំឡុងពេលតំឡើង 
 
 ; *** Common wizard text
-ClickNext=Избери "Напред" за продължаване или "Отказ", за да прекратиш инсталирането. 
+ClickNext=ចុចបន្ទាប់ដើម្បីបន្ត ឬ លុបដើម្បីតំឡើង 
 BeveledLabel=
-BrowseDialogTitle=Търсене на папка 
-BrowseDialogLabel=Избери папка от списъка и натисни "Добре". 
-NewFolderName=Нова папка 
+BrowseDialogTitle=Browse For Folder 
+BrowseDialogLabel=ជ្រើសរើសសឺមីមួយនៅក្នុងបញ្ជីខាងក្រោម បន្ទាប់មកចុច យល់ព្រម។ 
+NewFolderName=សឺមីថ្មី 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Добре дошъл в Помощника за инсталиране на [name] 
-WelcomeLabel2=Това ще инсталира [name/ver] на твоя компютър.%n%nПреди да продължиш, препоръчително е да затвориш всички други приложения. 
+WelcomeLabel1=សូមស្វាគមន៍មកកាន់ [name] Setup Wizard 
+WelcomeLabel2=នេះនឹងដំឡើង [name/ver] នៅក្នុងកុំព្យូទ័ររបស់អ្នក។ %n%nវាត្រូវបានណែនាំឱ្យអ្នកបិទកម្មវិធីផ្សេងទៀតទាំងអស់មុននឹងបន្ត។ 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Информация 
+WizardInfoBefore=ពត៍មាន 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Информация 
+WizardInfoAfter=ពត៍មាន 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Избор на крайно местоположение 
-SelectDirDesc=Къде да се инсталира [name]? 
-SelectDirLabel3=Програмата ще инсталира [name] в следната папка. 
-SelectDirBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-DiskSpaceMBLabel=Необходимо е най-малко [mb] МВ свободно пространство на диска. 
+WizardSelectDir=ជ្រើសរើសអាសយដ្ឋានគោលដៅ 
+SelectDirDesc=តើអ្នកគួរតែដំឡើង [name] នៅកន្លែងណា? 
+SelectDirLabel3=ការរៀបចំនឹងដំឡើង [name] ចូលទៅក្នុងសឺមីខាងក្រោម។ 
+SelectDirBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច Browse. 
+DiskSpaceMBLabel=យ៉ាងហោចណាស់ក៏អ្នកត្រូវការមានទំហំ [mb] MB នៅលើទំហំថាសដែរ។ 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=Няма достатъчно свободно място на диска 
+DiskSpaceWarningTitle=មិនមានទំហំគ្រប់គ្រាន់ 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Избери папка Начално меню 
-SelectStartMenuFolderDesc=Къде да се инсталират преките пътища за връзка на програмата? 
-SelectStartMenuFolderLabel3=Помощникът ще създаде преките пътища за връзка на програмата в следната папка на Началното меню. 
-SelectStartMenuFolderBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-MustEnterGroupName=Трябва да въведеш име на папка. 
+WizardSelectProgramGroup=ជ្រើសរើសការចាប់ផ្ដើមសឺមីមីនុយ 
+SelectStartMenuFolderDesc=តើគួររៀបចំកន្លែង shortcuts របស់កម្មវិធីនៅកន្លែងណា? 
+SelectStartMenuFolderLabel3=ការរៀបចំនឹងបង្កើត Shortcuts របស់កម្មវិធីនៅក្នុងការចាប់ផ្ដើមសឺមីមីនុយខាងក្រោម៖ 
+SelectStartMenuFolderBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច Browse. 
+MustEnterGroupName=អ្នកត្រូវតែវាយបញ្ចូលឈ្មោះក្របមួយ។ 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=Името на папката не може да съдържа следните символи:%n%n%1 
+BadGroupName=ឈ្មោះសឺមីមិនអាចបូកបញ្ចូលតួអក្សរខាងក្រោមនេះបានទេ%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Готовност за инсталиране 
-ReadyLabel1=Помощникът е готов да започне инсталиране на [name] на твоя компютър. 
-ReadyLabel2a=Избери "Инсталиране" за да продължиш с инсталирането или избери "Назад" ако искаш да прегледаш или промениш настройките. 
-ReadyLabel2b=Избери "Инсталиране" за да продължиш с инсталирането. 
+WizardReady=រួចរាល់​ដើម្បី​ដំឡើង 
+ReadyLabel1=ការរៀបចំបានរួចរាល់ដើម្បីដំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
+ReadyLabel2a=ចុចដំឡើងដើម្បីបន្តការដំឡើង ឬចុចថយក្រោយប្រសិនបើអ្នកចង់ពិនិត្យឡើងវិញ ឬផ្លាស់ប្តូរការកំណត់ណាមួយ។ 
+ReadyLabel2b=ចុច​ដំឡើង ដើម្បី​បន្ត​ការ​ដំឡើង 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Избор на крайно местоположение: 
+ReadyMemoDir=ទីតាំងគោលដៅ៖ 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Папка Начално меню: 
+ReadyMemoGroup=ចាប់ផ្ដើមក្របមីនុយ៖ 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Подготовка за инсталиране 
-PreparingDesc=Помощникът се подготвя да започне инсталиране на [name] на твоя компютър. 
+WizardPreparing=កំពុងរៀបចំដើម្បីតំឡើង 
+PreparingDesc=ការរៀបចំកំពុងត្រៀមដើម្បីតំឡើង [name]ក្នុងកុំព្យូទ័ររបស់អ្នក 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Инсталирането не може да продължи. Моля, избери "Отказ" за прекратяване. 
+CannotContinue=ការរៀបចំមិនអាចបន្តបានទេ។ សូមចុចបោះបង់ដើម្បីចាកចេញ 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Инсталиране 
-InstallingLabel=Моля изчакай докато Помощникът инсталира [name] на твоя компютър. 
+WizardInstalling=កំពុងដំឡើង 
+InstallingLabel=សូមរងចាំខណៈពេលដែលការរៀបកំពុងដំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Приключване на Помощника за инсталиране на [name] 
-FinishedLabelNoIcons=Помощникът приключи с инсталирането на [name] на твоя компютър. 
-FinishedLabel=Помощникът приключи с инсталирането на [name] на твоя компютър. Стартирай приложението като избереш преките пътища. 
-ClickFinish=Избери „Приключване“ за изход от Помощника. 
+FinishedHeadingLabel=កំពុងបញ្ចប់ [name] Setup Wizard 
+FinishedLabelNoIcons=ការរៀបចំត្រូវបានបញ្ចប់ដើម្បីតំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
+FinishedLabel=ការរៀបចំបានបញ្ចប់ការដំឡើង [name] នៅលើកុំព្យូទ័ររបស់អ្នក។ កម្មវិធីអាចត្រូវបានដាក់ឱ្យដំណើរការដោយជ្រើសរើស Shortcuts ដែលបានតំឡើងរួច។ 
+ClickFinish=ចុច បញ្ចប់ ដើម្បី​​​ចេញ​ពី​ការរៀបចំ។ 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Отмяна на инсталирането 
+AbortRetryIgnoreCancel=បោះបង់ការដំឡើង 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Извличане на файлове... 
+StatusExtractFiles=កំពុងស្រង់ចេញជាហ្វាល... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Приключване на инсталирането... 
+StatusRunProgram=កំពុងបញ្ចប់ការដំឡើង... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Наистина ли искаш напълно да изтриеш %1 и всичките прилежащи компоненти? 
+ConfirmUninstall=តើអ្នកពិតជាចង់លុប %1 និងសមាសធាតុទាំងអស់របស់វាចេញដែរឬទេ? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Моля изчакай докато %1 се изтрие от твоя компютър. 
-UninstalledAll=%1 беше успешно изтрито от твоя компютър. 
-UninstalledMost=%1 деинсталиране завършено.%n%nНякои елементи не могат да се изтрият. Те могат да се изтрият ръчно. 
+UninstallStatusLabel=សូមរង់ចាំខណៈពេលដែល %1 ត្រូវបានយកចេញពីកុំព្យូទ័ររបស់អ្នក។ 
+UninstalledAll=1% បានយកចេញពីកុំព្យូទ័ររបស់អ្នកដោយជោគជ័យ។ 
+UninstalledMost=%1 ការលុបចេញបានបញ្ចប់។%n%nវត្ថុធាតុមួយចំនួនមិនអាចត្រូវបានលុបទេ។ វត្ថុធាតុទាំងនេះអាចត្រូវបានលុបដោយខ្លួនរបស់អ្នកផ្ទាល់។ 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Създай пряк път на &работния плот 
+CreateDesktopIcon=បង្កើត Shortcut នៅលើ Desktop 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 в мрежата 
-UninstallProgram=Деинсталиране %1 
-LaunchProgram=Стартиране %1 
+ProgramOnTheWeb=1% នៅលើវេបសាយន៍ 
+UninstallProgram=លុបចេញ 1% 
+LaunchProgram=បើកដំណើរការ %1 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=На това устройство вече е инсталирана Колибри. Искаш ли да я актуализираш? 
-UpgradeDelMsg=При избор на нова инсталация вместо актуализиране, всички вече съществуващи данни ще се изгубят. Моля, потвърди продължаване с нова инсталация. 
-InstallPythonMsg=За да тръгне Колибри е необходимо да има инсталирана Python 3.6+. Помощникът за инсталиране не може да намери Python в системата и няма да продължи инсталирането. Моля, избери 'Да' за потвърждение и продължаване на инсталирането. 
-InstallPythonErrMsg=Колибри не може да тръгне без да се инсталира Python. Избери Ok за да се върнеш и инсталираш Python или избери Cancel за да прекратиш инсталирането на Колибри 
-SetupKolibriErrMsg=Критична грешка. Зависимостите не са успели да се инсталират. Номер на грешката: 
-KolibriInstallFailed=Нещо се обърка по време на инсталирането на Колибри.%nДопълнителна информация намери в регистрационния файл: 
-SetupWizardMsg=Инсталационният помощник копира файлове. Това може да отнеме време, моля изчакай.. 
-LaunchKolibri=Стартиране на Колибри 
-KolibriSupportLink=Форум на общността 
-KolibriHomePage=Начална страница 
-KolibriDocs=Документация 
-FileNotFound= не беше открито. 
-Needhelp=Потърси помощ онлайн в нашия форум на общността: 
+UpgradeMsg=មានការតំឡើង Kolibri ដែលមានស្រាប់ក្នុងឧបករណ៍នេះ។ តើអ្នកចង់ធ្វើការដំឡើងវាដែរឬទេ? 
+UpgradeDelMsg=ប្រសិនបើអ្នកជ្រើសរើសធ្វើការតំឡើងថ្មីនេះ និងមិនបានដំឡើង អ្នកនឹងបាត់បង់រាល់ទិន្នន័យដែលមានស្រាប់របស់អ្នក។ សូមបញ្ជាក់ថាអ្នកចង់បន្តការដំឡើងថ្មីនេះ។ 
+InstallPythonMsg=អ្នកត្រូវការកម្មវិធី Python 3.6+ ដែលបានដំឡើងតាមលំដាប់លំដោយដើម្បីដំណើរការ Kolibri។ Setup Wizard មិនត្រូវបានរកឃើញ Python ទេនៅក្នុងប្រព័ន្ធ និងបន្តដំឡើងវាឥឡូវនេះ។ សូមចុចពាក្យ "បាទ/ចាស" ដើម្បីទទួលយក និងបន្តការដំឡើងនេះ។ 
+InstallPythonErrMsg=Kolibri មិនអាចដំណើរការដោយគ្មានកម្មវិធី Python បានទេ។ ចុច "យល់ព្រម" ដើម្បីត្រឡប់ និងដំឡើង Python ឬលុបដើម្បីបញ្ឈប់កម្មវិធីដំឡើង Kolibri 
+SetupKolibriErrMsg=កំហុសសំខាន់់៖ កម្មវិធីមួយចំនួនបានបរាជ័យក្នុងការដំឡើង។ កំហុសលេខ៖ 
+KolibriInstallFailed=មានកំហុសក្នុងអំឡុងពេលដែលកំពុងរៀបចំ Kolibri។ %nព័ត៌មានបន្ថែមអាចរកបាននៅក្នុងហ្វាលកំណត់ហេតុ៖ 
+SetupWizardMsg=Setup Wizard គឺកំពុងចម្លងហ្វាល។ វាអាចចំណាយពេលមួយរយៈ សូមរង់ចាំ.. 
+LaunchKolibri=បើកដំណើរការ Kolibri 
+KolibriSupportLink=វេទិកាសហគមន៍ 
+KolibriHomePage=ទំព័រដើម 
+KolibriDocs=ឯកសារ 
+FileNotFound=មិនត្រូវបានរកឃើញ 
+Needhelp=ដើម្បីទទួលបានជំនួយតាមអ៊ីនធឺណិត សូមទស្សនាវេទិកាសហគមន៍របស់យើង៖ 
 CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=Искаш ли да изтриеш всички данни, свързани с Колибри? 
-UninstallKolibriDataLine2=Това ще премахне трайно всички изтеглени канали за съдържание и данните за взаимодействието на потребителя. 
-UninstallKolibriDataLine3=Това действие не може да бъде отменено. 
-UninstallKolibriPath=Местоположение на данните: 
+UninstallKolibriDataLine1=តើអ្នកចង់លុបទិន្នន័យទាំងអស់ដែលទាក់ទងនឹង Kolibri ដែរឬទេ? 
+UninstallKolibriDataLine2=វានឹងលុបមាតិកាឆានែលដែលបានទាញយកទាំងអស់ចេញ និងទិន្នន័យអន្តរកម្មទាំងអស់របស់អ្នកប្រើប្រាស់។ 
+UninstallKolibriDataLine3=សកម្មភាពនេះមិនអាចមិនធ្វើវិញ។ 
+UninstallKolibriPath=ទីតាំងទិន្នន័យ៖ 

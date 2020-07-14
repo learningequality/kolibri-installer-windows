@@ -11,9 +11,9 @@
 [LangOptions]
 ; The following three entries are very important. Be sure to read and 
 ; understand the '[LangOptions] section' topic in the help file.
-LanguageName=Bulgarian 
-LanguageID=$0402 
-LanguageCodePage=1251 
+LanguageName=Yoruba 
+LanguageID=$006A 
+LanguageCodePage=0 
 ; If the language you are translating to requires special font faces or
 ; sizes, uncomment any of the following entries and change them accordingly.
 ;DialogFontName=
@@ -28,18 +28,18 @@ LanguageCodePage=1251
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Инсталиране 
-SetupWindowTitle=Инсталиране - %1 
-UninstallAppTitle=Деинсталиране 
-UninstallAppFullTitle=%1 Деинсталиране 
+SetupAppTitle=Ṣeto 
+SetupWindowTitle=Ṣeto- %1 
+UninstallAppTitle=Aifi si po 
+UninstallAppFullTitle=%1 Aifi si po 
 
 ; *** Misc. common
-InformationTitle=Информация 
-ConfirmTitle=Потвърди 
-ErrorTitle=Грешка 
+InformationTitle=Alaye 
+ConfirmTitle=Jẹ́risí 
+ErrorTitle=Àṣìṣe 
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=Това ще инсталира %1. Искаш ли да продължиш? 
+SetupLdrStartupMessage=Eyi Yoo fi sori ẹrọ %1. ṣe iwọ fẹ si tẹsiwaju? 
 LdrCannotCreateTemp=Unable to create a temporary file. Setup aborted
 LdrCannotExecTemp=Unable to execute file in the temporary directory. Setup aborted
 HelpTextNote=
@@ -50,8 +50,8 @@ SetupFileMissing=The file %1 is missing from the installation directory. Please 
 SetupFileCorrupt=The setup files are corrupted. Please obtain a new copy of the program.
 SetupFileCorruptOrWrongVer=The setup files are corrupted, or are incompatible with this version of Setup. Please correct the problem or obtain a new copy of the program.
 InvalidParameter=An invalid parameter was passed on the command line:%n%n%1
-SetupAlreadyRunning=Инсталирането вече е стартирано. 
-WindowsVersionNotSupported=Тази програма не поддържа версията на Windows, която компютърът ти използва. 
+SetupAlreadyRunning=Ṣeto jẹ tẹlẹ nṣiṣẹ. 
+WindowsVersionNotSupported=Eyi iwe eto ṣe kii ṣe atilẹyin Awọn ti ikede ti ferese rẹ kọmputa jẹnṣiṣẹ. 
 WindowsServicePackRequired=This program requires %1 Service Pack %2 or later.
 NotOnThisPlatform=This program will not run on %1.
 OnlyOnThisPlatform=This program must be run on %1.
@@ -79,7 +79,7 @@ ErrorTooManyFilesInDir=Unable to create a file in the directory "%1" because it 
 
 ; *** Setup common messages
 ExitSetupTitle=Exit Setup
-ExitSetupMessage=Инсталирането не е завършено. Ако излезеш, програмата няма да се инсталира.%n%nМоже да стартираш Инсталиране отново по-късно, за да се довърши инсталацията.%n%nПрекъсване на инсталацията? 
+ExitSetupMessage=Ṣeto jẹkii ṣe pari. ti o baiwọ tẹlẹ bayi, Awọn etoYoo kii ṣe jẹ fi sori ẹrọ. %n%niwọ Ṣe ṣiṣe ṣeto lẹẹkansi ni miiranaago si pari Awọn fifi soriẹrọ.%n%ntẹlẹ ṣeto? 
 AboutSetupMenuItem=&About Setup...
 AboutSetupTitle=About Setup
 AboutSetupMessage=%1 version %2%n%3%n%n%1 home page:%n%4
@@ -87,34 +87,34 @@ AboutSetupNote=
 TranslatorNote=
 
 ; *** Buttons
-ButtonBack=< &Назад 
-ButtonNext=&Напред > 
-ButtonInstall=&Инсталиране 
-ButtonOK=Добре 
-ButtonCancel=Отказ 
-ButtonYes=&Да 
-ButtonYesToAll=Да за &всичко 
-ButtonNo=&Не 
-ButtonNoToAll=Н&е за всичко 
-ButtonFinish=&Завършване 
-ButtonBrowse=&Разглеждане... 
-ButtonWizardBrowse=Р&азглеждане... 
-ButtonNewFolder=&Добавяне на нова папка 
+ButtonBack=< &Pada 
+ButtonNext=&Itele > 
+ButtonInstall=&Fi sori ẹrọ 
+ButtonOK=Óti da 
+ButtonCancel=Fagilée 
+ButtonYes=&Bẹ́ẹ̀ni 
+ButtonYesToAll=Bẹẹni si &Bbogbo 
+ButtonNo=&Rara 
+ButtonNoToAll=N&Eyin si gbogbo 
+ButtonFinish=&Parí 
+ButtonBrowse=&lọkiriayelujara... 
+ButtonWizardBrowse=B&rowse... 
+ButtonNewFolder=&ṣe Titun Folda 
 
 ; *** "Select Language" dialog messages
-SelectLanguageTitle=Избор на език за инсталиране 
-SelectLanguageLabel=Избери език за ползване по време на инсталирането. 
+SelectLanguageTitle=Yan ṣeto Ede 
+SelectLanguageLabel=Yan awọn ede si lilo nigba Awọn fifi sori ẹrọ. 
 
 ; *** Common wizard text
-ClickNext=Избери "Напред" за продължаване или "Отказ", за да прекратиш инсталирането. 
+ClickNext=Tẹ Itele si tẹsiwaju tabi Fagilee si tẹlẹ ṣeto. 
 BeveledLabel=
-BrowseDialogTitle=Търсене на папка 
-BrowseDialogLabel=Избери папка от списъка и натисни "Добре". 
-NewFolderName=Нова папка 
+BrowseDialogTitle=Lọ kiri ayelujara Fun Folda 
+BrowseDialogLabel=Yan a obinrin folda ni Awọn Akojọ ni isalẹ, lẹhinna tẹ O dara. 
+NewFolderName=Titun Folda 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Добре дошъл в Помощника за инсталиране на [name] 
-WelcomeLabel2=Това ще инсталира [name/ver] на твоя компютър.%n%nПреди да продължиш, препоръчително е да затвориш всички други приложения. 
+WelcomeLabel1=Kaabo si Awọn [name] ṣeto Oluṣeto 
+WelcomeLabel2=Eyi Yoo fi sori ẹrọ [name/ver] lori rẹ kọmputa. %n%no jẹ niyanju pe iwọ sunmọ gbogbo miiran ohun elo ṣaaju ki o to tẹsiwaju. 
 
 ; *** "Password" wizard page
 WizardPassword=Password
@@ -131,10 +131,10 @@ LicenseAccepted=I &accept the agreement
 LicenseNotAccepted=I &do not accept the agreement
 
 ; *** "Information" wizard pages
-WizardInfoBefore=Информация 
+WizardInfoBefore=Alaye 
 InfoBeforeLabel=Please read the following important information before continuing.
 InfoBeforeClickLabel=When you are ready to continue with Setup, click Next.
-WizardInfoAfter=Информация 
+WizardInfoAfter=Alaye 
 InfoAfterLabel=Please read the following important information before continuing.
 InfoAfterClickLabel=When you are ready to continue with Setup, click Next.
 
@@ -147,16 +147,16 @@ UserInfoSerial=&Serial Number:
 UserInfoNameRequired=You must enter a name.
 
 ; *** "Select Destination Location" wizard page
-WizardSelectDir=Избор на крайно местоположение 
-SelectDirDesc=Къде да се инсталира [name]? 
-SelectDirLabel3=Програмата ще инсталира [name] в следната папка. 
-SelectDirBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-DiskSpaceMBLabel=Необходимо е най-малко [mb] МВ свободно пространство на диска. 
+WizardSelectDir=Yan Ibi ti nlo ipo 
+SelectDirDesc=Nibi ti yẹ [name] jẹ fi sori ẹrọ? 
+SelectDirLabel3=Ṣeto yoo fi sori ẹrọ [name] sinu Awọn wọnyi folda. 
+SelectDirBrowseLabel=Si tẹsiwaju, tẹ Itele. Ti o ba iwọ yoo bi si yan a obinrin yatọ folda, tẹ lọ kiri ayelujara. 
+DiskSpaceMBLabel=Ni o kere [mb] MB ti ṣ''ofo disiki Aaye jẹ ti a beer. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
 InvalidPath=You must enter a full path with drive letter; for example:%n%nC:\APP%n%nor a UNC path in the form:%n%n\\server\share
 InvalidDrive=The drive or UNC share you selected does not exist or is not accessible. Please select another.
-DiskSpaceWarningTitle=Няма достатъчно свободно място на диска 
+DiskSpaceWarningTitle=Kii ṣe to disiki Aaye 
 DiskSpaceWarning=Setup requires at least %1 KB of free space to install, but the selected drive only has %2 KB available.%n%nDo you want to continue anyway?
 DirNameTooLong=The folder name or path is too long.
 InvalidDirName=The folder name is not valid.
@@ -186,33 +186,33 @@ SelectTasksDesc=Which additional tasks should be performed?
 SelectTasksLabel2=Select the additional tasks you would like Setup to perform while installing [name], then click Next.
 
 ; *** "Select Start Menu Folder" wizard page
-WizardSelectProgramGroup=Избери папка Начално меню 
-SelectStartMenuFolderDesc=Къде да се инсталират преките пътища за връзка на програмата? 
-SelectStartMenuFolderLabel3=Помощникът ще създаде преките пътища за връзка на програмата в следната папка на Началното меню. 
-SelectStartMenuFolderBrowseLabel=За да пордължиш, избери "Напред". Ако искаш да избереш друга папка, избери "Разглеждане". 
-MustEnterGroupName=Трябва да въведеш име на папка. 
+WizardSelectProgramGroup=Yan bẹrẹ akojọ aṣayan folda 
+SelectStartMenuFolderDesc=Wà yẹ ṣeto Ibi Awọn awọn eto ọna Abuja? 
+SelectStartMenuFolderLabel3=Ṣeto eto yoo ṣẹda Awọn awọn eto awọn ọna abuja ni Awọn wọnyi bẹrẹ akojọ aṣayan folda. 
+SelectStartMenuFolderBrowseLabel=Si tẹsiwaju, tẹ Itele. Ti o ba iwọ yoo bi si yan a obinrin yatọ folda, tẹ lọ kiri ayelujara. 
+MustEnterGroupName=Iwọ gbọdọ tẹ a obinrin folda orukọ. 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=Името на папката не може да съдържа следните символи:%n%n%1 
+BadGroupName=Awọn folda orukọ ko le ṣe pẹlu eyikeyi ti Awọn wọnyi ohun kikọ:%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
-WizardReady=Готовност за инсталиране 
-ReadyLabel1=Помощникът е готов да започне инсталиране на [name] на твоя компютър. 
-ReadyLabel2a=Избери "Инсталиране" за да продължиш с инсталирането или избери "Назад" ако искаш да прегледаш или промениш настройките. 
-ReadyLabel2b=Избери "Инсталиране" за да продължиш с инсталирането. 
+WizardReady=Setan si fi sori ẹrọ 
+ReadyLabel1=Ṣeto jẹ bayi setan si berè fifi sori ẹrọ [name] lori rẹ kọmputa. 
+ReadyLabel2a=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ, tabi tẹ pada ti o ba iwọ fẹ si atunyẹwo tabi iyipada eyikeyi ètò. 
+ReadyLabel2b=Tẹ fi sori ẹrọ si tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
 ReadyMemoUserInfo=User information:
-ReadyMemoDir=Избор на крайно местоположение: 
+ReadyMemoDir=Ibi ti nlo ipo: 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=Папка Начално меню: 
+ReadyMemoGroup=Bẹrẹ akojọ aṣayan folda: 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
-WizardPreparing=Подготовка за инсталиране 
-PreparingDesc=Помощникът се подготвя да започне инсталиране на [name] на твоя компютър. 
+WizardPreparing=Ngbaradi si fi sori ẹrọ 
+PreparingDesc=Ṣeto jẹ ngbaradi si fi sori ẹrọ [orukọ] lori rẹ kọmputa. 
 PreviousInstallNotCompleted=The installation/removal of a previous program was not completed. You will need to restart your computer to complete that installation.%n%nAfter restarting your computer, run Setup again to complete the installation of [name].
-CannotContinue=Инсталирането не може да продължи. Моля, избери "Отказ" за прекратяване. 
+CannotContinue=Ṣeto ko le ṣe tẹsiwaju. Jowo tẹ Fagilee si tẹlẹ. 
 ApplicationsFound=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications.
 ApplicationsFound2=The following applications are using files that need to be updated by Setup. It is recommended that you allow Setup to automatically close these applications. After the installation has completed, Setup will attempt to restart the applications.
 CloseApplications=&Automatically close the applications
@@ -220,14 +220,14 @@ DontCloseApplications=&Do not close the applications
 ErrorCloseApplications=Setup was unable to automatically close all applications. It is recommended that you close all applications using files that need to be updated by Setup before continuing.
 
 ; *** "Installing" wizard page
-WizardInstalling=Инсталиране 
-InstallingLabel=Моля изчакай докато Помощникът инсталира [name] на твоя компютър. 
+WizardInstalling=Fifi sori ẹrọ 
+InstallingLabel=Jowo duro nigba ti ṣeto nfi sii [orukọ] lori rẹ kọmputa. 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=Приключване на Помощника за инсталиране на [name] 
-FinishedLabelNoIcons=Помощникът приключи с инсталирането на [name] на твоя компютър. 
-FinishedLabel=Помощникът приключи с инсталирането на [name] на твоя компютър. Стартирай приложението като избереш преките пътища. 
-ClickFinish=Избери „Приключване“ за изход от Помощника. 
+FinishedHeadingLabel=I pari Awọn [orukọ] ṣeto oluṣeto 
+FinishedLabelNoIcons=Ṣeto ni o ni pari fifi sori ẹrọ [name] lori rẹ kọmputa. 
+FinishedLabel=Ṣeto yoo pari fifi sori ẹrọ [name] lori rẹ kọmputa. Awọn ohun elo Ṣe jẹ se igbekale nipasẹ yiyan Awọn fi sori ẹrọ ọna abuja. 
+ClickFinish=Tẹ pari si tẹlẹ ṣeto. 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -250,18 +250,18 @@ SetupAborted=Setup was not completed.%n%nPlease correct the problem and run Setu
 AbortRetryIgnoreSelectAction=Select action
 AbortRetryIgnoreRetry=&Try again
 AbortRetryIgnoreIgnore=&Ignore the error and continue
-AbortRetryIgnoreCancel=Отмяна на инсталирането 
+AbortRetryIgnoreCancel=Fagilee fifi sori ẹrọ 
 
 ; *** Installation status messages
 StatusClosingApplications=Closing applications...
 StatusCreateDirs=Creating directories...
-StatusExtractFiles=Извличане на файлове... 
+StatusExtractFiles=Jijade awọn faili... 
 StatusCreateIcons=Creating shortcuts...
 StatusCreateIniEntries=Creating INI entries...
 StatusCreateRegistryEntries=Creating registry entries...
 StatusRegisterFiles=Registering files...
 StatusSavingUninstall=Saving uninstall information...
-StatusRunProgram=Приключване на инсталирането... 
+StatusRunProgram=Ipari fifi sori ẹrọ... 
 StatusRestartingApplications=Restarting applications...
 StatusRollback=Rolling back changes...
 
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=Наистина ли искаш напълно да изтриеш %1 и всичките прилежащи компоненти? 
+ConfirmUninstall=Jẹ iwọ daju iwọ fẹ si patapata yọ kuro %1 ati gbogbo ti awọn oniwe- patapata? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=Моля изчакай докато %1 се изтрие от твоя компютър. 
-UninstalledAll=%1 беше успешно изтрито от твоя компютър. 
-UninstalledMost=%1 деинсталиране завършено.%n%nНякои елементи не могат да се изтрият. Те могат да се изтрият ръчно. 
+UninstallStatusLabel=Jowo duro nigba ti %1 jẹ yọ kuro lati rẹ kọmputa. 
+UninstalledAll=%1 je ni ifijišẹ yọ kuro lati rẹ kọmputa. 
+UninstalledMost=%1 aifi si po pari. %n%nDiẹ ninu awọn awọn eroja Le kii ṣe jẹ kuro. wọnyi le jẹ kuro pẹlu ọwọ. 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,11 +349,11 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=Създай пряк път на &работния плот 
+CreateDesktopIcon=Ṣẹda a obinrin &tabili ọna abuja 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
-ProgramOnTheWeb=%1 в мрежата 
-UninstallProgram=Деинсталиране %1 
-LaunchProgram=Стартиране %1 
+ProgramOnTheWeb=%1 lori Awọn wẹẹbu 
+UninstallProgram=Aifi si po %1 
+LaunchProgram=Ifilole %1 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
 AutoStartProgramGroupDescription=Startup:
@@ -361,21 +361,21 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=На това устройство вече е инсталирана Колибри. Искаш ли да я актуализираш? 
-UpgradeDelMsg=При избор на нова инсталация вместо актуализиране, всички вече съществуващи данни ще се изгубят. Моля, потвърди продължаване с нова инсталация. 
-InstallPythonMsg=За да тръгне Колибри е необходимо да има инсталирана Python 3.6+. Помощникът за инсталиране не може да намери Python в системата и няма да продължи инсталирането. Моля, избери 'Да' за потвърждение и продължаване на инсталирането. 
-InstallPythonErrMsg=Колибри не може да тръгне без да се инсталира Python. Избери Ok за да се върнеш и инсталираш Python или избери Cancel за да прекратиш инсталирането на Колибри 
-SetupKolibriErrMsg=Критична грешка. Зависимостите не са успели да се инсталират. Номер на грешката: 
-KolibriInstallFailed=Нещо се обърка по време на инсталирането на Колибри.%nДопълнителна информация намери в регистрационния файл: 
-SetupWizardMsg=Инсталационният помощник копира файлове. Това може да отнеме време, моля изчакай.. 
-LaunchKolibri=Стартиране на Колибри 
-KolibriSupportLink=Форум на общността 
-KolibriHomePage=Начална страница 
-KolibriDocs=Документация 
-FileNotFound= не беше открито. 
-Needhelp=Потърси помощ онлайн в нашия форум на общността: 
-CommunityLink=https://community.learningequality.org 
-UninstallKolibriDataLine1=Искаш ли да изтриеш всички данни, свързани с Колибри? 
-UninstallKolibriDataLine2=Това ще премахне трайно всички изтеглени канали за съдържание и данните за взаимодействието на потребителя. 
-UninstallKolibriDataLine3=Това действие не може да бъде отменено. 
-UninstallKolibriPath=Местоположение на данните: 
+UpgradeMsg=Ní bẹ jẹ ohun tẹlẹ fifi sori ẹrọ ti kolibri lori eyi ẹrọ. Yoo iwọ tun bi si imudojuiwọn o? 
+UpgradeDelMsg=Ti o ba iwọ yan si ṣe a obinrin titun fifi sori ẹrọ ati kii ṣe si imudojuiwọn, iwọ Yoo alaimuṣinṣin gbogbo ti iwọ tẹlẹ data. Jowo jẹrisi iwọ fẹ si tẹsiwaju pẹlu Awọn titun fifi sori ẹrọ. 
+InstallPythonMsg=Iwọ nilo si ni python 3.6+ fi sori ẹrọ ni aṣẹ si ṣiṣe kolibri. ṣeto oluṣeto je kii ṣe anfani si wa python lori rẹ eto ati Yoo ki ibayi tẹsiwaju si o. Jowo tẹ bẹẹni' si jẹrisi ati tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
+InstallPythonErrMsg=Kolibri ko le ṣe ṣiṣe laisi fifi sori ẹrọ python. tẹ O dara si lọ pada ati fi sori ẹrọ python, tabi Fagilee si oyimbo Awọn kolibri insitola 
+SetupKolibriErrMsg=Pataki aṣiṣe. dependences ni kuna si fi sori ẹrọ. aṣiṣe nọmba: 
+KolibriInstallFailed=Nkan kan lọ aṣiṣe nigba kolibri ṣeto. %nAfikun alaye le jẹ ri ni Awọn wọle faili: 
+SetupWizardMsg=Ṣeto oluṣeto jẹ didaakọ awọn faili. Eyi Ṣe ya a obinrin nigba ti, Jowo duro.. 
+LaunchKolibri=Ifilole kolibri 
+KolibriSupportLink=Agbegbe apero 
+KolibriHomePage=Akọọkan 
+KolibriDocs=Kikọ sí inu iwe 
+FileNotFound= je kii ṣe ri. 
+Needhelp=Si gba Egba Mi O online, Jowo ibewo wa agbegbe apero: 
+CommunityLink=http:// agbegbe.ẹkọdeede. Org 
+UninstallKolibriDataLine1=Yoo iwọ tun bi si paarẹ gbogbo Awọn data ni nkan ṣe pẹlu kolibri? 
+UninstallKolibriDataLine2=Eyi Yoo permanently yọ kuro gbogbo gba lati ayelujara akoonu awọn ikanni ati Awọn olumulo ibaraenisepo data. 
+UninstallKolibriDataLine3=Eyi iṣẹ ko le ṣe jẹ ko ṣeeṣe. 
+UninstallKolibriPath=Data ipo: 

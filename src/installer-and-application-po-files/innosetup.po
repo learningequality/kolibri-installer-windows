@@ -53,6 +53,10 @@ msgstr ""
 msgid "This program does not support the version of Windows your computer is running." 
 msgstr "" 
 
+#: Default.isl:81 
+msgid "Exit Setup" 
+msgstr "" 
+
 #: Default.isl:82 
 msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
 msgstr "" 

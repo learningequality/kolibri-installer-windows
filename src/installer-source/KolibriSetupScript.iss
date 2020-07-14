@@ -27,21 +27,32 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 SetupLogging=yes
 UsedUserAreasWarning=no
+ShowLanguageDialog=yes
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
-Name: "de"; MessagesFile: "compiler:Languages\German.isl"
-Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "ne"; MessagesFile: "compiler:Languages\Nepali.isl"
-Name: "pt_BR"; MessagesFile: "compiler:Languages\Portuguese.isl"
-Name: "vi"; MessagesFile: "compiler:Languages\Vietnamese.isl"
-Name: "mr"; MessagesFile: "compiler:Languages\Marathi.islu"
-Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
-Name: "hi"; MessagesFile: "compiler:Languages\Hindi.islu"
-Name: "bg"; MessagesFile: "compiler:Languages\Bulgarian.isl"
-Name: "bn"; MessagesFile: "compiler:Languages\Bengali.islu"
+Name: "vi"; MessagesFile: "compiler:Languages\Vietnamese.isl" 
+Name: "sw_TZ"; MessagesFile: "compiler:Languages\Swahili_Tanzania.isl" 
+Name: "km"; MessagesFile: "compiler:Languages\Khmer.isl" 
+Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl" 
+Name: "mr"; MessagesFile: "compiler:Languages\Marathi.isl" 
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl" 
+Name: "te"; MessagesFile: "compiler:Languages\Telugu.isl" 
+Name: "yo"; MessagesFile: "compiler:Languages\Yoruba.isl" 
+Name: "zh_CN"; MessagesFile: "compiler:Languages\Chinese_Simplified.isl" 
+Name: "my"; MessagesFile: "compiler:Languages\Burmese.isl" 
+Name: "ar"; MessagesFile: "compiler:Languages\Arabic.isl" 
+Name: "pt_BR"; MessagesFile: "compiler:Languages\Portuguese_Brazilian.isl" 
+Name: "bg"; MessagesFile: "compiler:Languages\Bulgarian.isl" 
+Name: "bn"; MessagesFile: "compiler:Languages\Bengali.isl" 
+Name: "hi"; MessagesFile: "compiler:Languages\Hindi.isl" 
+Name: "ny"; MessagesFile: "compiler:Languages\Chewa.isl" 
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl" 
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl" 
+Name: "fa"; MessagesFile: "compiler:Languages\Persian.isl" 
+Name: "la"; MessagesFile: "compiler:Languages\Spanish_Latin_America.isl" 
+Name: "ur_PK"; MessagesFile: "compiler:Languages\Urdu_(Pakistan).isl"
+
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
