@@ -17,6 +17,8 @@
         LanguageCodePage=0
 """
 
+from __future__ import print_function, unicode_literals
+
 import io
 import os
 import shutil
@@ -24,8 +26,11 @@ import sys
 
 import polib
 
-ARG_ISL_FILE_PATH = sys.argv[1:][0]
-ARG_PO_FILE_PATH = sys.argv[1:][1]
+ARG_ISL_FILE_PATH = os.path.abspath(sys.argv[1:][0])
+ARG_PO_FILE_PATH = os.path.abspath(sys.argv[1:][1])
+
+print("ISL", ARG_ISL_FILE_PATH)
+print("PO", ARG_PO_FILE_PATH)
 
 
 def verify_args():
@@ -46,54 +51,50 @@ def verify_args():
             return True
 
 
+# certain lines are not translations
+def is_translation(line):
+    if "=" not in line:
+        return False
+    lang_info_items = [
+        "LanguageName",
+        "LanguageID",
+        "LanguageCodePage",
+        "CommunityLink",
+    ]
+    for item in lang_info_items:
+        if line.startswith(item):
+            return False
+    return True
+
+
 def encode_trans_str():
+    """
+    Replaces each existing translation in the ISL file with one in the PO file
+    """
 
-    language_name = raw_input("Enter LanguageName: ")
-    language_id = raw_input("Enter LanguageID: ")
-    language_code_page = raw_input("Enter LanguageCodePage: ")
-
-    script_path = os.path.dirname(os.path.realpath(__file__))
-    new_isl_file = "%s/%s" % (script_path, language_name + ".isl")
-
-    # REF: https://stackoverflow.com/a/42541913
-    shutil.copy(ARG_ISL_FILE_PATH, new_isl_file)
-    file = open(new_isl_file, "w")
-    file.write("")
-    file.close()
-
-    new_isl_file = io.open(new_isl_file, mode="w", encoding="utf-8")
-    old_isl_file = open(ARG_ISL_FILE_PATH)
     po = polib.pofile(ARG_PO_FILE_PATH)
-    for isl_line in old_isl_file:
-        if "=" in isl_line:
-            split_one = isl_line.split("=")[0].rstrip()
-            split_two = isl_line.split("=")[1].rstrip()
+    new_lines = []
 
-            line_language_name = "%s=%s \n" % (split_one, language_name)
-            line_language_id = "%s=%s \n" % (split_one, language_id)
-            line_language_code_page = "%s=%s \n" % (split_one, language_code_page)
-
-            if split_one == "LanguageName":
-                new_isl_file.write(line_language_name)
-            elif split_one == "LanguageID":
-                new_isl_file.write(line_language_id)
-            elif split_one == "LanguageCodePage":
-                new_isl_file.write(line_language_code_page)
-            else:
+    with io.open(ARG_ISL_FILE_PATH, mode="r", encoding="utf-8") as isl_file:
+        for isl_line in isl_file:
+            if is_translation(isl_line):
+                split = isl_line.split("=")
+                key = split[0].rstrip()
+                string = split[1].rstrip()
                 in_po = False
                 for entry in po:
-                    if split_two == entry.msgid:
-                        f_line = "%s=%s \n" % (split_one, entry.msgstr)
-                        new_isl_file.write(f_line)
+                    if string == entry.msgid:
+                        new_lines.append("{}={}".format(key, entry.msgstr))
                         in_po = True
+                        continue
                 if not in_po:
-                    new_isl_file.write(isl_line)
+                    new_lines.append(isl_line)
                 in_po = False
-        else:
-            print("1", isl_line)
-            output = isl_line
-            print("2", output)
-            new_isl_file.write(output)
+            else:
+                new_lines.append(isl_line)
+    with io.open(ARG_ISL_FILE_PATH, mode="w", encoding="utf-8") as output:
+        for line in new_lines:
+            output.write(line)
 
 
 def main():
