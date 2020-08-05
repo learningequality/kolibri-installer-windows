@@ -17,6 +17,7 @@
         LanguageCodePage=0
 """
 
+import io
 import os
 import shutil
 import sys
@@ -60,10 +61,10 @@ def encode_trans_str():
     file.write("")
     file.close()
 
-    open_new_isl_file = open(new_isl_file, "w")
-    isl_file_path_open = open(ARG_ISL_FILE_PATH)
+    new_isl_file = io.open(new_isl_file, mode="w", encoding="utf-8")
+    old_isl_file = open(ARG_ISL_FILE_PATH)
     po = polib.pofile(ARG_PO_FILE_PATH)
-    for isl_line in isl_file_path_open:
+    for isl_line in old_isl_file:
         if "=" in isl_line:
             split_one = isl_line.split("=")[0].rstrip()
             split_two = isl_line.split("=")[1].rstrip()
@@ -73,23 +74,26 @@ def encode_trans_str():
             line_language_code_page = "%s=%s \n" % (split_one, language_code_page)
 
             if split_one == "LanguageName":
-                open_new_isl_file.write(line_language_name.encode("utf8"))
+                new_isl_file.write(line_language_name)
             elif split_one == "LanguageID":
-                open_new_isl_file.write(line_language_id.encode("utf8"))
+                new_isl_file.write(line_language_id)
             elif split_one == "LanguageCodePage":
-                open_new_isl_file.write(line_language_code_page.encode("utf8"))
+                new_isl_file.write(line_language_code_page)
             else:
                 in_po = False
                 for entry in po:
                     if split_two == entry.msgid:
                         f_line = "%s=%s \n" % (split_one, entry.msgstr)
-                        open_new_isl_file.write(f_line.encode("utf8"))
+                        new_isl_file.write(f_line)
                         in_po = True
                 if not in_po:
-                    open_new_isl_file.write(isl_line.encode("utf8"))
+                    new_isl_file.write(isl_line)
                 in_po = False
         else:
-            open_new_isl_file.write(isl_line.encode("utf8"))
+            print("1", isl_line)
+            output = isl_line
+            print("2", output)
+            new_isl_file.write(output)
 
 
 def main():
