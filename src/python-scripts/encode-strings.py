@@ -64,7 +64,7 @@ def encode_trans_str():
     isl_file_path_open = open(ARG_ISL_FILE_PATH)
     po = polib.pofile(ARG_PO_FILE_PATH)
     for isl_line in isl_file_path_open:
-        try:
+        if "=" in isl_line:
             split_one = isl_line.split("=")[0].rstrip()
             split_two = isl_line.split("=")[1].rstrip()
 
@@ -88,7 +88,7 @@ def encode_trans_str():
                 if not in_po:
                     open_new_isl_file.write(isl_line.encode("utf8"))
                 in_po = False
-        except Exception:
+        else:
             open_new_isl_file.write(isl_line.encode("utf8"))
 
 
