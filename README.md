@@ -8,7 +8,7 @@ _**ATTENTION: this readme needs some updates. See [issue #169](https://github.co
 
 ## Steps for making Windows installer releases
 
-These are the steps how to do releases for the Kolibri Windows installer.  Note that this involves the [kolibri](https://github.com/learningequality/kolibri) repo.  
+These are the steps how to do releases for the Kolibri Windows installer.  Note that this involves the [kolibri](https://github.com/learningequality/kolibri) repo.
 
 We are releasing `v1.3.1` as an example here.
 
@@ -60,7 +60,7 @@ See https://github.com/learningequality/kolibri-installer-windows/releases
 1. Click on the `Build` menu and then choose the `Build Solution` option.
 1. Copy the resulting `Kolibri.exe` from its output location to `gui-packed/Kolibri.exe`
 
-Notes: 
+Notes:
 
 1. If you have made no changes to `gui-source`, you don't have to build `Kolibri.exe`, just use the version in this repo.
 1. If you *do* make changes to anything in `gui-source`, be sure to build and commit `Kolibri.exe`.
@@ -98,14 +98,14 @@ Note: Building is not supported/recommended in Windows 7. However, builds have b
 ---
 #### Instructions to extract and encode translatable strings from Inno setup .isl file:
 1. To extract the translable strings from the Inno setup `.isl` file into `.po` file:
-    - At the `/python-scripts` directory run the `extract-isl-strings.py` 
+    - At the `/python-scripts` directory run the `extract-isl-strings.py`
     - A sample command to run the script `python extract-isl-string.py /xxx/xxx.isl`
     - The agument `.isl` file can be found at this path `inno-compiler/Default.isl`
     - It will create a `/kolibri-installer.po` at this path `/python-scripts`.
 
 1. To encode translated strings from `.po` into Inno setup `.isl` file.
     - At the `/python-scripts` directory run the `encode-strings.py`
-    - A sample command to run the script `python2.7 ./extract-isl-string.py  /xxx/xxx.isl /xxxx/kolibri-installer.po`
+    - A sample command to run the script `python2.7 ./encode-strings.py  /xxx/xxx.isl /xxxx/kolibri-installer.po`
     - After the script ran it will ask for the language name, [language id](https://msdn.microsoft.com/en-us/library/dd318693.aspx) and [language code page](https://msdn.microsoft.com/en-us/library/cc195052.aspx).
     - The output filename will be the specified language name.
 
