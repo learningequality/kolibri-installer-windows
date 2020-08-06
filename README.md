@@ -104,10 +104,8 @@ Note: Building is not supported/recommended in Windows 7. However, builds have b
     - It will create a `/kolibri-installer.po` at this path `/python-scripts`.
 
 1. To encode translated strings from `.po` into Inno setup `.isl` file.
-    - At the `/python-scripts` directory run the `encode-strings.py`
-    - A sample command to run the script `python2.7 ./encode-strings.py  /xxx/xxx.isl /xxxx/kolibri-installer.po`
-    - After the script ran it will ask for the language name, [language id](https://msdn.microsoft.com/en-us/library/dd318693.aspx) and [language code page](https://msdn.microsoft.com/en-us/library/cc195052.aspx).
-    - The output filename will be the specified language name.
+    - At the `/python-scripts` directory run the `run-encode-isl-script.sh` script
+    - It will download the latest translation build from the [Crowdin](https://crowdin.com/project/kolibri-windows-app) and automatically convert it into isl files at `/python-scritps/innosetup-translation` directory
 
 ---
 #### To clone Kolibri and this repository, run the following lines:

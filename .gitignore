@@ -75,3 +75,8 @@ docs/modules.rst
 
 # node modules
 node_modules
+
+# Folders
+env
+innosetup-translation
+crowdin-translation
