@@ -1,0 +1,303 @@
+msgid "" 
+msgstr "" 
+"Project-Id-Version: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: BrazilianPortuguese.isl.isl 14 
+msgid "English" 
+msgstr "Português Brasileiro" 
+
+#: BrazilianPortuguese.isl.isl 31 
+msgid "Setup" 
+msgstr "Instalador" 
+
+#: BrazilianPortuguese.isl.isl 32 
+msgid "Setup - %1" 
+msgstr "%1 - Instalador" 
+
+#: BrazilianPortuguese.isl.isl 33 
+msgid "Uninstall" 
+msgstr "Desinstalar" 
+
+#: BrazilianPortuguese.isl.isl 34 
+msgid "%1 Uninstall" 
+msgstr "Desinstalar %1" 
+
+#: BrazilianPortuguese.isl.isl 37 
+msgid "Information" 
+msgstr "Informação" 
+
+#: BrazilianPortuguese.isl.isl 38 
+msgid "Confirm" 
+msgstr "Confirmar" 
+
+#: BrazilianPortuguese.isl.isl 39 
+msgid "Error" 
+msgstr "Erro" 
+
+#: BrazilianPortuguese.isl.isl 42 
+msgid "This will install %1. Do you wish to continue?" 
+msgstr "Isto instalará o %1. Você deseja continuar?" 
+
+#: BrazilianPortuguese.isl.isl 53 
+msgid "Setup is already running." 
+msgstr "O instalador já está em execução." 
+
+#: BrazilianPortuguese.isl.isl 54 
+msgid "This program does not support the version of Windows your computer is running." 
+msgstr "Este programa não suporta a versão do Windows que seu computador está executando." 
+
+#: BrazilianPortuguese.isl.isl 82 
+msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
+msgstr "A Instalação não está completa. Se você sair agora o programa não será instalado.%n%nVocê pode executar o instalador de novo outra hora pra completar a instalação.%n%nSair do Instalador?" 
+
+#: BrazilianPortuguese.isl.isl 90 
+msgid "< &Back" 
+msgstr "< &Voltar" 
+
+#: BrazilianPortuguese.isl.isl 91 
+msgid "&Next >" 
+msgstr "&Próximo >" 
+
+#: BrazilianPortuguese.isl.isl 92 
+msgid "&Install" 
+msgstr "&Instalar" 
+
+#: BrazilianPortuguese.isl.isl 93 
+msgid "OK" 
+msgstr "OK" 
+
+#: BrazilianPortuguese.isl.isl 94 
+msgid "Cancel" 
+msgstr "Cancelar" 
+
+#: BrazilianPortuguese.isl.isl 95 
+msgid "&Yes" 
+msgstr "&Sim" 
+
+#: BrazilianPortuguese.isl.isl 96 
+msgid "Yes to &All" 
+msgstr "Sim pra &Todos" 
+
+#: BrazilianPortuguese.isl.isl 97 
+msgid "&No" 
+msgstr "&Não" 
+
+#: BrazilianPortuguese.isl.isl 98 
+msgid "N&o to All" 
+msgstr "Nã&o pra Todos" 
+
+#: BrazilianPortuguese.isl.isl 99 
+msgid "&Finish" 
+msgstr "&Concluir" 
+
+#: BrazilianPortuguese.isl.isl 100 
+msgid "&Browse..." 
+msgstr "&Procurar..." 
+
+#: BrazilianPortuguese.isl.isl 101 
+msgid "B&rowse..." 
+msgstr "P&rocurar..." 
+
+#: BrazilianPortuguese.isl.isl 102 
+msgid "&Make New Folder" 
+msgstr "&Criar Nova Pasta" 
+
+#: BrazilianPortuguese.isl.isl 105 
+msgid "Select Setup Language" 
+msgstr "Selecione o Idioma do Instalador" 
+
+#: BrazilianPortuguese.isl.isl 106 
+msgid "Select the language to use during the installation." 
+msgstr "Selecione o idioma pra usar durante a instalação:" 
+
+#: BrazilianPortuguese.isl.isl 109 
+msgid "Click Next to continue, or Cancel to exit Setup." 
+msgstr "Clique em Próximo pra continuar ou em Cancelar pra sair do Instalador." 
+
+#: BrazilianPortuguese.isl.isl 111 
+msgid "Browse For Folder" 
+msgstr "Procurar Pasta" 
+
+#: BrazilianPortuguese.isl.isl 112 
+msgid "Select a folder in the list below, then click OK." 
+msgstr "Selecione uma pasta na lista abaixo, então clique em OK." 
+
+#: BrazilianPortuguese.isl.isl 113 
+msgid "New Folder" 
+msgstr "Nova Pasta" 
+
+#: BrazilianPortuguese.isl.isl 116 
+msgid "Welcome to the [name] Setup Wizard" 
+msgstr "Bem-vindo ao Assistente do Instalador do [name]" 
+
+#: BrazilianPortuguese.isl.isl 117 
+msgid "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing." 
+msgstr "Isto instalará o [name/ver] no seu computador.%n%nÉ recomendado que você feche todos os outros aplicativos antes de continuar." 
+
+#: BrazilianPortuguese.isl.isl 134 
+msgid "Information" 
+msgstr "Informação" 
+
+#: BrazilianPortuguese.isl.isl 137 
+msgid "Information" 
+msgstr "Informação" 
+
+#: BrazilianPortuguese.isl.isl 150 
+msgid "Select Destination Location" 
+msgstr "Selecione o Local de Destino" 
+
+#: BrazilianPortuguese.isl.isl 151 
+msgid "Where should [name] be installed?" 
+msgstr "Aonde o [name] deve ser instalado?" 
+
+#: BrazilianPortuguese.isl.isl 152 
+msgid "Setup will install [name] into the following folder." 
+msgstr "O Instalador instalará o [name] na seguinte pasta." 
+
+#: BrazilianPortuguese.isl.isl 153 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Pra continuar clique em Próximo. Se você gostaria de selecionar uma pasta diferente, clique em Procurar." 
+
+#: BrazilianPortuguese.isl.isl 154 
+msgid "At least [mb] MB of free disk space is required." 
+msgstr "Pelo menos [mb] MBs de espaço livre em disco são requeridos." 
+
+#: BrazilianPortuguese.isl.isl 159 
+msgid "Not Enough Disk Space" 
+msgstr "Sem Espaço em Disco o Bastante" 
+
+#: BrazilianPortuguese.isl.isl 189 
+msgid "Select Start Menu Folder" 
+msgstr "Selecionar a Pasta do Menu Iniciar" 
+
+#: BrazilianPortuguese.isl.isl 190 
+msgid "Where should Setup place the program's shortcuts?" 
+msgstr "Aonde o Instalador deve colocar os atalhos do programa?" 
+
+#: BrazilianPortuguese.isl.isl 191 
+msgid "Setup will create the program's shortcuts in the following Start Menu folder." 
+msgstr "O Instalador criará os atalhos do programa na seguinte pasta do Menu Iniciar." 
+
+#: BrazilianPortuguese.isl.isl 192 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Pra continuar clique em Próximo. Se você gostaria de selecionar uma pasta diferente, clique em Procurar." 
+
+#: BrazilianPortuguese.isl.isl 193 
+msgid "You must enter a folder name." 
+msgstr "Você deve inserir um nome de pasta." 
+
+#: BrazilianPortuguese.isl.isl 196 
+msgid "The folder name cannot include any of the following characters:%n%n%1" 
+msgstr "O nome da pasta não pode incluir quaisquer dos seguintes caracteres:%n%n%1" 
+
+#: BrazilianPortuguese.isl.isl 200 
+msgid "Ready to Install" 
+msgstr "Pronto pra Instalar" 
+
+#: BrazilianPortuguese.isl.isl 201 
+msgid "Setup is now ready to begin installing [name] on your computer." 
+msgstr "O Instalador está agora pronto pra começar a instalar o [name] no seu computador." 
+
+#: BrazilianPortuguese.isl.isl 202 
+msgid "Click Install to continue with the installation, or click Back if you want to review or change any settings." 
+msgstr "Clique em Instalar pra continuar com a instalação ou clique em Voltar se você quer revisar ou mudar quaisquer configurações." 
+
+#: BrazilianPortuguese.isl.isl 203 
+msgid "Click Install to continue with the installation." 
+msgstr "Clique em Instalar pra continuar com a instalação." 
+
+#: BrazilianPortuguese.isl.isl 205 
+msgid "Destination location:" 
+msgstr "Local de destino:" 
+
+#: BrazilianPortuguese.isl.isl 208 
+msgid "Start Menu folder:" 
+msgstr "Pasta do Menu Iniciar:" 
+
+#: BrazilianPortuguese.isl.isl 212 
+msgid "Preparing to Install" 
+msgstr "Preparando pra Instalar" 
+
+#: BrazilianPortuguese.isl.isl 213 
+msgid "Setup is preparing to install [name] on your computer." 
+msgstr "O Instalador está se preparando pra instalar o [name] no seu computador." 
+
+#: BrazilianPortuguese.isl.isl 215 
+msgid "Setup cannot continue. Please click Cancel to exit." 
+msgstr "O Instalador não pode continuar. Por favor clique em Cancelar pra sair." 
+
+#: BrazilianPortuguese.isl.isl 223 
+msgid "Installing" 
+msgstr "Instalando" 
+
+#: BrazilianPortuguese.isl.isl 224 
+msgid "Please wait while Setup installs [name] on your computer." 
+msgstr "Por favor espere enquanto o Instalador instala o [name] no seu computador." 
+
+#: BrazilianPortuguese.isl.isl 227 
+msgid "Completing the [name] Setup Wizard" 
+msgstr "Completando o Assistente do Instalador do [name]" 
+
+#: BrazilianPortuguese.isl.isl 228 
+msgid "Setup has finished installing [name] on your computer." 
+msgstr "O Instalador terminou de instalar o [name] no seu computador." 
+
+#: BrazilianPortuguese.isl.isl 229 
+msgid "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts." 
+msgstr "O Instalador terminou de instalar o [name] no seu computador. O aplicativo pode ser iniciado selecionando os atalhos instalados." 
+
+#: BrazilianPortuguese.isl.isl 230 
+msgid "Click Finish to exit Setup." 
+msgstr "Clique em Concluir pra sair do Instalador." 
+
+#: BrazilianPortuguese.isl.isl 253 
+msgid "Cancel installation" 
+msgstr "Cancelar instalação" 
+
+#: BrazilianPortuguese.isl.isl 258 
+msgid "Extracting files..." 
+msgstr "Extraindo arquivos..." 
+
+#: BrazilianPortuguese.isl.isl 264 
+msgid "Finishing installation..." 
+msgstr "Concluindo a instalação..." 
+
+#: BrazilianPortuguese.isl.isl 324 
+msgid "Are you sure you want to completely remove %1 and all of its components?" 
+msgstr "Você tem certeza que você quer remover completamente o %1 e todos os seus componentes?" 
+
+#: BrazilianPortuguese.isl.isl 327 
+msgid "Please wait while %1 is removed from your computer." 
+msgstr "Por favor espere enquanto o %1 é removido do seu computador." 
+
+#: BrazilianPortuguese.isl.isl 328 
+msgid "%1 was successfully removed from your computer." 
+msgstr "O %1 foi removido com sucesso do seu computador." 
+
+#: BrazilianPortuguese.isl.isl 329 
+msgid "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually." 
+msgstr "Desinstalação do %1 completa.%n%nAlguns elementos não puderam ser removidos. Estes podem ser removidos manualmente." 
+
+#: BrazilianPortuguese.isl.isl 352 
+msgid "Create a &desktop shortcut" 
+msgstr "Criar um atalho &na área de trabalho" 
+
+#: BrazilianPortuguese.isl.isl 354 
+msgid "%1 on the Web" 
+msgstr "%1 na Web" 
+
+#: BrazilianPortuguese.isl.isl 355 
+msgid "Uninstall %1" 
+msgstr "Desinstalar o %1" 
+
+#: BrazilianPortuguese.isl.isl 356 
+msgid "Launch %1" 
+msgstr "Iniciar o %1" 
+

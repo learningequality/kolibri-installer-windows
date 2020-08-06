@@ -1,0 +1,290 @@
+msgid "" 
+msgstr "" 
+"Project-Id-Version: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Default.isl:14 
+msgid "English" 
+msgstr "" 
+
+#: Default.isl:31 
+msgid "Setup" 
+msgstr "" 
+
+#: Default.isl:32 
+msgid "Setup - %1" 
+msgstr "" 
+
+#: Default.isl:33 
+msgid "Uninstall" 
+msgstr "" 
+
+#: Default.isl:34 
+msgid "%1 Uninstall" 
+msgstr "" 
+
+#: Default.isl:37 
+msgid "Information" 
+msgstr "" 
+
+#: Default.isl:38 
+msgid "Confirm" 
+msgstr "" 
+
+#: Default.isl:39 
+msgid "Error" 
+msgstr "" 
+
+#: Default.isl:42 
+msgid "This will install %1. Do you wish to continue?" 
+msgstr "" 
+
+#: Default.isl:53 
+msgid "Setup is already running." 
+msgstr "" 
+
+#: Default.isl:54 
+msgid "This program does not support the version of Windows your computer is running." 
+msgstr "" 
+
+#: Default.isl:81 
+msgid "Exit Setup" 
+msgstr "" 
+
+#: Default.isl:82 
+msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
+msgstr "" 
+
+#: Default.isl:90 
+msgid "< &Back" 
+msgstr "" 
+
+#: Default.isl:91 
+msgid "&Next >" 
+msgstr "" 
+
+#: Default.isl:92 
+msgid "&Install" 
+msgstr "" 
+
+#: Default.isl:93 
+msgid "OK" 
+msgstr "" 
+
+#: Default.isl:94 
+msgid "Cancel" 
+msgstr "" 
+
+#: Default.isl:95 
+msgid "&Yes" 
+msgstr "" 
+
+#: Default.isl:96 
+msgid "Yes to &All" 
+msgstr "" 
+
+#: Default.isl:97 
+msgid "&No" 
+msgstr "" 
+
+#: Default.isl:98 
+msgid "N&o to All" 
+msgstr "" 
+
+#: Default.isl:99 
+msgid "&Finish" 
+msgstr "" 
+
+#: Default.isl:100 
+msgid "&Browse..." 
+msgstr "" 
+
+#: Default.isl:101 
+msgid "B&rowse..." 
+msgstr "" 
+
+#: Default.isl:102 
+msgid "&Make New Folder" 
+msgstr "" 
+
+#: Default.isl:105 
+msgid "Select Setup Language" 
+msgstr "" 
+
+#: Default.isl:106 
+msgid "Select the language to use during the installation." 
+msgstr "" 
+
+#: Default.isl:109 
+msgid "Click Next to continue, or Cancel to exit Setup." 
+msgstr "" 
+
+#: Default.isl:111 
+msgid "Browse For Folder" 
+msgstr "" 
+
+#: Default.isl:112 
+msgid "Select a folder in the list below, then click OK." 
+msgstr "" 
+
+#: Default.isl:113 
+msgid "New Folder" 
+msgstr "" 
+
+#: Default.isl:116 
+msgid "Welcome to the [name] Setup Wizard" 
+msgstr "" 
+
+#: Default.isl:117 
+msgid "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing." 
+msgstr "" 
+
+#: Default.isl:150 
+msgid "Select Destination Location" 
+msgstr "" 
+
+#: Default.isl:151 
+msgid "Where should [name] be installed?" 
+msgstr "" 
+
+#: Default.isl:152 
+msgid "Setup will install [name] into the following folder." 
+msgstr "" 
+
+#: Default.isl:153 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "" 
+
+#: Default.isl:154 
+msgid "At least [mb] MB of free disk space is required." 
+msgstr "" 
+
+#: Default.isl:159 
+msgid "Not Enough Disk Space" 
+msgstr "" 
+
+#: Default.isl:189 
+msgid "Select Start Menu Folder" 
+msgstr "" 
+
+#: Default.isl:190 
+msgid "Where should Setup place the program's shortcuts?" 
+msgstr "" 
+
+#: Default.isl:191 
+msgid "Setup will create the program's shortcuts in the following Start Menu folder." 
+msgstr "" 
+
+#: Default.isl:193 
+msgid "You must enter a folder name." 
+msgstr "" 
+
+#: Default.isl:196 
+msgid "The folder name cannot include any of the following characters:%n%n%1" 
+msgstr "" 
+
+#: Default.isl:200 
+msgid "Ready to Install" 
+msgstr "" 
+
+#: Default.isl:201 
+msgid "Setup is now ready to begin installing [name] on your computer." 
+msgstr "" 
+
+#: Default.isl:202 
+msgid "Click Install to continue with the installation, or click Back if you want to review or change any settings." 
+msgstr "" 
+
+#: Default.isl:203 
+msgid "Click Install to continue with the installation." 
+msgstr "" 
+
+#: Default.isl:205 
+msgid "Destination location:" 
+msgstr "" 
+
+#: Default.isl:208 
+msgid "Start Menu folder:" 
+msgstr "" 
+
+#: Default.isl:212 
+msgid "Preparing to Install" 
+msgstr "" 
+
+#: Default.isl:213 
+msgid "Setup is preparing to install [name] on your computer." 
+msgstr "" 
+
+#: Default.isl:215 
+msgid "Setup cannot continue. Please click Cancel to exit." 
+msgstr "" 
+
+#: Default.isl:223 
+msgid "Installing" 
+msgstr "" 
+
+#: Default.isl:224 
+msgid "Please wait while Setup installs [name] on your computer." 
+msgstr "" 
+
+#: Default.isl:227 
+msgid "Completing the [name] Setup Wizard" 
+msgstr "" 
+
+#: Default.isl:228 
+msgid "Setup has finished installing [name] on your computer." 
+msgstr "" 
+
+#: Default.isl:229 
+msgid "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts." 
+msgstr "" 
+
+#: Default.isl:230 
+msgid "Click Finish to exit Setup." 
+msgstr "" 
+
+#: Default.isl:253 
+msgid "Cancel installation" 
+msgstr "" 
+
+#: Default.isl:258 
+msgid "Extracting files..." 
+msgstr "" 
+
+#: Default.isl:264 
+msgid "Finishing installation..." 
+msgstr "" 
+
+#: Default.isl:327 
+msgid "Please wait while %1 is removed from your computer." 
+msgstr "" 
+
+#: Default.isl:328 
+msgid "%1 was successfully removed from your computer." 
+msgstr "" 
+
+#: Default.isl:329 
+msgid "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually." 
+msgstr "" 
+
+#: Default.isl:352 
+msgid "Create a &desktop shortcut" 
+msgstr "" 
+
+#: Default.isl:354 
+msgid "%1 on the Web" 
+msgstr "" 
+
+#: Default.isl:355 
+msgid "Uninstall %1" 
+msgstr "" 
+
+#: Default.isl:356 
+msgid "Launch %1" 
+msgstr "" 

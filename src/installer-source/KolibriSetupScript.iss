@@ -27,25 +27,43 @@ UsePreviousAppDir=yes
 ChangesEnvironment=yes
 SetupLogging=yes
 UsedUserAreasWarning=no
+ShowLanguageDialog=yes
 
 [Languages]
 Name: "en"; MessagesFile: "compiler:Default.isl"
-Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl"
-Name: "fr"; MessagesFile: "compiler:Languages\French.isl"
-Name: "de"; MessagesFile: "compiler:Languages\German.isl"
-Name: "el"; MessagesFile: "compiler:Languages\Greek.isl"
-Name: "ne"; MessagesFile: "compiler:Languages\Nepali.isl"
-Name: "pt_BR"; MessagesFile: "compiler:Languages\Portuguese.isl"
-Name: "vi"; MessagesFile: "compiler:Languages\Vietnamese.isl"
-Name: "mr"; MessagesFile: "compiler:Languages\Marathi.islu"
-Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl"
-Name: "hi"; MessagesFile: "compiler:Languages\Hindi.islu"
-Name: "bg"; MessagesFile: "compiler:Languages\Bulgarian.isl"
-Name: "bn"; MessagesFile: "compiler:Languages\Bengali.islu"
+Name: "vi"; MessagesFile: "compiler:Languages\Vietnamese.isl" 
+Name: "sw_TZ"; MessagesFile: "compiler:Languages\Swahili_Tanzania.isl" 
+Name: "km"; MessagesFile: "compiler:Languages\Khmer.isl" 
+Name: "es_ES"; MessagesFile: "compiler:Languages\Spanish.isl" 
+Name: "mr"; MessagesFile: "compiler:Languages\Marathi.isl" 
+Name: "fv"; MessagesFile: "compiler:Languages\Fulfulde_Mbororoore.isl" 
+Name: "it"; MessagesFile: "compiler:Languages\Italian.isl" 
+Name: "te"; MessagesFile: "compiler:Languages\Telugu.isl" 
+Name: "tl"; MessagesFile: "compiler:Languages\Tagalog.isl" 
+Name: "gu_IN"; MessagesFile: "compiler:Languages\Gujarati.isl" 
+Name: "yo"; MessagesFile: "compiler:Languages\Yoruba.isl" 
+Name: "zh_CN"; MessagesFile: "compiler:Languages\Chinese_Simplified.isl" 
+Name: "my"; MessagesFile: "compiler:Languages\Burmese.isl" 
+Name: "ar"; MessagesFile: "compiler:Languages\Arabic.isl" 
+Name: "pt_BR"; MessagesFile: "compiler:Languages\Portuguese_Brazilian.isl" 
+Name: "bg"; MessagesFile: "compiler:Languages\Bulgarian.isl" 
+Name: "bn"; MessagesFile: "compiler:Languages\Bengali.isl" 
+Name: "hi"; MessagesFile: "compiler:Languages\Hindi.isl" 
+Name: "ka"; MessagesFile: "compiler:Languages\Georgian.isl" 
+Name: "de"; MessagesFile: "compiler:Languages\German.isl" 
+Name: "ny"; MessagesFile: "compiler:Languages\Chewa.isl" 
+Name: "ko"; MessagesFile: "compiler:Languages\Korean.isl" 
+Name: "fr"; MessagesFile: "compiler:Languages\French.isl" 
+Name: "fa"; MessagesFile: "compiler:Languages\Persian.isl" 
+Name: "la"; MessagesFile: "compiler:Languages\Spanish_Latin_America.isl" 
+Name: "ne_NP"; MessagesFile: "compiler:Languages\Nepali.isl" 
+Name: "ur_PK"; MessagesFile: "compiler:Languages\Urdu_(Pakistan).isl" 
+Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
+
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python34\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python36\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -445,7 +463,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PIP_PATH = '\Python34\Scripts\pip.exe';
+    DEFAULT_PIP_PATH = '\Python36\Scripts\pip.exe';
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
@@ -461,8 +479,8 @@ begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         try
-            ExtractTemporaryFile('python-3.4.3.amd64.msi');
-            ExtractTemporaryFile('python-3.4.3.msi');
+            ExtractTemporaryFile('python-3.6.8-amd64.exe');
+            ExtractTemporaryFile('python-3.6.8.exe');
             ExtractTemporaryFile('python-exe.bat');
             ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
@@ -539,10 +557,32 @@ begin
     result := ExtractFileDir(GetPipPath());
 end;
 
+{REF: https://stackoverflow.com/questions/3304463/how-do-i-modify-the-path-environment-variable-when-running-an-inno-setup-install}
+function EnvAddPath(param: string): boolean;
+var
+  Paths: string;
+begin
+  { Retrieve current path (use empty string if entry not exists) }
+    if not RegQueryStringValue(HKEY_LOCAL_MACHINE, 'System\CurrentControlSet\Control\Session Manager\Environment', 'Path', Paths)
+    then Paths := '';
+
+    { Skip if string already found in path }
+    if Pos(';' + Uppercase(param) + ';', ';' + Uppercase(Paths) + ';') > 0 then exit;
+
+    { App string to the end of the path variable }
+    Paths := '%KOLIBRI_SCRIPT_DIR%' + ';' + Paths + ';'
+
+    { Overwrite (or create if missing) path environment variable }
+    if RegWriteStringValue(HKEY_LOCAL_MACHINE, 'System\CurrentControlSet\Control\Session Manager\Environment', 'Path', Paths)
+    then Log(Format('The [%s] added to PATH: [%s]', [param, Paths]))
+    else Log(Format('Error while adding the [%s] to PATH: [%s]', [param, Paths]));
+end;
+
 procedure HandlePipSetup;
 var
     PipCommand: string;
     PipPath: string;
+    PipDir: string;
     ErrorCode: integer;
     TempFilePath: string;
     SetEnvCmd: string;
@@ -585,22 +625,26 @@ begin
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SCRIPT_DIR'
         )
-
+        PipDir := GetPipDir('')
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-        { Should by in the same directory as pip.exe, e.g. 'C:\Python33\Scripts' }
+        { Should by in the same directory as pip.exe, e.g. 'C:\Python36\Scripts' }
         RegWriteStringValue(
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SCRIPT_DIR',
-            GetPipDir('')
+            PipDir
         );
         RegDeleteValue(
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_SETUP'
         )
-        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)   
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SETUP"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+        {Set kolibri command to Path}
+        
+        EnvAddPath(PipDir) 
+
 end;
 
 function InitializeSetup(): Boolean;
@@ -620,7 +664,7 @@ begin
    
     PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
 
-    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 4, 0,) and sys.version_info < (3, 4, 7,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 6, 0,) and sys.version_info < (3, 6, 9,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         if PythonVersionCodeCheck = 1 then
         begin

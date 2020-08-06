@@ -1,0 +1,303 @@
+msgid "" 
+msgstr "" 
+"Project-Id-Version: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: Italian.isl 21 
+msgid "English" 
+msgstr "Italiano" 
+
+#: Italian.isl 38 
+msgid "Setup" 
+msgstr "Installazione" 
+
+#: Italian.isl 39 
+msgid "Setup - %1" 
+msgstr "Installazione di %1" 
+
+#: Italian.isl 40 
+msgid "Uninstall" 
+msgstr "Disinstallazione" 
+
+#: Italian.isl 41 
+msgid "%1 Uninstall" 
+msgstr "Disinstallazione di %1" 
+
+#: Italian.isl 44 
+msgid "Information" 
+msgstr "Informazioni" 
+
+#: Italian.isl 45 
+msgid "Confirm" 
+msgstr "Conferma" 
+
+#: Italian.isl 46 
+msgid "Error" 
+msgstr "Errore" 
+
+#: Italian.isl 49 
+msgid "This will install %1. Do you wish to continue?" 
+msgstr "Questa è l'installazione di %1.%n%nVuoi continuare?" 
+
+#: Italian.isl 59 
+msgid "Setup is already running." 
+msgstr "Il processo di installazione è già in funzione." 
+
+#: Italian.isl 60 
+msgid "This program does not support the version of Windows your computer is running." 
+msgstr "Questo programma non supporta la versione di Windows installata nel computer." 
+
+#: Italian.isl 88 
+msgid "Setup is not complete. If you exit now, the program will not be installed.%n%nYou may run Setup again at another time to complete the installation.%n%nExit Setup?" 
+msgstr "L'installazione non è completa.%n%nUscendo dall'installazione in questo momento, il programma non sarà installato.%n%nÈ possibile eseguire l'installazione in un secondo tempo.%n%nVuoi uscire dall'installazione?" 
+
+#: Italian.isl 96 
+msgid "< &Back" 
+msgstr "< &Indietro" 
+
+#: Italian.isl 97 
+msgid "&Next >" 
+msgstr "&Avanti >" 
+
+#: Italian.isl 98 
+msgid "&Install" 
+msgstr "Inst&alla" 
+
+#: Italian.isl 99 
+msgid "OK" 
+msgstr "OK" 
+
+#: Italian.isl 100 
+msgid "Cancel" 
+msgstr "Annulla" 
+
+#: Italian.isl 101 
+msgid "&Yes" 
+msgstr "&Si" 
+
+#: Italian.isl 102 
+msgid "Yes to &All" 
+msgstr "Sì a &tutto" 
+
+#: Italian.isl 103 
+msgid "&No" 
+msgstr "&No" 
+
+#: Italian.isl 104 
+msgid "N&o to All" 
+msgstr "N&o a tutto" 
+
+#: Italian.isl 105 
+msgid "&Finish" 
+msgstr "&Fine" 
+
+#: Italian.isl 106 
+msgid "&Browse..." 
+msgstr "&Sfoglia..." 
+
+#: Italian.isl 107 
+msgid "B&rowse..." 
+msgstr "S&foglia..." 
+
+#: Italian.isl 108 
+msgid "&Make New Folder" 
+msgstr "&Crea nuova cartella" 
+
+#: Italian.isl 111 
+msgid "Select Setup Language" 
+msgstr "Seleziona la lingua dell'installazione" 
+
+#: Italian.isl 112 
+msgid "Select the language to use during the installation." 
+msgstr "Seleziona la lingua da usare durante l'installazione." 
+
+#: Italian.isl 115 
+msgid "Click Next to continue, or Cancel to exit Setup." 
+msgstr "Seleziona "Avanti" per continuare, o "Annulla" per uscire." 
+
+#: Italian.isl 117 
+msgid "Browse For Folder" 
+msgstr "Sfoglia cartelle" 
+
+#: Italian.isl 118 
+msgid "Select a folder in the list below, then click OK." 
+msgstr "Seleziona una cartella nell'elenco, e quindi seleziona "OK"." 
+
+#: Italian.isl 119 
+msgid "New Folder" 
+msgstr "Nuova cartella" 
+
+#: Italian.isl 122 
+msgid "Welcome to the [name] Setup Wizard" 
+msgstr "Installazione di [name]" 
+
+#: Italian.isl 123 
+msgid "This will install [name/ver] on your computer.%n%nIt is recommended that you close all other applications before continuing." 
+msgstr "[name/ver] sarà installato sul computer.%n%nPrima di procedere chiudi tutte le applicazioni attive." 
+
+#: Italian.isl 140 
+msgid "Information" 
+msgstr "Informazioni" 
+
+#: Italian.isl 143 
+msgid "Information" 
+msgstr "Informazioni" 
+
+#: Italian.isl 156 
+msgid "Select Destination Location" 
+msgstr "Selezione cartella di installazione" 
+
+#: Italian.isl 157 
+msgid "Where should [name] be installed?" 
+msgstr "Dove vuoi installare [name]?" 
+
+#: Italian.isl 158 
+msgid "Setup will install [name] into the following folder." 
+msgstr "[name] sarà installato nella seguente cartella." 
+
+#: Italian.isl 159 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Per continuare seleziona "Avanti".%nPer scegliere un'altra cartella seleziona "Sfoglia"." 
+
+#: Italian.isl 161 
+msgid "At least [mb] MB of free disk space is required." 
+msgstr "Sono richiesti almeno [mb] MB di spazio libero nel disco." 
+
+#: Italian.isl 166 
+msgid "Not Enough Disk Space" 
+msgstr "Spazio su disco insufficiente" 
+
+#: Italian.isl 197 
+msgid "Select Start Menu Folder" 
+msgstr "Selezione della cartella nel menu Avvio/Start" 
+
+#: Italian.isl 198 
+msgid "Where should Setup place the program's shortcuts?" 
+msgstr "Dove vuoi inserire i collegamenti al programma?" 
+
+#: Italian.isl 199 
+msgid "Setup will create the program's shortcuts in the following Start Menu folder." 
+msgstr "Verranno creati i collegamenti al programma nella seguente cartella del menu Avvio/Start." 
+
+#: Italian.isl 200 
+msgid "To continue, click Next. If you would like to select a different folder, click Browse." 
+msgstr "Per continuare, seleziona "Avanti".%nPer selezionare un'altra cartella, seleziona "Sfoglia"." 
+
+#: Italian.isl 201 
+msgid "You must enter a folder name." 
+msgstr "Devi inserire il nome della cartella." 
+
+#: Italian.isl 204 
+msgid "The folder name cannot include any of the following characters:%n%n%1" 
+msgstr "Il nome della cartella non può includere nessuno dei seguenti caratteri:%n%n%1" 
+
+#: Italian.isl 208 
+msgid "Ready to Install" 
+msgstr "Pronto per l'installazione" 
+
+#: Italian.isl 209 
+msgid "Setup is now ready to begin installing [name] on your computer." 
+msgstr "Il programma è pronto per iniziare l'installazione di [name] nel computer." 
+
+#: Italian.isl 210 
+msgid "Click Install to continue with the installation, or click Back if you want to review or change any settings." 
+msgstr "Seleziona "Installa" per continuare con l'installazione, o "Indietro" per rivedere o modificare le impostazioni." 
+
+#: Italian.isl 211 
+msgid "Click Install to continue with the installation." 
+msgstr "Per procedere con l'installazione seleziona "Installa"." 
+
+#: Italian.isl 213 
+msgid "Destination location:" 
+msgstr "Cartella di installazione:" 
+
+#: Italian.isl 216 
+msgid "Start Menu folder:" 
+msgstr "Cartella del menu Avvio/Start:" 
+
+#: Italian.isl 220 
+msgid "Preparing to Install" 
+msgstr "Preparazione all'installazione" 
+
+#: Italian.isl 221 
+msgid "Setup is preparing to install [name] on your computer." 
+msgstr "Preparazione all'installazione di [name] nel computer." 
+
+#: Italian.isl 223 
+msgid "Setup cannot continue. Please click Cancel to exit." 
+msgstr "L'installazione non può continuare. Seleziona "Annulla" per uscire." 
+
+#: Italian.isl 232 
+msgid "Installing" 
+msgstr "Installazione in corso" 
+
+#: Italian.isl 233 
+msgid "Please wait while Setup installs [name] on your computer." 
+msgstr "Attendi il completamento dell'installazione di [name] nel computer." 
+
+#: Italian.isl 236 
+msgid "Completing the [name] Setup Wizard" 
+msgstr "Installazione di [name] completata" 
+
+#: Italian.isl 237 
+msgid "Setup has finished installing [name] on your computer." 
+msgstr "Installazione di [name] completata." 
+
+#: Italian.isl 238 
+msgid "Setup has finished installing [name] on your computer. The application may be launched by selecting the installed shortcuts." 
+msgstr "Installazione di [name] completata.%n%nL'applicazione può essere eseguita selezionando le relative icone." 
+
+#: Italian.isl 239 
+msgid "Click Finish to exit Setup." 
+msgstr "Seleziona "Fine" per uscire dall'installazione." 
+
+#: Italian.isl 262 
+msgid "Cancel installation" 
+msgstr "Annulla installazione" 
+
+#: Italian.isl 267 
+msgid "Extracting files..." 
+msgstr "Estrazione file..." 
+
+#: Italian.isl 273 
+msgid "Finishing installation..." 
+msgstr "Termine dell'installazione..." 
+
+#: Italian.isl 333 
+msgid "Are you sure you want to completely remove %1 and all of its components?" 
+msgstr "Vuoi rimuovere completamente %1 e tutti i suoi componenti?" 
+
+#: Italian.isl 336 
+msgid "Please wait while %1 is removed from your computer." 
+msgstr "Attendi fino a che %1 è stato rimosso dal computer." 
+
+#: Italian.isl 337 
+msgid "%1 was successfully removed from your computer." 
+msgstr "Disinstallazione di %1 completata." 
+
+#: Italian.isl 338 
+msgid "%1 uninstall complete.%n%nSome elements could not be removed. These can be removed manually." 
+msgstr "Disinstallazione di %1 completata.%n%nAlcuni elementi non possono essere rimossi.%n%nDovranno essere rimossi manualmente." 
+
+#: Italian.isl 361 
+msgid "Create a &desktop shortcut" 
+msgstr "Crea un'icona sul &desktop" 
+
+#: Italian.isl 363 
+msgid "%1 on the Web" 
+msgstr "Sito web di %1" 
+
+#: Italian.isl 364 
+msgid "Uninstall %1" 
+msgstr "Disinstalla %1" 
+
+#: Italian.isl 365 
+msgid "Launch %1" 
+msgstr "Avvia %1" 
+

@@ -1,0 +1,92 @@
+msgid "" 
+msgstr "" 
+"Project-Id-Version: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+ 
+
+#: Default.isl:324 
+msgid "Are you sure you want to completely remove %1 and all of its components?" 
+msgstr "" 
+
+#: Default.isl:327 
+msgid "Kolibri has been successfully removed from your computer." 
+msgstr "" 
+
+#: Default.isl:364 
+msgid "There is an existing installation of Kolibri on this device. Would you like to update it?" 
+msgstr "" 
+
+#: Default.isl:365 
+msgid "If you choose to do a new installation and not to update, you will loose all of your existing data. Please confirm you want to continue with the new installation." 
+msgstr "" 
+
+#: Default.isl:366 
+msgid "You need to have Python 3.6+ installed in order to run Kolibri. Setup Wizard was not able to find Python on your system and will now proceed to install it. Please click 'Yes' to confirm and continue with the installation." 
+msgstr "" 
+
+#: Default.isl:367 
+msgid "Kolibri cannot run without installing Python. Click Ok to go back and install Python, or Cancel to quit the Kolibri installer" 
+msgstr "" 
+
+#: Default.isl:368 
+msgid "Critical error. Dependencies have failed to install. Error Number:" 
+msgstr "" 
+
+#: Default.isl:369 
+msgid "Something went wrong during Kolibri setup.%nAdditional information can be found in the log file:" 
+msgstr "" 
+
+#: Default.isl:370 
+msgid "Setup wizard is copying files. This may take a while, please wait.." 
+msgstr "" 
+
+#: Default.isl:371 
+msgid "Launch Kolibri" 
+msgstr "" 
+
+#: Default.isl:372 
+msgid "Community forum" 
+msgstr "" 
+
+#: Default.isl:373 
+msgid "Homepage" 
+msgstr "" 
+
+#: Default.isl:374 
+msgid "Documentation" 
+msgstr "" 
+
+#: Default.isl:375 
+msgid " was not found." 
+msgstr "" 
+
+#: Default.isl:376 
+msgid "To get help online, please visit our community forum:" 
+msgstr "" 
+
+#: Default.isl:377 
+msgid "https://community.learningequality.org" 
+msgstr "" 
+
+#: Default.isl:378 
+msgid "Would you also like to delete all the data associated with Kolibri?" 
+msgstr "" 
+
+#: Default.isl:379 
+msgid "This will permanently remove all downloaded content channels and the user interaction data." 
+msgstr "" 
+
+#: Default.isl:380 
+msgid "This action cannot be undone." 
+msgstr "" 
+
+#: Default.isl:381 
+msgid "Data location:" 
+msgstr "" 
+
