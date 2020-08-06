@@ -30,8 +30,8 @@ LanguageCodePage=0
 ; *** Application titles
 SetupAppTitle=រៀបចំ 
 SetupWindowTitle=រៀបចំ- %1 
-UninstallAppTitle=លុបចេញ 
-UninstallAppFullTitle=%1 លុបចេញ 
+UninstallAppTitle=លុបការដំឡើង 
+UninstallAppFullTitle=%1 លុបការដំឡើង 
 
 ; *** Misc. common
 InformationTitle=ពត៍មាន 
@@ -95,20 +95,20 @@ ButtonCancel=បោះ​បង់
 ButtonYes=&បាទ 
 ButtonYesToAll=បាទ &ទាំងអស់ 
 ButtonNo=&ទេ 
-ButtonNoToAll=N&o ទៅទាំងអស់ 
+ButtonNoToAll=&ទេ ទៅទាំងអស់ 
 ButtonFinish=&បញ្ចប់ 
 ButtonBrowse=&រុករក... 
-ButtonWizardBrowse=B&rowse...
+ButtonWizardBrowse=រុ&ករក... 
 ButtonNewFolder=&បង្កើតសឺមីថ្មី 
 
 ; *** "Select Language" dialog messages
 SelectLanguageTitle=ជ្រើសរើសរៀបចំភាសា 
-SelectLanguageLabel=ជ្រើសរើសភាសាដែលត្រូវប្រើកំឡុងពេលតំឡើង 
+SelectLanguageLabel=ជ្រើសរើសភាសាដែលត្រូវប្រើកំឡុងពេលតំឡើង។ 
 
 ; *** Common wizard text
-ClickNext=ចុចបន្ទាប់ដើម្បីបន្ត ឬ លុបដើម្បីតំឡើង 
+ClickNext=ចុចបន្ទាប់ដើម្បីបន្ត ឬ បោះបង់ដើម្បីចាកចេញពីការរៀបចំ​។ 
 BeveledLabel=
-BrowseDialogTitle=Browse For Folder 
+BrowseDialogTitle=រុករកសឺមី 
 BrowseDialogLabel=ជ្រើសរើសសឺមីមួយនៅក្នុងបញ្ជីខាងក្រោម បន្ទាប់មកចុច យល់ព្រម។ 
 NewFolderName=សឺមីថ្មី 
 
@@ -150,7 +150,7 @@ UserInfoNameRequired=You must enter a name.
 WizardSelectDir=ជ្រើសរើសអាសយដ្ឋានគោលដៅ 
 SelectDirDesc=តើអ្នកគួរតែដំឡើង [name] នៅកន្លែងណា? 
 SelectDirLabel3=ការរៀបចំនឹងដំឡើង [name] ចូលទៅក្នុងសឺមីខាងក្រោម។ 
-SelectDirBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច Browse. 
+SelectDirBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច រុករក​។ 
 DiskSpaceMBLabel=យ៉ាងហោចណាស់ក៏អ្នកត្រូវការមានទំហំ [mb] MB នៅលើទំហំថាសដែរ។ 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
 CannotInstallToUNCPath=Setup cannot install to a UNC path.
@@ -187,25 +187,25 @@ SelectTasksLabel2=Select the additional tasks you would like Setup to perform wh
 
 ; *** "Select Start Menu Folder" wizard page
 WizardSelectProgramGroup=ជ្រើសរើសការចាប់ផ្ដើមសឺមីមីនុយ 
-SelectStartMenuFolderDesc=តើគួររៀបចំកន្លែង shortcuts របស់កម្មវិធីនៅកន្លែងណា? 
-SelectStartMenuFolderLabel3=ការរៀបចំនឹងបង្កើត Shortcuts របស់កម្មវិធីនៅក្នុងការចាប់ផ្ដើមសឺមីមីនុយខាងក្រោម៖ 
-SelectStartMenuFolderBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច Browse. 
-MustEnterGroupName=អ្នកត្រូវតែវាយបញ្ចូលឈ្មោះក្របមួយ។ 
+SelectStartMenuFolderDesc=តើគួររៀបចំកន្លែងផ្លូវកាត់របស់កម្មវិធីនៅកន្លែងណា? 
+SelectStartMenuFolderLabel3=ការរៀបចំនឹងបង្កើតផ្លូវកាត់របស់កម្មវិធីនៅក្នុងការចាប់ផ្ដើមសឺមីមីនុយខាងក្រោម។ 
+SelectStartMenuFolderBrowseLabel=ដើម្បីបន្ត សូមចុចពាក្យ "បន្ទាប់"។ ប្រសិនបើអ្នកចង់ជ្រើសរើសសឺមីដែលខុសប្លែកនោះ ចុច រុករក​។ 
+MustEnterGroupName=អ្នកត្រូវតែវាយបញ្ចូលឈ្មោះសឺមីមួយ។ 
 GroupNameTooLong=The folder name or path is too long.
 InvalidGroupName=The folder name is not valid.
-BadGroupName=ឈ្មោះសឺមីមិនអាចបូកបញ្ចូលតួអក្សរខាងក្រោមនេះបានទេ%n%n%1 
+BadGroupName=ឈ្មោះសឺមីមិនអាចបូកបញ្ចូលតួអក្សរខាងក្រោមនេះបានទេ៖%n%n%1 
 NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
 WizardReady=រួចរាល់​ដើម្បី​ដំឡើង 
-ReadyLabel1=ការរៀបចំបានរួចរាល់ដើម្បីដំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
+ReadyLabel1=ការរៀបចំបានរួចរាល់ដើម្បីដំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក។ 
 ReadyLabel2a=ចុចដំឡើងដើម្បីបន្តការដំឡើង ឬចុចថយក្រោយប្រសិនបើអ្នកចង់ពិនិត្យឡើងវិញ ឬផ្លាស់ប្តូរការកំណត់ណាមួយ។ 
-ReadyLabel2b=ចុច​ដំឡើង ដើម្បី​បន្ត​ការ​ដំឡើង 
+ReadyLabel2b=ចុច​ដំឡើង ដើម្បី​បន្ត​ការ​ដំឡើង។ 
 ReadyMemoUserInfo=User information:
 ReadyMemoDir=ទីតាំងគោលដៅ៖ 
 ReadyMemoType=Setup type:
 ReadyMemoComponents=Selected components:
-ReadyMemoGroup=ចាប់ផ្ដើមក្របមីនុយ៖ 
+ReadyMemoGroup=ចាប់ផ្ដើមសឺមីមីនុយ៖ 
 ReadyMemoTasks=Additional tasks:
 
 ; *** "Preparing to Install" wizard page
@@ -224,10 +224,10 @@ WizardInstalling=កំពុងដំឡើង
 InstallingLabel=សូមរងចាំខណៈពេលដែលការរៀបកំពុងដំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
 
 ; *** "Setup Completed" wizard page
-FinishedHeadingLabel=កំពុងបញ្ចប់ [name] Setup Wizard 
+FinishedHeadingLabel=កំពុងបញ្ចប់ [name] ជំនួយការរៀបចំ 
 FinishedLabelNoIcons=ការរៀបចំត្រូវបានបញ្ចប់ដើម្បីតំឡើង [name] ក្នុងកុំព្យូទ័ររបស់អ្នក 
-FinishedLabel=ការរៀបចំបានបញ្ចប់ការដំឡើង [name] នៅលើកុំព្យូទ័ររបស់អ្នក។ កម្មវិធីអាចត្រូវបានដាក់ឱ្យដំណើរការដោយជ្រើសរើស Shortcuts ដែលបានតំឡើងរួច។ 
-ClickFinish=ចុច បញ្ចប់ ដើម្បី​​​ចេញ​ពី​ការរៀបចំ។ 
+FinishedLabel=ការរៀបចំបានបញ្ចប់ការដំឡើង [name] នៅលើកុំព្យូទ័ររបស់អ្នក។ កម្មវិធីអាចត្រូវបានដាក់ឱ្យដំណើរការដោយជ្រើសរើសផ្លូវកាត់ដែលបានតំឡើងរួច។ 
+ClickFinish=ចុច បញ្ចប់ ដើម្បី​​​ចាកចេញ​ពី​ការរៀបចំ។ 
 FinishedRestartLabel=To complete the installation of [name], Setup must restart your computer. Would you like to restart now?
 FinishedRestartMessage=To complete the installation of [name], Setup must restart your computer.%n%nWould you like to restart now?
 ShowReadmeCheck=Yes, I would like to view the README file
@@ -321,12 +321,12 @@ UninstallNotFound=File "%1" does not exist. Cannot uninstall.
 UninstallOpenError=File "%1" could not be opened. Cannot uninstall
 UninstallUnsupportedVer=The uninstall log file "%1" is in a format not recognized by this version of the uninstaller. Cannot uninstall
 UninstallUnknownEntry=An unknown entry (%1) was encountered in the uninstall log
-ConfirmUninstall=តើអ្នកពិតជាចង់លុប %1 និងសមាសធាតុទាំងអស់របស់វាចេញដែរឬទេ? 
+ConfirmUninstall=តើអ្នកពិតជាចង់ដកចេញ %1 និងសមាសធាតុទាំងអស់របស់វាចេញដែរឬទេ? 
 UninstallOnlyOnWin64=This installation can only be uninstalled on 64-bit Windows.
 OnlyAdminCanUninstall=This installation can only be uninstalled by a user with administrative privileges.
-UninstallStatusLabel=សូមរង់ចាំខណៈពេលដែល %1 ត្រូវបានយកចេញពីកុំព្យូទ័ររបស់អ្នក។ 
+UninstallStatusLabel=សូមរង់ចាំខណៈពេលដែល %1 ត្រូវបានដកចេញពីកុំព្យូទ័ររបស់អ្នក។ 
 UninstalledAll=1% បានយកចេញពីកុំព្យូទ័ររបស់អ្នកដោយជោគជ័យ។ 
-UninstalledMost=%1 ការលុបចេញបានបញ្ចប់។%n%nវត្ថុធាតុមួយចំនួនមិនអាចត្រូវបានលុបទេ។ វត្ថុធាតុទាំងនេះអាចត្រូវបានលុបដោយខ្លួនរបស់អ្នកផ្ទាល់។ 
+UninstalledMost=%1 ការលុបការដំឡើងបានបញ្ចប់។%n%nវត្ថុធាតុមួយចំនួនមិនអាចត្រូវបានដកចេញទេ។ វត្ថុធាតុទាំងនេះអាចត្រូវបានដកចេញដោយខ្លួនរបស់អ្នកផ្ទាល់។ 
 UninstalledAndNeedsRestart=To complete the uninstallation of %1, your computer must be restarted.%n%nWould you like to restart now?
 UninstallDataCorrupted="%1" file is corrupted. Cannot uninstall
 
@@ -349,10 +349,10 @@ ShutdownBlockReasonUninstallingApp=Uninstalling %1.
 
 NameAndVersion=%1 version %2
 AdditionalIcons=Additional shortcuts:
-CreateDesktopIcon=បង្កើត Shortcut នៅលើ Desktop 
+CreateDesktopIcon=បង្កើត&ផ្លូវកាត់នៅលើដែសថប 
 CreateQuickLaunchIcon=Create a &Quick Launch shortcut
 ProgramOnTheWeb=1% នៅលើវេបសាយន៍ 
-UninstallProgram=លុបចេញ 1% 
+UninstallProgram=លុបការដំឡើង %1 
 LaunchProgram=បើកដំណើរការ %1 
 AssocFileExtension=&Associate %1 with the %2 file extension
 AssocingFileExtension=Associating %1 with the %2 file extension...
@@ -361,10 +361,10 @@ AutoStartProgram=Automatically start %1
 AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%nDo you want to continue anyway?
 
 ; Kolibri Windows Installer custom messages
-UpgradeMsg=មានការតំឡើង Kolibri ដែលមានស្រាប់ក្នុងឧបករណ៍នេះ។ តើអ្នកចង់ធ្វើការដំឡើងវាដែរឬទេ? 
-UpgradeDelMsg=ប្រសិនបើអ្នកជ្រើសរើសធ្វើការតំឡើងថ្មីនេះ និងមិនបានដំឡើង អ្នកនឹងបាត់បង់រាល់ទិន្នន័យដែលមានស្រាប់របស់អ្នក។ សូមបញ្ជាក់ថាអ្នកចង់បន្តការដំឡើងថ្មីនេះ។ 
+UpgradeMsg=មានការតំឡើង Kolibri ដែលមានស្រាប់ក្នុងឧបករណ៍នេះ។ តើអ្នកចង់ធ្វើបច្ចុប្បន្នភាពវាដែរឬទេ? 
+UpgradeDelMsg=ប្រសិនបើអ្នកជ្រើសរើសធ្វើការដំឡើងថ្មីនេះ និងមិនបានធ្វើបច្ចុប្បន្នភាព អ្នកនឹងបាត់បង់រាល់ទិន្នន័យដែលមានស្រាប់របស់អ្នក។ សូមបញ្ជាក់ថាអ្នកចង់បន្តការដំឡើងថ្មីនេះ។ 
 InstallPythonMsg=អ្នកត្រូវការកម្មវិធី Python 3.6+ ដែលបានដំឡើងតាមលំដាប់លំដោយដើម្បីដំណើរការ Kolibri។ Setup Wizard មិនត្រូវបានរកឃើញ Python ទេនៅក្នុងប្រព័ន្ធ និងបន្តដំឡើងវាឥឡូវនេះ។ សូមចុចពាក្យ "បាទ/ចាស" ដើម្បីទទួលយក និងបន្តការដំឡើងនេះ។ 
-InstallPythonErrMsg=Kolibri មិនអាចដំណើរការដោយគ្មានកម្មវិធី Python បានទេ។ ចុច "យល់ព្រម" ដើម្បីត្រឡប់ និងដំឡើង Python ឬលុបដើម្បីបញ្ឈប់កម្មវិធីដំឡើង Kolibri 
+InstallPythonErrMsg=Kolibri មិនអាចដំណើរការដោយគ្មានកម្មវិធី Python បានទេ។ ចុច "យល់ព្រម" ដើម្បីត្រឡប់ និងដំឡើង Python ឬ "បោះបង់" ដើម្បីបញ្ឈប់កម្មវិធីដំឡើង Kolibri 
 SetupKolibriErrMsg=កំហុសសំខាន់់៖ កម្មវិធីមួយចំនួនបានបរាជ័យក្នុងការដំឡើង។ កំហុសលេខ៖ 
 KolibriInstallFailed=មានកំហុសក្នុងអំឡុងពេលដែលកំពុងរៀបចំ Kolibri។ %nព័ត៌មានបន្ថែមអាចរកបាននៅក្នុងហ្វាលកំណត់ហេតុ៖ 
 SetupWizardMsg=Setup Wizard គឺកំពុងចម្លងហ្វាល។ វាអាចចំណាយពេលមួយរយៈ សូមរង់ចាំ.. 
@@ -372,10 +372,10 @@ LaunchKolibri=បើកដំណើរការ Kolibri
 KolibriSupportLink=វេទិកាសហគមន៍ 
 KolibriHomePage=ទំព័រដើម 
 KolibriDocs=ឯកសារ 
-FileNotFound=មិនត្រូវបានរកឃើញ 
+FileNotFound= មិនត្រូវបានរកឃើញ។ 
 Needhelp=ដើម្បីទទួលបានជំនួយតាមអ៊ីនធឺណិត សូមទស្សនាវេទិកាសហគមន៍របស់យើង៖ 
 CommunityLink=https://community.learningequality.org 
 UninstallKolibriDataLine1=តើអ្នកចង់លុបទិន្នន័យទាំងអស់ដែលទាក់ទងនឹង Kolibri ដែរឬទេ? 
-UninstallKolibriDataLine2=វានឹងលុបមាតិកាឆានែលដែលបានទាញយកទាំងអស់ចេញ និងទិន្នន័យអន្តរកម្មទាំងអស់របស់អ្នកប្រើប្រាស់។ 
-UninstallKolibriDataLine3=សកម្មភាពនេះមិនអាចមិនធ្វើវិញ។ 
+UninstallKolibriDataLine2=វានឹងដកចេញមាតិកាឆានែលដែលបានដោនឡុតទាំងអស់ និងទិន្នន័យអន្តរកម្មទាំងអស់របស់អ្នកប្រើប្រាស់។ 
+UninstallKolibriDataLine3=សកម្មភាពនេះមិនអាចត្រូវបានមិនធ្វើវិញ។ 
 UninstallKolibriPath=ទីតាំងទិន្នន័យ៖ 
