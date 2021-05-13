@@ -73,10 +73,10 @@ char * getKolibriLinkAddress() {
 	std::ifstream file(pidFile);
 	if (file.is_open()) {
 		std::string line;
-		while (getline(file, line)) {
-			if (isServerOnline("Kolibri session", joinChr("http://127.0.0.1:", line.c_str()))) {
-				httpLink = joinChr("http://127.0.0.1:", line.c_str());
-			}
+		getline(file, line); // get the first line, do nothing
+		getline(file, line); // the second line should have the the port information
+		if (isServerOnline("Kolibri session", joinChr("http://127.0.0.1:", line.c_str()))) {
+			httpLink = joinChr("http://127.0.0.1:", line.c_str());
 		}
 		file.close();
 		return httpLink;
