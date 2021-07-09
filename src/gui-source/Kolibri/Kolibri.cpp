@@ -5,10 +5,12 @@
 #include "resource.h"
 #include <iostream>
 #include <filesystem>
+#include <string>
 #include <io.h>
 #include <atlstr.h>
 #include <fstream>
 
+using namespace std;
 
 // Declare global stuff that you need to use inside the functions.
 fle_TrayWindow * window;
