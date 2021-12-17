@@ -762,6 +762,18 @@ begin
         'System\CurrentControlSet\Control\Session Manager\Environment',
         'KOLIBRI_GUI_LANG'
     )
+    { Delete system KOLIBRI_INSTALLATION_TYPE environment variable }
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_INSTALLATION_TYPE'
+    )
+    { Delete system KOLIBRI_INSTALLER_VERSION environment variable }
+    RegDeleteValue(
+        HKLM,
+        'System\CurrentControlSet\Control\Session Manager\Environment',
+        'KOLIBRI_INSTALLER_VERSION'
+    )
 end;
 
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
