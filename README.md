@@ -12,16 +12,17 @@ These are the steps how to do releases for the Kolibri Windows installer.  Note 
 
 We are releasing `v1.3.1` as an example here.
 
-1. Tag the `master` branch as `v1.3.1` at `kolibri-installer-windows`
+1. Set the new version in KolibriSetupScript.iss where we set the KOLIBRI_INSTALLER_VERSION env var.
+2. Tag the `develop` branch as `v1.3.1` at `kolibri-installer-windows`
     1. Go to the [releases](https://github.com/learningequality/kolibri-installer-windows/releases/) page then `Draft a new release`.
     1. Put `v1.3.1` as the tag and title for the release.
-    1. Select `master` as the target for the release.
+    1. Select `develop` as the target for the release.
     1. Add the features or fixes in the description.
     1. Click on the `Publish release` when done.
-1. Make a Pull Request (PR) at the `kolibri` repo pointing to the appropriate branch (example: `develop`).
+3. Make a Pull Request (PR) at the `kolibri` repo pointing to the appropriate branch (example: `develop`).
     1. In that PR, set the `kolibri/docker/env.list/KOLIBRI_WINDOWS_INSTALLER_VERSION=v1.3.1` environment variable value.  This points the Kolibri source into our `v1.3.1` branch.
     1. Test the BuildKite built assets in that PR if no errors are encountered.
-1. Merge the `kolibri` PR when tests for the Kolibri Windows installer passed.
+4. Merge the `kolibri` PR when tests for the Kolibri Windows installer passed.
 
 
 ## Release history

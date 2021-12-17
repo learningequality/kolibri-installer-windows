@@ -645,6 +645,36 @@ begin
         
         EnvAddPath(PipDir) 
 
+        { Delete existing system and user KOLIBRI_INSTALLATION_TYPE environment variables }
+        RegDeleteValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_INSTALLATION_TYPE'
+        )
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_INSTALLATION_TYPE"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+
+        { Delete existing system and user KOLIBRI_INSTALLER_VERSION environment variables }
+        RegDeleteValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_INSTALLER_VERSION'
+        )
+        Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_INSTALLER_VERSION"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
+
+        RegWriteStringValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_INSTALLATION_TYPE',
+            'windows'
+        );
+
+        RegWriteStringValue(
+            HKLM,
+            'System\CurrentControlSet\Control\Session Manager\Environment',
+            'KOLIBRI_INSTALLER_VERSION',
+            'v1.5.0'
+        );
+
 end;
 
 function InitializeSetup(): Boolean;
