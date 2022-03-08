@@ -1,0 +1,91 @@
+
+name: Build Windows installer
+
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      whl-url:
+        description: 'URL for Kolibri whl file'
+        required: true
+  workflow_call:
+    inputs:
+      whl-file-name:
+        required: true
+        type: string
+      ref:
+        description: 'A ref for this workflow to check out its own repo'
+        required: true
+        type: string
+    outputs:
+      exe-file-name:
+        description: "EXE file name"
+        value: ${{ jobs.build_exe.outputs.exe-file-name }}
+
+jobs:
+  build_exe:
+    name: Build EXE file
+    runs-on: windows-latest
+    outputs:
+      exe-file-name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
+    steps:
+    - uses: actions/checkout@v2
+      if: ${{ !inputs.ref }}
+    - uses: actions/checkout@v2
+      if: ${{ inputs.ref }}
+      with:
+        repository: learningequality/kolibri-installer-windows
+        ref: ${{ inputs.ref }}
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - uses: actions/cache@v2
+      with:
+        path: src\python-setup\python-*.exe
+        key: ${{ runner.os }}-python-installer-${{ hashFiles('make.bat') }}
+        restore-keys: |
+          ${{ runner.os }}-python-installer-
+    - name: Get Python 32-bit installer
+      if: hashFiles('src\python-setup\python-3.9.10.exe') == ''
+      run: curl -L -o src\python-setup\python-3.9.10.exe https://www.python.org/ftp/python/3.9.10/python-3.9.10.exe
+    - name: Get Python 64-bit installer
+      if: hashFiles('src\python-setup\python-3.9.10-amd64.exe') == ''
+      run: curl -L -o src\python-setup\python-3.9.10-amd64.exe https://www.python.org/ftp/python/3.9.10/python-3.9.10-amd64.exe
+    - name: Download the whlfile from URL
+      if: ${{ github.event.inputs.whl-url }}
+      # Powershell recipe for downloading and using content disposition header:
+      # https://hodgkins.io/download-file-with-powershell-without-renaming
+      # Modified to remove query params
+      run: |
+        $download = Invoke-WebRequest -Uri "${{ github.event.inputs.whl-url }}"
+        $content = [System.Net.Mime.ContentDisposition]::new($download.Headers["Content-Disposition"])
+        $fileName = $content.FileName.split("?")[0]
+        $file = [System.IO.FileStream]::new($fileName, [System.IO.FileMode]::Create)
+        $file.Write($download.Content, 0, $download.RawContentLength)
+        $file.Close()
+        mv *.whl src
+    - name: Download the whlfile from artifacts
+      if: ${{ inputs.whl-file-name }}
+      uses: actions/download-artifact@v2
+      with:
+        name: ${{ inputs.whl-file-name }}
+        path: src
+    - name: Get Kolibri version
+      id: get-kolibri-version
+      run: |
+        pip install (Get-ChildItem .\src\kolibri-*.whl | Select-Object -Expand FullName)
+        echo "::set-output name=kolibri-version::$(python3 -c 'import kolibri; print(kolibri.__version__)')"
+    - name: Run the build
+      env:
+        KOLIBRI_BUILD_VERSION: ${{ steps.get-kolibri-version.outputs.kolibri-version }}
+      run: |
+        src\inno-compiler\ISCC.exe src\installer-source\KolibriSetupScript.iss
+    - name: Get EXE filename
+      id: get-exe-filename
+      # Modified from https://stackoverflow.com/a/1500148
+      run: echo "::set-output name=exe-file-name::kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe"
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
+        path: src\exe
