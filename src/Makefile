@@ -1,5 +1,5 @@
 
-VERSION := 3.6.8
+VERSION := 3.9.10
 DIR := python-setup
 URL := https://www.python.org/ftp/python/$(VERSION)
 PY_32 := python-$(VERSION).exe

@@ -1,7 +1,7 @@
 @echo off
 
 Set folderName=Python36
-Set version=3.6.8
+Set version=3.9.10
 Set python32Bit=python-%version%.exe
 Set python64Bit=python-%version%-amd64.exe
 Set pythonPath=%cd:~0,2%/Python3.6.8

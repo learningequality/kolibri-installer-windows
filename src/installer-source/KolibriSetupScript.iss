@@ -479,8 +479,8 @@ begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         try
-            ExtractTemporaryFile('python-3.6.8-amd64.exe');
-            ExtractTemporaryFile('python-3.6.8.exe');
+            ExtractTemporaryFile('python-3.9.10-amd64.exe');
+            ExtractTemporaryFile('python-3.9.10.exe');
             ExtractTemporaryFile('python-exe.bat');
             ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
