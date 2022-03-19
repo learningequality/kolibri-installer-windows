@@ -8,5 +8,5 @@ PY_64 := python-$(VERSION)-amd64.exe
 all:
 	wget -r -c --tries=20 -O $(DIR)/$(PY_32) $(URL)/$(PY_32)
 	wget -r -c --tries=20 -O $(DIR)/$(PY_64) $(URL)/$(PY_64)
-	echo 9c7b1ebdd3a8df0eebfda2f107f1742c $(DIR)/$(PY_32) | md5sum --check -
-	echo 72f37686b7ab240ef70fdb931bdf3cb5 $(DIR)/$(PY_64) | md5sum --check -
+	echo 457d648dc8a71b6bc32da30a7805c55b $(DIR)/$(PY_32) | md5sum --check -
+	echo 747ac35ae667f4ec1ee3b001e9b7dbc6 $(DIR)/$(PY_64) | md5sum --check -

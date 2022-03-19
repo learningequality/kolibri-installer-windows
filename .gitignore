@@ -25,6 +25,9 @@
 # Dynamic link library
 !src/*.dll
 
+# Python installer files
+src/python-setup/python*.exe
+
 # C extensions
 *.so
 
