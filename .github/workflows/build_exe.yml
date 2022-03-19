@@ -71,11 +71,17 @@ jobs:
       with:
         name: ${{ inputs.whl-file-name }}
         path: src
+    - name: Install pkginfo
+      run: pip install pkginfo
     - name: Get Kolibri version
       id: get-kolibri-version
       run: |
-        pip install (Get-ChildItem .\src\kolibri-*.whl | Select-Object -Expand FullName)
-        echo "::set-output name=kolibri-version::$(python3 -c 'import kolibri; print(kolibri.__version__)')"
+        from pkginfo import Wheel
+        from glob import glob
+        whl_file = glob("src/*.whl")[0]
+        whl = Wheel(whl_file)
+        print("::set-output name=kolibri-version::{}".format(whl.version))
+      shell: python
     - name: Run the build
       env:
         KOLIBRI_BUILD_VERSION: ${{ steps.get-kolibri-version.outputs.kolibri-version }}
