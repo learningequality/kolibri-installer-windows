@@ -55,6 +55,4 @@ RUN mv ${PY_DL_DIR}/* python-setup/
 
 CMD cp /whl/*.whl . && \
 	export KOLIBRI_BUILD_VERSION=$(cat /version/VERSION) && \
-	wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss && \
-	mkdir /exe && \
-	cp *.exe /exe/kolibri-$KOLIBRI_BUILD_VERSION-unsigned.exe
+	wine inno-compiler/ISCC.exe installer-source/KolibriSetupScript.iss

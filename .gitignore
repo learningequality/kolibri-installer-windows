@@ -20,7 +20,7 @@
 *.suo
 
 # Compiled executable
-!src/*.exe
+exe/
 
 # Dynamic link library
 !src/*.dll
