@@ -1,4 +1,4 @@
-FROM python:3 AS whl-cold-prep
+FROM python:3.9 AS whl-cold-prep
 
 RUN mkdir whl version && \
 	pip download kolibri -d /whl
