@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Kolibri đã được cài đặt trên thiết bị này. Bạn có muốn cập nhật Kolibri không? 
 UpgradeDelMsg=Nếu lựa chọn cài đặt mới và không cập nhật, bạn sẽ mất toàn bộ dữ liệu hiện có. Bạn hãy xác nhận muốn tiếp tục cài đặt mới. 
-InstallPythonMsg=Bạn cần cài đặt Python 3.6+ trước để chạy Kolibri. Thuật sĩ thiết lập đã không tìm thấy Python trên hệ thống của bạn nên sẽ chuyển sang cài đặt Python. Hãy nhấn 'Có' để xác nhận và tiếp tục cài đặt. 
+InstallPythonMsg=Bạn cần cài đặt Python 3.9+ trước để chạy Kolibri. Thuật sĩ thiết lập đã không tìm thấy Python trên hệ thống của bạn nên sẽ chuyển sang cài đặt Python. Hãy nhấn 'Có' để xác nhận và tiếp tục cài đặt. 
 InstallPythonErrMsg=Kolibri không chạy được nếu không có Python. Nhấp OK để quay lại và cài Python hoặc nhấp Hủy bỏ để thoát trình cài đặt Kolibri 
 SetupKolibriErrMsg=Lỗi nghiêm trọng. Các phụ thuộc không cài đặt được. Mã số lỗi: 
 KolibriInstallFailed=Đã có lỗi trong khi cài đặt Kolibri.%nCó thể tìm thấy thông tin thêm trong tệp nhật ký: 

@@ -63,7 +63,7 @@ Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python36\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python39\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -463,7 +463,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PIP_PATH = '\Python36\Scripts\pip.exe';
+    DEFAULT_PIP_PATH = '\Python39\Scripts\pip.exe';
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
@@ -628,7 +628,7 @@ begin
         PipDir := GetPipDir('')
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-        { Should by in the same directory as pip.exe, e.g. 'C:\Python36\Scripts' }
+        { Should by in the same directory as pip.exe, e.g. 'C:\Python39\Scripts' }
         RegWriteStringValue(
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',

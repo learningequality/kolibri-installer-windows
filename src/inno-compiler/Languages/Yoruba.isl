@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Ní bẹ jẹ ohun tẹlẹ fifi sori ẹrọ ti kolibri lori eyi ẹrọ. Yoo iwọ tun bi si imudojuiwọn o? 
 UpgradeDelMsg=Ti o ba iwọ yan si ṣe a obinrin titun fifi sori ẹrọ ati kii ṣe si imudojuiwọn, iwọ Yoo alaimuṣinṣin gbogbo ti iwọ tẹlẹ data. Jowo jẹrisi iwọ fẹ si tẹsiwaju pẹlu Awọn titun fifi sori ẹrọ. 
-InstallPythonMsg=Iwọ nilo si ni python 3.6+ fi sori ẹrọ ni aṣẹ si ṣiṣe kolibri. ṣeto oluṣeto je kii ṣe anfani si wa python lori rẹ eto ati Yoo ki ibayi tẹsiwaju si o. Jowo tẹ bẹẹni' si jẹrisi ati tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
+InstallPythonMsg=Iwọ nilo si ni python 3.9+ fi sori ẹrọ ni aṣẹ si ṣiṣe kolibri. ṣeto oluṣeto je kii ṣe anfani si wa python lori rẹ eto ati Yoo ki ibayi tẹsiwaju si o. Jowo tẹ bẹẹni' si jẹrisi ati tẹsiwaju pẹlu Awọn fifi sori ẹrọ. 
 InstallPythonErrMsg=Kolibri ko le ṣe ṣiṣe laisi fifi sori ẹrọ python. tẹ O dara si lọ pada ati fi sori ẹrọ python, tabi Fagilee si oyimbo Awọn kolibri insitola 
 SetupKolibriErrMsg=Pataki aṣiṣe. dependences ni kuna si fi sori ẹrọ. aṣiṣe nọmba: 
 KolibriInstallFailed=Nkan kan lọ aṣiṣe nigba kolibri ṣeto. %nAfikun alaye le jẹ ri ni Awọn wọle faili: 

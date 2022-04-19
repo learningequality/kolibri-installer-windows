@@ -27,7 +27,7 @@ msgid "If you choose to do a new installation and not to update, you will loose 
 msgstr "" 
 
 #: Default.isl:366 
-msgid "You need to have Python 3.6+ installed in order to run Kolibri. Setup Wizard was not able to find Python on your system and will now proceed to install it. Please click 'Yes' to confirm and continue with the installation." 
+msgid "You need to have Python 3.9+ installed in order to run Kolibri. Setup Wizard was not able to find Python on your system and will now proceed to install it. Please click 'Yes' to confirm and continue with the installation." 
 msgstr "" 
 
 #: Default.isl:367 

@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Mu kompyuta yanu muli pulogalamu ya Kolibri. Kodi mukufuna kusintha yomweyi? 
 UpgradeDelMsg=Ngati musankha kukhazikitsa pulogalamu yatsopano osati kusintha yakale, mutaya uthenga wonse wopezeka mu kompyuta yanu. Chonde, tsimikizani kukhazikitsa pulogalamu yatsopanoyi. 
-InstallPythonMsg=Mukuyenera kukhala ndi pulogalamu ya Python 3.6+ mu kompyuta yanu kuti mugwiritse ntchito Kolibri. Pulogalamu ya Wizard inalephera kupeza Python mu kompyuta yanu ndipo ipitiriza kulowetsa pulogalamuyi. Chonde, sindikizani 'Eya' kuti mutsimikize ndi kupitiriza kulowetsaku. 
+InstallPythonMsg=Mukuyenera kukhala ndi pulogalamu ya Python 3.9+ mu kompyuta yanu kuti mugwiritse ntchito Kolibri. Pulogalamu ya Wizard inalephera kupeza Python mu kompyuta yanu ndipo ipitiriza kulowetsa pulogalamuyi. Chonde, sindikizani 'Eya' kuti mutsimikize ndi kupitiriza kulowetsaku. 
 InstallPythonErrMsg=Sizingatheke kugwiritsa ntchito Kolibri popanda kuika pulogalamu ya Python. Sindikizani 'Ok' kuti mubwerere ndi kuyika Python, kapena sindikizani 'Imitsani' kuti musaike Kolibri 
 SetupKolibriErrMsg=Pali vuto lalikulu. Pulogalamu yalephera kukhazikitsidwa. Nambala ya vutoli ndi: 
 KolibriInstallFailed=Chinachake chalakwika pokhazikitsa Kolibri.%nMukhoza kudziwa zambiri mukaona mu fayilo yosunga mauthenga ya 'log file': 
