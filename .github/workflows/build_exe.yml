@@ -8,6 +8,11 @@ on:
       whl-url:
         description: 'URL for Kolibri whl file'
         required: true
+      release:
+        description: 'Is this a release asset?'
+        required: false
+        type: boolean
+        default: false
   workflow_call:
     inputs:
       whl-file-name:
@@ -17,6 +22,16 @@ on:
         description: 'A ref for this workflow to check out its own repo'
         required: true
         type: string
+      release:
+        description: 'Is this a release asset?'
+        required: false
+        type: boolean
+        default: false
+    secrets:
+      KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE:
+        required: false
+      KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE_PASSWORD:
+        required: false
     outputs:
       exe-file-name:
         description: "EXE file name"
@@ -89,7 +104,18 @@ jobs:
         src\inno-compiler\ISCC.exe src\installer-source\KolibriSetupScript.iss
     - name: Get EXE filename
       id: get-exe-filename
-      run: echo "::set-output name=exe-file-name::kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe"
+      run: |
+        release = True if "${{ inputs.release == true || github.event.inputs.release == 'true' }}" == "true" else False
+        print("::set-output name=exe-file-name::kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-{}signed.exe".format("" if release else "un"))
+      shell: python
+    - name: Codesign the exe
+      if: ${{ inputs.release == true || github.event.inputs.release == 'true' }}
+      id: codesign
+      run: |
+        Set-Content -Path pfx.b64 -Value "${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE }}"
+        certutil -decode pfx.b64 windows-2022.pfx
+        & 'C:/Program Files (x86)/Windows Kits/10/bin/10.0.22000.0/x64/signtool.exe' sign /tr http://timestamp.ssl.trustwave.com /td SHA256 /fd SHA256 /f windows-2022.pfx /p '${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE_PASSWORD }}' /debug exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe
+        mv exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-signed.exe
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
