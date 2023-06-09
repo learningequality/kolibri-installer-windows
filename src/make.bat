@@ -56,7 +56,7 @@ FOR /f "tokens=1,2 delims=-" %%a in ("%WHL_FILE_NAME%") DO (
 :DOWNLOAD_PYTHON
 ECHO STEP 3/4. Downloading Python installers...
 :: TODO(cpauya): Find a way to get get this from a file like `PYTHON_VERSION.txt` instead of hard-coding here.
-SET VERSION=3.9.10
+SET VERSION=3.8.10
 SET PYTHON_URL=https://www.python.org/ftp/python/%VERSION%/python-%VERSION%
 SET PYTHON_DIR=%~dp0python-setup\python-%VERSION%
 

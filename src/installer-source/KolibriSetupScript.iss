@@ -63,7 +63,7 @@ Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python39\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python38\Scripts\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -463,7 +463,7 @@ end;
 
 { Used in GetPipPath below }
 const
-    DEFAULT_PIP_PATH = '\Python39\Scripts\pip.exe';
+    DEFAULT_PIP_PATH = '\Python38\Scripts\pip.exe';
 { Returns the path of pip.exe on the system. }
 { Tries several different locations before prompting user. }
 
@@ -479,10 +479,10 @@ begin
     if(MsgBox(CustomMessage('InstallPythonMsg'), mbConfirmation, MB_YESNO) = idYes) then
     begin
         try
-            ExtractTemporaryFile('python-3.9.10-amd64.exe');
-            ExtractTemporaryFile('python-3.9.10.exe');
+            ExtractTemporaryFile('python-3.8.10-amd64.exe');
+            ExtractTemporaryFile('python-3.8.10.exe');
             ExtractTemporaryFile('python-exe.bat');
-            ExtractTemporaryFile('pip-6.0.8-py2.py3-none-any.whl');
+            ExtractTemporaryFile('pip-23.1.2-py3-none-any.whl');
             ShellExec('open', ExpandConstant('{tmp}')+'\python-exe.bat', '', '', SW_HIDE, ewWaitUntilTerminated, installPythonErrorCode);
         except
             // MsgBox('HandlePythonSetup - ' + GetExceptionMessage, mbInformation, mb_Ok);
@@ -628,7 +628,7 @@ begin
         PipDir := GetPipDir('')
         Exec('cmd.exe', '/c "reg delete HKCU\Environment /F /V KOLIBRI_SCRIPT_DIR"', '', SW_HIDE, ewWaitUntilTerminated, ErrorCode)
         { Must set this environment variable so the systray executable knows where to find the installed kolibri.exe script}
-        { Should by in the same directory as pip.exe, e.g. 'C:\Python39\Scripts' }
+        { Should by in the same directory as pip.exe, e.g. 'C:\Python38\Scripts' }
         RegWriteStringValue(
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
@@ -694,7 +694,7 @@ begin
    
     PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
 
-    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 6, 0,) and sys.version_info < (3, 6, 9,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
+    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 8, 0,) and sys.version_info < (3, 8, 11,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
     begin
         if PythonVersionCodeCheck = 1 then
         begin

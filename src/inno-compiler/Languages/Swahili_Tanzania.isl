@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Kuna usanidi uliopo wa Kolibri kwenye kifaa hiki. Je! Ungependa kuisasisha? 
 UpgradeDelMsg=Ukichagua kufanya usanikishaji mpya na sio kusasisha, utafungua data yako yote iliyopo. Tafadhali thibitisha unataka kuendelea na usanikishaji mpya. 
-InstallPythonMsg=Unahitaji kuwa na Python 3.9+ imewekwa ili kuendesha Kolibri. Wizard ya usanidi haikuweza kupata Python kwenye mfumo wako na sasa itaendelea kuisanikisha. Tafadhali bonyeza 'Ndio' ili kudhibitisha na uendelee na usanikishaji. 
+InstallPythonMsg=Unahitaji kuwa na Python 3.8+ imewekwa ili kuendesha Kolibri. Wizard ya usanidi haikuweza kupata Python kwenye mfumo wako na sasa itaendelea kuisanikisha. Tafadhali bonyeza 'Ndio' ili kudhibitisha na uendelee na usanikishaji. 
 InstallPythonErrMsg=Kolibri haiwezi kufanya kazi bila kusanidi Python. Bonyeza Sawa kurudi nyuma na usakinishe Python, au Katisha kuondoa kisakinishi cha Kolibri 
 SetupKolibriErrMsg=Hitpilafu muhimu. Wategemezi wameshindwa kusanikisha. Nambari ya Hitilafu: 
 KolibriInstallFailed=Kuna kitu kilienda vibaya wakati wa usanidi wa Kolibri..%nMaelezo ya ziada yanaweza kupatikana katika faili ya logi: 

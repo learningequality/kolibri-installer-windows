@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=이 기기에 Kolibri가 이미 설치되어 있습니다. 업데이트를 진행하시겠습니까? 
 UpgradeDelMsg=업데이트가 아닌 신규 설치를 선택하면 기존 데이터가 모두 삭제됩니다. 그래도 신규 설치를 진행할지 확인하십시오. 
-InstallPythonMsg=Koribri를 실행하기 위해서는 최소 Python 3.9이상의 버전이 필요합니다. 설치 마법사가 이 시스템에서 Python을 찾지 못했으므로 지금 설치를 시작합니다. 'yes'를 클릭하시고 설치를 계속하십시오. 
+InstallPythonMsg=Koribri를 실행하기 위해서는 최소 Python 3.8이상의 버전이 필요합니다. 설치 마법사가 이 시스템에서 Python을 찾지 못했으므로 지금 설치를 시작합니다. 'yes'를 클릭하시고 설치를 계속하십시오. 
 InstallPythonErrMsg=Koribri는 Python설치 없이 실행되지 않습니다. 뒤로 돌아가서 Python을 설치하시려면 예를 클릭하시고, Kolibri 설치를 중단하시려면 취소를 클릭하십시오 
 SetupKolibriErrMsg=치명적 오류. 종속된 항목의 설치를 실패하였습니다. 오류 넘버: 
 KolibriInstallFailed=Kolibri설치중 오류가 발생하였습니다.%n 추가적인 정보는 로그파일에서 확인하십시오: 
