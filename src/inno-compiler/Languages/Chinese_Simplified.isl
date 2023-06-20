@@ -363,7 +363,7 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=此设备上已安装课励彼。您想要更新它吗？ 
 UpgradeDelMsg=如果您选择重新安装而不是更新，您将会丢失所有现有数据。 请确认您想要继续安装。 
-InstallPythonMsg=您需要安装 Python 3.9+ 才能运行课励彼。 由于安装向导无法在您的系统上找到 Python，所以现在将安装Python。 请单击“是”，确认并继续安装。 
+InstallPythonMsg=您需要安装 Python 3.8+ 才能运行课励彼。 由于安装向导无法在您的系统上找到 Python，所以现在将安装Python。 请单击“是”，确认并继续安装。 
 InstallPythonErrMsg=不安装 Python，课励彼无法运行。点击“确认”返回并安装 Python，或“取消”退出课励彼安装程序 
 SetupKolibriErrMsg=严重错误。依赖关系安装失败。错误号： 
 KolibriInstallFailed=在课励彼设置过程中出了错。%n在日志文件中可以找到更多信息： 
