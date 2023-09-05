@@ -44,9 +44,9 @@ jobs:
     outputs:
       exe-file-name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       if: ${{ !inputs.ref }}
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       if: ${{ inputs.ref }}
       with:
         repository: learningequality/kolibri-installer-windows
