@@ -91,11 +91,13 @@ jobs:
     - name: Get Kolibri version
       id: get-kolibri-version
       run: |
+        import os
         from pkginfo import Wheel
         from glob import glob
         whl_file = glob("src/*.whl")[0]
         whl = Wheel(whl_file)
-        print("::set-output name=kolibri-version::{}".format(whl.version))
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+          print("kolibri-version={}".format(whl.version), file=fh)
       shell: python
     - name: Run the build
       env:
@@ -105,8 +107,10 @@ jobs:
     - name: Get EXE filename
       id: get-exe-filename
       run: |
+        import os
         release = True if "${{ inputs.release == true || github.event.inputs.release == 'true' }}" == "true" else False
-        print("::set-output name=exe-file-name::kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-{}signed.exe".format("" if release else "un"))
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+          print("exe-file-name=kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-{}signed.exe".format("" if release else "un"), file=fh)
       shell: python
     - name: Codesign the exe
       if: ${{ inputs.release == true || github.event.inputs.release == 'true' }}
