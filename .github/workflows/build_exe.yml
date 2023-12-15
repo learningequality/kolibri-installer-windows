@@ -82,7 +82,7 @@ jobs:
         mv *.whl src
     - name: Download the whlfile from artifacts
       if: ${{ inputs.whl-file-name }}
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.whl-file-name }}
         path: src
@@ -120,7 +120,7 @@ jobs:
         certutil -decode pfx.b64 windows-2022.pfx
         & 'C:/Program Files (x86)/Windows Kits/10/bin/10.0.22000.0/x64/signtool.exe' sign /tr http://timestamp.ssl.trustwave.com /td SHA256 /fd SHA256 /f windows-2022.pfx /p '${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE_PASSWORD }}' /debug exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe
         mv exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-unsigned.exe exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-signed.exe
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
         path: exe
