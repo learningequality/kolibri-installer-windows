@@ -490,8 +490,9 @@ begin
   for Version := MinSupportedVersion to MaxSupportedVersion do
     begin
       PythonVersion := '3.' + IntToStr(Version);
-      // if RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
       // This checks for Python 3.x installed for all users
+      // to be removed , used for debugging
+      MsgBox('HandlePythonSetup - ' + PythonVersion, mbInformation, mb_Ok);
       if  RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
         begin
            RegQueryStringValue( GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
@@ -548,6 +549,8 @@ begin
     isWindowsInstall := true;
     if GetPythonPathFromRegistry() = '' then
     begin
+        // to be removed, used for debugging:
+        MsgBox('what's the hell - ' + GetPythonPathFromRegistry(), mbInformation, mb_Ok);
         HandlePythonSetup();
     end;
     if CurPageID = wpSelectTasks then
