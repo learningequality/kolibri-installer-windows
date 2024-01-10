@@ -550,7 +550,7 @@ begin
     if GetPythonPathFromRegistry() = '' then
     begin
         // to be removed, used for debugging:
-        MsgBox('what's the hell - ' + GetPythonPathFromRegistry(), mbInformation, mb_Ok);
+        MsgBox('what the hell - ' + GetPythonPathFromRegistry(), mbInformation, mb_Ok);
         HandlePythonSetup();
     end;
     if CurPageID = wpSelectTasks then
