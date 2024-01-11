@@ -63,7 +63,7 @@ Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python38\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "{code:getPipDir}\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -479,6 +479,7 @@ var
   MinSupportedVersion: integer;
   Version: integer;
   PythonPath: string;
+  PythonExists: boolean;
 
 begin
   // Check if Python is installed
@@ -486,26 +487,29 @@ begin
   MinSupportedVersion:=6;
   MaxSupportedVersion:=11;
   PythonPath:= '';
+  PythonExists := False;
 
   for Version := MinSupportedVersion to MaxSupportedVersion do
     begin
       PythonVersion := '3.' + IntToStr(Version);
       // This checks for Python 3.x installed for all users
       // to be removed , used for debugging
-      MsgBox('HandlePythonSetup - ' + PythonVersion, mbInformation, mb_Ok);
       if  RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
         begin
-           RegQueryStringValue( GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
+          PythonExists := True;
+          RegQueryStringValue( GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
           Break;
         end;
       if RegKeyExists(HKEY_CURRENT_USER, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath') then
       // This checks for Python 3.x installed for the current user only
         begin
-         RegQueryStringValue(HKEY_CURRENT_USER, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
+          PythonExists := True;
+          RegQueryStringValue(HKEY_CURRENT_USER, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
           Break;
         end;
     end;
 
+    if not PythonExists then PythonPath:='';
  Result:= PythonPath;
 end;
 
@@ -639,7 +643,7 @@ begin
     PipPath := GetPipPath();
     if PipPath = '' then
         exit;
-    PipCommand := PipPath + ' install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
+    PipCommand := '"' + PipPath + '"'+ ' install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
     TempFilePath := GetEnv('HOMEDRIVE') + '\\temp'
     SetEnvCmd := 'set TMP=' + TempFilePath + ' && ' + 'set TEMP=' + TempFilePath
     WizardForm.StatusLabel.WordWrap := true;
@@ -739,20 +743,13 @@ begin
     ShellExec('open', 'tskill.exe', ' "Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, killErrorCode);
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
-   
-    PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
 
-    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 8, 0,) and sys.version_info < (3, 8, 11,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
-    begin
-        if PythonVersionCodeCheck = 1 then
-        begin
-            HandlePythonSetup(); 
-        end;
-    end
-    else 
+    if GetPythonPathFromRegistry() = '' then
     begin
         HandlePythonSetup();
-    end; 
+    end;
+
+
 end;
 
 function InitializeUninstall(): Boolean;
@@ -802,7 +799,7 @@ begin
     RegDeleteValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
-        'Kolibri_SCRIPT_DIR'
+        'KOLIBRI_SCRIPT_DIR'
     )
     { Use this environment varaible to get the selected language for the kolibri GUI application. }
     RegDeleteValue(
