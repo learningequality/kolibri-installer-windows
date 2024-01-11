@@ -28,8 +28,8 @@ LanguageCodePage=1252
 [Messages]
 
 ; *** Application titles
-SetupAppTitle=Asistente de instalación 
-SetupWindowTitle=Asistente de instalación - %1 
+SetupAppTitle=Instalador
+SetupWindowTitle=Instalador - %1 
 UninstallAppTitle=Desinstalar 
 UninstallAppFullTitle=Desinstalar %1 
 
@@ -113,7 +113,7 @@ BrowseDialogLabel=Selecciona una carpeta en la lista de abajo, luego haga clic e
 NewFolderName=Nueva carpeta 
 
 ; *** "Welcome" wizard page
-WelcomeLabel1=Bienvenid@s al Asistente de instalación de [name] 
+WelcomeLabel1=Bienvenid@s al Instalador de [name] 
 WelcomeLabel2=[name/ver] será instalado en tu ordenador.%n%nSe recomienda cerrar todas las demás aplicaciones antes de continuar. 
 
 ; *** "Password" wizard page
@@ -149,7 +149,7 @@ UserInfoNameRequired=You must enter a name.
 ; *** "Select Destination Location" wizard page
 WizardSelectDir=Seleccionar la ubicación de destino 
 SelectDirDesc=¿Dónde deseas instalar [name]? 
-SelectDirLabel3=Asistente de instalación instalará [name] en la siguiente carpeta. 
+SelectDirLabel3=El instalador copiará [name] en la siguiente carpeta. 
 SelectDirBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
 DiskSpaceMBLabel=Se necesitan al menos [mb] MB de espacio libre en el disco. 
 CannotInstallToNetworkDrive=Setup cannot install to a network drive.
@@ -188,7 +188,7 @@ SelectTasksLabel2=Select the additional tasks you would like Setup to perform wh
 ; *** "Select Start Menu Folder" wizard page
 WizardSelectProgramGroup=Seleccionar la carpeta del menú Inicio 
 SelectStartMenuFolderDesc=¿Dónde se van a instalar los accesos directos del programa? 
-SelectStartMenuFolderLabel3=Asistente de instalación creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
+SelectStartMenuFolderLabel3=El instalador creará accesos directos del programa en la siguiente carpeta del menú Inicio. 
 SelectStartMenuFolderBrowseLabel=Para continuar, haz clic en 'Siguiente'. Si deseas seleccionar una carpeta diferente, haz clic en 'Examinar'. 
 MustEnterGroupName=Hay que introducir un nombre de carpeta. 
 GroupNameTooLong=The folder name or path is too long.
@@ -198,7 +198,7 @@ NoProgramGroupCheck2=&Don't create a Start Menu folder
 
 ; *** "Ready to Install" wizard page
 WizardReady=Listo para instalar 
-ReadyLabel1=Asistente de instalación está listo para empezar a instalar [name] en tu ordenador. 
+ReadyLabel1=El instalador está listo para empezar a instalar [name] en tu ordenador. 
 ReadyLabel2a=Haz clic en 'Instalar' para continuar con la instalación, o en 'Atrás' para revisar o cambiar los parámetros. 
 ReadyLabel2b=Haz clic en 'Instalar' para continuar con la instalación. 
 ReadyMemoUserInfo=User information:
@@ -363,11 +363,11 @@ AddonHostProgramNotFound=%1 could not be located in the folder you selected.%n%n
 ; Kolibri Windows Installer custom messages
 UpgradeMsg=Hay una instalación anterior de Kolibri en este dispositivo. ¿Deseas actualizarla? 
 UpgradeDelMsg=Si decides hacer una instalación nueva y no actualizar, perderás todos los datos existentes. Por favor, confirma que deseas continuar con la nueva instalación. 
-InstallPythonMsg=Es necesario tener Python 3.8+ instalado para poder ejecutar Kolibri. Asistente de instalación no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
+InstallPythonMsg=Es necesario tener Python 3.8+ instalado para poder ejecutar Kolibri. El instlador no pudo encontrar Python en su sistema y ahora procederá a instalarlo. Haz clic en 'Sí' para confirmar y continuar con la instalación. 
 InstallPythonErrMsg=Advertencia: Kolibri necesita Python para funcionar. Haz clic en 'Aceptar' para volver e instalar Python, o 'Cancelar' para salir del instalador de Kolibri 
 SetupKolibriErrMsg=Error crítico. No se han podido instalar las dependencias. Número de error: 
 KolibriInstallFailed=Algo salió mal durante la instalación de Kolibri. Se puede encontrar%ninformación adicional en el archivo de registro: 
-SetupWizardMsg=Asistente de instalación está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
+SetupWizardMsg=El instalador está copiando los archivos. Esto puede tomar un tiempo, por favor espera... 
 LaunchKolibri=Iniciar Kolibri 
 KolibriSupportLink=Foro de la comunidad 
 KolibriHomePage=Página web 
