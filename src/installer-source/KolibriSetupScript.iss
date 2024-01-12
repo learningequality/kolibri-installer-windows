@@ -493,7 +493,6 @@ begin
     begin
       PythonVersion := '3.' + IntToStr(Version);
       // This checks for Python 3.x installed for all users
-      // to be removed , used for debugging
       if  RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
         begin
           PythonExists := True;
@@ -553,8 +552,6 @@ begin
     isWindowsInstall := true;
     if GetPythonPathFromRegistry() = '' then
     begin
-        // to be removed, used for debugging:
-        MsgBox('what the hell - ' + GetPythonPathFromRegistry(), mbInformation, mb_Ok);
         HandlePythonSetup();
     end;
     if CurPageID = wpSelectTasks then
