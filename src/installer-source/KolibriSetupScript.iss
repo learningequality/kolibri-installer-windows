@@ -492,6 +492,8 @@ begin
   for Version := MinSupportedVersion to MaxSupportedVersion do
     begin
       PythonVersion := '3.' + IntToStr(Version);
+      if not IsWin64 then PythonVersion := PythonVersion + '-32';
+
       // This checks for Python 3.x installed for all users
       if  RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
         begin
