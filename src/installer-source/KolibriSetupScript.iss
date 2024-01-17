@@ -63,7 +63,7 @@ Name: "tr"; MessagesFile: "compiler:Languages\Turkish.isl"
 
 [Files]
 Source: "..\kolibri*.whl"; DestDir: "{app}\kolibri"
-Source: "..\scripts\reset-env-vars.bat"; DestDir: "\Python38\Scripts\"
+Source: "..\scripts\reset-env-vars.bat"; DestDir: "{code:getPipDir}\"
 Source: "..\scripts\*.bat"; DestDir: "{app}\kolibri\scripts\"
 Source: "..\gui-packed\Kolibri.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\gui-packed\guitools.vbs"; DestDir: "{app}"; Flags: ignoreversion
@@ -98,6 +98,15 @@ Type: files; Name: "{app}\CONFIG.dat"
 Filename: {app}\kolibri\scripts\uninstall-kolibri.bat; Parameters: ""; Flags: runhidden;
 
 [Code]
+
+function GetHKLM: Integer;
+begin
+  if IsWin64 then
+    Result := HKLM64
+  else
+    Result := HKLM32;
+end;
+
 function GetPreviousVersion : String; Forward;
 
 var
@@ -461,16 +470,51 @@ begin
     end;  
 end;
 
-{ Used in GetPipPath below }
-const
-    DEFAULT_PIP_PATH = '\Python38\Scripts\pip.exe';
-{ Returns the path of pip.exe on the system. }
-{ Tries several different locations before prompting user. }
 
-function GetDefaultPip() : String;
+function GetPythonPathFromRegistry(): string;
+var
+  PythonCoreKey: string;
+  PythonVersion: string;
+  MaxSupportedVersion: integer;
+  MinSupportedVersion: integer;
+  Version: integer;
+  PythonPath: string;
+  PythonExists: boolean;
+
 begin
-  result := ExpandConstant('{sd}') + DEFAULT_PIP_PATH; 
+  // Check if Python is installed
+  PythonCoreKey := 'SOFTWARE\Python\PythonCore\';
+  MinSupportedVersion:=6;
+  MaxSupportedVersion:=11;
+  PythonPath:= '';
+  PythonExists := False;
+
+  for Version := MinSupportedVersion to MaxSupportedVersion do
+    begin
+      PythonVersion := '3.' + IntToStr(Version);
+      if not IsWin64 then PythonVersion := PythonVersion + '-32';
+
+      // This checks for Python 3.x installed for all users
+      if  RegKeyExists(GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath' ) then
+        begin
+          PythonExists := True;
+          RegQueryStringValue( GetHKLM, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
+          Break;
+        end;
+      if RegKeyExists(HKEY_CURRENT_USER, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath') then
+      // This checks for Python 3.x installed for the current user only
+        begin
+          PythonExists := True;
+          RegQueryStringValue(HKEY_CURRENT_USER, 'SOFTWARE\Python\PythonCore\' + PythonVersion + '\InstallPath', '', PythonPath);
+          Break;
+        end;
+    end;
+
+    if not PythonExists then PythonPath:='';
+ Result:= PythonPath;
 end;
+
+
 
 procedure HandlePythonSetup;
 var
@@ -508,7 +552,7 @@ function NextButtonClick(CurPageID: Integer): Boolean;
 begin
     result := True;
     isWindowsInstall := true;
-    if not (FileExists(GetDefaultPip())) then
+    if GetPythonPathFromRegistry() = '' then
     begin
         HandlePythonSetup();
     end;
@@ -526,11 +570,18 @@ begin
     end;
 end;
 
+
+{ Used in GetPipPath below }
+const
+    DEFAULT_PIP_PATH = 'Scripts\pip.exe';
+{ Returns the path of pip.exe on the system. }
+{ Tries several different locations before prompting user. }
+
 function FailedPipNotFound() : String;
 begin
     // MsgBox('FailedPipNotFound - ' + GetExceptionMessage, mbInformation, mb_Ok);
     // Log('Exception: ' + GetExceptionMessage);
-    CustomizeMsgbox('File: ' + ExpandConstant('{sd}') + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
+    CustomizeMsgbox('File: ' + GetPythonPathFromRegistry() + DEFAULT_PIP_PATH + CustomMessage('FileNotFound'));
     RemoveOldInstallation(ExpandConstant('{app}'));
     forceCancel := True
     ExitProcess(1);
@@ -540,7 +591,7 @@ function GetPipPath() : String;
 var
     path : string;
 begin
-    path := ExpandConstant('{sd}') + DEFAULT_PIP_PATH;
+    path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
     if FileExists(path) then
         begin
             result := path;
@@ -591,7 +642,7 @@ begin
     PipPath := GetPipPath();
     if PipPath = '' then
         exit;
-    PipCommand := PipPath + ' install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
+    PipCommand := '"' + PipPath + '"'+ ' install "' + ExpandConstant('{app}') + '\kolibri\kolibri-' + '{#TargetVersion}' + '-py2.py3-none-any' + '.whl"';
     TempFilePath := GetEnv('HOMEDRIVE') + '\\temp'
     SetEnvCmd := 'set TMP=' + TempFilePath + ' && ' + 'set TEMP=' + TempFilePath
     WizardForm.StatusLabel.WordWrap := true;
@@ -691,20 +742,13 @@ begin
     ShellExec('open', 'tskill.exe', ' "Kolibri"', '', SW_HIDE, ewWaitUntilTerminated, killErrorCode);
 
     RegDeleteValue(HKCU, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Run', ExpandConstant('{#MyAppName}'));
-   
-    PythonPath := ExtractFileDir(GetEnv('KOLIBRI_SCRIPT_DIR')) + '\python.exe';
 
-    if ShellExec('open', PythonPath,'-c "import sys; (sys.version_info >= (3, 8, 0,) and sys.version_info < (3, 8, 11,) and sys.exit(0)) or sys.exit(1)"', '', SW_HIDE, ewWaitUntilTerminated, PythonVersionCodeCheck) then
-    begin
-        if PythonVersionCodeCheck = 1 then
-        begin
-            HandlePythonSetup(); 
-        end;
-    end
-    else 
+    if GetPythonPathFromRegistry() = '' then
     begin
         HandlePythonSetup();
-    end; 
+    end;
+
+
 end;
 
 function InitializeUninstall(): Boolean;
@@ -754,7 +798,7 @@ begin
     RegDeleteValue(
         HKLM,
         'System\CurrentControlSet\Control\Session Manager\Environment',
-        'Kolibri_SCRIPT_DIR'
+        'KOLIBRI_SCRIPT_DIR'
     )
     { Use this environment varaible to get the selected language for the kolibri GUI application. }
     RegDeleteValue(
