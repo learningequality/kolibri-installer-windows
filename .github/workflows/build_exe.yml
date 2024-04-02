@@ -16,11 +16,14 @@ on:
   workflow_call:
     inputs:
       whl-file-name:
-        required: true
+        required: false
+        type: string
+      whl-url:
+        required: false
         type: string
       ref:
         description: 'A ref for this workflow to check out its own repo'
-        required: true
+        required: false
         type: string
       release:
         description: 'Is this a release asset?'
@@ -44,6 +47,11 @@ jobs:
     outputs:
       exe-file-name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
     steps:
+    - name: Validate whl reference inputs
+      if: ${{ (inputs.whl-file-name && inputs.whl-url) || (!inputs.whl-file-name && !inputs.whl-url) }}
+      run: |
+        echo "Must specify exactly one reference for the whl file to build the EXE with."
+        exit 1
     - uses: actions/checkout@v4
       if: ${{ !inputs.ref }}
     - uses: actions/checkout@v4
@@ -68,12 +76,12 @@ jobs:
       if: hashFiles('src\python-setup\python-3.8.10-amd64.exe') == ''
       run: curl -L -o src\python-setup\python-3.8.10-amd64.exe https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe
     - name: Download the whlfile from URL
-      if: ${{ github.event.inputs.whl-url }}
+      if: ${{ inputs.whl-url }}
       # Powershell recipe for downloading and using content disposition header:
       # https://hodgkins.io/download-file-with-powershell-without-renaming
       # Modified to remove query params
       run: |
-        $download = Invoke-WebRequest -Uri "${{ github.event.inputs.whl-url }}"
+        $download = Invoke-WebRequest -Uri "${{ inputs.whl-url }}"
         $content = [System.Net.Mime.ContentDisposition]::new($download.Headers["Content-Disposition"])
         $fileName = $content.FileName.split("?")[0]
         $file = [System.IO.FileStream]::new($fileName, [System.IO.FileMode]::Create)
@@ -108,12 +116,12 @@ jobs:
       id: get-exe-filename
       run: |
         import os
-        release = True if "${{ inputs.release == true || github.event.inputs.release == 'true' }}" == "true" else False
+        release = True if "${{ inputs.release == true }}" == "true" else False
         with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
           print("exe-file-name=kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-{}signed.exe".format("" if release else "un"), file=fh)
       shell: python
     - name: Codesign the exe
-      if: ${{ inputs.release == true || github.event.inputs.release == 'true' }}
+      if: ${{ inputs.release == true }}
       id: codesign
       run: |
         Set-Content -Path pfx.b64 -Value "${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE }}"
