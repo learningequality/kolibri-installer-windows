@@ -118,7 +118,7 @@ jobs:
         import os
         release = True if "${{ inputs.release == true }}" == "true" else False
         with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-          print("exe-file-name=kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-{}signed.exe".format("" if release else "un"), file=fh)
+          print("exe-file-name=kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup{}.exe".format("" if release else "-unsigned"), file=fh)
       shell: python
     - name: Codesign the exe
       if: ${{ inputs.release == true }}
