@@ -485,7 +485,7 @@ begin
   // Check if Python is installed
   PythonCoreKey := 'SOFTWARE\Python\PythonCore\';
   MinSupportedVersion:=6;
-  MaxSupportedVersion:=11;
+  MaxSupportedVersion:=13;
   PythonPath:= '';
   PythonExists := False;
 
