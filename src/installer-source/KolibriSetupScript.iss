@@ -753,7 +753,7 @@ begin
             HKLM,
             'System\CurrentControlSet\Control\Session Manager\Environment',
             'KOLIBRI_INSTALLER_VERSION',
-            'v1.5.0'
+            'v1.6.6'
         );
 
 end;
