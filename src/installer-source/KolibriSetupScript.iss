@@ -629,6 +629,27 @@ begin
     else Log(Format('Error while adding the [%s] to PATH: [%s]', [param, Paths]));
 end;
 
+function EnableLongPathSupport(): Boolean;
+var
+  LongPathEnabled: Cardinal;
+begin
+  Result := True;
+
+  { Check if long path support is already enabled }
+  if RegQueryDWordValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\FileSystem', 'LongPathsEnabled', LongPathEnabled) then
+  begin
+    if LongPathEnabled = 1 then
+    begin
+      exit;
+    end;
+  end;
+
+  { Enable long path support by setting the registry value to 1 }
+  if not RegWriteDWordValue(HKEY_LOCAL_MACHINE, 'SYSTEM\CurrentControlSet\Control\FileSystem', 'LongPathsEnabled', 1) then
+    Result := False;
+end;
+
+
 procedure HandlePipSetup;
 var
     PipCommand: string;
@@ -639,6 +660,9 @@ var
     SetEnvCmd: string;
 
 begin
+    { Enable long path support before installing with pip }
+    EnableLongPathSupport();
+
     PipPath := GetPipPath();
     if PipPath = '' then
         exit;
