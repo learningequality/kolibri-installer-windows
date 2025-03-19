@@ -654,6 +654,12 @@ begin
     begin
         FailedPipNotFound();
     end;
+
+    { Check if pip command succeeded (ErrorCode = 0) }
+    if ErrorCode <> 0 then
+    begin
+        FailedPipNotFound();
+    end;
         { Delete existing user and system KOLIBRI_SCRIPT_DIR envitoment variables }
         RegDeleteValue(
             HKLM,
