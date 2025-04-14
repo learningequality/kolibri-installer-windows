@@ -590,17 +590,35 @@ begin
 function GetPipPath() : String;
 var
     path : string;
+    anacondaPath: string;
+    i: integer;
 begin
     path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
     if FileExists(path) then
+    begin
+        result := path;
+        exit;
+    end;
+
+    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
+    begin
+        path := anacondaPath + DEFAULT_PIP_PATH;
+        if FileExists(path) then
         begin
             result := path;
             exit;
         end;
-    begin
-        FailedPipNotFound();
-        result := '';
+
+        path := anacondaPath + '\python.exe -m pip';
+        if Exec('cmd.exe', '/C "' + path + ' --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
+        begin
+            result := anacondaPath + '\python.exe';
+            exit;
+        end;
     end;
+
+    FailedPipNotFound();
+    result := '';
 end;
 
 function GetPipDir(Value: string): String;
