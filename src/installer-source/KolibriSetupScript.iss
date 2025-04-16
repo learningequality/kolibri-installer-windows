@@ -596,6 +596,7 @@ var
 begin
     // First try standard Python installation's pip.exe
     path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
+    Log('Checking standard Python path: ' + path);
     if FileExists(path) then
     begin
         result := path;
@@ -603,13 +604,20 @@ begin
     end;
 
     // Try Anaconda installation paths
-    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) or
-       RegQueryStringValue(HKCU, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) or
-       RegQueryStringValue(HKLM, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) or
-       RegQueryStringValue(HKCU, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
+    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
+        Log('Found Anaconda in HKLM\ContinuumAnalytics: ' + anacondaPath)
+    else if RegQueryStringValue(HKCU, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
+        Log('Found Anaconda in HKCU\ContinuumAnalytics: ' + anacondaPath)
+    else if RegQueryStringValue(HKLM, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
+        Log('Found Anaconda in HKLM\Anaconda3: ' + anacondaPath)
+    else if RegQueryStringValue(HKCU, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
+        Log('Found Anaconda in HKCU\Anaconda3: ' + anacondaPath);
+
+    if anacondaPath <> '' then
     begin
         // Try Anaconda's pip.exe
         path := AddBackslash(anacondaPath) + 'Scripts\pip.exe';
+        Log('Checking Anaconda pip path: ' + path);
         if FileExists(path) then
         begin
             result := path;
@@ -618,6 +626,7 @@ begin
 
         // Try Anaconda's python -m pip
         pythonPath := AddBackslash(anacondaPath) + 'python.exe';
+        Log('Checking Anaconda python path: ' + pythonPath);
         if FileExists(pythonPath) then
         begin
             if Exec('cmd.exe', '/C "' + pythonPath + ' -m pip --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
