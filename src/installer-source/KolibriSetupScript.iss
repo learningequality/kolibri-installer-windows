@@ -609,7 +609,7 @@ begin
        RegQueryStringValue(HKCU, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
     begin
         // Try Anaconda's pip.exe
-        path := anacondaPath + DEFAULT_PIP_PATH;
+        path := AddBackslash(anacondaPath) + 'Scripts\pip.exe';
         if FileExists(path) then
         begin
             result := path;
@@ -617,7 +617,7 @@ begin
         end;
 
         // Try Anaconda's python -m pip
-        pythonPath := anacondaPath + '\python.exe';
+        pythonPath := AddBackslash(anacondaPath) + 'python.exe';
         if FileExists(pythonPath) then
         begin
             if Exec('cmd.exe', '/C "' + pythonPath + ' -m pip --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
