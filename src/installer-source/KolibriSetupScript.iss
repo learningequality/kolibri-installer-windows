@@ -511,7 +511,11 @@ begin
     end;
 
     if not PythonExists then PythonPath:='';
- Result:= PythonPath;
+    
+    if PythonPath <> '' then
+      PythonPath := AddBackslash(PythonPath);
+      
+    Result:= PythonPath;
 end;
 
 
@@ -596,7 +600,6 @@ var
 begin
     // First try standard Python installation's pip.exe
     path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
-    Log('Checking standard Python path: ' + path);
     if FileExists(path) then
     begin
         result := path;
@@ -617,7 +620,6 @@ begin
     begin
         // Try Anaconda's pip.exe
         path := AddBackslash(anacondaPath) + 'Scripts\pip.exe';
-        Log('Checking Anaconda pip path: ' + path);
         if FileExists(path) then
         begin
             result := path;
@@ -626,7 +628,6 @@ begin
 
         // Try Anaconda's python -m pip
         pythonPath := AddBackslash(anacondaPath) + 'python.exe';
-        Log('Checking Anaconda python path: ' + pythonPath);
         if FileExists(pythonPath) then
         begin
             if Exec('cmd.exe', '/C "' + pythonPath + ' -m pip --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
