@@ -592,7 +592,9 @@ var
     path : string;
     anacondaPath: string;
     i: integer;
+    pythonPath: string;
 begin
+    // First try standard Python installation's pip.exe
     path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
     if FileExists(path) then
     begin
@@ -600,8 +602,13 @@ begin
         exit;
     end;
 
-    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
+    // Try Anaconda installation paths
+    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) or
+       RegQueryStringValue(HKCU, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) or
+       RegQueryStringValue(HKLM, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) or
+       RegQueryStringValue(HKCU, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
     begin
+        // Try Anaconda's pip.exe
         path := anacondaPath + DEFAULT_PIP_PATH;
         if FileExists(path) then
         begin
@@ -609,11 +616,15 @@ begin
             exit;
         end;
 
-        path := anacondaPath + '\python.exe -m pip';
-        if Exec('cmd.exe', '/C "' + path + ' --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
+        // Try Anaconda's python -m pip
+        pythonPath := anacondaPath + '\python.exe';
+        if FileExists(pythonPath) then
         begin
-            result := anacondaPath + '\python.exe';
-            exit;
+            if Exec('cmd.exe', '/C "' + pythonPath + ' -m pip --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
+            begin
+                result := pythonPath;
+                exit;
+            end;
         end;
     end;
 
