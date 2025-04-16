@@ -594,52 +594,17 @@ begin
 function GetPipPath() : String;
 var
     path : string;
-    anacondaPath: string;
-    i: integer;
-    pythonPath: string;
 begin
-    // First try standard Python installation's pip.exe
     path := GetPythonPathFromRegistry() + DEFAULT_PIP_PATH;
     if FileExists(path) then
-    begin
-        result := path;
-        exit;
-    end;
-
-    // Try Anaconda installation paths
-    if RegQueryStringValue(HKLM, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
-        Log('Found Anaconda in HKLM\ContinuumAnalytics: ' + anacondaPath)
-    else if RegQueryStringValue(HKCU, 'SOFTWARE\Python\ContinuumAnalytics\Anaconda3', 'InstallPath', anacondaPath) then
-        Log('Found Anaconda in HKCU\ContinuumAnalytics: ' + anacondaPath)
-    else if RegQueryStringValue(HKLM, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
-        Log('Found Anaconda in HKLM\Anaconda3: ' + anacondaPath)
-    else if RegQueryStringValue(HKCU, 'SOFTWARE\Python\Anaconda3', 'InstallPath', anacondaPath) then
-        Log('Found Anaconda in HKCU\Anaconda3: ' + anacondaPath);
-
-    if anacondaPath <> '' then
-    begin
-        // Try Anaconda's pip.exe
-        path := AddBackslash(anacondaPath) + 'Scripts\pip.exe';
-        if FileExists(path) then
         begin
             result := path;
             exit;
         end;
-
-        // Try Anaconda's python -m pip
-        pythonPath := AddBackslash(anacondaPath) + 'python.exe';
-        if FileExists(pythonPath) then
-        begin
-            if Exec('cmd.exe', '/C "' + pythonPath + ' -m pip --version"', '', SW_HIDE, ewWaitUntilTerminated, i) and (i = 0) then
-            begin
-                result := pythonPath;
-                exit;
-            end;
-        end;
+    begin
+        FailedPipNotFound();
+        result := '';
     end;
-
-    FailedPipNotFound();
-    result := '';
 end;
 
 function GetPipDir(Value: string): String;
