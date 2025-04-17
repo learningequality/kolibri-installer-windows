@@ -511,7 +511,11 @@ begin
     end;
 
     if not PythonExists then PythonPath:='';
- Result:= PythonPath;
+    
+    if PythonPath <> '' then
+      PythonPath := AddBackslash(PythonPath);
+      
+    Result:= PythonPath;
 end;
 
 
