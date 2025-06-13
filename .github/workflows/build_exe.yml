@@ -31,9 +31,11 @@ on:
         type: boolean
         default: false
     secrets:
-      KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE:
+      AZURE_TENANT_ID:
         required: false
-      KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE_PASSWORD:
+      AZURE_CLIENT_ID:
+        required: false
+      AZURE_CLIENT_SECRET:
         required: false
     outputs:
       exe-file-name:
@@ -120,13 +122,24 @@ jobs:
         with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
           print("exe-file-name=kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup{}.exe".format("" if release else "-unsigned"), file=fh)
       shell: python
-    - name: Codesign the exe
+    - name: Sign files with Trusted Signing
       if: ${{ inputs.release == true }}
-      id: codesign
+      uses: azure/trusted-signing-action@v0
+      with:
+        azure-tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        azure-client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        azure-client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        endpoint: 'https://wus2.codesigning.azure.net/'
+        trusted-signing-account-name: 'LE-Trusted-Signing-Acct'
+        certificate-profile-name: 'LE-Windows-Certificates'
+        files-folder: ${{ github.workspace }}\exe
+        files-folder-filter: exe
+        file-digest: SHA256
+        timestamp-rfc3161: 'http://timestamp.acs.microsoft.com'
+        timestamp-digest: 'SHA256'
+    - name: Rename signed exe
+      if: ${{ inputs.release == true }}
       run: |
-        Set-Content -Path pfx.b64 -Value "${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE }}"
-        certutil -decode pfx.b64 windows-2022.pfx
-        & 'C:/Program Files (x86)/Windows Kits/10/bin/10.0.22000.0/x64/signtool.exe' sign /tr http://timestamp.ssl.trustwave.com /td SHA256 /fd SHA256 /f windows-2022.pfx /p '${{ secrets.KOLIBRI_WINDOWS_INSTALLER_CERTIFICATE_PASSWORD }}' /debug exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup-unsigned.exe
         mv exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup-unsigned.exe exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup.exe
     - uses: actions/upload-artifact@v4
       with:
