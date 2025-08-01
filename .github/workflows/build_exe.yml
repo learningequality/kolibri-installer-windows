@@ -45,7 +45,7 @@ on:
 jobs:
   build_exe:
     name: Build EXE file
-    runs-on: windows-latest
+    runs-on: windows-2022
     outputs:
       exe-file-name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
     steps:
