@@ -79,17 +79,49 @@ jobs:
       run: curl -L -o src\python-setup\python-3.8.10-amd64.exe https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe
     - name: Download the whlfile from URL
       if: ${{ inputs.whl-url }}
-      # Powershell recipe for downloading and using content disposition header:
-      # https://hodgkins.io/download-file-with-powershell-without-renaming
-      # Modified to remove query params
+      # Updated to handle URLs with or without Content-Disposition header
+      # This supports Google Cloud Storage, AWS S3, and other direct download URLs
       run: |
-        $download = Invoke-WebRequest -Uri "${{ inputs.whl-url }}"
-        $content = [System.Net.Mime.ContentDisposition]::new($download.Headers["Content-Disposition"])
-        $fileName = $content.FileName.split("?")[0]
-        $file = [System.IO.FileStream]::new($fileName, [System.IO.FileMode]::Create)
+        $whlUrl = "${{ inputs.whl-url }}"
+        
+        # Try to download
+        Write-Host "Downloading from: $whlUrl"
+        $download = Invoke-WebRequest -Uri $whlUrl
+        
+        # Try to get filename from Content-Disposition header (GitHub releases, some CDNs)
+        $fileName = $null
+        if ($download.Headers["Content-Disposition"]) {
+          try {
+            $content = [System.Net.Mime.ContentDisposition]::new($download.Headers["Content-Disposition"])
+            $fileName = $content.FileName.split("?")[0]
+            Write-Host "Extracted filename from Content-Disposition: $fileName"
+          } catch {
+            Write-Host "Could not parse Content-Disposition header"
+          }
+        }
+        
+        # If no Content-Disposition or parsing failed, extract from URL
+        if (-not $fileName) {
+          # Get filename from URL path and decode URL encoding
+          $urlPath = [System.Uri]::new($whlUrl).AbsolutePath
+          $fileName = [System.IO.Path]::GetFileName($urlPath)
+          $fileName = [System.Uri]::UnescapeDataString($fileName)
+          Write-Host "Extracted filename from URL: $fileName"
+        }
+        
+        # Validate we have a .whl file
+        if (-not $fileName.EndsWith(".whl")) {
+          Write-Error "Downloaded file does not appear to be a .whl file: $fileName"
+          exit 1
+        }
+        
+        # Write file to src directory
+        $outputPath = "src\$fileName"
+        $file = [System.IO.FileStream]::new($outputPath, [System.IO.FileMode]::Create)
         $file.Write($download.Content, 0, $download.RawContentLength)
         $file.Close()
-        mv *.whl src
+        
+        Write-Host "Successfully downloaded to: $outputPath"
     - name: Download the whlfile from artifacts
       if: ${{ inputs.whl-file-name }}
       uses: actions/download-artifact@v5
