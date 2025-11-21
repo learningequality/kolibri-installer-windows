@@ -54,9 +54,9 @@ jobs:
       run: |
         echo "Must specify exactly one reference for the whl file to build the EXE with."
         exit 1
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       if: ${{ !inputs.ref }}
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
       if: ${{ inputs.ref }}
       with:
         repository: learningequality/kolibri-installer-windows
@@ -92,7 +92,7 @@ jobs:
         mv *.whl src
     - name: Download the whlfile from artifacts
       if: ${{ inputs.whl-file-name }}
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       with:
         name: ${{ inputs.whl-file-name }}
         path: src
@@ -141,7 +141,7 @@ jobs:
       if: ${{ inputs.release == true }}
       run: |
         mv exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup-unsigned.exe exe\kolibri-${{ steps.get-kolibri-version.outputs.kolibri-version }}-windows-setup.exe
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v5
       with:
         name: ${{ steps.get-exe-filename.outputs.exe-file-name }}
         path: exe
