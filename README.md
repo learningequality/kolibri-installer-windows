@@ -1,3 +1,5 @@
+**This repository is deprecated and archived see the main [Kolibri repository](https://github.com/learningequality/kolibri) for how Kolibri is now bundled for Windows install**
+
 # Kolibri Windows Installer
 
 Repository for the Kolibri windows installer and launcher application
